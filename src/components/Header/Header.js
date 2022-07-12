@@ -21,6 +21,7 @@ const Header = ({renderAll}) => {
       setShowNewTaskForm(false)
     } else {                        // If it's not, show it and change icon to a 'x'
       setShowNewTaskForm(true)
+      document.getElementById('task-name').focus()
     }
   }
 
@@ -71,14 +72,14 @@ const Header = ({renderAll}) => {
           <MdSettings />
         </div>
       </div>
-      {showNewTaskForm &&
-      <div className='new-task-form'>
+      {/* {showNewTaskForm && */}
+      <div className={`new-task-form ${!showNewTaskForm ? 'slide-out' : ''}`}>
         <form action="">
           <input onSubmit={addNewTask} id='task-name' type="text" placeholder="Task Name"/>
           <button onClick={addNewTask}>Add</button>
         </form>
       </div>
-      }
+      {/* } */}
     </div>
   )
 }

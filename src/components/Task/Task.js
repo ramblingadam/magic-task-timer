@@ -7,13 +7,13 @@ import { MdEdit, MdDelete } from "react-icons/md"
 
 const Task = (props) => {
 
-  //// Pieces of State
+  //! Pieces of State
   const [timerRunning, setTimerRunning] = useState(false)
   const [totalTime, setTotalTime] = useState(props.task.time)
   const [startTime, setStartTime] = useState(null)
 
-  //// Helper Functions
-  // Converts ms into a a string with hrs, mins, secs
+  //! Helper Functions
+  //// Converts ms into a a string with hrs, mins, secs
   const convertTime = ms => {
     let seconds = Math.round(ms / 1000)
     let minutes = 0
@@ -36,12 +36,14 @@ const Task = (props) => {
 
   // TODO Visual time update function
   const updateTime = async () => {
-    while(timerRunning) {
-
-    }
+    // while(timerRunning) {
+    //   setTimeout(() => {
+    //     convertTime(totalTime + (Date.now() - startTime))
+    //   }, 250)
+    // }
   }
 
-  // Timer function
+  //// Timer function
   const toggleTimer = () => {
 
     // If timer is NOT currently running:
@@ -55,6 +57,8 @@ const Task = (props) => {
       const newTotal = totalTime + duration
       setTotalTime(newTotal)
       setTimerRunning(false)
+
+      // updateTime()
 
       const updatedTask = props.task
       updatedTask.time = newTotal
@@ -71,7 +75,7 @@ const Task = (props) => {
   }
 
 
-  // Delete Task
+  //// Delete Task
   const deleteTask = () => {
     if(window.confirm(`Are you sure you want to delete ${props.task.name}?`)) {
     const tasks = JSON.parse(localStorage.getItem('tasks'))
@@ -82,13 +86,44 @@ const Task = (props) => {
     }
   }
 
-  //// Component
+  //// Edit Task
+  const editTask = () => {
+
+    const newName = window.prompt('Enter new task name.', props.task.name)
+    // User passes in any empty string. Warn, and exit without updating.
+    if(newName === '') {
+      alert('Task name cannot be blank.')
+      return
+    }
+    // User presses cancel, setting newName to null. Exit without updating.
+    if(newName === null){
+      return
+    }
+
+    // Copy current task to updateTask and overwrite name with newName.
+    const updatedTask = props.task
+    updatedTask.name = newName
+
+    // Grab tasks array.
+    const tasks = JSON.parse(localStorage.getItem('tasks'))
+
+    // Replace old task with updated task.
+    tasks.splice(tasks.findIndex(task => task.id === props.task.id), 1, updatedTask)
+
+    // Store updated task array.
+    localStorage.setItem('tasks', JSON.stringify(tasks))
+
+    // Refresh tasks window.
+    props.renderAll()
+  }
+
+  //! Component
   return (
     <li className="task">
       <div className='task-name'>
         <p>{props.task.name}</p>
         <div className='edit-buttons'>
-          <MdEdit className="edit-btn"/>
+          <MdEdit className="edit-btn" onClick={editTask}/>
           <MdDelete className="delete-btn" onClick={deleteTask}/>
         </div>
       </div>
