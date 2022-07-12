@@ -1,0 +1,18 @@
+
+
+
+.header-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.new-task-button,
+.settings-button {
+  display: inline-block;
+  font-size: 3rem;
+}
