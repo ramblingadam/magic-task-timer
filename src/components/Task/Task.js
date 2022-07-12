@@ -1,6 +1,19 @@
+// Hooks
 import { useState } from "react"
+// Style
+import './Task.css'
+// Icons
+import { MdEdit, MdDelete } from "react-icons/md"
 
 const Task = (props) => {
+
+  //// Pieces of State
+  const [timerRunning, setTimerRunning] = useState(false)
+  const [totalTime, setTotalTime] = useState(props.task.time)
+  const [startTime, setStartTime] = useState(null)
+
+  //// Helper Functions
+  // Converts ms into a a string with hrs, mins, secs
   const convertTime = ms => {
     let seconds = Math.round(ms / 1000)
     let minutes = 0
@@ -21,11 +34,12 @@ const Task = (props) => {
     return `${days ? days + 'days : ' : ''} ${hours}hrs : ${minutes}mins : ${seconds}secs`
   }
 
-  const [timerRunning, setTimerRunning] = useState(false)
-  const [totalTime, setTotalTime] = useState(props.task.time)
-  const [startTime, setStartTime] = useState(null)
+  // TODO Visual time update function
+  const updateTime = async () => {
+    while(timerRunning) {
 
-  let duration
+    }
+  }
 
   // Timer function
   const toggleTimer = () => {
@@ -33,13 +47,11 @@ const Task = (props) => {
     // If timer is NOT currently running:
     if(!timerRunning) {
       setTimerRunning(true)
-
       setStartTime(Date.now())
-      console.log('start', startTime)
 
-      // If Timer IS currently running:
+    // If Timer IS currently running:
     } else { 
-      duration = Date.now() - startTime
+      const duration = Date.now() - startTime
       const newTotal = totalTime + duration
       setTotalTime(newTotal)
       setTimerRunning(false)
@@ -54,23 +66,40 @@ const Task = (props) => {
 
       localStorage.setItem('tasks', JSON.stringify(tasks))
 
-      console.log('localstorage: ', JSON.parse(localStorage.getItem('tasks')))
+      // console.log('localstorage: ', JSON.parse(localStorage.getItem('tasks')))
     }
- 
-
   }
 
 
+  // Delete Task
+  const deleteTask = () => {
+    if(window.confirm(`Are you sure you want to delete ${props.task.name}?`)) {
+    const tasks = JSON.parse(localStorage.getItem('tasks'))
+
+    tasks.splice(tasks.findIndex(task => task.id === props.task.id), 1)
+    localStorage.setItem('tasks', JSON.stringify(tasks))
+    props.renderAll()
+    }
+  }
+
+  //// Component
   return (
-    <li>
+    <li className="task">
       <div className='task-name'>
-        Task: {props.task.name}
+        <p>{props.task.name}</p>
+        <div className='edit-buttons'>
+          <MdEdit className="edit-btn"/>
+          <MdDelete className="delete-btn" onClick={deleteTask}/>
+        </div>
       </div>
-      <div className='task-time'>
-        Total Time Spent: {convertTime(totalTime)}
-      </div>
-      <div className='task-buttons'>
-        <button onClick={toggleTimer}>{timerRunning ? 'Stop' : 'Start'}</button>
+      <div className='task-info'>
+        <div className='task-time'>
+          <p>Total: {convertTime(totalTime)}</p>
+        </div>
+        <div className='task-buttons'>
+          <button className={`task-btn ${timerRunning ? 'running' : ''}`} onClick={toggleTimer}>{timerRunning ? 'Stop' : 'Start'}</button>
+          {/* <button>Delete</button> */}
+        </div>
       </div>
     </li>
   )

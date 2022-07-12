@@ -1,0 +1,99 @@
+/* // No Tasks Message */
+.add-task-msg {
+  text-align: center;
+  margin: 3rem;
+}
+
+/* // Tasks */
+.task {
+  list-style-type: none;
+
+  background: darkslategray;
+  border: 1px solid white;
+  border-radius: 10px;
+
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.task:last-of-type {
+  margin-bottom: 0;
+}
+
+/* Task Title Area + Edit buttons */
+.task-name {
+  display: flex;
+  justify-content: space-between;
+
+  text-transform: capitalize;
+  margin-bottom: 1rem;
+}
+
+.edit-btn,
+.delete-btn {
+  cursor: pointer;
+  transition: .8s;
+}
+
+.edit-btn:hover {
+  fill: yellow;
+  transition: .3s;
+}
+.delete-btn:hover {
+  fill: coral;
+  transition: .3s;
+}
+
+/* Task Info Area + Timer Buttons */
+
+.task-info {
+  display: flex;
+}
+
+.task-time,
+.task-buttons {
+  flex: 1;
+}
+
+.task-time {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.task-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.task-btn {
+  flex: 1;
+  height: 4rem;
+
+  /* background: radial-gradient(white, white); */
+  background: lightgreen;
+  border-radius: 50px;
+
+  font-size: 2.5rem;
+
+  transition: .8s;
+
+  cursor: pointer;
+}
+
+.task-btn:hover {
+  /* background: radial-gradient(lightgreen, green); */
+  background: greenyellow;
+  /* background: lightgreen; */
+  box-shadow: 0 0 5px white;
+  transition: .3s;
+}
+
+.task-btn.running {
+  background: lightcoral;
+}
+
+.task-btn.running:hover {
+  background: coral;
+  transition: .3s;
+}

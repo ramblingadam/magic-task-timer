@@ -4,54 +4,79 @@ import { useState } from 'react'
 
 // Styles
 import './Header.css'
+
 // Icons
-import { MdAddCircle, MdSettings } from "react-icons/md"
+import { MdAddCircle, MdSettings, Mddashci } from "react-icons/md"
 
-const Header = () => {
+const Header = ({renderAll}) => {
 
-
+  //// Pieces of State
   const [showNewTaskForm, setShowNewTaskForm] = useState(false)
 
+  //// Helper Functions
+  // Toggles visibility of New Task Form
   const toggleNewTaskForm = () => {
-    showNewTaskForm ? setShowNewTaskForm(false) : setShowNewTaskForm(true)
-    console.log('we addin')
+    // Check if task form already visible.
+    if(showNewTaskForm) {           // If it is visible, hide it and revert icon to a '+'
+      setShowNewTaskForm(false)
+    } else {                        // If it's not, show it and change icon to a 'x'
+      setShowNewTaskForm(true)
+    }
   }
 
-  const addNewTask = () => {
+  // Adds a new task
+  const addNewTask = (e) => {
+    e.preventDefault()
+
+    // Grab value from user.
+    const taskInput = document.getElementById('task-name').value
+
+    // Clear input field.
+    document.getElementById('task-name').value = ''
+
+     // Input validation
+    if(!taskInput) {
+      alert('Task name cannot be blank.')
+      return
+    }
+   
+    // create new task object
     const newTask = {
       id: Date.now(),
-      name: document.getElementById('task-name').value,
+      name: taskInput,
       time: 0
     }
 
-    console.log(newTask)
-    // Check if tasks object already exists in localStorage.
-    if(localStorage.getItem('tasks')) {
+    // Check if tasks cache already exists in localStorage.
+    if(localStorage.getItem('tasks')) { //If so, grab cache, add new task, and re-set into localStorage.
       const tasks = JSON.parse(localStorage.getItem('tasks')).concat(newTask)
       localStorage.setItem('tasks', JSON.stringify(tasks))
-    } else {
+    } else { // If not, start the tasks cache from scratch.
       const tasks = [
         newTask
       ]
       localStorage.setItem('tasks', JSON.stringify(tasks))
     }
+    // toggleNewTaskForm() // Hide the task form after a new task is added.
+    renderAll() // Re-renders App.js, which re-renders Tasks.js, so that the newly added task shows up right away.
   }
 
+  // // Component
   return (
     <div className='header-wrapper'>
       <div className='header-main'>
-        <h1>Project Tracker</h1>
+        <h1>Project Tracker&nbsp;<MdAddCircle className={`plus ${showNewTaskForm ? 'open' : ''}`} onClick={toggleNewTaskForm} /></h1>
         <div className='header-buttons'>
-          <MdAddCircle onClick={toggleNewTaskForm} />
+          
           <MdSettings />
-          {/* <NewTaskButton onClick={createNewTask}/> */}
-          {/* <SettingsButton /> */}
         </div>
       </div>
       {showNewTaskForm &&
       <div className='new-task-form'>
-        <input id='task-name' type="text" placeholder="Task Name"/>
-        <button onClick={addNewTask}>Add</button>
+        <form action="">
+          <input onSubmit={addNewTask} id='task-name' type="text" placeholder="Task Name"/>
+          <button onClick={addNewTask}>Add</button>
+        </form>
       </div>
       }
     </div>

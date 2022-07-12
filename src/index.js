@@ -1,10 +1,12 @@
-
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-// Styles
+
+// Styles - Global
 import './styles/global.css'
+
 // Components
 import App from './components/App';
+
 // Functions
 import reportWebVitals from './reportWebVitals';
 
