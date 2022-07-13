@@ -14,6 +14,8 @@
 
   padding: 1rem;
   margin-bottom: 1rem;
+
+  transition: box-shadow 1s;
 }
 
 .task:last-of-type {
@@ -24,22 +26,33 @@
   /* background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab); */
   background: linear-gradient(90deg, #23a6d5, #23d5ab,#23a6d5);
 	background-size: 400% 400%;
-	animation: gradient 2s linear infinite reverse;
+
+  box-shadow: 0 0 10px white;
+  transition: box-shadow .3s;
+
+  animation: gradient 2s linear infinite reverse;
 }
 
 /* // Gradient Background Animation */
 @keyframes gradient {
 	0% {
 		background-position: -20% 50%;
+    /* box-shadow: 0 0 1px white; */
 	}
+  50% {
+    /* box-shadow: 0 0 10px white; */
+  }
 	100% {
 		background-position: 120% 50%;
+    /* box-shadow: 0 0 1px white; */
 	}
 }
 
 
 /* Task Title Area + Edit buttons */
 .task-name {
+
+
   display: flex;
   justify-content: space-between;
 
@@ -74,6 +87,7 @@
 }
 
 .task-time {
+  font-family: 'Share Tech Mono', monospace;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -18,8 +18,10 @@ const Header = ({renderAll}) => {
   const toggleNewTaskForm = () => {
     // Check if task form already visible.
     if(showNewTaskForm) {           // If it is visible, hide it and revert icon to a '+'
+
       setShowNewTaskForm(false)
     } else {                        // If it's not, show it and change icon to a 'x'
+      document.getElementById('task-name').value = ''
       setShowNewTaskForm(true)
       document.getElementById('task-name').focus()
     }
@@ -27,7 +29,7 @@ const Header = ({renderAll}) => {
 
   // Adds a new task
   const addNewTask = (e) => {
-    e.preventDefault()
+    e.preventDefault() // Prevent page reload on form submit.
 
     // Grab value from user.
     const taskInput = document.getElementById('task-name').value
@@ -58,14 +60,13 @@ const Header = ({renderAll}) => {
       ]
       localStorage.setItem('tasks', JSON.stringify(tasks))
     }
-    // toggleNewTaskForm() // Hide the task form after a new task is added.
     renderAll() // Re-renders App.js, which re-renders Tasks.js, so that the newly added task shows up right away.
   }
 
   // // Component
   return (
     <div className='header-wrapper'>
-      <div className='header-main'>
+      <div className='header-main text-shadow'>
         <h1>Project Tracker&nbsp;<MdAddCircle className={`plus ${showNewTaskForm ? 'open' : ''}`} onClick={toggleNewTaskForm} /></h1>
         
         <div className='header-buttons'>

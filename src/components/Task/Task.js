@@ -120,7 +120,7 @@ const Task = (props) => {
   //! Component
   return (
     <li className={`task ${timerRunning ? 'running' : ''}`}>
-      <div className='task-name'>
+      <div className='task-name text-shadow'>
         <p>{props.task.name}</p>
         <div className='edit-buttons'>
           <MdEdit className="edit-btn" onClick={editTask}/>
@@ -128,7 +128,7 @@ const Task = (props) => {
         </div>
       </div>
       <div className='task-info'>
-        <div className='task-time'>
+        <div className='task-time text-shadow'>
           <p>{convertTime(totalTime)}</p>
         </div>
         <div className='task-buttons'>

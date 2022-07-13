@@ -48,6 +48,12 @@ table {
 }
 
 /* // Global + App.js Styles */
+/* Fonts */
+/* Share Tech Mono */
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+/* source Sans Pro */
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+
 html {
   font-size: 62.5%;
   height: 100vh;
@@ -60,7 +66,15 @@ body {
   color: white;
 }
 
+
+.text-shadow {
+  text-shadow: -2px 2px 2px black, 0 0 1px black, 0 0 2px black;
+}
+
+/* App.js */
 .app {
+  font-family: 'Source Sans Pro';
+
   max-width: 800px;
   margin: 1rem auto auto auto;
   padding: 1rem;
