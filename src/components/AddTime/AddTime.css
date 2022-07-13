@@ -1,0 +1,10 @@
+.add-time form {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.add-time span {
+  display: block;
+  text-align: center;
+}

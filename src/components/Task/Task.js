@@ -1,6 +1,8 @@
 // Hooks
 import { useState } from "react"
 import { useEffect } from "react"
+// Components
+import AddTime from "../AddTime/AddTime"
 // Style
 import './Task.css'
 // Icons
@@ -12,7 +14,7 @@ const Task = (props) => {
   const [timerRunning, setTimerRunning] = useState(false)
   const [totalTime, setTotalTime] = useState(props.task.time)
   const [startTime, setStartTime] = useState(null)
-  const [interval, setIntervalState] = useState(null)
+  const [showAddTimeForm, setShowAddTimeForm] = useState(false)
 
   //! Helper Functions
   //// Converts ms into a a string with hrs, mins, secs
@@ -29,14 +31,15 @@ const Task = (props) => {
       hours += 1
       minutes -= 60
     }
-    while(hours >= 24) {
-      days += 1
-      hours -= 24
-    }
-    return `${days ? days + 'days : ' : ''} ${hours}hrs : ${minutes}mins : ${seconds}secs`
+    // while(hours >= 24) {
+    //   days += 1
+    //   hours -= 24
+    // }
+    // return `${days ? days + 'days : ' : ''} ${hours}hrs : ${minutes}mins : ${seconds}secs`
+    return `${hours}hrs : ${minutes}mins : ${seconds}secs`
   }
 
-  // TODO Visual time update function
+  //// Visual time update functions
   useEffect(() => {
     // console.log('component is born!')
     let interval = null
@@ -54,16 +57,20 @@ const Task = (props) => {
     setStartTime(Date.now())
   }
 
+  // // Task object updater - localStorage
   const updateTask = (name = props.task.name, time = props.task.time) => {
+    // Copy current task, then re-assign time and/or name as appropriate
+    console.log(props.task)
     const updatedTask = props.task
     updatedTask.time = time
     updatedTask.name = name
-    // console.log('updated task:', updatedTask)
 
+    // Grab tasks from localStorage, and replace current task with updatedTask.
     const tasks = JSON.parse(localStorage.getItem('tasks'))
     tasks.splice(tasks.findIndex(task => task.id === props.task.id), 1, updatedTask)
     localStorage.setItem('tasks', JSON.stringify(tasks))
-    // console.log(`new storage:`, JSON.parse(localStorage.getItem('tasks')))
+
+    props.renderAll()
   }
 
   //// Timer function
@@ -89,11 +96,11 @@ const Task = (props) => {
   //// Delete Task
   const deleteTask = () => {
     if(window.confirm(`Are you sure you want to delete ${props.task.name}?`)) {
-    const tasks = JSON.parse(localStorage.getItem('tasks'))
-
-    tasks.splice(tasks.findIndex(task => task.id === props.task.id), 1)
-    localStorage.setItem('tasks', JSON.stringify(tasks))
-    props.renderAll()
+      // Grab tasks from localStorage and delete current task.
+      const tasks = JSON.parse(localStorage.getItem('tasks'))
+      tasks.splice(tasks.findIndex(task => task.id === props.task.id), 1)
+      localStorage.setItem('tasks', JSON.stringify(tasks))
+      props.renderAll() // Re-render app.
     }
   }
 
@@ -112,10 +119,9 @@ const Task = (props) => {
     }
 
     updateTask(newName, undefined)
-
-    // Refresh tasks window.
-    props.renderAll()
   }
+
+
 
   //! Component
   return (
@@ -132,10 +138,15 @@ const Task = (props) => {
           <p>{convertTime(totalTime)}</p>
         </div>
         <div className='task-buttons'>
+          <button className='add-time-btn'>+Time</button>
           <button className={`task-btn ${timerRunning ? 'running' : ''}`} onClick={toggleTimer}>{timerRunning ? 'Stop' : 'Start'}</button>
-          {/* <button>Delete</button> */}
         </div>
       </div>
+      <AddTime
+        task={props.task}
+        renderAll={props.renderAll}
+        updateTask={updateTask}
+      />
     </li>
   )
 }
