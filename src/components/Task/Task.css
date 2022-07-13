@@ -24,38 +24,19 @@
   /* background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab); */
   background: linear-gradient(90deg, #23a6d5, #23d5ab,#23a6d5);
 	background-size: 400% 400%;
-	animation: gradient2 2s linear infinite;
+	animation: gradient 2s linear infinite reverse;
 }
 
 /* // Gradient Background Animation */
-@keyframes gradient2 {
+@keyframes gradient {
 	0% {
 		background-position: -20% 50%;
-	}
-	50% {
-		/* background-position: 100% 50%; */
 	}
 	100% {
 		background-position: 120% 50%;
 	}
 }
-@keyframes gradient {
-	0% {
-		background-position: 0% 0%;
-	}
-	25% {
-		background-position: 25% 50%;
-	}
-	50% {
-		background-position: 50% 50%;
-	}
-	75% {
-		background-position: 50% 25%;
-	}
-	100% {
-		background-position: 0% 0%;
-	}
-}
+
 
 /* Task Title Area + Edit buttons */
 .task-name {

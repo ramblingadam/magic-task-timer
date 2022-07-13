@@ -1,5 +1,6 @@
 // Hooks
 import { useState } from "react"
+import { useEffect } from "react"
 // Style
 import './Task.css'
 // Icons
@@ -11,6 +12,7 @@ const Task = (props) => {
   const [timerRunning, setTimerRunning] = useState(false)
   const [totalTime, setTotalTime] = useState(props.task.time)
   const [startTime, setStartTime] = useState(null)
+  const [interval, setIntervalState] = useState(null)
 
   //! Helper Functions
   //// Converts ms into a a string with hrs, mins, secs
@@ -35,48 +37,51 @@ const Task = (props) => {
   }
 
   // TODO Visual time update function
+  useEffect(() => {
+    // console.log('component is born!')
+    let interval = null
+    if(timerRunning) {
+      interval = setInterval(() => {updateTime()}, 1000)
+    }
+    else if(!timerRunning) {
+      clearInterval(interval)
+    }
+    return () => clearInterval(interval)
+  }, [timerRunning])
 
-  // setInterval(() => {
-  //   if(timerRunning){
+  const updateTime = () => {
+    setTotalTime(totalTime + (Date.now() - startTime))
+    setStartTime(Date.now())
+  }
 
-  //   }
-  // }, 500)
-  const updateTime = async () => {
-    // while(timerRunning) {
-    //   setTimeout(() => {
-    //     convertTime(totalTime + (Date.now() - startTime))
-    //   }, 250)
-    // }
+  const updateTask = (name = props.task.name, time = props.task.time) => {
+    const updatedTask = props.task
+    updatedTask.time = time
+    updatedTask.name = name
+    // console.log('updated task:', updatedTask)
+
+    const tasks = JSON.parse(localStorage.getItem('tasks'))
+    tasks.splice(tasks.findIndex(task => task.id === props.task.id), 1, updatedTask)
+    localStorage.setItem('tasks', JSON.stringify(tasks))
+    // console.log(`new storage:`, JSON.parse(localStorage.getItem('tasks')))
   }
 
   //// Timer function
-  const toggleTimer = () => {
+  const toggleTimer = async () => {
+
 
     // If timer is NOT currently running:
     if(!timerRunning) {
-      setTimerRunning(true)
+      setTimerRunning(true)     
       setStartTime(Date.now())
 
     // If Timer IS currently running:
     } else { 
-      const duration = Date.now() - startTime
-      const newTotal = totalTime + duration
-      setTotalTime(newTotal)
+      // const duration = Date.now() - startTime
+      // const newTotal = totalTime + duration
+      // setTotalTime(newTotal)
       setTimerRunning(false)
-
-      // updateTime()
-
-      const updatedTask = props.task
-      updatedTask.time = newTotal
-      console.log('updated task:', updatedTask)
-
-      const tasks = JSON.parse(localStorage.getItem('tasks'))
-
-      tasks.splice(tasks.findIndex(task => task.id === props.task.id), 1, updatedTask)
-
-      localStorage.setItem('tasks', JSON.stringify(tasks))
-
-      // console.log('localstorage: ', JSON.parse(localStorage.getItem('tasks')))
+      updateTask(undefined, totalTime)
     }
   }
 
@@ -106,18 +111,7 @@ const Task = (props) => {
       return
     }
 
-    // Copy current task to updateTask and overwrite name with newName.
-    const updatedTask = props.task
-    updatedTask.name = newName
-
-    // Grab tasks array.
-    const tasks = JSON.parse(localStorage.getItem('tasks'))
-
-    // Replace old task with updated task.
-    tasks.splice(tasks.findIndex(task => task.id === props.task.id), 1, updatedTask)
-
-    // Store updated task array.
-    localStorage.setItem('tasks', JSON.stringify(tasks))
+    updateTask(newName, undefined)
 
     // Refresh tasks window.
     props.renderAll()

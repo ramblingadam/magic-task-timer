@@ -4,7 +4,7 @@ import Task from '../Task/Task'
 const Tasks = ({renderAll}) => {
 
   const tasks = JSON.parse(localStorage.getItem('tasks'))
-  console.log(tasks)
+  // console.log(tasks)
   return (
     <div className='tasks'>
       <ul>
