@@ -1,12 +1,15 @@
 .header-main {
+  position: relative;
+
+  font-size: 3rem;
+
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+
   padding: .5rem 0 1rem 0;
 }
 
 h1 {
-  font-size: 3rem;
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -16,32 +19,22 @@ h1 {
 }
 
 .header-buttons {
+  position: absolute;
+  right: 0;
+
   display: flex;
   align-items: center;
   font-size: 3rem;
 }
 
-/* // Add Task Button */
+/* // Plus Task Button */
 .plus {
+  left: 5px;
+
   fill: lightgreen;
   transition: .3s;
 
   cursor: pointer;
-}
-
-.plus:hover {
-  /* filter: drop-shadow(0px 0px 1px white); */
-  fill: greenyellow;
-
-  transform: scale(1.1);
-  transition: .3s;
-}
-
-.plus:active,
-.plus.open:active {
-  filter: drop-shadow(0 0 1px white);
-  fill: white;
-  transition: .1s;
 }
 
 .plus.open {
@@ -51,29 +44,76 @@ h1 {
   transition: .3s;
 }
 
+/* Plus Button Hover */
+.plus:hover {
+  transform: scale(1.1);
+  transition: .3s;
+}
+
 .plus.open:hover {
   fill: lightcoral;
   transform: rotate(45deg) scale(1.1);
 }
 
-/* // New Task Form */
+/* Plus Button Active */
+.plus:active,
+.plus.open:active {
+  filter: drop-shadow(0 0 1px white);
+  fill: white;
+  transition: .1s;
+}
 
+/* // New Task Form */
 .new-task-form {
   display: flex;
   justify-content: center;
+  align-items: center;
   margin-bottom: 1rem;
 
   height: 3rem;
   opacity: 1;
-  /* transition: .6s; */
+
   animation: reveal .6s ease 1 forwards;
 }
 
 .slide-out {
   opacity: 0;
   height: 0;
-  transition: .6s;
+
   animation: hide .6s ease 1 forwards;
+}
+
+#task-name {
+  border-radius: 7px 0 0 7px;
+  height: 1.8rem;
+  padding-left: .5rem;
+}
+
+/* Form Add Task Button */
+#add-task-btn{
+  border-radius: 0 7px 7px 0;
+  height: 2.5rem;
+
+  background: lightgreen;
+
+  transition: .5s;
+
+  cursor: pointer;
+}
+
+#add-task-btn:hover{
+  box-shadow: 0 0 3px white;
+
+  transition: .3s;
+}
+
+#add-task-btn:active{
+  /* transform-origin: left; */
+  transform: scale(.9);
+  border-radius: 7px;
+  box-shadow: 0 0 5px white;
+
+  transition: 0s;
 }
 
 @keyframes reveal {
@@ -104,6 +144,4 @@ h1 {
     height: 0;
     opacity: 0;
   }
-
-
 }

@@ -35,6 +35,12 @@ const Task = (props) => {
   }
 
   // TODO Visual time update function
+
+  // setInterval(() => {
+  //   if(timerRunning){
+
+  //   }
+  // }, 500)
   const updateTime = async () => {
     // while(timerRunning) {
     //   setTimeout(() => {
@@ -119,7 +125,7 @@ const Task = (props) => {
 
   //! Component
   return (
-    <li className="task">
+    <li className={`task ${timerRunning ? 'running' : ''}`}>
       <div className='task-name'>
         <p>{props.task.name}</p>
         <div className='edit-buttons'>
@@ -129,7 +135,7 @@ const Task = (props) => {
       </div>
       <div className='task-info'>
         <div className='task-time'>
-          <p>Total: {convertTime(totalTime)}</p>
+          <p>{convertTime(totalTime)}</p>
         </div>
         <div className='task-buttons'>
           <button className={`task-btn ${timerRunning ? 'running' : ''}`} onClick={toggleTimer}>{timerRunning ? 'Stop' : 'Start'}</button>

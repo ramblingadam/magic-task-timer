@@ -20,6 +20,43 @@
   margin-bottom: 0;
 }
 
+.task.running {
+  /* background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab); */
+  background: linear-gradient(90deg, #23a6d5, #23d5ab,#23a6d5);
+	background-size: 400% 400%;
+	animation: gradient2 2s linear infinite;
+}
+
+/* // Gradient Background Animation */
+@keyframes gradient2 {
+	0% {
+		background-position: -20% 50%;
+	}
+	50% {
+		/* background-position: 100% 50%; */
+	}
+	100% {
+		background-position: 120% 50%;
+	}
+}
+@keyframes gradient {
+	0% {
+		background-position: 0% 0%;
+	}
+	25% {
+		background-position: 25% 50%;
+	}
+	50% {
+		background-position: 50% 50%;
+	}
+	75% {
+		background-position: 50% 25%;
+	}
+	100% {
+		background-position: 0% 0%;
+	}
+}
+
 /* Task Title Area + Edit buttons */
 .task-name {
   display: flex;
@@ -72,6 +109,7 @@
 
   /* background: radial-gradient(white, white); */
   background: lightgreen;
+  border: 3px solid black;
   border-radius: 50px;
 
   font-size: 2.5rem;
@@ -81,19 +119,28 @@
   cursor: pointer;
 }
 
-.task-btn:hover {
-  /* background: radial-gradient(lightgreen, green); */
-  background: greenyellow;
-  /* background: lightgreen; */
-  box-shadow: 0 0 5px white;
-  transition: .3s;
-}
-
 .task-btn.running {
   background: lightcoral;
 }
 
-.task-btn.running:hover {
-  background: coral;
+.task-btn:hover {
+  box-shadow: 0 0 5px white;
   transition: .3s;
+}
+
+
+
+.task-btn.running:hover {
+  transition: .3s;
+}
+
+.task-btn:active {
+  box-shadow: 0 0 10px white;
+  transform: scale(.95);
+  transition: 0s;
+}
+.task-btn.running:active {
+  box-shadow: 0 0 10px white;
+  transform: scale(.95);
+  transition: 0s;
 }

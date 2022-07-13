@@ -1,5 +1,4 @@
-/* ! CSS RESET */
-
+/* // CSS RESET */
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
@@ -49,14 +48,11 @@ table {
 }
 
 /* // Global + App.js Styles */
-
-
 html {
   font-size: 62.5%;
   height: 100vh;
-  background: linear-gradient(rgba(30, 30, 30), rgba(0,0,0));
-  /* background: linear-gradient(white, lightgrey); */
-
+  background: linear-gradient(170deg, rgb(30, 30, 30), rgb(0,0,0), rgb(20,20,20));
+  background-attachment: fixed;
 }
 
 body {
@@ -73,6 +69,5 @@ body {
 
   border: 1px solid black;
   border-radius: 10px;
-
 }
 

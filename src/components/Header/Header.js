@@ -67,6 +67,7 @@ const Header = ({renderAll}) => {
     <div className='header-wrapper'>
       <div className='header-main'>
         <h1>Project Tracker&nbsp;<MdAddCircle className={`plus ${showNewTaskForm ? 'open' : ''}`} onClick={toggleNewTaskForm} /></h1>
+        
         <div className='header-buttons'>
           
           <MdSettings />
@@ -76,7 +77,7 @@ const Header = ({renderAll}) => {
       <div className={`new-task-form ${!showNewTaskForm ? 'slide-out' : ''}`}>
         <form action="">
           <input onSubmit={addNewTask} id='task-name' type="text" placeholder="Task Name"/>
-          <button onClick={addNewTask}>Add</button>
+          <button onClick={addNewTask} id='add-task-btn'>Add Task</button>
         </form>
       </div>
       {/* } */}
