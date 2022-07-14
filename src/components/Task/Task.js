@@ -3,6 +3,7 @@ import { useState } from "react"
 import { useEffect } from "react"
 // Components
 import AddTime from "../AddTime/AddTime"
+import Button from '../Button/Button'
 // Style
 import './Task.css'
 // Icons
@@ -16,16 +17,9 @@ const Task = (props) => {
   const [startTime, setStartTime] = useState(null)
   const [showAddTimeForm, setShowAddTimeForm] = useState(false)
 
-  const [taskRender, setTaskRender] = useState(0)
+
 
   //! Helper Functions
-  //// force task re-render from other component???????
-  const renderTask = () => {
-    setTaskRender(taskRender + 1)
-  }
-  
-
-
   //// Converts ms into a a string with hrs, mins, secs
   const convertTime = ms => {
     let seconds = Math.round(ms / 1000)
@@ -73,7 +67,7 @@ const Task = (props) => {
     const updatedTask = props.task
     updatedTask.time = time
     updatedTask.name = name
-
+    setTotalTime(updatedTask.time)
     // Grab tasks from localStorage, and replace current task with updatedTask.
     const tasks = JSON.parse(localStorage.getItem('tasks'))
     tasks.splice(tasks.findIndex(task => task.id === props.task.id), 1, updatedTask)
@@ -130,7 +124,6 @@ const Task = (props) => {
     updateTask(newName, undefined)
   }
 
-  // renderAll = props.renderAll
 
   //! Component
   return (
@@ -147,14 +140,12 @@ const Task = (props) => {
           <p>{convertTime(totalTime)}</p>
         </div>
         <div className='task-buttons'>
-          <button className='add-time-btn'>+Time</button>
-          <button className={`task-btn ${timerRunning ? 'running' : ''}`} onClick={toggleTimer}>{timerRunning ? 'Stop' : 'Start'}</button>
+          <button className='edit-time-btn btn'>Edit Time</button>
+          <button className={`task-btn btn ${timerRunning ? 'running' : ''}`} onClick={toggleTimer}>{timerRunning ? 'Stop' : 'Start'}</button>
         </div>
       </div>
       <AddTime
         task={props.task}
-        renderAll={props.renderAll}
-        renderTask={renderTask}
         updateTask={updateTask}
       />
     </li>

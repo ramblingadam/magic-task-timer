@@ -32,6 +32,8 @@ h1 {
   left: 5px;
 
   fill: lightgreen;
+  filter: drop-shadow(0 0 2px black);
+
   transition: .3s;
 
   cursor: pointer;
@@ -46,13 +48,14 @@ h1 {
 
 /* Plus Button Hover */
 .plus:hover {
-  transform: scale(1.1);
+  transform: scale(1.2);
+
   transition: .3s;
 }
 
 .plus.open:hover {
   fill: lightcoral;
-  transform: rotate(45deg) scale(1.1);
+  transform: rotate(45deg) scale(1.2);
 }
 
 /* Plus Button Active */

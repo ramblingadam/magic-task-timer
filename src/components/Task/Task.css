@@ -98,12 +98,10 @@
   justify-content: center;
 }
 
-.task-btn {
+.btn {
   flex: 1;
   height: 4rem;
 
-  /* background: radial-gradient(white, white); */
-  background: lightgreen;
   border: 3px solid black;
   border-radius: 50px;
 
@@ -114,27 +112,42 @@
   cursor: pointer;
 }
 
+.task-btn {
+  /* flex: 1;
+  height: 4rem; */
+
+  /* background: radial-gradient(white, white); */
+  background: lightgreen;
+  /* border: 3px solid black;
+  border-radius: 50px;
+
+  font-size: 2.5rem;
+
+  transition: .8s;
+
+  cursor: pointer; */
+}
+
 .task-btn.running {
   background: lightcoral;
 }
 
-.task-btn:hover {
+.btn:hover {
   box-shadow: 0 0 5px white;
+  border: 3px solid white;
   transition: .3s;
 }
-
-
 
 .task-btn.running:hover {
   transition: .3s;
 }
 
-.task-btn:active {
+.btn:active {
   box-shadow: 0 0 10px white;
   transform: scale(.95);
   transition: 0s;
 }
-.task-btn.running:active {
+.btn.running:active {
   box-shadow: 0 0 10px white;
   transform: scale(.95);
   transition: 0s;

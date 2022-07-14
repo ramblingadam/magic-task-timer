@@ -1,7 +1,34 @@
+.add-time {
+  font-size: 2rem;
+  margin-top: 1rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.add-subtract-btns {
+  font-size: 5rem;
+
+  display: flex;
+  align-items: center;
+}
+
 .add-time form {
   display: flex;
   flex-flow: column;
   align-items: center;
+}
+
+.add-time form div {
+  display: flex;
+  flex-flow: row;
+}
+
+#add-hours,
+#add-minutes {
+  width: 100px
 }
 
 .add-time span {
