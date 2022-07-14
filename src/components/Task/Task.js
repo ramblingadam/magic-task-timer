@@ -16,7 +16,16 @@ const Task = (props) => {
   const [startTime, setStartTime] = useState(null)
   const [showAddTimeForm, setShowAddTimeForm] = useState(false)
 
+  const [taskRender, setTaskRender] = useState(0)
+
   //! Helper Functions
+  //// force task re-render from other component???????
+  const renderTask = () => {
+    setTaskRender(taskRender + 1)
+  }
+  
+
+
   //// Converts ms into a a string with hrs, mins, secs
   const convertTime = ms => {
     let seconds = Math.round(ms / 1000)
@@ -121,7 +130,7 @@ const Task = (props) => {
     updateTask(newName, undefined)
   }
 
-
+  // renderAll = props.renderAll
 
   //! Component
   return (
@@ -145,6 +154,7 @@ const Task = (props) => {
       <AddTime
         task={props.task}
         renderAll={props.renderAll}
+        renderTask={renderTask}
         updateTask={updateTask}
       />
     </li>

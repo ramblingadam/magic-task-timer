@@ -10,24 +10,41 @@ import { MdAddCircle, MdSettings, Mddashci } from "react-icons/md"
 
 const Header = ({renderAll}) => {
 
-  //// Pieces of State
+  //// Pieces of State ////
   const [showNewTaskForm, setShowNewTaskForm] = useState(false)
+  const [taskFormCollapsed, setTaskFormCollapsed] = useState(true)
 
-  //// Helper Functions
-  // Toggles visibility of New Task Form
+  //// Helper Functions /////
+  //// Toggles visibility of New Task Form
   const toggleNewTaskForm = () => {
-    // Check if task form already visible.
-    if(showNewTaskForm) {           // If it is visible, hide it and revert icon to a '+'
 
+    // Check if task form already visible.
+    if(showNewTaskForm) {  // If it is visible, hide it and revert icon to a '+'
+
+      // Trigger collapse slide-out/fade-out & plus button animations.
       setShowNewTaskForm(false)
-    } else {                        // If it's not, show it and change icon to a 'x'
+
+      // Waits for task form collapse animation to finish (.6s), then set collapsed state to apply .hidden class to form.
+      setTimeout( () => {
+        setTaskFormCollapsed(true)
+      }, 700)
+    } else {        // If it's not visible, show it and change icon to a 'x'
+
+      // Change TaskFormCollpased state to remove .hidden class from form.
+      setTaskFormCollapsed(false) 
+
+      // Clear the input of any detritus left over from last non-entered input.
       document.getElementById('task-name').value = ''
+
+      // Trigger reveal slide-in/fade-in & plus button animations.
       setShowNewTaskForm(true)
-      document.getElementById('task-name').focus()
+
+      // Focus user cursor into task name field.
+      document.getElementById('task-name').focus() 
     }
   }
 
-  // Adds a new task
+  //// Adds a new task
   const addNewTask = (e) => {
     e.preventDefault() // Prevent page reload on form submit.
 
@@ -63,7 +80,7 @@ const Header = ({renderAll}) => {
     renderAll() // Re-renders App.js, which re-renders Tasks.js, so that the newly added task shows up right away.
   }
 
-  // // Component
+  //// Component ////
   return (
     <div className='header-wrapper'>
       <div className='header-main text-shadow'>
@@ -74,14 +91,12 @@ const Header = ({renderAll}) => {
           <MdSettings />
         </div>
       </div>
-      {/* {showNewTaskForm && */}
-      <div className={`new-task-form ${!showNewTaskForm ? 'slide-out' : ''}`}>
+      <div className={`new-task-form ${showNewTaskForm ? 'reveal' : taskFormCollapsed ? 'hidden' : 'collapse'} `}>
         <form action="">
           <input onSubmit={addNewTask} id='task-name' type="text" placeholder="Task Name"/>
           <button onClick={addNewTask} id='add-task-btn'>Add Task</button>
         </form>
       </div>
-      {/* } */}
     </div>
   )
 }

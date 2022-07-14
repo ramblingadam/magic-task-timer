@@ -70,17 +70,26 @@ h1 {
   align-items: center;
   margin-bottom: 1rem;
 
-  height: 3rem;
-  opacity: 1;
+  /* height: 3rem; */
+  /* opacity: 1; */
+  height: 0;
+  opacity: 0;
 
-  animation: reveal .6s ease 1 forwards;
+  /* animation: reveal .6s ease forwards; */
 }
 
-.slide-out {
-  opacity: 0;
-  height: 0;
+.collapse {
+  animation: hide .6s ease forwards;
+}
 
-  animation: hide .6s ease 1 forwards;
+.reveal {
+  animation: reveal .6s ease both;
+}
+
+.hidden {
+  height: 0;
+  opacity: 0;
+  animation: none;
 }
 
 #task-name {

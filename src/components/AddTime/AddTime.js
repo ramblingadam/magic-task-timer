@@ -38,7 +38,10 @@ const AddTime = (props) => {
     // localStorage.setItem('tasks', JSON.stringify(tasks))
     // console.log('updated tasks???', tasks)
     console.log(props.renderAll)
-    props.renderAll()
+    const renderAll = props.renderAll()
+    renderAll()
+    // props.renderAll()
+    // props.renderTask()
     console.log('did we rerender?')
   }
 
