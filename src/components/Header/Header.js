@@ -25,9 +25,9 @@ const Header = ({renderAll}) => {
       setShowNewTaskForm(false)
 
       // Waits for task form collapse animation to finish (.6s), then set collapsed state to apply .hidden class to form.
-      setTimeout( () => {
-        setTaskFormCollapsed(true)
-      }, 700)
+      // setTimeout( () => {
+      //   setTaskFormCollapsed(true)
+      // }, 700)
     } else {        // If it's not visible, show it and change icon to a 'x'
 
       // Change TaskFormCollpased state to remove .hidden class from form.
