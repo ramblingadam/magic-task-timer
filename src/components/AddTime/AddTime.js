@@ -10,9 +10,6 @@ const AddTime = (props) => {
   // //// Pieces Of State
   const [hoursToAdd, setHoursToAdd] = useState('')
   const [minutesToAdd, setMinutesToAdd] = useState('')
-  // const [addOrSubtract, setAddOrSubtract] = useState(true)
-
-  // console.log('props',props)
 
   const handleTimeChange = (denomination, e) => {
     const value = +e.target.value
@@ -53,9 +50,9 @@ const AddTime = (props) => {
           </label>
         </div>
         <div className='add-subtract-btns'>
-          <MdRemoveCircle id='remove-time' onClick={() => updateTime('subtract')}/>
-          <p id='' onClick={() => updateTime('set')}>SET</p>
-          <MdAddCircle onClick={() => updateTime('add')}/>
+          <MdRemoveCircle id='subtract-time' className='time-edit-btn' onClick={() => updateTime('subtract')}/>
+          <p id='set-time' className='time-edit-btn'onClick={() => updateTime('set')}>SET</p>
+          <MdAddCircle id='add-time' className='time-edit-btn'onClick={() => updateTime('add')}/>
         </div>
       </form>
     </div>

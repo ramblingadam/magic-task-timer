@@ -35,6 +35,20 @@
   text-align: center;
 }
 
-.add-subtract-btns > * {
+.time-edit-btn {
   cursor: pointer;
+  transition: .6s;
+}
+
+#add-time {
+  fill: lightgreen;
+}
+#subtract-time {
+  fill: lightcoral;
+}
+
+.time-edit-btn:hover {
+  transform: scale(1.1);
+  /* filter: drop-shadow(0 0 3px white); */
+  transition: .3s;
 }
