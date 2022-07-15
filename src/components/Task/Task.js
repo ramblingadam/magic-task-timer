@@ -15,7 +15,9 @@ const Task = (props) => {
   const [timerRunning, setTimerRunning] = useState(false)
   const [totalTime, setTotalTime] = useState(props.task.time)
   const [startTime, setStartTime] = useState(null)
+
   const [showAddTimeForm, setShowAddTimeForm] = useState(false)
+  const [addTimeFormCollapsed, setAddTimeFormCollapsed] = useState(true)
 
 
 
@@ -62,6 +64,9 @@ const Task = (props) => {
 
   // // Task object updater - localStorage
   const updateTask = (name = props.task.name, time = props.task.time) => {
+    // If time is less than 0, set to 0.
+    if(time < 0) time = 0
+
     // Copy current task, then re-assign time and/or name as appropriate
     console.log(props.task)
     const updatedTask = props.task
@@ -125,6 +130,17 @@ const Task = (props) => {
   }
 
 
+  //// Show "Add/Subtract/Set" Time Form
+  const toggleAddTimeForm = () => {
+    if(addTimeFormCollapsed) {
+      setTimeout(() => {
+        setAddTimeFormCollapsed(false)
+      }, 700)
+    }
+    setShowAddTimeForm(!showAddTimeForm)
+  }
+
+
   //! Component
   return (
     <li className={`task ${timerRunning ? 'running' : ''}`}>
@@ -135,19 +151,23 @@ const Task = (props) => {
           <MdDelete className="delete-btn" onClick={deleteTask}/>
         </div>
       </div>
+
       <div className='task-info'>
         <div className='task-time text-shadow'>
           <p>{convertTime(totalTime)}</p>
         </div>
         <div className='task-buttons'>
-          <button className='edit-time-btn btn'>Edit Time</button>
+          <button className='edit-time-btn btn' onClick={toggleAddTimeForm}>Edit Time</button>
           <button className={`task-btn btn ${timerRunning ? 'running' : ''}`} onClick={toggleTimer}>{timerRunning ? 'Stop' : 'Start'}</button>
         </div>
       </div>
+
+      <div className={`add-time slide-able ${showAddTimeForm ? 'reveal' : addTimeFormCollapsed ? 'hidden' : 'collapse'}`}>
       <AddTime
         task={props.task}
         updateTask={updateTask}
       />
+      </div>
     </li>
   )
 }

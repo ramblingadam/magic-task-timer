@@ -73,6 +73,61 @@ body {
   text-shadow: -2px 2px 2px black, 0 0 1px black, 0 0 2px black;
 }
 
+/* // COLLAPSE/REVEAL ANIMATIONS + HIDDEN */
+.slide-able {
+  overflow: hidden;
+}
+
+.collapse {
+  animation: hide .6s ease both;
+}
+
+.reveal {
+  animation: reveal .6s ease both;
+}
+
+.hidden {
+  max-height: 0;
+  opacity: 0;
+  animation: none;
+}
+
+@keyframes reveal {
+  0% {
+    max-height: 0;
+    /* height: 0; */
+    opacity: 0;
+  }
+  33% {
+    max-height: 10rem;
+    /* height: auto; */
+    opacity: 0;
+  }
+  100% {
+    max-height: 10rem;
+    /* height: auto; */
+    opacity: 1;
+  }
+}
+
+@keyframes hide {
+  0% {
+    max-height: 10rem;
+    /* height: auto; */
+    opacity: 1;
+  }
+  33% {
+    max-height: 10rem;
+    /* height: auto; */
+    opacity: 0;
+  }
+  100% {
+    max-height: 0;
+    /* height: 0; */
+    opacity: 0;
+  }
+}
+
 /* App.js */
 .app {
   font-family: 'Acme';
