@@ -23,8 +23,11 @@ const Task = (props) => {
   const [screenWidth, setScreenWidth] = useState()
 
   const getScreenWidth = () => {
-
+    const { innerWidth } = window
+    return innerWidth
   }
+
+
 
 
   //! Helper Functions
@@ -51,7 +54,7 @@ const Task = (props) => {
     const width = window.innerWidth > 0 ? window.innerWidth : Screen.width;
     const short = width < 700 ? true : false
     // return `${hours}hrs : ${minutes}mins : ${seconds}secs`
-    return `${hours}h${!short ? 'rs' : ''} : ${minutes}mins : ${seconds}secs`
+    return `${hours}h : ${minutes}m : ${seconds}s`
   }
 
   //// Visual time update functions
