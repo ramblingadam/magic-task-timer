@@ -38,6 +38,8 @@
 .time-edit-btn {
   cursor: pointer;
   transition: .6s;
+  margin: .5rem;
+  padding-bottom: .5rem;
 }
 
 #add-time {
@@ -51,4 +53,11 @@
   transform: scale(1.1);
   /* filter: drop-shadow(0 0 3px white); */
   transition: .3s;
+}
+
+.time-edit-btn:active {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 2px white);
+  text-shadow: 0 0 3px white;
+  transition: .1s;
 }

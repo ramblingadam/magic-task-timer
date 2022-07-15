@@ -91,7 +91,7 @@ const Header = ({renderAll}) => {
           <MdSettings />
         </div>
       </div>
-      <div className={`new-task-form ${showNewTaskForm ? 'reveal' : taskFormCollapsed ? 'hidden' : 'collapse'} `}>
+      <div className={`new-task-form slide-able ${showNewTaskForm ? 'reveal' : taskFormCollapsed ? 'hidden' : 'collapse'} `}>
         <form action="">
           <input onSubmit={addNewTask} id='task-name' type="text" placeholder="Task Name"/>
           <button onClick={addNewTask} id='add-task-btn'>Add Task</button>

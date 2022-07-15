@@ -79,11 +79,11 @@ body {
 }
 
 .collapse {
-  animation: hide .6s ease both;
+  animation: hide .6s ease-in-out both;
 }
 
 .reveal {
-  animation: reveal .6s ease both;
+  animation: reveal .6s ease-in-out both;
 }
 
 .hidden {

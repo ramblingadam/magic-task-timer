@@ -36,6 +36,7 @@ const AddTime = (props) => {
     }
     setHoursToAdd('')
     setMinutesToAdd('')
+    props.toggleAddTimeForm()
   }
 
   return (

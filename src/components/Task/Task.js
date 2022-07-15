@@ -12,13 +12,19 @@ import { MdEdit, MdDelete } from "react-icons/md"
 const Task = (props) => {
 
   //! Pieces of State
+  // Timer Stuff
   const [timerRunning, setTimerRunning] = useState(false)
   const [totalTime, setTotalTime] = useState(props.task.time)
   const [startTime, setStartTime] = useState(null)
-
+  // Add Time Form stuff
   const [showAddTimeForm, setShowAddTimeForm] = useState(false)
   const [addTimeFormCollapsed, setAddTimeFormCollapsed] = useState(true)
+  // Window Resizing
+  const [screenWidth, setScreenWidth] = useState()
 
+  const getScreenWidth = () => {
+
+  }
 
 
   //! Helper Functions
@@ -41,7 +47,11 @@ const Task = (props) => {
     //   hours -= 24
     // }
     // return `${days ? days + 'days : ' : ''} ${hours}hrs : ${minutes}mins : ${seconds}secs`
-    return `${hours}hrs : ${minutes}mins : ${seconds}secs`
+
+    const width = window.innerWidth > 0 ? window.innerWidth : Screen.width;
+    const short = width < 700 ? true : false
+    // return `${hours}hrs : ${minutes}mins : ${seconds}secs`
+    return `${hours}h${!short ? 'rs' : ''} : ${minutes}mins : ${seconds}secs`
   }
 
   //// Visual time update functions
@@ -68,7 +78,6 @@ const Task = (props) => {
     if(time < 0) time = 0
 
     // Copy current task, then re-assign time and/or name as appropriate
-    console.log(props.task)
     const updatedTask = props.task
     updatedTask.time = time
     updatedTask.name = name
@@ -89,12 +98,10 @@ const Task = (props) => {
     if(!timerRunning) {
       setTimerRunning(true)     
       setStartTime(Date.now())
+      setShowAddTimeForm(false)
 
     // If Timer IS currently running:
     } else { 
-      // const duration = Date.now() - startTime
-      // const newTotal = totalTime + duration
-      // setTotalTime(newTotal)
       setTimerRunning(false)
       updateTask(undefined, totalTime)
     }
@@ -132,6 +139,7 @@ const Task = (props) => {
 
   //// Show "Add/Subtract/Set" Time Form
   const toggleAddTimeForm = () => {
+    if(timerRunning) return
     if(addTimeFormCollapsed) {
       setTimeout(() => {
         setAddTimeFormCollapsed(false)
@@ -157,7 +165,7 @@ const Task = (props) => {
           <p>{convertTime(totalTime)}</p>
         </div>
         <div className='task-buttons'>
-          <button className='edit-time-btn btn' onClick={toggleAddTimeForm}>Edit Time</button>
+          <button className={`edit-time-btn btn ${timerRunning ? 'disabled' : ''}`} onClick={toggleAddTimeForm}>Edit Time</button>
           <button className={`task-btn btn ${timerRunning ? 'running' : ''}`} onClick={toggleTimer}>{timerRunning ? 'Stop' : 'Start'}</button>
         </div>
       </div>
@@ -166,6 +174,7 @@ const Task = (props) => {
       <AddTime
         task={props.task}
         updateTask={updateTask}
+        toggleAddTimeForm={toggleAddTimeForm}
       />
       </div>
     </li>

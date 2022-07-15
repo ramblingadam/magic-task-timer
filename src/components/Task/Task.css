@@ -101,6 +101,7 @@
 .btn {
   flex: 1;
   height: 4rem;
+  margin-right: .5rem;
 
   border: 3px solid black;
   border-radius: 50px;
@@ -153,8 +154,11 @@
   transition: 0s;
 }
 
-
-/*// Add-Time Div */
-/* .add-time {
-  height: 100%;
-} */
+.btn.disabled {
+  transform: scale(1);
+  box-shadow: none ;
+  border: 3px solid grey;
+  background: grey;
+  color: black;
+  cursor: no-drop;
+}
