@@ -6,6 +6,11 @@
   justify-content: center;
   align-items: center;
 }
+.add-time.collapse,
+.add-time.hidden {
+  margin-top: 0;
+  transition: .1s ease .5s;
+}
 
 .add-subtract-btns {
   font-size: 5rem;

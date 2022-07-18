@@ -79,6 +79,7 @@
 
 .task-info {
   display: flex;
+  justify-content: center;
 }
 
 .task-time,
@@ -96,6 +97,7 @@
 .task-buttons {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .btn {
@@ -161,4 +163,5 @@
   background: grey;
   color: black;
   cursor: no-drop;
+  transition: .2s;
 }
