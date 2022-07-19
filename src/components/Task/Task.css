@@ -66,6 +66,10 @@
   transition: .8s;
 }
 
+button {
+  font-family: 'Acme', sans-serif;
+}
+
 .edit-btn:hover {
   fill: yellow;
   transition: .3s;
@@ -95,6 +99,7 @@
 }
 
 .task-buttons {
+  font-family: 'Acme', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -105,7 +110,7 @@
   height: 4rem;
   margin-right: .5rem;
 
-  border: 3px solid black;
+  border: 2px solid black;
   border-radius: 50px;
 
   font-size: 2.5rem;
@@ -137,7 +142,7 @@
 
 .btn:hover {
   box-shadow: 0 0 5px white;
-  border: 3px solid white;
+  border: 2px solid white;
   transition: .3s;
 }
 
@@ -159,9 +164,9 @@
 .btn.disabled {
   transform: scale(1);
   box-shadow: none ;
-  border: 3px solid grey;
+  border: 2px solid grey;
   background: grey;
-  color: black;
+  color: rgb(40, 40, 40);
   cursor: no-drop;
   transition: .2s;
 }

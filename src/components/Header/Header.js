@@ -64,7 +64,15 @@ const Header = ({renderAll}) => {
     const newTask = {
       id: Date.now(),
       name: taskInput,
-      time: 0
+      time: 0,
+      // TODO DATA STRUCTURE NEW
+      category: '',
+      dates: [
+        {date: '2022-10-20', time: 45670},
+        {date: '2022-10-22', time: 23045},
+      ],
+      created: '2022-10-20',
+
     }
 
     // Check if tasks cache already exists in localStorage.
