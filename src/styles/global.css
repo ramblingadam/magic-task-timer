@@ -76,6 +76,7 @@ body {
 /* // COLLAPSE/REVEAL ANIMATIONS + HIDDEN */
 .slide-able {
   overflow: hidden;
+  /* height: unset; */
 }
 
 .collapse {
@@ -99,12 +100,12 @@ body {
     opacity: 0;
   }
   33% {
-    max-height: 10rem;
+    max-height: 15rem;
     /* height: auto; */
     opacity: 0;
   }
   100% {
-    max-height: 10rem;
+    max-height: 15rem;
     /* height: auto; */
     opacity: 1;
   }
@@ -112,12 +113,12 @@ body {
 
 @keyframes hide {
   0% {
-    max-height: 10rem;
+    max-height: 15rem;
     /* height: auto; */
     opacity: 1;
   }
   33% {
-    max-height: 10rem;
+    max-height: 15rem;
     /* height: auto; */
     opacity: 0;
   }

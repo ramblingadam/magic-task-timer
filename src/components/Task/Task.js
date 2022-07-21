@@ -177,7 +177,7 @@ const Task = (props) => {
         </div>
       </div>
 
-      <div className={`add-time slide-able ${showAddTimeForm ? 'reveal' : addTimeFormCollapsed ? 'hidden' : 'collapse'}`}>
+      <div className={`slide-able ${showAddTimeForm ? 'reveal' : addTimeFormCollapsed ? 'hidden' : 'collapse'}`}>
       <AddTime
         task={props.task}
         updateTask={updateTask}

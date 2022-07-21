@@ -1,6 +1,7 @@
 .add-time {
   font-size: 2rem;
-  margin-top: 1rem;
+  /* margin-top: 1.4rem; */
+  padding-top: 1rem;
 
   display: flex;
   justify-content: center;
@@ -10,6 +11,10 @@
 .add-time.hidden {
   margin-top: 0;
   transition: .1s ease .5s;
+}
+
+.add-time p {
+  text-align: center;
 }
 
 .add-subtract-btns {
@@ -30,12 +35,16 @@
   flex-flow: row;
 }
 
-#add-hours,
-#add-minutes {
-  width: 100px
+#choose-date {
+  width: 100px;
 }
 
-.add-time span {
+#add-hours,
+#add-minutes {
+  width: 100px;
+}
+
+.heading {
   display: block;
   text-align: center;
 }
@@ -43,8 +52,7 @@
 .time-edit-btn {
   cursor: pointer;
   transition: .6s;
-  margin: .5rem;
-  padding-bottom: .5rem;
+  margin: .5rem .5rem 0 .5rem;
 }
 
 #add-time {
@@ -65,4 +73,19 @@
   filter: drop-shadow(0 0 2px white);
   text-shadow: 0 0 3px white;
   transition: .1s;
+}
+
+
+
+.yellow {
+  color: yellow;
+  color: rgb(255, 255, 86);
+}
+
+.red {
+  color: lightcoral;
+}
+
+.green {
+  color: lightgreen;
 }
