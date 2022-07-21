@@ -49,7 +49,7 @@
 }
 
 
-/* Task Title Area + Edit buttons */
+/* // Task Title Area + Icon Buttons */
 .task-name {
 
 
@@ -60,6 +60,7 @@
   margin-bottom: 1rem;
 }
 
+.edit-time-btn,
 .edit-btn,
 .delete-btn {
   cursor: pointer;
@@ -70,12 +71,25 @@ button {
   font-family: 'Acme', sans-serif;
 }
 
+
+/* Edit and Delete Icon Buttons Hover */
+.edit-time-btn:hover,
 .edit-btn:hover {
   fill: yellow;
+  filter: drop-shadow(0 0 1px white);
   transition: .3s;
 }
 .delete-btn:hover {
   fill: coral;
+  filter: drop-shadow(0 0 1px red);
+  transition: .3s;
+}
+
+
+/* Edit Time Icon Button When Time Editing Form is Open */
+.edit-time-btn.edit-time-btn-form-visible {
+  fill: yellow;
+  filter: drop-shadow(0 0 1px black);
   transition: .3s;
 }
 

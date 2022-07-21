@@ -7,7 +7,7 @@ import Button from '../Button/Button'
 // Style
 import './Task.css'
 // Icons
-import { MdEdit, MdDelete } from "react-icons/md"
+import { MdEdit, MdDelete, MdAvTimer, MdHistoryEdu, MdHistory, MdHistoryToggleOff } from "react-icons/md"
 
 const Task = (props) => {
 
@@ -157,7 +157,11 @@ const Task = (props) => {
     <li className={`task ${timerRunning ? 'running' : ''}`}>
       <div className='task-name text-shadow'>
         <p>{props.task.name}</p>
-        <div className='edit-buttons'>
+        <div className='icon-buttons'>
+          <MdHistoryToggleOff className={`edit-time-btn ${timerRunning ? 'disabled' : ''} ${showAddTimeForm ? 'edit-time-btn-form-visible' : ''}`} onClick={toggleAddTimeForm}/>
+          {/* <MdHistory />
+          <MdHistoryEdu />
+          <MdAvTimer /> */}
           <MdEdit className="edit-btn" onClick={editTask}/>
           <MdDelete className="delete-btn" onClick={deleteTask}/>
         </div>
@@ -168,7 +172,7 @@ const Task = (props) => {
           <p>{convertTime(totalTime)}</p>
         </div>
         <div className='task-buttons'>
-          <button className={`edit-time-btn btn ${timerRunning ? 'disabled' : ''}`} onClick={toggleAddTimeForm}>Edit Time</button>
+          {/* <button className={`edit-time-btn btn ${timerRunning ? 'disabled' : ''}`} onClick={toggleAddTimeForm}>Edit Time</button> */}
           <button className={`task-btn btn ${timerRunning ? 'running' : ''}`} onClick={toggleTimer}>{timerRunning ? 'Stop' : 'Start'}</button>
         </div>
       </div>

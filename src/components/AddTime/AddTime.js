@@ -43,6 +43,9 @@ const AddTime = (props) => {
     <div className="add-time">
       <form>
         <div>
+          <label><span>Date</span>
+            <input type="date" id="choose-date"/>
+          </label>
           <label><span>Hours</span>
             <input type="number" id="add-hours" value={hoursToAdd} onChange={(e) => handleTimeChange('hours', e)}/>
           </label>
