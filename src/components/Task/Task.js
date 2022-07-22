@@ -59,7 +59,6 @@ const Task = (props) => {
 
   //// Visual time update functions
   useEffect(() => {
-    // console.log('component is born!')
     let interval = null
     if(timerRunning) {
       interval = setInterval(() => {updateTime()}, 1000)
@@ -69,6 +68,7 @@ const Task = (props) => {
     }
     return () => clearInterval(interval)
   }, [timerRunning])
+
 
   const updateTime = () => {
     setTotalTime(totalTime + (Date.now() - startTime))
@@ -152,14 +152,15 @@ const Task = (props) => {
 
   //// Task Reordering
   const reorder = direction => {
+    // Store current task position. (redundant...)
     const currentTaskPosition = props.task.sortPosition
-    console.log(currentTaskPosition)
-    // direction can be up or down
-    // grab tasks
-    const tasks = JSON.parse(localStorage.getItem('tasks'))
-    // lower task above's pos by 1, increase current tasks pos by one
 
-    if(direction === 'up') {
+    // First, grab all tasks.
+    const tasks = JSON.parse(localStorage.getItem('tasks'))
+
+    if(direction === 'up') { // If we are sorting the task up...
+      // ...then change current tasks position by -1 (moving it up the list)
+      // ...and change the task directly above the current tasks position by +1 (moving it down)
       tasks.map(task => {
         if(task.sortPosition === currentTaskPosition) {
           task.sortPosition -= 1
@@ -167,7 +168,9 @@ const Task = (props) => {
           task.sortPosition += 1
         }
       })
-    } else if(direction === 'down') {
+    } else if(direction === 'down') { //If sorting down, do the opposite of above...
+      // ...by changing current tasks position by +1 (moving it down one slot)
+      // ...and changing the task directly below the current tasks position by -1 (moving it up)
       tasks.map(task => {
         if(task.sortPosition === currentTaskPosition) {
           task.sortPosition += 1
@@ -176,8 +179,9 @@ const Task = (props) => {
         }
       })
     }
-    console.log('modded tasks:', tasks)
+    // Store new order in storage/DB.
     localStorage.setItem('tasks', JSON.stringify(tasks))
+    // Re-render Tasks so that new order is instantly visible.
     props.renderAll()
   }
 
@@ -189,9 +193,6 @@ const Task = (props) => {
         <p>{props.task.name}</p>
         <div className='icon-buttons'>
           <MdHistoryToggleOff className={`edit-time-btn ${timerRunning ? 'disabled' : ''} ${showAddTimeForm ? 'edit-time-btn-form-visible' : ''}`} onClick={toggleAddTimeForm}/>
-          {/* <MdHistory />
-          <MdHistoryEdu />
-          <MdAvTimer /> */}
           <MdEdit className="edit-btn" onClick={editTask}/>
           <MdDelete className="delete-btn" onClick={deleteTask}/>
         </div>
@@ -206,7 +207,6 @@ const Task = (props) => {
           <p>{convertTime(totalTime)}</p>
         </div>
         <div className='task-buttons'>
-          {/* <button className={`edit-time-btn btn ${timerRunning ? 'disabled' : ''}`} onClick={toggleAddTimeForm}>Edit Time</button> */}
           <button className={`task-btn btn ${timerRunning ? 'running' : ''}`} onClick={toggleTimer}>{timerRunning ? 'Stop' : 'Start'}</button>
         </div>
       </div>

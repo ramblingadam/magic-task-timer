@@ -76,12 +76,13 @@ h1 {
 
 #task-name {
   border-radius: 7px 0 0 7px;
-  height: 1.8rem;
+  /* height: 1.8rem; */
   padding-left: .5rem;
 }
 
 /* Form Add Task Button */
 #add-task-btn{
+  border: 2px solid black;
   border-radius: 0 7px 7px 0;
   height: 2.5rem;
 
@@ -94,6 +95,7 @@ h1 {
 
 #add-task-btn:hover{
   box-shadow: 0 0 3px white;
+  border: 2px solid white;
 
   transition: .3s;
 }
