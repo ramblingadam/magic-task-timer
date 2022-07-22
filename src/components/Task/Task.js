@@ -7,7 +7,7 @@ import Button from '../Button/Button'
 // Style
 import './Task.css'
 // Icons
-import { MdEdit, MdDelete, MdAvTimer, MdHistoryEdu, MdHistory, MdHistoryToggleOff } from "react-icons/md"
+import { MdEdit, MdDelete, MdAvTimer, MdHistoryEdu, MdHistory, MdHistoryToggleOff, MdExpandLess, MdExpandMore } from "react-icons/md"
 
 const Task = (props) => {
 
@@ -96,7 +96,6 @@ const Task = (props) => {
   //// Timer function
   const toggleTimer = async () => {
 
-
     // If timer is NOT currently running:
     if(!timerRunning) {
       setTimerRunning(true)     
@@ -151,6 +150,37 @@ const Task = (props) => {
     setShowAddTimeForm(!showAddTimeForm)
   }
 
+  //// Task Reordering
+  const reorder = direction => {
+    const currentTaskPosition = props.task.sortPosition
+    console.log(currentTaskPosition)
+    // direction can be up or down
+    // grab tasks
+    const tasks = JSON.parse(localStorage.getItem('tasks'))
+    // lower task above's pos by 1, increase current tasks pos by one
+
+    if(direction === 'up') {
+      tasks.map(task => {
+        if(task.sortPosition === currentTaskPosition) {
+          task.sortPosition -= 1
+        } else if (task.sortPosition === currentTaskPosition - 1) {
+          task.sortPosition += 1
+        }
+      })
+    } else if(direction === 'down') {
+      tasks.map(task => {
+        if(task.sortPosition === currentTaskPosition) {
+          task.sortPosition += 1
+        } else if (task.sortPosition === currentTaskPosition + 1) {
+          task.sortPosition -= 1
+        }
+      })
+    }
+    console.log('modded tasks:', tasks)
+    localStorage.setItem('tasks', JSON.stringify(tasks))
+    props.renderAll()
+  }
+
 
   //! Component
   return (
@@ -168,6 +198,10 @@ const Task = (props) => {
       </div>
 
       <div className='task-info'>
+        <div className='sort-btns'>
+          <MdExpandLess className='sort-btn' onClick={props.task.sortPosition > 1 ? () => reorder('up') : null}/>
+          <MdExpandMore className='sort-btn' onClick={props.task.sortPosition < JSON.parse(localStorage.getItem('tasks')).length ? () => reorder('down') : null}/>
+         </div>
         <div className='task-time text-shadow'>
           <p>{convertTime(totalTime)}</p>
         </div>

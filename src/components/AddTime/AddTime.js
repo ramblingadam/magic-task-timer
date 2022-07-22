@@ -51,9 +51,11 @@ const AddTime = (props) => {
         props.updateTask(undefined, totalTimeInput)
       }
     }
+    // Reset Time Form states on submission.
     setHoursToAdd('')
     setMinutesToAdd('')
     setDateInForm('today')
+    // Hide form.
     props.toggleAddTimeForm()
   }
 
@@ -61,7 +63,7 @@ const AddTime = (props) => {
 
   // // Set date
   const setDateInForm = specificDate => {
-    // If this functioni s called by state intialization, set date to today.
+    // If this function is called by state intialization, set date to today.
     if(specificDate = 'today') {
       const now = new Date()
       const year = now.getFullYear()

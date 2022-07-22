@@ -59,6 +59,22 @@ const Header = ({renderAll}) => {
       alert('Task name cannot be blank.')
       return
     }
+
+    // Get current date to store as date created in new task
+    const now = new Date()
+    const year = now.getFullYear()
+    let month = now.getMonth() + 1
+    month = month >= 10 ? month : '0' + month
+    let day = now.getDate()
+    day = day >= 10 ? day : '0' + day
+    const today = `${year}-${month}-${day}`
+
+    // Set sort position to put new task on top by decreasing sort position of all other tasks
+    const tasks = localStorage.getItem('tasks') ? JSON.parse(localStorage.getItem('tasks')) : []
+    tasks.forEach(task => {
+      task.sortPosition += 1
+    })
+    localStorage.setItem('tasks', JSON.stringify(tasks))
    
     // create new task object
     const newTask = {
@@ -67,12 +83,12 @@ const Header = ({renderAll}) => {
       time: 0,
       // TODO DATA STRUCTURE NEW
       category: '',
+      sortPosition: 1,
       dates: [
-        {date: '2022-10-20', time: 45670},
-        {date: '2022-10-22', time: 23045},
+        // {date: '2022-10-20', time: 45670},
+        // {date: '2022-10-22', time: 23045},
       ],
-      created: '2022-10-20',
-
+      created: today,
     }
 
     // Check if tasks cache already exists in localStorage.

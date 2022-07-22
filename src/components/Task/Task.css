@@ -18,10 +18,12 @@
   transition: box-shadow 1s;
 }
 
+
 .task:last-of-type {
   margin-bottom: 0;
 }
 
+/* // Run Background Gradient Animation when task is running */
 .task.running {
   /* background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab); */
   background: linear-gradient(90deg, #23a6d5, #23d5ab,#23a6d5);
@@ -51,8 +53,6 @@
 
 /* // Task Title Area + Icon Buttons */
 .task-name {
-
-
   display: flex;
   justify-content: space-between;
 
@@ -60,6 +60,7 @@
   margin-bottom: 1rem;
 }
 
+/* Icon Buttons */
 .edit-time-btn,
 .edit-btn,
 .delete-btn {
@@ -67,9 +68,6 @@
   transition: .8s;
 }
 
-button {
-  font-family: 'Acme', sans-serif;
-}
 
 
 /* Edit and Delete Icon Buttons Hover */
@@ -93,11 +91,33 @@ button {
   transition: .3s;
 }
 
-/* Task Info Area + Timer Buttons */
-
+/* // Task Info Area + Timer Buttons */
 .task-info {
   display: flex;
   justify-content: center;
+}
+
+/* Task Sorting Buttons */
+.sort-btns {
+  display: flex;
+  flex-flow: column;
+  align-self: flex-start;
+}
+
+.sort-btn {
+  font-size: 2.5rem;
+  filter: drop-shadow(-2px 2px 1px black);
+  cursor: pointer;
+
+  transition: .3s;
+}
+
+.sort-btn:hover {
+  transform: scale(1.1);
+  fill: yellow;
+  cursor: pointer;
+
+  transition: .3s;
 }
 
 .task-time,
@@ -112,11 +132,18 @@ button {
   align-items: center;
 }
 
+
+
 .task-buttons {
   font-family: 'Acme', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+/* Overwrite user-agent font for <button>s - namely, the start/stop button*/
+button {
+  font-family: 'Acme', sans-serif;
 }
 
 .btn {

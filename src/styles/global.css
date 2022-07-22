@@ -47,6 +47,10 @@ table {
 	border-spacing: 0;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 /* // Global + App.js Styles */
 /* Fonts */
 /* Share Tech Mono */
