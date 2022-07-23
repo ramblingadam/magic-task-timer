@@ -84,11 +84,15 @@ body {
 }
 
 .collapse {
-  animation: hide .6s ease-in-out both;
+  animation: hide .6s ease-in-out forwards;
 }
 
 .reveal {
-  animation: reveal .6s ease-in-out both;
+  animation: reveal .6s ease-in-out forwards;
+}
+
+.revealed {
+  max-height: fit-content;
 }
 
 .hidden {

@@ -19,6 +19,10 @@ const Task = (props) => {
   // Add Time Form stuff
   const [showAddTimeForm, setShowAddTimeForm] = useState(false)
   const [addTimeFormCollapsed, setAddTimeFormCollapsed] = useState(true)
+
+  // TODO track animation completion
+  const [addTimeFormAnimationDone, setAddTimeFormAnimationDone] = useState(true)
+
   // Window Resizing
   const [screenWidth, setScreenWidth] = useState()
 
@@ -82,7 +86,28 @@ const Task = (props) => {
 
     // Copy current task, then re-assign time and/or name as appropriate
     const updatedTask = props.task
+
+    // TODO ADD TIME TO CURRENT DAY
+    // Get current date to store as date created in new task
+    const now = new Date()
+    const year = now.getFullYear()
+    let month = now.getMonth() + 1
+    month = month >= 10 ? month : '0' + month
+    let day = now.getDate()
+    day = day >= 10 ? day : '0' + day
+    const today = `${year}-${month}-${day}`
+
+    const currentDateIndex = updatedTask.dates.findIndex(dateEntry => dateEntry.date === today)
+    if(currentDateIndex === -1) {
+      updatedTask.dates.push({date: today, time: time})
+    } else {
+      updatedTask.dates[currentDateIndex].time = time
+    }
+
+
     updatedTask.time = time
+
+
     updatedTask.name = name
     setTotalTime(updatedTask.time)
     // Grab tasks from localStorage, and replace current task with updatedTask.
@@ -90,7 +115,7 @@ const Task = (props) => {
     tasks.splice(tasks.findIndex(task => task.id === props.task.id), 1, updatedTask)
     localStorage.setItem('tasks', JSON.stringify(tasks))
 
-    props.renderAll()
+    props.renderAll() // Re-render app so user can see changes.
   }
 
   //// Timer function
@@ -141,11 +166,20 @@ const Task = (props) => {
 
   //// Show "Add/Subtract/Set" Time Form
   const toggleAddTimeForm = () => {
+    setAddTimeFormAnimationDone(false)
     if(timerRunning) return
     if(addTimeFormCollapsed) {
       setTimeout(() => {
         setAddTimeFormCollapsed(false)
-      }, 700)
+        // TODO animation completion tracking
+        setAddTimeFormAnimationDone(true)
+      }, 601)
+    } else {
+      setTimeout(() => {
+        setAddTimeFormCollapsed(true)
+        // TODO animation completion tracking
+        setAddTimeFormAnimationDone(true)
+      }, 601)
     }
     setShowAddTimeForm(!showAddTimeForm)
   }
@@ -207,11 +241,14 @@ const Task = (props) => {
           <p>{convertTime(totalTime)}</p>
         </div>
         <div className='task-buttons'>
-          <button className={`task-btn btn ${timerRunning ? 'running' : ''}`} onClick={toggleTimer}>{timerRunning ? 'Stop' : 'Start'}</button>
+          <button className={`task-btn btn ${timerRunning ? 'running' : ''}`} onClick={toggleTimer}>
+            {timerRunning ? 'Stop' : 'Start'}
+          </button>
         </div>
       </div>
 
-      <div className={`slide-able ${showAddTimeForm ? 'reveal' : addTimeFormCollapsed ? 'hidden' : 'collapse'}`}>
+      {/* <div className={`slide-able ${showAddTimeForm ? 'reveal' : addTimeFormCollapsed ? 'hidden' : 'collapse'}`}> */}
+      <div className={`slide-able ${showAddTimeForm && !addTimeFormAnimationDone ? 'reveal' : showAddTimeForm ? 'revealed' : addTimeFormCollapsed || (!showAddTimeForm && addTimeFormAnimationDone) ? 'hidden' : 'collapse'}`}>
       <AddTime
         task={props.task}
         updateTask={updateTask}
