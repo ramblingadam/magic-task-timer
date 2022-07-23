@@ -14,8 +14,6 @@ const Task = (props) => {
   //! Pieces of State
   // Timer Stuff
   const [timerRunning, setTimerRunning] = useState(false)
-  // TODO OLD TOTAL TIME
-  // const [totalTime, setTotalTime] = useState(props.task.time)
   // TODO NEW TOTAL TIME
   const [totalTime, setTotalTime] = useState((props.task.dates.reduce( (acc, date) => acc + date.time, 0)))
   const [startTime, setStartTime] = useState(null)
@@ -30,7 +28,7 @@ const Task = (props) => {
   // Track animation completion to determine reveal/revealed or hide/hidden class on task form
   const [addTimeFormAnimationDone, setAddTimeFormAnimationDone] = useState(true)
 
-  // Window Resizing
+  // TODO Window Resizing for tiem display
   const [screenWidth, setScreenWidth] = useState()
 
   const getScreenWidth = () => {
@@ -92,36 +90,37 @@ const Task = (props) => {
 
   // // Task object updater - localStorage
   // TODO THE TIME PARAMETER AAAHH
-  const updateTask = (name = props.task.name, time, date) => {
-    // If time is less than 0, set to 0.
-    if(time < 0) time = 0
-
-    // Copy current task, then re-assign time and/or name as appropriate
+  const updateTask = (name, time, date) => {
+    // Copy current task. We will modify this copy with the requested changes before injecting it back into the database.
     const updatedTask = props.task
+    
+    // If a valid time passed in, update time for selected date OR today.
+    // In other words- if ONLY a new name is passed in, skip the following and just update the name.
+    if(time && time > 0) {
+    
 
-    // TODO ADD TIME TO CURRENT DAY
-    // Get current date
-    const now = new Date()
-    const year = now.getFullYear()
-    let month = now.getMonth() + 1
-    month = month >= 10 ? month : '0' + month
-    let day = now.getDate()
-    day = day >= 10 ? day : '0' + day
-    const today = `${year}-${month}-${day}`
+      // TODO ADD TIME TO CURRENT DAY
+      // Get current date
+      const now = new Date()
+      const year = now.getFullYear()
+      let month = now.getMonth() + 1
+      month = month >= 10 ? month : '0' + month
+      let day = now.getDate()
+      day = day >= 10 ? day : '0' + day
+      const today = `${year}-${month}-${day}`
 
-    // If no date passed in, default to today
-    if(!date) date = today
+  
 
-    const currentDateIndex = updatedTask.dates.findIndex(dateEntry => dateEntry.date === date)
-    if(currentDateIndex === -1) {
-      updatedTask.dates.push({date: date, time: time})
-    } else {
-      updatedTask.dates[currentDateIndex].time += time
+      // If no date passed in, default to today
+      if(!date) date = today
+
+      const currentDateIndex = updatedTask.dates.findIndex(dateEntry => dateEntry.date === date)
+      if(currentDateIndex === -1) {
+        updatedTask.dates.push({date: date, time: time})
+      } else {
+        updatedTask.dates[currentDateIndex].time += time
+      }
     }
-
-    // Only update time if a time is passed in.
-    // if(time) updatedTask.time = time
-
     // Only update name if a name is passed in.
     if(name) updatedTask.name = name
 
@@ -151,8 +150,6 @@ const Task = (props) => {
     // If Timer IS currently running:
     } else { 
       setTimerRunning(false)
-      // TODO OLD TOTAL TIME THING
-      // updateTask(undefined, totalTime)
       // TODO New Running Time addition
       console.log(runningTime)
       updateTask(undefined, runningTime)
@@ -191,7 +188,7 @@ const Task = (props) => {
       return
     }
 
-    updateTask(newName, undefined)
+    updateTask(newName)
   }
 
 

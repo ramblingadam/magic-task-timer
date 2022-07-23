@@ -80,7 +80,7 @@ const Header = ({renderAll}) => {
     const newTask = {
       id: Date.now(),
       name: taskInput,
-      time: 0,
+      // time: 0,
       // TODO DATA STRUCTURE NEW
       category: '',
       sortPosition: 1,
