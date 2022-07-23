@@ -14,13 +14,20 @@ const Task = (props) => {
   //! Pieces of State
   // Timer Stuff
   const [timerRunning, setTimerRunning] = useState(false)
-  const [totalTime, setTotalTime] = useState(props.task.time)
+  // TODO OLD TOTAL TIME
+  // const [totalTime, setTotalTime] = useState(props.task.time)
+  // TODO NEW TOTAL TIME
+  const [totalTime, setTotalTime] = useState((props.task.dates.reduce( (acc, date) => acc + date.time, 0)))
   const [startTime, setStartTime] = useState(null)
+
+  // TODO store current time of ticking timer only, NOT including previous time in task
+  const [runningTime, setRunningTime] = useState(0)
+
   // Add Time Form stuff
   const [showAddTimeForm, setShowAddTimeForm] = useState(false)
   const [addTimeFormCollapsed, setAddTimeFormCollapsed] = useState(true)
 
-  // TODO track animation completion
+  // Track animation completion to determine reveal/revealed or hide/hidden class on task form
   const [addTimeFormAnimationDone, setAddTimeFormAnimationDone] = useState(true)
 
   // Window Resizing
@@ -76,11 +83,16 @@ const Task = (props) => {
 
   const updateTime = () => {
     setTotalTime(totalTime + (Date.now() - startTime))
+
+    // TODO store running time
+    setRunningTime(Date.now() - startTime)
+
     setStartTime(Date.now())
   }
 
   // // Task object updater - localStorage
-  const updateTask = (name = props.task.name, time = props.task.time) => {
+  // TODO THE TIME PARAMETER AAAHH
+  const updateTask = (name = props.task.name, time, date) => {
     // If time is less than 0, set to 0.
     if(time < 0) time = 0
 
@@ -88,7 +100,7 @@ const Task = (props) => {
     const updatedTask = props.task
 
     // TODO ADD TIME TO CURRENT DAY
-    // Get current date to store as date created in new task
+    // Get current date
     const now = new Date()
     const year = now.getFullYear()
     let month = now.getMonth() + 1
@@ -97,25 +109,34 @@ const Task = (props) => {
     day = day >= 10 ? day : '0' + day
     const today = `${year}-${month}-${day}`
 
-    const currentDateIndex = updatedTask.dates.findIndex(dateEntry => dateEntry.date === today)
+    // If no date passed in, default to today
+    if(!date) date = today
+
+    const currentDateIndex = updatedTask.dates.findIndex(dateEntry => dateEntry.date === date)
     if(currentDateIndex === -1) {
-      updatedTask.dates.push({date: today, time: time})
+      updatedTask.dates.push({date: date, time: time})
     } else {
-      updatedTask.dates[currentDateIndex].time = time
+      updatedTask.dates[currentDateIndex].time += time
     }
 
+    // Only update time if a time is passed in.
+    // if(time) updatedTask.time = time
 
-    updatedTask.time = time
+    // Only update name if a name is passed in.
+    if(name) updatedTask.name = name
 
-
-    updatedTask.name = name
-    setTotalTime(updatedTask.time)
+    setTotalTime(props.task.dates.reduce( (acc, date) => acc + date.time, 0))
     // Grab tasks from localStorage, and replace current task with updatedTask.
     const tasks = JSON.parse(localStorage.getItem('tasks'))
     tasks.splice(tasks.findIndex(task => task.id === props.task.id), 1, updatedTask)
     localStorage.setItem('tasks', JSON.stringify(tasks))
 
     props.renderAll() // Re-render app so user can see changes.
+  }
+
+  // TODO SUM TIME FROM ALL DATES HELPER
+  const sumTimeFromAllDates = () => {
+    return props.task.dates.reduce( (acc, date) => acc + date.time, 0)
   }
 
   //// Timer function
@@ -130,7 +151,12 @@ const Task = (props) => {
     // If Timer IS currently running:
     } else { 
       setTimerRunning(false)
-      updateTask(undefined, totalTime)
+      // TODO OLD TOTAL TIME THING
+      // updateTask(undefined, totalTime)
+      // TODO New Running Time addition
+      console.log(runningTime)
+      updateTask(undefined, runningTime)
+
     }
   }
 
@@ -140,6 +166,11 @@ const Task = (props) => {
     if(window.confirm(`Are you sure you want to delete ${props.task.name}?`)) {
       // Grab tasks from localStorage and delete current task.
       const tasks = JSON.parse(localStorage.getItem('tasks'))
+      // Reassign sort order for all items occuring AFTER current item by moving them all up one position (position -1)
+      tasks.forEach(task => {
+        if(task.sortPosition > props.task.sortPosition) task.sortPosition -= 1
+      })
+      // Delete current task.
       tasks.splice(tasks.findIndex(task => task.id === props.task.id), 1)
       localStorage.setItem('tasks', JSON.stringify(tasks))
       props.renderAll() // Re-render app.
@@ -170,14 +201,14 @@ const Task = (props) => {
     if(timerRunning) return
     if(addTimeFormCollapsed) {
       setTimeout(() => {
+        // Trigger swapping hide animation CSS class with hidden static CSS class.
         setAddTimeFormCollapsed(false)
-        // TODO animation completion tracking
         setAddTimeFormAnimationDone(true)
       }, 601)
     } else {
       setTimeout(() => {
+        // Trigger swapping reveal animation CSS class with revealed static CSS class.
         setAddTimeFormCollapsed(true)
-        // TODO animation completion tracking
         setAddTimeFormAnimationDone(true)
       }, 601)
     }
@@ -195,7 +226,7 @@ const Task = (props) => {
     if(direction === 'up') { // If we are sorting the task up...
       // ...then change current tasks position by -1 (moving it up the list)
       // ...and change the task directly above the current tasks position by +1 (moving it down)
-      tasks.map(task => {
+      tasks.forEach(task => {
         if(task.sortPosition === currentTaskPosition) {
           task.sortPosition -= 1
         } else if (task.sortPosition === currentTaskPosition - 1) {
@@ -205,7 +236,7 @@ const Task = (props) => {
     } else if(direction === 'down') { //If sorting down, do the opposite of above...
       // ...by changing current tasks position by +1 (moving it down one slot)
       // ...and changing the task directly below the current tasks position by -1 (moving it up)
-      tasks.map(task => {
+      tasks.forEach(task => {
         if(task.sortPosition === currentTaskPosition) {
           task.sortPosition += 1
         } else if (task.sortPosition === currentTaskPosition + 1) {

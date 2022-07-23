@@ -104,7 +104,7 @@ const Header = ({renderAll}) => {
     renderAll() // Re-renders App.js, which re-renders Tasks.js, so that the newly added task shows up right away.
   }
 
-  //// Component ////
+  //! Component 
   return (
     <div className='header-wrapper'>
       <div className='header-main text-shadow'>

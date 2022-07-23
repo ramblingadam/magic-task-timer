@@ -15,7 +15,7 @@
   padding: 1rem;
   margin-bottom: 1rem;
 
-  box-shadow: -2px 2px 3px black;
+  box-shadow: -2px 2px 3px black, inset -2px 2px 10px 3px rgba(255,255,255, .2);
 
   transition: box-shadow 1s;
 }
@@ -31,7 +31,7 @@
   background: linear-gradient(90deg, #23a6d5, #23d5ab,#23a6d5);
 	background-size: 400% 400%;
 
-  box-shadow: 0 0 10px white;
+  box-shadow: 0 0 10px white, inset -2px 2px 10px 3px rgba(255,255,255, .5);
   transition: box-shadow .3s;
 
   animation: gradient 2s linear infinite reverse;
@@ -63,6 +63,10 @@
 }
 
 /* Icon Buttons */
+.icon-buttons {
+  display: flex;
+}
+
 .edit-time-btn,
 .edit-btn,
 .delete-btn {
@@ -122,6 +126,7 @@
   transition: .3s;
 }
 
+/* Task Time Display */
 .task-time,
 .task-buttons {
   flex: 1;
@@ -134,7 +139,11 @@
   align-items: center;
 }
 
-
+@media all and (max-width: 420px) {
+  .task-time {
+    font-size: 2rem;
+  }
+}
 
 .task-buttons {
   font-family: 'Acme', sans-serif;
@@ -164,19 +173,9 @@ button {
 }
 
 .task-btn {
-  /* flex: 1;
-  height: 4rem; */
-
-  /* background: radial-gradient(white, white); */
   background: lightgreen;
-  /* border: 3px solid black;
-  border-radius: 50px;
-
-  font-size: 2.5rem;
-
-  transition: .8s;
-
-  cursor: pointer; */
+  /* box-shadow: -2px 2px 1px black, inset 2px 2px 10px rgba(255,255,255, .5); */
+  /* box-shadow: inset 2px 2px 10px 3px rgba(255,255,255, .7); */
 }
 
 .task-btn.running {
