@@ -35,20 +35,24 @@ const AddTime = (props) => {
     }
   }
 
-
+  
 
   // // Subtract, Set, or Add the time entered into the time form
   const updateTime = (operation) => {
     const totalTimeInput = ((hoursToAdd * 60) + minutesToAdd) * 60000
-    const selectedDateOldTime = props.task.dates[props.task.dates.findIndex(date => date.date === selectedDate)].time
+    const selectedDateOldTime = props.task.dates[props.task.dates.findIndex(date => date.date === selectedDate)]?.time
     console.log('prev time', selectedDateOldTime, 'time input', totalTimeInput, 'new total', selectedDateOldTime + totalTimeInput)
     // console.log(selectedDateOldTime)
 
     if(operation === 'add') {
-      props.updateTask(undefined, selectedDateOldTime + totalTimeInput, selectedDate)
+      // If selected date exists, add value to old value. Otherwise, initialize with entered time.
+      props.updateTask(undefined, selectedDateOldTime ? selectedDateOldTime + totalTimeInput : totalTimeInput, selectedDate)
     }
     if(operation === 'subtract') {
-      props.updateTask(undefined, selectedDateOldTime - totalTimeInput, selectedDate)
+      // If selected date exists, subtract input value from old value. If it doesn't exist, ignore.
+      if(selectedDateOldTime) {
+        props.updateTask(undefined, selectedDateOldTime - totalTimeInput, selectedDate)
+      }
     }
     if(operation === 'set') {
       if(window.confirm('Really overwrite the total time spent on this task? This is not reversible.')) {

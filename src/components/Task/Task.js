@@ -105,14 +105,14 @@ const Task = (props) => {
 
       // TODO ADD TIME TO CURRENT DAY
       // Get current date
-      const now = new Date()
-      const year = now.getFullYear()
-      let month = now.getMonth() + 1
-      month = month >= 10 ? month : '0' + month
-      let day = now.getDate()
-      day = day >= 10 ? day : '0' + day
-      const today = `${year}-${month}-${day}`
-
+      // const now = new Date()
+      // const year = now.getFullYear()
+      // let month = now.getMonth() + 1
+      // month = month >= 10 ? month : '0' + month
+      // let day = now.getDate()
+      // day = day >= 10 ? day : '0' + day
+      // const today = `${year}-${month}-${day}`
+      const today = getToday()
   
 
       // If no date passed in, default to today
@@ -145,6 +145,18 @@ const Task = (props) => {
     return props.task.dates.reduce( (acc, date) => acc + date.time, 0)
   }
 
+
+  const getToday = () => {
+    const now = new Date()
+    const year = now.getFullYear()
+    let month = now.getMonth() + 1
+    month = month >= 10 ? month : '0' + month
+    let day = now.getDate()
+    day = day >= 10 ? day : '0' + day
+    const today = `${year}-${month}-${day}`
+    return today
+  }
+
   //// Timer function
   const toggleTimer = async () => {
 
@@ -159,7 +171,8 @@ const Task = (props) => {
       setTimerRunning(false)
       // TODO New Running Time addition
       console.log(runningTime)
-      updateTask(undefined, runningTime)
+      // If most recent date in dates array is today, pass in runningTime + the time already recorded for today. Otherwise,just pass in runningTime, so that a new date will be created with the value.
+      updateTask(undefined, props.task.dates[0].date === getToday() ? runningTime + props.task.dates[0].time : runningTime)
 
     }
   }
