@@ -212,3 +212,23 @@ button {
   cursor: no-drop;
   transition: .2s;
 }
+
+/* ! HISTORY SLIDE-DOWN */
+.history-wrapper {
+  display: flex;
+  justify-content: center;;
+}
+
+.history {
+  /* text-align: center; */
+
+  font-family: 'Share Tech Mono', monospace;
+}
+
+
+.history td {
+  padding: .5rem;
+}
+.history-date {
+
+}

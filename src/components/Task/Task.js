@@ -7,7 +7,8 @@ import Button from '../Button/Button'
 // Style
 import './Task.css'
 // Icons
-import { MdEdit, MdDelete, MdAvTimer, MdHistoryEdu, MdHistory, MdHistoryToggleOff, MdExpandLess, MdExpandMore } from "react-icons/md"
+import { MdEdit, MdDelete, MdAvTimer, MdHistoryEdu, MdHistory, MdHistoryToggleOff, MdExpandLess, MdExpandMore, MdCalendarToday, MdCalendarViewMonth} from "react-icons/md"
+import { FaCalendar } from 'react-icons/fa'
 
 const Task = (props) => {
 
@@ -27,6 +28,9 @@ const Task = (props) => {
 
   // Track animation completion to determine reveal/revealed or hide/hidden class on task form
   const [addTimeFormAnimationDone, setAddTimeFormAnimationDone] = useState(true)
+
+  // TODO History View Stuff
+
 
   // TODO Window Resizing for tiem display
   const [screenWidth, setScreenWidth] = useState()
@@ -118,11 +122,14 @@ const Task = (props) => {
       if(currentDateIndex === -1) {
         updatedTask.dates.push({date: date, time: time})
       } else {
-        updatedTask.dates[currentDateIndex].time += time
+        updatedTask.dates[currentDateIndex].time = time
       }
     }
     // Only update name if a name is passed in.
     if(name) updatedTask.name = name
+
+    // Sort all dates by most recent.
+    updatedTask.dates.sort( (a, b) => b.date.localeCompare(a.date))
 
     setTotalTime(props.task.dates.reduce( (acc, date) => acc + date.time, 0))
     // Grab tasks from localStorage, and replace current task with updatedTask.
@@ -254,11 +261,13 @@ const Task = (props) => {
       <div className='task-name text-shadow'>
         <p>{props.task.name}</p>
         <div className='icon-buttons'>
+          <MdCalendarViewMonth />
           <MdHistoryToggleOff className={`edit-time-btn ${timerRunning ? 'disabled' : ''} ${showAddTimeForm ? 'edit-time-btn-form-visible' : ''}`} onClick={toggleAddTimeForm}/>
           <MdEdit className="edit-btn" onClick={editTask}/>
           <MdDelete className="delete-btn" onClick={deleteTask}/>
         </div>
       </div>
+
 
       <div className='task-info'>
         <div className='sort-btns'>
@@ -283,6 +292,33 @@ const Task = (props) => {
         toggleAddTimeForm={toggleAddTimeForm}
       />
       </div>
+
+      {/*//// Task History Calendar/Heatmap */}
+      <div className={`slide-able history-wrapper`}>
+        {/* <ul className='history text-shadow'>
+          {props.task.dates.map(date => (
+            <li>
+              {`${date.date} ${convertTime(date.time)}`}
+            </li>
+          ))}
+        </ul> */}
+        <table className='history text-shadow'>
+          <tbody>
+            {props.task.dates.map(date => (
+              <tr>
+                <td className='history-date'>
+                  {date.date}
+                </td>
+                <td className='history-time'>
+                  {convertTime(date.time)}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      
+      </div>
+
     </li>
   )
 }
