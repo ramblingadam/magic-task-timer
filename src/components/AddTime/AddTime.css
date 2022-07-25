@@ -96,3 +96,24 @@
   overflow-y: scroll;
   max-height: 200px;
 }
+
+.flash {
+  animation: flash 1s linear infinite;
+}
+
+@keyframes flash {
+  0% {
+    /* background-color: white; */
+    /* color: white; */
+    outline: 2px solid rgba(0,0,0,0);
+  }
+  50% {
+    outline: 2px solid yellow;
+    /* color: yellow; */
+  }
+  100% {
+    /* background-color: white; */
+    /* color: white; */
+    outline: 2px solid rgba(0,0,0,0);
+  }
+}

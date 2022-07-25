@@ -15,6 +15,8 @@ const AddTime = (props) => {
   const [selectedDate, setSelectedDate] = useState('')
   const [today, setToday] = useState('')
 
+  const [dateInputFlash, setDateInputFlash] = useState(false)
+
   // Set today as the default date in the add time form.
   useEffect(() => {
     setDateInForm('today')
@@ -75,13 +77,15 @@ const AddTime = (props) => {
   // // Set date
   const setDateInForm = specificDate => {
     // If this function is called by state intialization, set date to today.
-    if(specificDate = 'today') {
+    if(specificDate === 'today') {
       const today = props.getToday()
       setSelectedDate(today)
       setToday(today)
     } else {
-      // setSelectedDate
+      setSelectedDate(specificDate)
     }
+    setDateInputFlash(true)
+    setTimeout(() => setDateInputFlash(false), 1000)
   }
 
   //// Format Date
@@ -100,8 +104,8 @@ const AddTime = (props) => {
         <p>Enter a number of hours and/or minutes, then press <span className='red'>Subtract</span>, <span className='yellow'>Set</span>, or <span className='green'>Add</span> to adjust the total time for the specified date.</p>
         <div>
           {/* Date Input */}
-          <label><span className='heading'>Date</span>
-            <input type="date" id="choose-date" value={selectedDate} max={today} onChange={(e) => handleTimeChange('date', e)}/>
+          <label className={`${dateInputFlash ? 'flash' : ''}`}><span className='heading'>Date</span>
+            <input type="date" id="choose-date"  value={selectedDate} max={today} onChange={(e) => handleTimeChange('date', e)}/>
           </label>
           {/* Hours Input */}
           <label><span className='heading'>Hours</span>
@@ -122,10 +126,11 @@ const AddTime = (props) => {
       <Heatmap
         convertTime={props.convertTime}
         task={props.task}
+        setDateInForm={setDateInForm}
       />
 
       {/* //// Task History Calendar/Heatmap */}
-      <div className={`slide-able history-wrapper`}>
+      {/* <div className={`slide-able history-wrapper`}>
         <table className='history text-shadow'>
           <tbody>
             {props.task.dates.map(date => (
@@ -140,7 +145,7 @@ const AddTime = (props) => {
             ))}
           </tbody>
         </table>
-      </div>
+      </div> */}
 
       
 

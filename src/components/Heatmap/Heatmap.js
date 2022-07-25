@@ -54,7 +54,7 @@ const Heatmap = props => {
 
       // TODO WEEK TESTING
       if( date.getDay() === weekSplit) {
-        console.log(date, 'we splitting here')
+        // console.log(date, 'we splitting here')
         yearArray.push(week)
         week = []
       }
@@ -73,7 +73,7 @@ const Heatmap = props => {
       } else week.push({date: parseDate(date), time: null, day: date.getDay()})
     }
   }
-  console.log(yearArray)
+  // console.log(yearArray)
 
   // TODO Old build map by day...
   const buildHeatmap = () => {
@@ -149,6 +149,7 @@ const Heatmap = props => {
                 : day.time < 7200000 ? 'heat-medhigh'
                 : 'heat-high')}`}
               key={day.date}
+              onClick={() => props.setDateInForm(day.date)}
             >
               <div className='day-popup'>
                 <p>{day.date}</p>

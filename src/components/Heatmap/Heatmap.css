@@ -31,7 +31,7 @@
 .day-box {
   width: 10px;
   height: 10px;
-  background: black;
+  background: rgb(19, 19, 19);
   border-radius: 2px;
   /* border: 1px solid white; */
   margin: 1px;
@@ -95,7 +95,6 @@
   position: absolute;
   bottom: -3px;
   right: 5px;
-
 }
 
 
