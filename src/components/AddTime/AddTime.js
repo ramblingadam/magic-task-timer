@@ -1,3 +1,5 @@
+// Components
+import Heatmap from '../Heatmap/Heatmap'
 // State
 import { useState, useEffect } from 'react'
 // Styles
@@ -73,15 +75,9 @@ const AddTime = (props) => {
   const setDateInForm = specificDate => {
     // If this function is called by state intialization, set date to today.
     if(specificDate = 'today') {
-      const now = new Date()
-      const year = now.getFullYear()
-      let month = now.getMonth() + 1
-      month = month >= 10 ? month : '0' + month
-      let day = now.getDate()
-      day = day >= 10 ? day : '0' + day
-      const parsedDate = `${year}-${month}-${day}`
-      setSelectedDate(parsedDate)
-      setToday(parsedDate)
+      const today = props.getToday()
+      setSelectedDate(today)
+      setToday(today)
     } else {
       // setSelectedDate
     }
@@ -139,6 +135,11 @@ const AddTime = (props) => {
           </tbody>
         </table>
       </div>
+
+      <Heatmap
+        convertTime={props.convertTime}
+      />
+
     </div>
   )
 }

@@ -1,0 +1,45 @@
+
+
+
+
+
+
+
+.heatmap-wrapper {
+  width: 100%;
+}
+
+
+.heatmap-grid {
+  display: flex;
+  flex-flow: column wrap;
+  align-content: center;
+  /* justify-content: center; */
+  height: 90px;
+}
+
+
+.day-box {
+  width: 10px;
+  height: 10px;
+  background: black;
+  border: 1px solid white;
+  /* margin: 1px; */
+  position: relative;
+}
+
+.day-popup {
+  position: absolute;
+  display: none;
+  left: 0;
+  top: -80px;
+  z-index: 1;
+  background: lightskyblue;
+  white-space: nowrap;
+
+  cursor: pointer;
+}
+
+.day-box:hover > .day-popup {
+  display: block;
+}

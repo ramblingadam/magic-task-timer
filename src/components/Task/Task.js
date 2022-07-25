@@ -109,14 +109,6 @@ const Task = (props) => {
     
 
       // TODO ADD TIME TO CURRENT DAY
-      // Get current date
-      // const now = new Date()
-      // const year = now.getFullYear()
-      // let month = now.getMonth() + 1
-      // month = month >= 10 ? month : '0' + month
-      // let day = now.getDate()
-      // day = day >= 10 ? day : '0' + day
-      // const today = `${year}-${month}-${day}`
       const today = getToday()
   
 
@@ -161,6 +153,8 @@ const Task = (props) => {
     const today = `${year}-${month}-${day}`
     return today
   }
+
+
 
   //// Timer function
   const toggleTimer = async () => {
@@ -310,6 +304,7 @@ const Task = (props) => {
           updateTask={updateTask}
           toggleAddTimeForm={toggleAddTimeForm}
           convertTime={convertTime}
+          getToday={getToday}
         />
         {/*// TODO Include thisstuff in AddTime? */}
         {/*//// Task History Calendar/Heatmap */}
