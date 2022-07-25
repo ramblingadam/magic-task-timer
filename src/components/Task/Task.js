@@ -45,7 +45,7 @@ const Task = (props) => {
 
   //! Helper Functions
   //// Converts ms into a a string with hrs, mins, secs
-  const convertTime = ms => {
+  const convertTime = (ms, format) => {
     let seconds = Math.round(ms / 1000)
     let minutes = 0
     let hours = 0
@@ -67,7 +67,12 @@ const Task = (props) => {
     const width = window.innerWidth > 0 ? window.innerWidth : Screen.width;
     const short = width < 700 ? true : false
     // return `${hours}hrs : ${minutes}mins : ${seconds}secs`
-    return `${hours}h : ${minutes}m : ${seconds}s`
+    if(!format || format === 'long') {
+      return `${hours}h : ${minutes}m : ${seconds}s`
+      // TODO short format mode for time? not used anywhere yet
+    } else if(format ==='short') {
+      return `${hours}h : ${minutes}m`
+    }
   }
 
   //// Visual time update functions
@@ -145,7 +150,7 @@ const Task = (props) => {
     return props.task.dates.reduce( (acc, date) => acc + date.time, 0)
   }
 
-
+  //// Get/parse/format current Date
   const getToday = () => {
     const now = new Date()
     const year = now.getFullYear()
@@ -172,8 +177,7 @@ const Task = (props) => {
       // TODO New Running Time addition
       console.log(runningTime)
       // If most recent date in dates array is today, pass in runningTime + the time already recorded for today. Otherwise,just pass in runningTime, so that a new date will be created with the value.
-      updateTask(undefined, props.task.dates[0].date === getToday() ? runningTime + props.task.dates[0].time : runningTime)
-
+      updateTask(undefined, props.task.dates[0]?.date === getToday() ? runningTime + props.task.dates[0].time : runningTime)
     }
   }
 
@@ -271,6 +275,8 @@ const Task = (props) => {
   //! Component
   return (
     <li className={`task ${timerRunning ? 'running' : ''}`}>
+
+      {/*//// Task Top Row: Task Name, Setting Buttons  */}
       <div className='task-name text-shadow'>
         <p>{props.task.name}</p>
         <div className='icon-buttons'>
@@ -281,7 +287,7 @@ const Task = (props) => {
         </div>
       </div>
 
-
+      {/*//// Task Info: Sort Buttons, Time Display, Start Button  */}
       <div className='task-info'>
         <div className='sort-btns'>
           <MdExpandLess className='sort-btn' onClick={props.task.sortPosition > 1 ? () => reorder('up') : null}/>
@@ -297,24 +303,37 @@ const Task = (props) => {
         </div>
       </div>
 
-      {/* <div className={`slide-able ${showAddTimeForm ? 'reveal' : addTimeFormCollapsed ? 'hidden' : 'collapse'}`}> */}
+      {/*//// Add Time Form  */}
       <div className={`slide-able ${showAddTimeForm && !addTimeFormAnimationDone ? 'reveal' : showAddTimeForm ? 'revealed' : addTimeFormCollapsed || (!showAddTimeForm && addTimeFormAnimationDone) ? 'hidden' : 'collapse'}`}>
-      <AddTime
-        task={props.task}
-        updateTask={updateTask}
-        toggleAddTimeForm={toggleAddTimeForm}
-      />
+        <AddTime
+          task={props.task}
+          updateTask={updateTask}
+          toggleAddTimeForm={toggleAddTimeForm}
+          convertTime={convertTime}
+        />
+        {/*// TODO Include thisstuff in AddTime? */}
+        {/*//// Task History Calendar/Heatmap */}
+        {/* <div className={`slide-able history-wrapper`}>
+          <table className='history text-shadow'>
+            <tbody>
+              {props.task.dates.map(date => (
+                <tr>
+                  <td className='history-date'>
+                    {date.date}
+                  </td>
+                  <td className='history-time'>
+                    {convertTime(date.time)}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div> */}
+
       </div>
 
-      {/*//// Task History Calendar/Heatmap */}
-      <div className={`slide-able history-wrapper`}>
-        {/* <ul className='history text-shadow'>
-          {props.task.dates.map(date => (
-            <li>
-              {`${date.date} ${convertTime(date.time)}`}
-            </li>
-          ))}
-        </ul> */}
+      {/* //// Task History Calendar/Heatmap */}
+      {/* <div className={`slide-able history-wrapper`}>
         <table className='history text-shadow'>
           <tbody>
             {props.task.dates.map(date => (
@@ -329,8 +348,7 @@ const Task = (props) => {
             ))}
           </tbody>
         </table>
-      
-      </div>
+      </div> */}
 
     </li>
   )

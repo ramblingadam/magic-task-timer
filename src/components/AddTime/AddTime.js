@@ -87,6 +87,13 @@ const AddTime = (props) => {
     }
   }
 
+  //// Format Date
+  const formatDate = (date, format) => {
+    if(format === 'short') {
+      return date.slice(6)
+    }
+  }
+
 
 
   // ! Component
@@ -114,6 +121,24 @@ const AddTime = (props) => {
           <MdAddCircle id='add-time' className='time-edit-btn' onClick={() => updateTime('add')}/>
         </div>
       </form>
+
+      {/* //// Task History Calendar/Heatmap */}
+      <div className={`slide-able history-wrapper`}>
+        <table className='history text-shadow'>
+          <tbody>
+            {props.task.dates.map(date => (
+              <tr>
+                <td className='history-date'>
+                  {formatDate(date.date, 'short')}
+                </td>
+                <td className='history-time'>
+                  {props.convertTime(date.time)}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   )
 }
