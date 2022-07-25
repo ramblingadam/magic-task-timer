@@ -160,14 +160,15 @@ const Task = (props) => {
 
 
 
-  //// Timer function
+  //// Timer function - Fires when PLAY or STOP pressed
   const toggleTimer = async () => {
 
     // If timer is NOT currently running:
     if(!timerRunning) {
       setTimerRunning(true)     
       setStartTime(Date.now())
-      toggleAddTimeForm()
+      // If form is currently out, toggle it back to closed.
+      if(showAddTimeForm) toggleAddTimeForm()
 
     // If Timer IS currently running:
     } else { 

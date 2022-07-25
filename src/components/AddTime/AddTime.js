@@ -123,7 +123,7 @@ const AddTime = (props) => {
         <table className='history text-shadow'>
           <tbody>
             {props.task.dates.map(date => (
-              <tr>
+              <tr key={date.date}>
                 <td className='history-date'>
                   {formatDate(date.date, 'short')}
                 </td>

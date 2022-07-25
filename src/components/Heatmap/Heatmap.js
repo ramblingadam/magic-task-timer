@@ -5,7 +5,7 @@ import './Heatmap.css'
 
 
 const Heatmap = props => {
-  console.log(props)
+  // console.log(props)
 
   // ! FUNCTIONS
   const yearArray = []
@@ -68,20 +68,24 @@ const Heatmap = props => {
       <div className='heatmap-grid'>
         {yearArray.map(day => (
           //// thresholds:
-          //// 10mins(600000): low
-          //// 30mins(1800000): lowmed
-          //// 1 hour(3600000): med
-          //// 2 hours(7200000): medhigh
-          //// 3 hours(10800000): high
-          <div className={`day-box ${day.time && (
-            day.time < 600000 ? 'heat-low'
-            : day.time < 1800000 ? 'heat-lowmed'
-            : day.time < 3600000 ? 'heat-med'
-            : day.time < 7200000 ? 'heat-medhigh'
-            : 'heat-high') }`}>
+          //// < 10mins(600000): low
+          //// < 30mins(1800000): lowmed
+          //// < 1 hour(3600000): med
+          //// < 2 hours(7200000): medhigh
+          //// > 2 hours(10800000): high
+          <div
+            className={`day-box ${day.time && (
+              day.time < 600000 ? 'heat-low'
+              : day.time < 1800000 ? 'heat-lowmed'
+              : day.time < 3600000 ? 'heat-med'
+              : day.time < 7200000 ? 'heat-medhigh'
+              : 'heat-high')}`}
+            key={day.date}
+          >
             <div className='day-popup'>
-              {/* // TODO only display time if time logged TEST ME */}
-              {day.date} {day.time && props.convertTime(day.time)}
+              <p>{day.date}</p>
+              {/* Only display time if time logged for that date. */}
+              <p>{day.time && props.convertTime(day.time)}</p>
             </div>
           </div>
         ))}

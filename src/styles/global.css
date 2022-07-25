@@ -84,11 +84,11 @@ body {
 }
 
 .collapse {
-  animation: hide .6s ease-in-out forwards;
+  animation: hidebig .6s ease-in-out forwards;
 }
 
 .reveal {
-  animation: reveal .6s ease-in-out forwards;
+  animation: revealbig .6s ease-in-out forwards;
 }
 
 .revealed {
@@ -127,6 +127,42 @@ body {
   }
   33% {
     max-height: 15rem;
+    /* height: auto; */
+    opacity: 0;
+  }
+  100% {
+    max-height: 0;
+    /* height: 0; */
+    opacity: 0;
+  }
+}
+
+@keyframes revealbig {
+  0% {
+    max-height: 0;
+    /* height: 0; */
+    opacity: 0;
+  }
+  33% {
+    max-height: 50rem;
+    /* height: auto; */
+    opacity: 0;
+  }
+  100% {
+    max-height: 50rem;
+    /* height: auto; */
+    opacity: 1;
+  }
+}
+
+@keyframes hidebig {
+  0% {
+    max-height: 50rem;
+    /* height: auto; */
+    opacity: 1;
+  }
+  33% {
+    max-height: 50rem;
     /* height: auto; */
     opacity: 0;
   }
