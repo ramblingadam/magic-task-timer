@@ -119,7 +119,7 @@ const AddTime = (props) => {
       </form>
 
       {/* //// Task History Calendar/Heatmap */}
-      <div className={`slide-able history-wrapper`}>
+      {/* <div className={`slide-able history-wrapper`}>
         <table className='history text-shadow'>
           <tbody>
             {props.task.dates.map(date => (
@@ -138,7 +138,7 @@ const AddTime = (props) => {
 
       <Heatmap
         convertTime={props.convertTime}
-      />
+      /> */}
 
     </div>
   )

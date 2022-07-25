@@ -128,7 +128,17 @@
 }
 
 /* Task Time Display */
-.task-time,
+.task-time {
+  flex: 1
+}
+
+@media all and (max-width: 500px) {
+  .task-time {
+    flex: 2;
+  }
+}
+
+/* .task-time, */
 .task-buttons {
   flex: 1;
 }
@@ -141,7 +151,8 @@
 }
 
 @media all and (max-width: 420px) {
-  .task-time {
+  .task-time,
+  .history {
     font-size: 2rem;
   }
 }
@@ -177,6 +188,9 @@ button {
   background: lightgreen;
   /* box-shadow: -2px 2px 1px black, inset 2px 2px 10px rgba(255,255,255, .5); */
   /* box-shadow: inset 2px 2px 10px 3px rgba(255,255,255, .7); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .task-btn.running {

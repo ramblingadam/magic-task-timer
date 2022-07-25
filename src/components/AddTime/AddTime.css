@@ -90,3 +90,9 @@
 .green {
   color: lightgreen;
 }
+
+
+.history-wrapper {
+  overflow-y: scroll;
+  max-height: 200px;
+}

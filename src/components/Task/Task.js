@@ -7,7 +7,7 @@ import Button from '../Button/Button'
 // Style
 import './Task.css'
 // Icons
-import { MdEdit, MdDelete, MdAvTimer, MdHistoryEdu, MdHistory, MdHistoryToggleOff, MdExpandLess, MdExpandMore, MdCalendarToday, MdCalendarViewMonth} from "react-icons/md"
+import { MdEdit, MdDelete, MdAvTimer, MdHistoryEdu, MdHistory, MdHistoryToggleOff, MdExpandLess, MdExpandMore, MdCalendarToday, MdCalendarViewMonth, MdPlayArrow, MdStop} from "react-icons/md"
 import { FaCalendar } from 'react-icons/fa'
 
 const Task = (props) => {
@@ -33,7 +33,7 @@ const Task = (props) => {
 
 
   // TODO Window Resizing for tiem display
-  const [screenWidth, setScreenWidth] = useState()
+  // const [screenWidth, setScreenWidth] = useState()
 
   const getScreenWidth = () => {
     const { innerWidth } = window
@@ -77,9 +77,13 @@ const Task = (props) => {
 
   //// Visual time update functions
   useEffect(() => {
+    // TODO WHY ISN'T HIDE FORM ANIMATION WORKING ON CLICK OF PLAY?
+    // if(showAddTimeForm) toggleAddTimeForm()
+
     let interval = null
     if(timerRunning) {
       interval = setInterval(() => {updateTime()}, 1000)
+
     }
     else if(!timerRunning) {
       clearInterval(interval)
@@ -91,7 +95,7 @@ const Task = (props) => {
   const updateTime = () => {
     setTotalTime(totalTime + (Date.now() - startTime))
 
-    // TODO store running time
+    // Store running time
     setRunningTime(Date.now() - startTime)
 
     setStartTime(Date.now())
@@ -163,7 +167,7 @@ const Task = (props) => {
     if(!timerRunning) {
       setTimerRunning(true)     
       setStartTime(Date.now())
-      setShowAddTimeForm(false)
+      toggleAddTimeForm()
 
     // If Timer IS currently running:
     } else { 
@@ -292,7 +296,7 @@ const Task = (props) => {
         </div>
         <div className='task-buttons'>
           <button className={`task-btn btn ${timerRunning ? 'running' : ''}`} onClick={toggleTimer}>
-            {timerRunning ? 'Stop' : 'Start'}
+            {timerRunning ? <MdStop /> : <MdPlayArrow />}
           </button>
         </div>
       </div>

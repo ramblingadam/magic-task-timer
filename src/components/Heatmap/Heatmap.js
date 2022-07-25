@@ -35,10 +35,7 @@ const Heatmap = props => {
   }
 
   // Assemble year array to use to render heatmap grid
-  for(let date = oneMonthAgoToday; areDatesEqual(date, addDays(today, 1)) === false; date = addDays(date, 1)) {
-    // console.log(date)
-
-
+  for(let date = oneYearAgoToday; areDatesEqual(date, addDays(today, 1)) === false; date = addDays(date, 1)) {
     yearArray.push({date: parseDate(date), time: 'placeholder'})
   }
   // console.log(yearArray)

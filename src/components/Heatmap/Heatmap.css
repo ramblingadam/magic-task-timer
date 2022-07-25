@@ -23,8 +23,8 @@
 
 
 .day-box {
-  width: 15px;
-  height: 15px;
+  width: 10px;
+  height: 10px;
   background: black;
   /* border: 1px solid white; */
   margin: 1px;
@@ -35,7 +35,7 @@
 .day-popup {
   position: absolute;
   display: none;
-  left: -50px;
+  right: 0px;
   top: -10px;
   z-index: 1;
   background: lightskyblue;
