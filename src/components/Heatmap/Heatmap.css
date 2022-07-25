@@ -14,11 +14,17 @@
 
 .heatmap-grid {
   display: flex;
-  flex-flow: column wrap;
+  flex-flow: row nowrap;
   align-content: center;
-  /* justify-content: center; */
-  height: 90px;
+  justify-content: center;
+  /* height: 90px; */
 
+}
+
+@media all and (max-width: 700px) {
+  .heatmap-grid {
+    justify-content: flex-end;
+  }
 }
 
 
@@ -29,10 +35,35 @@
   border-radius: 2px;
   /* border: 1px solid white; */
   margin: 1px;
+
+  user-select: none;
   position: relative;
+
+}
+
+.day-box-text {
+  width: 20px;
+
+  font-size: 1rem;
+  background: none;
+}
+
+.day-box-month {
+  font-size: 1rem;
+  background: none;
+}
+
+
+.day-box-hoverable:hover {
+  border: 1px solid white;
+  transition: .3s;
+
   cursor: pointer;
 }
 
+.day-box:hover > .day-popup {
+  display: block;
+}
 .day-popup {
   display: none;
 
@@ -67,15 +98,6 @@
 
 }
 
-.day-box:hover {
-  border: 1px solid white;
-  transition: .3s;
-}
-
-.day-box:hover > .day-popup {
-  display: block;
-
-}
 
 
 .heat-low {

@@ -65,8 +65,9 @@ const AddTime = (props) => {
     setHoursToAdd('')
     setMinutesToAdd('')
     setDateInForm('today')
-    // Hide form.
-    props.toggleAddTimeForm()
+
+    // Hide form on entry of anything.
+    // props.toggleAddTimeForm()
   }
 
 
@@ -118,6 +119,11 @@ const AddTime = (props) => {
         </div>
       </form>
 
+      <Heatmap
+        convertTime={props.convertTime}
+        task={props.task}
+      />
+
       {/* //// Task History Calendar/Heatmap */}
       <div className={`slide-able history-wrapper`}>
         <table className='history text-shadow'>
@@ -136,10 +142,7 @@ const AddTime = (props) => {
         </table>
       </div>
 
-      <Heatmap
-        convertTime={props.convertTime}
-        task={props.task}
-      />
+      
 
     </div>
   )
