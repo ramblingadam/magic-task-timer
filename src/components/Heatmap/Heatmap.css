@@ -7,6 +7,8 @@
 
 .heatmap-wrapper {
   width: 100%;
+  /* overflow-x: scroll; */
+  /* overflow-y:visible; */
 }
 
 
@@ -15,31 +17,34 @@
   flex-flow: column wrap;
   align-content: center;
   /* justify-content: center; */
-  height: 90px;
+  height: 80px;
+
 }
 
 
 .day-box {
-  width: 10px;
-  height: 10px;
+  width: 15px;
+  height: 15px;
   background: black;
-  border: 1px solid white;
-  /* margin: 1px; */
+  /* border: 1px solid white; */
+  margin: 1px;
   position: relative;
+  cursor: pointer;
 }
 
 .day-popup {
   position: absolute;
   display: none;
-  left: 0;
-  top: -80px;
+  left: -50px;
+  top: -10px;
   z-index: 1;
   background: lightskyblue;
   white-space: nowrap;
+  pointer-events: none;
 
-  cursor: pointer;
 }
 
 .day-box:hover > .day-popup {
   display: block;
+
 }

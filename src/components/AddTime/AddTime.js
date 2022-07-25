@@ -86,7 +86,7 @@ const AddTime = (props) => {
   //// Format Date
   const formatDate = (date, format) => {
     if(format === 'short') {
-      return date.slice(6)
+      return date.slice(5, 7) + '/' + date.slice(8)
     }
   }
 

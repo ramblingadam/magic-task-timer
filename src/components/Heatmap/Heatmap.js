@@ -10,7 +10,8 @@ const Heatmap = props => {
   const yearArray = []
   const today = new Date()
   const oneYearAgoToday = new Date(new Date().setDate(new Date().getDate()-365))
-  console.log('hi')
+  const oneMonthAgoToday = new Date(new Date().setDate(new Date().getDate()-30))
+  // console.log('hi')
 
   const parseDate = (date = Date.now()) => {
     const year = date.getFullYear()
@@ -34,11 +35,13 @@ const Heatmap = props => {
   }
 
   // Assemble year array to use to render heatmap grid
-  for(let date = oneYearAgoToday; areDatesEqual(date, addDays(today, 1)) === false; date = addDays(date, 1)) {
+  for(let date = oneMonthAgoToday; areDatesEqual(date, addDays(today, 1)) === false; date = addDays(date, 1)) {
     // console.log(date)
+
+
     yearArray.push({date: parseDate(date), time: 'placeholder'})
   }
-  console.log(yearArray)
+  // console.log(yearArray)
 
  
 
@@ -54,7 +57,8 @@ const Heatmap = props => {
         {yearArray.map(day => (
           <div className='day-box'>
             <div className='day-popup'>
-              {day.date} {day.time}
+              {/* // TODO only display time if time logged TEST ME */}
+              {day.date} {day.time && day.time}
             </div>
           </div>
         ))}
