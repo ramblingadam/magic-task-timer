@@ -138,6 +138,7 @@ const AddTime = (props) => {
 
       <Heatmap
         convertTime={props.convertTime}
+        task={props.task}
       />
 
     </div>

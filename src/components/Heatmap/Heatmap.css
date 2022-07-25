@@ -26,6 +26,7 @@
   width: 10px;
   height: 10px;
   background: black;
+  border-radius: 2px;
   /* border: 1px solid white; */
   margin: 1px;
   position: relative;
@@ -47,4 +48,21 @@
 .day-box:hover > .day-popup {
   display: block;
 
+}
+
+
+.heat-low {
+  background: rgb(0, 58, 0);
+}
+.heat-lowmed {
+  background: rgb(0, 99, 0);
+}
+.heat-med {
+  background: rgb(0, 131, 0);
+}
+.heat-medhigh {
+  background: rgb(0, 177, 0);
+}
+.heat-high {
+  background: rgb(0, 223, 0);
 }
