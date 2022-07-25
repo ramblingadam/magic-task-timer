@@ -204,14 +204,12 @@ button {
   transition: 0s;
 }
 
-.btn.disabled {
-  transform: scale(1);
-  box-shadow: none ;
-  border: 2px solid grey;
-  background: grey;
-  color: rgb(40, 40, 40);
-  cursor: no-drop;
+.disabled,
+:hover.disabled {
+  fill: grey;
+  filter: drop-shadow(0 0 1px black);
   transition: .2s;
+  cursor: no-drop;
 }
 
 /* ! HISTORY SLIDE-DOWN */
