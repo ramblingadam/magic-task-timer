@@ -92,10 +92,7 @@
 }
 
 
-.history-wrapper {
-  overflow-y: scroll;
-  max-height: 200px;
-}
+
 
 .flash {
   animation: flash 1s linear infinite;

@@ -7,6 +7,10 @@ import './Heatmap.css'
 const Heatmap = props => {
   // console.log(props)
 
+  // ! STATE
+
+
+
   // ! FUNCTIONS
   const yearArray = []
   const today = new Date()
@@ -75,23 +79,7 @@ const Heatmap = props => {
   }
   // console.log(yearArray)
 
-  // TODO Old build map by day...
-  const buildHeatmap = () => {
-
-    // Add days to year array, starting from one year ago from today and ending at today.
-    for(let date = oneYearAgoToday; areDatesEqual(date, addDays(today, 1)) === false; date = addDays(date, 1)) {
-
-      // console.log(props.task.dates)
-      const workedDate = props.task.dates.find(dateEntry => dateEntry.date === parseDate(date))
-
-      if(workedDate) {
-        yearArray.push(workedDate)
-      } else yearArray.push({date: parseDate(date), time: null})
-    }
-  }
-
   // ! INITIALIZATION - BUILD HEAT MAP ARRAY
-  // buildHeatmap()
   buildHeatmapByWeek()
 
 
@@ -127,14 +115,17 @@ const Heatmap = props => {
           </div>
         ))} */}
 
-        {yearArray.map(week => (
+        {yearArray.map((week,i) => (
           //// thresholds:
           //// < 10mins(600000): low
           //// < 30mins(1800000): lowmed
           //// < 1 hour(3600000): med
           //// < 2 hours(7200000): medhigh
           //// > 2 hours(10800000): high
-          <div className='week-column'>
+          <div
+            className='week-column'
+            key={`Week ${i + 1}`}
+          >
             <div className='day-box day-box-month'>
               
               {week.find(day => day.date.slice(8) === '01') && monthArray[+(week.find(day => day.date.slice(8) === '01').date.slice(5, 7))]}
@@ -142,12 +133,13 @@ const Heatmap = props => {
             {week.map(day => (
               
               <div
-              className={`day-box day-box-hoverable ${day.time && (
+              className={`day-box day-box-hoverable ${day.time ? (
                 day.time < 600000 ? 'heat-low'
                 : day.time < 1800000 ? 'heat-lowmed'
                 : day.time < 3600000 ? 'heat-med'
                 : day.time < 7200000 ? 'heat-medhigh'
-                : 'heat-high')}`}
+                : 'heat-high')
+              : ''}`}
               key={day.date}
               onClick={() => props.setDateInForm(day.date)}
             >

@@ -1,5 +1,6 @@
 // Components
 import Heatmap from '../Heatmap/Heatmap'
+import History from '../History/History'
 // State
 import { useState, useEffect } from 'react'
 // Styles
@@ -88,12 +89,7 @@ const AddTime = (props) => {
     setTimeout(() => setDateInputFlash(false), 1000)
   }
 
-  //// Format Date
-  const formatDate = (date, format) => {
-    if(format === 'short') {
-      return date.slice(5, 7) + '/' + date.slice(8)
-    }
-  }
+
 
 
 
@@ -123,29 +119,19 @@ const AddTime = (props) => {
         </div>
       </form>
 
+      {/* //// Task History Heatmap */}
       <Heatmap
         convertTime={props.convertTime}
         task={props.task}
         setDateInForm={setDateInForm}
       />
 
-      {/* //// Task History Calendar/Heatmap */}
-      {/* <div className={`slide-able history-wrapper`}>
-        <table className='history text-shadow'>
-          <tbody>
-            {props.task.dates.map(date => (
-              <tr key={date.date}>
-                <td className='history-date'>
-                  {formatDate(date.date, 'short')}
-                </td>
-                <td className='history-time'>
-                  {props.convertTime(date.time)}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div> */}
+      {/* //// Task History Table*/}
+      <History
+        task={props.task}
+        convertTime={props.convertTime}
+        setDateInForm={setDateInForm}
+      />
 
       
 

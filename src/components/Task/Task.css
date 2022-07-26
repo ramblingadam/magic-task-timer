@@ -98,6 +98,14 @@
   transition: .3s;
 }
 
+.edit-time-btn.edit-time-btn-form-visible:hover {
+  fill: yellow;
+  filter: drop-shadow(0 0 1px white);
+  transition: .3s;
+}
+
+
+
 /* // Task Info Area + Timer Buttons */
 .task-info {
   display: flex;
@@ -151,8 +159,7 @@
 }
 
 @media all and (max-width: 420px) {
-  .task-time,
-  .history {
+  .task-time {
     font-size: 2rem;
   }
 }
@@ -226,23 +233,3 @@ button {
   cursor: no-drop;
 }
 
-/* ! HISTORY SLIDE-DOWN */
-.history-wrapper {
-  display: flex;
-  justify-content: center;;
-}
-
-.history {
-  /* text-align: center; */
-
-  font-family: 'Share Tech Mono', monospace;
-}
-
-
-.history td {
-  padding: .5rem;
-  text-align: center;
-}
-.history-date {
-
-}

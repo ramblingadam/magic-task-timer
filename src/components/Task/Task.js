@@ -279,7 +279,7 @@ const Task = (props) => {
       <div className='task-name text-shadow'>
         <p>{props.task.name}</p>
         <div className='icon-buttons'>
-          <MdCalendarViewMonth />
+          {/* <MdCalendarViewMonth /> */}
           <MdHistoryToggleOff className={`edit-time-btn ${timerRunning ? 'disabled' : ''} ${showAddTimeForm ? 'edit-time-btn-form-visible' : ''}`} onClick={toggleAddTimeForm}/>
           <MdEdit className="edit-btn" onClick={editTask}/>
           <MdDelete className="delete-btn" onClick={deleteTask}/>
