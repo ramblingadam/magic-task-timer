@@ -1,9 +1,25 @@
 // Styles
 import './History.css'
+// Hooks
+import { useState } from 'react'
 
 
 const History = props => {
 
+  // ! STATE
+  const [historyTableHidden, setHistoryTableHidden] = useState(true)
+
+
+
+  // ! FUNCTIONS
+  //// when HISTORY clicked, show table
+  const handleHistoryClick = () => {
+    setHistoryTableHidden(!historyTableHidden)
+  }
+
+
+
+  // TODO REPLACE THIS WITH MORE ROBUST changeDateFormat FUNCTION, currently in HEATMAP
   //// Format Date
   const formatDate = (date, format) => {
     if(format === 'short') {
@@ -11,20 +27,24 @@ const History = props => {
     }
   }
 
+  //// ! VARIABLES / INIT
   const datesLength = props.task.dates.length
 
-  // !COMPONENT
+  // ! COMPONENT
   return (
     <div className='history-component-wrapper'>
-      <div className={`slide-able history-wrapper ${datesLength >= 6 ? 'scrollbar-y' : ''}`}>
-      {/* <div className={`slide-able history-wrapper`}> */}
-        <table className='history-table text-shadow'>
-          <thead>
+
+      <button onClick={handleHistoryClick} className='btn btn-history'>History</button>
+
+      <div className={`slide-able history-wrapper ${datesLength >= 6 ? 'scrollbar-y' : ''} ${historyTableHidden ? 'hidden' : ''}`}>
+      
+        <table className={`history-table text-shadow `}>
+          {/* <thead>
             <tr>
-              <td colSpan={2}>Task History</td>
+              <td colSpan={2} onClick={handleHistoryClick}>History</td>
             </tr>
-          </thead>
-          <tbody>
+          </thead> */}
+          <tbody className={``}>
             {props.task.dates.map(date => (
               <tr key={date.date} className='history-row' onClick={() => props.setDateInForm(date.date)}>
                 <td className='history-date'>

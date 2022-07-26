@@ -3,6 +3,9 @@
   border: 1px solid black;
   border-radius: 10px;
   padding: 5px;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
 }
 
 
@@ -52,5 +55,6 @@
   border-right: 1px dotted black;
 }
 
-
-
+.btn-history {
+  font-family: 'Share Tech Mono', monospace;
+}
