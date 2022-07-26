@@ -211,6 +211,18 @@ body {
   border-radius: 10px;
 }
 
+@media all and (max-width: 800px) {
+  .app {
+    margin: 0;
+
+    height: 100vh;
+
+    border: 0;
+    /* border-radius: 0 0 10px 10px; */
+    border-radius: 0;
+  }
+}
+
 
 /* ! SCROLLBARS */
 /* Works on Firefox */

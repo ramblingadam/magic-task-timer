@@ -62,7 +62,7 @@
   justify-content: space-between;
 
   text-transform: capitalize;
-  margin-bottom: 1rem;
+  /* margin-bottom: 1rem; */
 }
 
 /* Icon Buttons */
@@ -70,6 +70,7 @@
   display: flex;
 }
 
+.timeframe-toggle-btn,
 .edit-time-btn,
 .edit-btn,
 .delete-btn {
@@ -80,6 +81,7 @@
 
 
 /* Edit and Delete Icon Buttons Hover */
+.timeframe-toggle-btn:hover,
 .edit-time-btn:hover,
 .edit-btn:hover {
   fill: yellow;
@@ -112,12 +114,18 @@
 .task-info {
   display: flex;
   justify-content: center;
+  /* height: 8rem; */
 }
 
 /* Task Sorting Buttons */
 .sort-btns {
+  height: 100%;
+
   display: flex;
-  flex-flow: column;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+
+
   align-self: flex-start;
 }
 
@@ -125,12 +133,13 @@
   font-size: 2.5rem;
   filter: drop-shadow(-2px 2px 1px black);
   cursor: pointer;
+  transform: scale(1.4);
 
   transition: .3s;
 }
 
 .sort-btn:hover {
-  transform: scale(1.1);
+  transform: scale(1.5);
   fill: yellow;
   cursor: pointer;
 
@@ -176,10 +185,20 @@
 }
 
 .task-time:hover {
-  filter: drop-shadow(0 0 5px white);
-  text-shadow: 0 0 3px white;
+  filter: drop-shadow(0 0 2px white);
+  text-shadow: 0 0 1px white;
 
   transition: .3s;
+}
+
+.task-time:hover .timeframe-toggle-btn-big {
+  border: 2px solid white;
+
+  transition: .3s;
+}
+
+.task-time:active .timeframe-toggle-btn-big {
+  box-shadow: 0 0 5px white;
 }
 
 .task-time p {
@@ -187,31 +206,34 @@
   align-items: center;
 }
 
-.timeframe-toggle-icon {
+.timeframe-toggle-btn-big {
   display: flex;
   align-items: center;
   align-self: flex-start;
 
   margin-right: .3rem;
-
+  
   font-size: 2rem;
 
-  padding: .3rem 1rem .3rem 1rem;
   padding: .7rem;
 
   background: lightgreen;
   color: black;
 
-  /* border-radius: 10px 10px 0 0; */
   border-radius: 10px 0 0 10px;
-  /* border-top: 1px solid black;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
-  border-bottom: 1px solid black; */
+
   border: 2px solid black;
 
   box-shadow: var(--button-shine);
+}
 
+
+
+@media all and (max-width: 420px) {
+  .timeframe-toggle-btn-big {
+    font-size: 1.6rem;
+    padding: .7rem;
+  }
 }
 
 

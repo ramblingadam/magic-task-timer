@@ -296,7 +296,9 @@ const Task = (props) => {
       <div className='task-name text-shadow'>
         <p>{props.task.name}</p>
         <div className='icon-buttons'>
-          {/* <MdCalendarViewMonth /> */}
+          <div onClick={toggleTimeframe}>
+            {mainTimeIsGrandTotal ? <MdAllInclusive  className='timeframe-toggle-btn'/> :<MdCalendarToday  className='timeframe-toggle-btn'/>}
+          </div>
           <MdHistoryToggleOff className={`edit-time-btn ${timerRunning ? 'disabled' : ''} ${showAddTimeForm ? 'edit-time-btn-form-visible' : ''}`} onClick={toggleAddTimeForm}/>
           <MdEdit className="edit-btn" onClick={editTask}/>
           <MdDelete className="delete-btn" onClick={deleteTask}/>
@@ -315,8 +317,14 @@ const Task = (props) => {
 
           {/* <p className='timeframe-toggle-icon'>{mainTimeIsGrandTotal ? <MdAllInclusive /> :<MdCalendarToday />}{mainTimeIsGrandTotal ? '' : ''}</p> */}
 
-          <p className=''>
+{/* //! FAVORITE SO FAR */}
+          {/* <p className=''>
             <span className='timeframe-toggle-icon'>{mainTimeIsGrandTotal ? <MdAllInclusive /> :<MdCalendarToday />}</span>
+            {mainTimeIsGrandTotal ? convertTime(totalTime) : convertTime(props.task.dates[0].time + runningTime)}
+          </p> */}
+
+          <p className=''>
+            <span className='timeframe-toggle-btn-big'>{mainTimeIsGrandTotal ? <MdAllInclusive /> :<MdCalendarToday />}</span>
             {mainTimeIsGrandTotal ? convertTime(totalTime) : convertTime(props.task.dates[0].time + runningTime)}
           </p>
 
