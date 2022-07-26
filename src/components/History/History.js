@@ -8,7 +8,7 @@ const History = props => {
 
   // ! STATE
   const [historyTableHidden, setHistoryTableHidden] = useState(true)
-  const [historyTableRevealed, setHistoryTableRevealed] = useState(true)
+  const [historyTableRevealed, setHistoryTableRevealed] = useState(false)
   const [historyTableRevealAnimationRunning, setHistoryTableRevealAnimationRunning] = useState(false)
   const [historyTableHideAnimationRunning, setHistoryTableHideAnimationRunning] = useState(false)
 

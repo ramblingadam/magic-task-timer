@@ -40,7 +40,8 @@
   border: 2px solid black;
 
   box-shadow: var(--button-shine);
-  transition: .4s ease .4s;
+  transition: border .4s, width .4s ease .4s, border-radius .4s ease .4s;
+  /* transition: .4s ease .4s; */
 
   cursor: pointer;
 }
@@ -55,7 +56,13 @@
 
 .btn-history:hover {
   border: 2px solid white;
-  box-shadow: var(--button-shine);
+
+  transition: border .4s, width .4s ease .4s, border-radius .4s ease .4s;
+}
+.btn-history.expanded:hover {
+  border: 2px solid white;
+
+  transition: .4s;
 }
 
 .btn-history:active {

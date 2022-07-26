@@ -108,7 +108,7 @@
 
 
 
-/* // Task Info Area + Big Timer Button */
+/* ! Task Info Area + Big Timer Button */
 .task-info {
   display: flex;
   justify-content: center;
@@ -137,26 +137,36 @@
   transition: .3s;
 }
 
-/* Task Time Display */
+/*// Main Task Time Display */
+/* Task time and Task Buttons Flex */
 .task-time {
   flex: 1
 }
-
-@media all and (max-width: 500px) {
+/* @media all and (max-width: 500px) {
   .task-time {
     flex: 2;
   }
+} */
+@media all and (max-width: 570px) {
+  .task-time {
+    flex: 3;
+  }
 }
-
 .task-buttons {
   flex: 1;
 }
 
+/* Task Time & Today/Infinite Icons */
 .task-time {
   font-family: 'Share Tech Mono', monospace;
   display: flex;
+  /* flex-flow: column nowrap; */
   justify-content: center;
   align-items: center;
+
+  transition: .6s;
+
+  cursor: pointer;
 }
 
 @media all and (max-width: 420px) {
@@ -165,6 +175,48 @@
   }
 }
 
+.task-time:hover {
+  filter: drop-shadow(0 0 5px white);
+  text-shadow: 0 0 3px white;
+
+  transition: .3s;
+}
+
+.task-time p {
+  display: flex;
+  align-items: center;
+}
+
+.timeframe-toggle-icon {
+  display: flex;
+  align-items: center;
+  align-self: flex-start;
+
+  margin-right: .3rem;
+
+  font-size: 2rem;
+
+  padding: .3rem 1rem .3rem 1rem;
+  padding: .7rem;
+
+  background: lightgreen;
+  color: black;
+
+  /* border-radius: 10px 10px 0 0; */
+  border-radius: 10px 0 0 10px;
+  /* border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black; */
+  border: 2px solid black;
+
+  box-shadow: var(--button-shine);
+
+}
+
+
+
+/* Big Start/Stop Button */
 .task-buttons {
   font-family: 'Acme', sans-serif;
   display: flex;

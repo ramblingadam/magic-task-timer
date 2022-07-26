@@ -7,7 +7,7 @@ import Button from '../Button/Button'
 // Style
 import './Task.css'
 // Icons
-import { MdEdit, MdDelete, MdAvTimer, MdHistoryEdu, MdHistory, MdHistoryToggleOff, MdExpandLess, MdExpandMore, MdCalendarToday, MdCalendarViewMonth, MdPlayArrow, MdStop} from "react-icons/md"
+import { MdEdit, MdDelete, MdAvTimer, MdHistoryEdu, MdHistory, MdHistoryToggleOff, MdExpandLess, MdExpandMore, MdCalendarToday, MdCalendarViewMonth, MdPlayArrow, MdStop, MdAllInclusive} from "react-icons/md"
 import { FaCalendar } from 'react-icons/fa'
 
 const Task = (props) => {
@@ -19,7 +19,7 @@ const Task = (props) => {
   const [totalTime, setTotalTime] = useState((props.task.dates.reduce( (acc, date) => acc + date.time, 0)))
   const [startTime, setStartTime] = useState(null)
 
-  // TODO store current time of ticking timer only, NOT including previous time in task
+  // Store current time of ticking timer only, NOT including previous time in task
   const [runningTime, setRunningTime] = useState(0)
 
   // Add Time Form stuff
@@ -29,7 +29,8 @@ const Task = (props) => {
   // Track animation completion to determine reveal/revealed or hide/hidden class on task form
   const [addTimeFormAnimationDone, setAddTimeFormAnimationDone] = useState(true)
 
-  // TODO History View Stuff
+  // TODO day or total time displaye
+  const [mainTimeIsGrandTotal, setMainTimeIsGrandTotal] = useState(true)
 
 
   // TODO Window Resizing for tiem display
@@ -186,6 +187,9 @@ const Task = (props) => {
       console.log(runningTime)
       // If most recent date in dates array is today, pass in runningTime + the time already recorded for today. Otherwise,just pass in runningTime, so that a new date will be created with the value.
       updateTask(undefined, props.task.dates[0]?.date === getToday() ? runningTime + props.task.dates[0].time : runningTime)
+
+      // Reset running time to 0 when timer stopped.
+      setRunningTime(0)
     }
   }
 
@@ -279,6 +283,10 @@ const Task = (props) => {
     props.renderAll()
   }
 
+  // TODO TOGGLE timeframe from Day Total to Overall Total
+  const toggleTimeframe = () => {
+    setMainTimeIsGrandTotal(!mainTimeIsGrandTotal)
+  }
 
   //! Component
   return (
@@ -301,8 +309,21 @@ const Task = (props) => {
           <MdExpandLess className='sort-btn' onClick={props.task.sortPosition > 1 ? () => reorder('up') : null}/>
           <MdExpandMore className='sort-btn' onClick={props.task.sortPosition < JSON.parse(localStorage.getItem('tasks')).length ? () => reorder('down') : null}/>
          </div>
-        <div className='task-time text-shadow'>
-          <p>{convertTime(totalTime)}</p>
+         {/* //// TASK TIME */}
+        <div className='task-time text-shadow' onClick={toggleTimeframe}>
+          {/* <p className='timeframe-toggle-icon'>{mainTimeIsGrandTotal ? <MdAllInclusive /> :<MdCalendarToday />}{mainTimeIsGrandTotal ? 'Total' : 'Today'}</p> */}
+
+          {/* <p className='timeframe-toggle-icon'>{mainTimeIsGrandTotal ? <MdAllInclusive /> :<MdCalendarToday />}{mainTimeIsGrandTotal ? '' : ''}</p> */}
+
+          <p className=''>
+            <span className='timeframe-toggle-icon'>{mainTimeIsGrandTotal ? <MdAllInclusive /> :<MdCalendarToday />}</span>
+            {mainTimeIsGrandTotal ? convertTime(totalTime) : convertTime(props.task.dates[0].time + runningTime)}
+          </p>
+
+          {/* <span className='timeframe-toggle-icon'>{mainTimeIsGrandTotal ? <MdAllInclusive /> :<MdCalendarToday />}</span>
+          <p className=''>
+            {mainTimeIsGrandTotal ? convertTime(totalTime) : convertTime(props.task.dates[0].time + runningTime)}
+          </p> */}
         </div>
         <div className='task-buttons'>
           <button className={`task-btn btn ${timerRunning ? 'running' : ''}`} onClick={toggleTimer}>
