@@ -77,9 +77,8 @@
 }
 
 
-
+/* // Colors for tutorial text. */
 .yellow {
-  color: yellow;
   color: rgb(255, 255, 86);
 }
 
@@ -93,7 +92,7 @@
 
 
 
-
+/* // Flash animation on date input when a date is clicked on heatmap or history table */
 .flash {
   animation: flash 1s linear infinite;
 }

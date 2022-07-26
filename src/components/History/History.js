@@ -11,24 +11,35 @@ const History = props => {
     }
   }
 
+  const datesLength = props.task.dates.length
+
   // !COMPONENT
   return (
-    <div className={`slide-able history-wrapper`}>
-    <table className='history-table text-shadow'>
-      <tbody>
-        {props.task.dates.map(date => (
-          <tr key={date.date} className='history-row' onClick={() => props.setDateInForm(date.date)}>
-            <td className='history-date'>
-              {formatDate(date.date, 'short')}
-            </td>
-            <td className='history-time'>
-              {props.convertTime(date.time)}
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
+    <div className='history-component-wrapper'>
+      {/* <div className={`slide-able history-wrapper ${datesLength >= 6 ? 'scrollbar-y' : ''}`}> */}
+      <div className={`slide-able history-wrapper`}>
+        <table className='history-table text-shadow'>
+          <thead>
+            <tr>
+              <td colSpan={2}>Task History</td>
+            </tr>
+          </thead>
+          <tbody>
+            {props.task.dates.map(date => (
+              <tr key={date.date} className='history-row' onClick={() => props.setDateInForm(date.date)}>
+                <td className='history-date'>
+                  {formatDate(date.date, 'short')}
+                </td>
+                <td className='history-time'>
+                  {props.convertTime(date.time)}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+    </div>
   </div>
+
   )
 }
 

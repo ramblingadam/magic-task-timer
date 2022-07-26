@@ -45,19 +45,28 @@ const Task = (props) => {
 
   //! Helper Functions
   //// Converts ms into a a string with hrs, mins, secs
-  const convertTime = (ms, format) => {
-    let seconds = Math.round(ms / 1000)
-    let minutes = 0
-    let hours = 0
-    let days = 0
-    while(seconds >= 60) {
-      minutes += 1
-      seconds -= 60
-    }
-    while(minutes >= 60) {
-      hours += 1
-      minutes -= 60
-    }
+  const convertTime = (ms, format = 'long') => {
+    // let seconds = Math.round(ms / 1000)
+    // let minutes = 0
+    // let hours = 0
+    // let days = 0
+    // while(seconds >= 60) {
+    //   minutes += 1
+    //   seconds -= 60
+    // }
+    // while(minutes >= 60) {
+    //   hours += 1
+    //   minutes -= 60
+    // }
+
+    // TODO make it cheaper CPU wise
+    let seconds = Math.floor(ms / 1000)
+    let minutes = Math.floor(seconds / 60)
+    let hours = Math.floor(minutes / 60)
+
+    seconds = seconds % 60
+    minutes = minutes % 60
+
     // while(hours >= 24) {
     //   days += 1
     //   hours -= 24

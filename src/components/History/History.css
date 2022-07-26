@@ -1,20 +1,40 @@
+.history-component-wrapper {
+
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+
 .history-wrapper {
   display: flex;
   justify-content: center;
 
   font-family: 'Share Tech Mono', monospace;
 
-
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   max-height: 200px;
+
+
+}
+
+.scrollbar-y {
+  overflow-y: scroll;
 }
 
 .history-table {
   padding: 5px;
+  /* overflow-y: scroll;
+  max-height: 200px; */
 }
 
 .history-row {
   cursor: pointer;
+  border-bottom: 1px dotted black;
+}
+.history-row:last-of-type {
+  cursor: pointer;
+  border-bottom: none;
 }
 
 .history-row:hover {
@@ -27,5 +47,30 @@
   text-align: center;
 }
 
+.history-date {
+  border-right: 1px dotted black;
+}
+
+/* ! SCROLLBARS */
+/* Works on Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: orange grey;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 5px;
+}
+
+*::-webkit-scrollbar-track {
+  background: grey;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: blue;
+  border-radius: 20px;
+  border: 3px solid orange;
+}
 
 
