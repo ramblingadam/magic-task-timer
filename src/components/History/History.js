@@ -8,16 +8,38 @@ const History = props => {
 
   // ! STATE
   const [historyTableHidden, setHistoryTableHidden] = useState(true)
-
+  const [historyTableRevealed, setHistoryTableRevealed] = useState(true)
+  const [historyTableRevealAnimationRunning, setHistoryTableRevealAnimationRunning] = useState(false)
+  const [historyTableHideAnimationRunning, setHistoryTableHideAnimationRunning] = useState(false)
 
 
   // ! FUNCTIONS
-  //// when HISTORY clicked, show table
+  //// TODO when HISTORY clicked, show table
   const handleHistoryClick = () => {
-    setHistoryTableHidden(!historyTableHidden)
+    // If history table is open....
+    if(historyTableHidden) {
+      
+      
+      setHistoryTableRevealAnimationRunning(true)
+      setHistoryTableHidden(false)
+
+      setTimeout(() => {
+        setHistoryTableRevealAnimationRunning(false)
+        setHistoryTableRevealed(true)
+      }, 600)
+
+    // If history table is closed...
+    } else {
+
+      setHistoryTableHideAnimationRunning(true)
+      setHistoryTableRevealed(false)
+
+      setTimeout(() => {
+        setHistoryTableHideAnimationRunning(false)
+        setHistoryTableHidden(true)
+      }, 600)
+    }
   }
-
-
 
   // TODO REPLACE THIS WITH MORE ROBUST changeDateFormat FUNCTION, currently in HEATMAP
   //// Format Date
@@ -32,18 +54,13 @@ const History = props => {
 
   // ! COMPONENT
   return (
-    <div className='history-component-wrapper'>
+    <div className={`history-component-wrapper ${historyTableHidden ? 'compressed' : historyTableRevealed ? 'uncompressed' : historyTableRevealAnimationRunning ? 'uncompressing' : historyTableHideAnimationRunning ? 'compressing' : ''} ${datesLength >= 6 ? 'scrollbar-corner-radius' : ''}`}>
 
       <button onClick={handleHistoryClick} className='btn btn-history'>History</button>
 
-      <div className={`slide-able history-wrapper ${datesLength >= 6 ? 'scrollbar-y' : ''} ${historyTableHidden ? 'hidden' : ''}`}>
+      <div className={`slide-able history-wrapper ${datesLength >= 6 ? 'scrollbar-y' : ''} ${historyTableHidden ? 'hidden' : historyTableRevealed ? 'revealed' : historyTableRevealAnimationRunning ? 'reveal' : historyTableHideAnimationRunning ? 'collapse' : ''}`}>
       
         <table className={`history-table text-shadow `}>
-          {/* <thead>
-            <tr>
-              <td colSpan={2} onClick={handleHistoryClick}>History</td>
-            </tr>
-          </thead> */}
           <tbody className={``}>
             {props.task.dates.map(date => (
               <tr key={date.date} className='history-row' onClick={() => props.setDateInForm(date.date)}>
