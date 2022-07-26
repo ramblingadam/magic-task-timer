@@ -15,20 +15,48 @@ const Heatmap = props => {
   const yearArray = []
   const today = new Date()
   const oneYearAgoToday = new Date(new Date().setDate(new Date().getDate()-365))
+  const twoMonthsAgoToday = new Date(new Date().setDate(new Date().getDate()-60))
   const oneMonthAgoToday = new Date(new Date().setDate(new Date().getDate()-30))
   const oneWeekAgoToday = new Date(new Date().setDate(new Date().getDate()-7))
   
   const monthArray = [null, 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
   ///// parseDate converts a date into a string in the format of YYYY-MM-DD. Defaults to today if no argument given.
-  const parseDate = (date = Date.now()) => {
+  const parseDate = (date = Date.now(), format) => {
     const year = date.getFullYear()
     let month = date.getMonth() + 1
     month = month >= 10 ? month : '0' + month
     let day = date.getDate()
     day = day >= 10 ? day : '0' + day
-    const parsed = `${year}-${month}-${day}`
+
+    let parsed = null
+    if(!format) {
+      parsed = `${year}-${month}-${day}`
+    } else if(format ==='usa-long') {
+      parsed = `${month}/${day}/${year}`
+    }
     return parsed
+  }
+
+
+  // TODO convert YYYY-MM-DD to other date formats
+  const convertDateFormat = (dateString, format) => {
+    let result = dateString
+    const dateStringArray = dateString.split('-')
+    const yyyy = dateStringArray[0]
+    const mm = dateStringArray[1]
+    const dd = dateStringArray[2]
+
+    const yy = yyyy.slice(2)
+    const m = mm.startsWith('0') ? mm.slice(1) : mm
+    const d = dd.startsWith('0') ? dd.slice(1) : dd
+
+    if(format === 'M/D/YY') {
+      result = `${m}/${d}/${yy}`
+    } else if(format === 'D/M/YY') {
+      result = `${d}/${m}/${yy}`
+    }
+    return result
   }
 
   //// addDays takes in a date and a number of days, returning a new date object which is -days- after the original date.
@@ -47,24 +75,23 @@ const Heatmap = props => {
   //// Assemble year array, consisting of every day from 365 days ago to current date, to use to render heatmap grid
   // TODO buid heatmap by week....
   const buildHeatmapByWeek = () => {
-    // TODO 0 = sunday, 6 = saturday
-    const weekSplit = 0
+    // Set the start of the week. 0 = sunday, 6 = saturday
+    const weekStart = 0
+
+    // Initialize week subarray.
     let week = []
  
     // Add days to year array, starting from one year ago from today and ending at today.
     for(let date = oneYearAgoToday; areDatesEqual(date, addDays(today, 1)) === false; date = addDays(date, 1)) {
   
-
-
-      // TODO WEEK TESTING
-      if( date.getDay() === weekSplit) {
-        // console.log(date, 'we splitting here')
+      // If current day is the day specified as the start of the week, store the previous week subarray in yearArray and start a new week subarray.
+      if( date.getDay() === weekStart) {
         yearArray.push(week)
         week = []
       }
 
-      // TODO when at today, if we haven't yet pushed current week into year array based on split day, then push current week.
-      if(areDatesEqual(date, today) && date.getDay() !== weekSplit) {
+      // When loop reaches today, if we haven't yet pushed current week into year array based on weekStart, then push current week.
+      if(areDatesEqual(date, today) && date.getDay() !== weekStart) {
         yearArray.push(week)
       }
 
@@ -132,19 +159,26 @@ const Heatmap = props => {
             </div>
             {week.map(day => (
               
-              <div
-              className={`day-box day-box-hoverable ${day.time ? (
-                day.time < 600000 ? 'heat-low'
-                : day.time < 1800000 ? 'heat-lowmed'
-                : day.time < 3600000 ? 'heat-med'
-                : day.time < 7200000 ? 'heat-medhigh'
-                : 'heat-high')
-              : ''}`}
+            <div
+              className={`day-box day-box-hoverable
+                ${day.time ?
+                  (
+                  day.time < 600000 ? 'heat-low'
+                  : day.time < 1800000 ? 'heat-lowmed'
+                  : day.time < 3600000 ? 'heat-med'
+                  : day.time < 7200000 ? 'heat-medhigh'
+                  : 'heat-high'
+                  )
+                  : ''
+                }`
+              }
               key={day.date}
               onClick={() => props.setDateInForm(day.date)}
             >
-              <div className='day-popup'>
-                <p>{day.date}</p>
+              <div className={`day-popup
+                ${day.date < parseDate(twoMonthsAgoToday) ? 'hover-left' : ''}`
+                }>
+                <p>{convertDateFormat(day.date, 'M/D/YY')}</p>
                 {/* Only display time if time logged for that date. */}
                 <p>{day.time && props.convertTime(day.time)}</p>
               </div>

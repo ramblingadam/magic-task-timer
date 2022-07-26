@@ -64,6 +64,7 @@
 .day-box:hover > .day-popup {
   display: block;
 }
+
 .day-popup {
   display: none;
 
@@ -94,9 +95,20 @@
 
   position: absolute;
   bottom: -3px;
-  right: 5px;
+  right: 4px;
 }
 
+.day-popup.hover-left {
+  right: unset;
+  left: -5px;
+  /* bottom: -3px; */
+}
+
+.day-popup.day-popup.hover-left::after {
+  right: unset;
+  bottom: -3px;
+  left: 4px;
+}
 
 
 .heat-low {

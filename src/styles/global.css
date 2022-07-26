@@ -1,4 +1,4 @@
-/* // CSS RESET */
+/* ! CSS RESET */
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
@@ -51,7 +51,7 @@ table {
   box-sizing: border-box;
 }
 
-/* // Global + App.js Styles */
+/* ! Global + App.js Styles */
 /* Fonts */
 /* Share Tech Mono */
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
@@ -60,10 +60,27 @@ table {
 /* Acme */
 @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
 
+
+/* ! ROOT VARIABLES */
+:root {
+  /* // HTML Background Color */
+  --global-bg: linear-gradient(170deg, rgb(72, 253, 238), rgb(0,0,0), rgb(20,20,20));
+  --global-bg: linear-gradient(rgb(72, 253, 238), rgb(0, 30, 31), rgb(0, 0, 0));
+  /* // App Box */
+  /* --app-bg: rgba(50, 50, 50); */
+  /* --app-bg: linear-gradient(rgb(0, 66, 68), rgb(0, 204, 211), rgb(0, 247, 255)); */
+  --app-bg: linear-gradient(rgb(0, 66, 68), rgb(0, 247, 255));
+
+
+}
+
+
+
+/* //Global Styles */
 html {
   font-size: 62.5%;
   height: 100vh;
-  background: linear-gradient(170deg, rgb(30, 30, 30), rgb(0,0,0), rgb(20,20,20));
+  background: var(--global-bg);
   background-attachment: fixed;
 }
 
@@ -173,7 +190,7 @@ body {
   }
 }
 
-/* App.js */
+/*! App.js */
 .app {
   font-family: 'Acme';
 
@@ -181,9 +198,31 @@ body {
   margin: 1rem auto auto auto;
   padding: 1rem;
 
-  background:rgba(50, 50, 50);
+  background: var(--app-bg);
 
   border: 1px solid black;
   border-radius: 10px;
 }
 
+
+/* ! SCROLLBARS */
+/* Works on Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: orange grey;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 5px;
+}
+
+*::-webkit-scrollbar-track {
+  background: grey;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: blue;
+  border-radius: 20px;
+  border: 3px solid orange;
+}

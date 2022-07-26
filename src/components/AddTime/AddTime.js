@@ -67,7 +67,9 @@ const AddTime = (props) => {
     // Reset Time Form states on submission.
     setHoursToAdd('')
     setMinutesToAdd('')
-    setDateInForm('today')
+    
+    // TODO Set dat back to today by default.... maybe not have this?
+    // setDateInForm('today')
 
     // Hide form on entry of anything.
     // props.toggleAddTimeForm()

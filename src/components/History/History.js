@@ -16,8 +16,8 @@ const History = props => {
   // !COMPONENT
   return (
     <div className='history-component-wrapper'>
-      {/* <div className={`slide-able history-wrapper ${datesLength >= 6 ? 'scrollbar-y' : ''}`}> */}
-      <div className={`slide-able history-wrapper`}>
+      <div className={`slide-able history-wrapper ${datesLength >= 6 ? 'scrollbar-y' : ''}`}>
+      {/* <div className={`slide-able history-wrapper`}> */}
         <table className='history-table text-shadow'>
           <thead>
             <tr>
