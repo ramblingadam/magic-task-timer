@@ -30,6 +30,8 @@
 .task.running {
   /* background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab); */
   background: linear-gradient(90deg, #23a6d5, #23d5ab,#23a6d5);
+  /* //TODO transparent version....? */
+  /* background: linear-gradient(90deg, rgba(35, 165, 213, .5), rgba(35, 213, 171, .7),rgba(35, 165, 213,.5)); */
 	background-size: 400% 400%;
 
   box-shadow: 0 0 10px white, inset -2px 2px 10px 3px rgba(255,255,255, .5);
@@ -198,6 +200,8 @@ button {
   justify-content: center;
   align-items: center;
 
+  box-shadow: var(--button-shine);
+
   margin-right: .5rem;
 }
 
@@ -206,24 +210,27 @@ button {
 }
 
 .btn:hover {
-  box-shadow: 0 0 5px white;
+  /* box-shadow: 0 0 5px white, var(--button-shine); */
+  /* box-shadow: var(--button-shine); */
   border: 2px solid white;
   transition: .3s;
 }
 
-.task-btn.running:hover {
+/* .task-btn.running:hover {
   transition: .3s;
-}
+} */
 
 .btn:active {
-  box-shadow: 0 0 10px white;
-  transform: scale(.95);
-  transition: 0s;
+  box-shadow: var(--button-shine-click);
+  /* box-shadow: 0 0 0 white, inset -2px -2px 5px rgba(0,0,0,.9), inset 2px 2px 10px rgba(255,255,255, .9); */
+  /* box-shadow: 0 0 10px white; */
+  transition: box-shadow 0s;
 }
 .btn.running:active {
-  box-shadow: 0 0 10px white;
-  transform: scale(.95);
-  transition: 0s;
+  box-shadow: var(--button-shine-click);
+  /* box-shadow: 0 0 0 white, inset -2px -2px 5px rgba(0,0,0,.9), inset 2px 2px 10px rgba(255,255,255, .9); */
+  /* box-shadow: 0 0 10px white; */
+  transition: box-shadow 0s;
 }
 
 .disabled,

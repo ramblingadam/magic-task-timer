@@ -5,46 +5,29 @@
   --table-border-visible: 1px solid black;
   --table-border-hidden: 1px solid rgba(0,0,0,0);
 
-
-  /* border-left: var(--table-border-visible);
-  border-right: var(--table-border-visible);
-  border-bottom: var(--table-border-visible); */
-  /* border: 0 1px 1px 1px solid black; */
+  /* Wrapper Styles */
   border-radius: 10px;
   margin-top: 5px;
-  /* padding-bottom: 5px; */
+
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-
 }
 
-
+/* // Width transition when table being revealed */
 .compressed {
-  /* border: 0 1px 1px 1px solid rgba(0,0,0,0); */
   max-width: 12rem;
 
-  /* overflow: hidden; */
-
-  transition: .6s linear .2s;
+  transition: .6s ease;
 }
-
 .uncompressed {
-  /* border: 0 1px 1px 1px solid black; */
   max-width: 50rem;
 
-  /* overflow: hidden; */
-
-  transition: .6s;
+  transition: .6s ease;
 }
 
-
+/* !----------------*/
 /* ! HISTORY BUTTON */
-/* TODO TEMP */
-:root {
-  --delay: 1s;
-}
-
 .btn-history {
   font-family: 'Share Tech Mono', monospace;
   font-size: 2rem;
@@ -53,25 +36,34 @@
 
   background: lightgreen;
 
-  border-radius: 10px;
+  border-radius: 20px;
   border: 2px solid black;
 
-  transition: .4s;
+  box-shadow: var(--button-shine);
+  transition: .4s ease .4s;
 
   cursor: pointer;
 }
 
 .btn-history.expanded {
   width: 100%;
-  /* height: 100%; */
-
-  /* max-width: 30rem; */
 
   border-radius: 10px 10px 0 0;
 
   transition: .4s;
 }
 
+.btn-history:hover {
+  border: 2px solid white;
+  box-shadow: var(--button-shine);
+}
+
+.btn-history:active {
+  box-shadow: var(--button-shine-click);
+}
+
+
+/* !----------------*/
 /* ! HISTORY TABLE WRAPPER */
 .history-wrapper {
   display: flex;
@@ -81,14 +73,13 @@
 
   max-height: var(--history-table-height);
 
-
   border-radius: 0 0 10px 10px;
   border-left: var(--table-border-visible);
   border-right: var(--table-border-visible);
   border-bottom: var(--table-border-visible);
 }
 
-
+/* // Per conditional class statement in History.js, add scrollbar if more than 6 date entries. */
 .scrollbar-y {
   overflow-y: scroll;
 }
@@ -100,85 +91,60 @@
 
 
 .history-wrapper.collapse {
-  animation: hidetable .6s ease-in-out forwards;
+  animation: hidetable .6s ease forwards;
 }
 
 .history-wrapper.reveal {
-  animation: revealtable .6s ease-in-out forwards;
+  animation: revealtable .6s ease forwards;
 }
 
 .history-wrapper.revealed {
   max-height: var(--history-table-height);
-
-
-  
 }
 
 .history-wrapper.hidden {
   height: 0;
-  /* overflow: hidden; */
   max-height: 0;
   opacity: 0;
-
-  /* animation: none; */
-
-
 }
 
 @keyframes revealtable {
   0% {
-
     max-height: 0;
-    /* height: 0; */
     opacity: 0;
-
   }
-  33% {
-    max-height: var(--history-table-height);
-    /* height: auto; */
+  40% {
+    max-height: 0;
     opacity: 0;
-
   }
   100% {
     max-height: var(--history-table-height);
-    /* height: auto; */
     opacity: 1;
-
   }
 }
 
 @keyframes hidetable {
   0% {
     max-height: var(--history-table-height);
-    /* height: auto; */
     opacity: 1;
-
   }
-  33% {
-    max-height: var(--history-table-height);
-    /* height: auto; */
-    opacity: 0;
-
+  66% {
+    max-height: 0;
   }
   100% {
     max-height: 0;
-    /* height: 0; */
     opacity: 0;
-
-    
   }
 }
 
+/* !----------------*/
 /* ! HISTORY TABLE */
 .history-table {
   padding: 5px;
-  /* overflow-y: scroll;
-  max-height: 200px; */
 }
 
 .history-row {
   cursor: pointer;
-  /* border-bottom: 1px dotted black; */
   border-bottom: 1px dotted black;
 }
 .history-row:last-of-type {
@@ -186,7 +152,7 @@
 }
 
 .history-row:hover {
-  outline: 2px 0 2px 0 solid white;
+  outline: 2px solid white;
   background: rgba(255,255,255, .2)
 }
 

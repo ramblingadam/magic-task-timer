@@ -19,7 +19,6 @@ const History = props => {
     // If history table is open....
     if(historyTableHidden) {
       
-      
       setHistoryTableRevealAnimationRunning(true)
       setHistoryTableHidden(false)
 
