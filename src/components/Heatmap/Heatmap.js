@@ -86,6 +86,9 @@ const Heatmap = props => {
   
       // If current day is the day specified as the start of the week, store the previous week subarray in yearArray and start a new week subarray.
       if( date.getDay() === weekStart) {
+        // while(week.length < 7) {
+        //   week.unshift({date: null})
+        // }
         yearArray.push(week)
         week = []
       }
@@ -150,7 +153,7 @@ const Heatmap = props => {
           //// < 2 hours(7200000): medhigh
           //// > 2 hours(10800000): high
           <div
-            className='week-column'
+            className={`week-column ${i === 0 ? 'first-week' : ''}`}
             key={`Week ${i + 1}`}
           >
             <div className='day-box day-box-month'>
@@ -179,6 +182,7 @@ const Heatmap = props => {
                 ${day.date < parseDate(twoMonthsAgoToday) ? 'hover-left' : ''}`
                 }>
                 <p>{convertDateFormat(day.date, 'M/D/YY')}</p>
+                {/* <p>{day.day}</p> */}
                 {/* Only display time if time logged for that date. */}
                 <p>{day.time && props.convertTime(day.time)}</p>
               </div>

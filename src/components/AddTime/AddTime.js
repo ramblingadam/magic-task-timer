@@ -18,10 +18,13 @@ const AddTime = (props) => {
 
   const [dateInputFlash, setDateInputFlash] = useState(false)
 
+
+
   // Set today as the default date in the add time form.
   useEffect(() => {
-    setDateInForm('today')
-  }, [])
+    const today = props.getToday()
+    if(selectedDate > today || selectedDate === '') setDateInForm('today')
+  }, [selectedDate])
 
   // ! Helper Functions
   // // Manage Controlled Time and Date Inputs
@@ -98,8 +101,13 @@ const AddTime = (props) => {
   // ! Component
   return (
     <div className="add-time">
+
+      <div className='add-time-instructions'>
+          <p>Select a date from the heatmap or the history table.</p>
+          <p> Then, press <span className='red'>Subtract</span>, <span className='yellow'>Set</span>, or <span className='green'>Add</span> to adjust the time for the selected date.</p>
+        </div>
+        
       <form>
-        <p>Enter a number of hours and/or minutes, then press <span className='red'>Subtract</span>, <span className='yellow'>Set</span>, or <span className='green'>Add</span> to adjust the total time for the specified date.</p>
         <div>
           {/* Date Input */}
           <label className={`${dateInputFlash ? 'flash' : ''}`}><span className='heading'>Date</span>

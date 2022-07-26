@@ -112,7 +112,7 @@ const Header = ({renderAll}) => {
         
         <div className='header-buttons'>
           
-          <MdSettings />
+          <MdSettings className='settings-btn'/>
         </div>
       </div>
       <div className={`new-task-form slide-able ${showNewTaskForm ? 'reveal' : taskFormCollapsed ? 'hidden' : 'collapse'} `}>

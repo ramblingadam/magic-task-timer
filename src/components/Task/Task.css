@@ -80,7 +80,7 @@
 
 
 
-/* Edit and Delete Icon Buttons Hover */
+/* // Edit and Delete Icon Buttons Hover */
 .timeframe-toggle-btn:hover,
 .edit-time-btn:hover,
 .edit-btn:hover {
@@ -108,7 +108,22 @@
   transition: .3s;
 }
 
+/* //TODO Icon Tooltips??? Might be better to do with pure programminginstead of data-attributes. */
+.timeframe-toggle-btn-wrapper {
+  position: relative;
+}
 
+.timeframe-toggle-btn-wrapper:hover::after {
+  content: attr(data-tooltip);
+  font-size: 1rem;
+  padding: 5px;
+
+  background: tan;
+
+  /* white-space: nowrap; */
+
+  position: absolute;
+}
 
 /* ! Task Info Area + Big Timer Button */
 .task-info {

@@ -15,6 +15,11 @@
   transition: .1s ease .5s;
 }
 
+.add-time-instructions {
+  margin-bottom: 1rem;
+  font-size: 1.7rem;
+}
+
 .add-time p {
   text-align: center;
 }
@@ -38,17 +43,20 @@
 }
 
 #choose-date {
-  width: 100px;
+  width: 105px;
 }
 
 #add-hours,
 #add-minutes {
-  width: 100px;
+  width: 80px;
 }
 
 .heading {
   display: block;
   text-align: center;
+
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.7rem;
 }
 
 .time-edit-btn {

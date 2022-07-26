@@ -296,7 +296,8 @@ const Task = (props) => {
       <div className='task-name text-shadow'>
         <p>{props.task.name}</p>
         <div className='icon-buttons'>
-          <div onClick={toggleTimeframe}>
+          {/* //TODO  Data attributes as a tooltip??? May not want to keep it this way. */}
+          <div onClick={toggleTimeframe} className='timeframe-toggle-btn-wrapper' data-tooltip='Toggle display between today only and total time spent.'>
             {mainTimeIsGrandTotal ? <MdAllInclusive  className='timeframe-toggle-btn'/> :<MdCalendarToday  className='timeframe-toggle-btn'/>}
           </div>
           <MdHistoryToggleOff className={`edit-time-btn ${timerRunning ? 'disabled' : ''} ${showAddTimeForm ? 'edit-time-btn-form-visible' : ''}`} onClick={toggleAddTimeForm}/>
@@ -313,26 +314,15 @@ const Task = (props) => {
          </div>
          {/* //// TASK TIME */}
         <div className='task-time text-shadow' onClick={toggleTimeframe}>
-          {/* <p className='timeframe-toggle-icon'>{mainTimeIsGrandTotal ? <MdAllInclusive /> :<MdCalendarToday />}{mainTimeIsGrandTotal ? 'Total' : 'Today'}</p> */}
-
-          {/* <p className='timeframe-toggle-icon'>{mainTimeIsGrandTotal ? <MdAllInclusive /> :<MdCalendarToday />}{mainTimeIsGrandTotal ? '' : ''}</p> */}
-
-{/* //! FAVORITE SO FAR */}
-          {/* <p className=''>
-            <span className='timeframe-toggle-icon'>{mainTimeIsGrandTotal ? <MdAllInclusive /> :<MdCalendarToday />}</span>
-            {mainTimeIsGrandTotal ? convertTime(totalTime) : convertTime(props.task.dates[0].time + runningTime)}
-          </p> */}
-
+ 
+          {/* //TODO TOGGLE TIMEFRAME BIG BUTTON NEXT TO TIME */}
           <p className=''>
             <span className='timeframe-toggle-btn-big'>{mainTimeIsGrandTotal ? <MdAllInclusive /> :<MdCalendarToday />}</span>
             {mainTimeIsGrandTotal ? convertTime(totalTime) : convertTime(props.task.dates[0].time + runningTime)}
           </p>
 
-          {/* <span className='timeframe-toggle-icon'>{mainTimeIsGrandTotal ? <MdAllInclusive /> :<MdCalendarToday />}</span>
-          <p className=''>
-            {mainTimeIsGrandTotal ? convertTime(totalTime) : convertTime(props.task.dates[0].time + runningTime)}
-          </p> */}
         </div>
+
         <div className='task-buttons'>
           <button className={`task-btn btn ${timerRunning ? 'running' : ''}`} onClick={toggleTimer}>
             {timerRunning ? <MdStop /> : <MdPlayArrow />}
@@ -349,44 +339,11 @@ const Task = (props) => {
           convertTime={convertTime}
           getToday={getToday}
         />
-        {/*// TODO Include thisstuff in AddTime? */}
-        {/*//// Task History Calendar/Heatmap */}
-        {/* <div className={`slide-able history-wrapper`}>
-          <table className='history text-shadow'>
-            <tbody>
-              {props.task.dates.map(date => (
-                <tr>
-                  <td className='history-date'>
-                    {date.date}
-                  </td>
-                  <td className='history-time'>
-                    {convertTime(date.time)}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div> */}
+       
 
       </div>
 
-      {/* //// Task History Calendar/Heatmap */}
-      {/* <div className={`slide-able history-wrapper`}>
-        <table className='history text-shadow'>
-          <tbody>
-            {props.task.dates.map(date => (
-              <tr>
-                <td className='history-date'>
-                  {date.date}
-                </td>
-                <td className='history-time'>
-                  {convertTime(date.time)}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div> */}
+  
 
     </li>
   )

@@ -28,6 +28,17 @@
 }
 
 
+.week-column {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+}
+.week-column.first-week {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-end;
+}
+
 .day-box {
   width: 10px;
   height: 10px;
