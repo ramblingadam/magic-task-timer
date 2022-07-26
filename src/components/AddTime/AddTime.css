@@ -94,7 +94,7 @@
 
 /* // Flash animation on date input when a date is clicked on heatmap or history table */
 .flash {
-  animation: flash 1s linear infinite;
+  animation: flash .5s linear infinite;
 }
 
 @keyframes flash {

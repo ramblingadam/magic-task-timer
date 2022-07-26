@@ -106,7 +106,7 @@
 
 
 
-/* // Task Info Area + Timer Buttons */
+/* // Task Info Area + Big Timer Button */
 .task-info {
   display: flex;
   justify-content: center;
@@ -146,7 +146,6 @@
   }
 }
 
-/* .task-time, */
 .task-buttons {
   flex: 1;
 }
@@ -179,7 +178,7 @@ button {
 .btn {
   flex: 1;
   height: 4rem;
-  margin-right: .5rem;
+
 
   border: 2px solid black;
   border-radius: 50px;
@@ -198,6 +197,8 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  margin-right: .5rem;
 }
 
 .task-btn.running {

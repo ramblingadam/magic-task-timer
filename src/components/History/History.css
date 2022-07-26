@@ -1,10 +1,15 @@
-
-
-
+/* ! OVERALL COMPONENT WRAPPER */
 .history-component-wrapper {
+  /*// Component Variables */
+  --history-table-height: 200px;
+  --table-border-visible: 1px solid black;
+  --table-border-hidden: 1px solid rgba(0,0,0,0);
 
-  border: 1px solid rgba(0,0,0,0);
-  border: 1px solid black;
+
+  /* border-left: var(--table-border-visible);
+  border-right: var(--table-border-visible);
+  border-bottom: var(--table-border-visible); */
+  /* border: 0 1px 1px 1px solid black; */
   border-radius: 10px;
   margin-top: 5px;
   /* padding-bottom: 5px; */
@@ -12,79 +17,159 @@
   flex-flow: column nowrap;
   align-items: center;
 
-  --history-table-height: 200px;
 }
 
-.scrollbar-corner-radius {
-  border-radius: 10px 10px 0 10px;
-}
 
 .compressed {
-  border: 1px solid rgba(0,0,0,0);
+  /* border: 0 1px 1px 1px solid rgba(0,0,0,0); */
+  max-width: 12rem;
 
-  max-width: 10rem;
+  /* overflow: hidden; */
+
+  transition: .6s linear .2s;
 }
 
 .uncompressed {
-  border: 1px solid black;
-
+  /* border: 0 1px 1px 1px solid black; */
   max-width: 50rem;
-}
 
-.compressing {
-  animation: compress .6s ease 0s 1 both;
-}
+  /* overflow: hidden; */
 
-.uncompressing {
-  animation: uncompress .6s ease 0s 1 both;
-}
-
-@keyframes compress {
-  0% {
-    max-width: 50rem;
-    /* padding: 5px 0 0 0; */
-    border: 1px solid black;
-
-  }
-  100% {
-    max-width: 10rem;
-    /* padding: 5px 5px 5px 5px; */
-    border: 1px solid rgba(0,0,0,0);
-
-  }
-}
-
-@keyframes uncompress {
-  0% {
-    max-width: 10rem;
-    /* padding: 5px 5px 5px 5px; */
-    border: 1px solid rgba(0,0,0,0);
-
-  }
-  100% {
-    max-width: 50rem;
-    /* padding: 5px 0 0 0; */
-    border: 1px solid black;
-
-  }
+  transition: .6s;
 }
 
 
+/* ! HISTORY BUTTON */
+/* TODO TEMP */
+:root {
+  --delay: 1s;
+}
+
+.btn-history {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 2rem;
+
+  width: 10rem;
+
+  background: lightgreen;
+
+  border-radius: 10px;
+  border: 2px solid black;
+
+  transition: .4s;
+
+  cursor: pointer;
+}
+
+.btn-history.expanded {
+  width: 100%;
+  /* height: 100%; */
+
+  /* max-width: 30rem; */
+
+  border-radius: 10px 10px 0 0;
+
+  transition: .4s;
+}
+
+/* ! HISTORY TABLE WRAPPER */
 .history-wrapper {
   display: flex;
   justify-content: center;
 
   font-family: 'Share Tech Mono', monospace;
 
-  /* overflow-y: scroll; */
   max-height: var(--history-table-height);
 
+
+  border-radius: 0 0 10px 10px;
+  border-left: var(--table-border-visible);
+  border-right: var(--table-border-visible);
+  border-bottom: var(--table-border-visible);
 }
+
 
 .scrollbar-y {
   overflow-y: scroll;
 }
 
+/*// If scrollbar present, make lower-right border radius sharp to fit scrollbar. */
+.scrollbar-corner-radius {
+  border-radius: 0 0 0 10px;
+}
+
+
+.history-wrapper.collapse {
+  animation: hidetable .6s ease-in-out forwards;
+}
+
+.history-wrapper.reveal {
+  animation: revealtable .6s ease-in-out forwards;
+}
+
+.history-wrapper.revealed {
+  max-height: var(--history-table-height);
+
+
+  
+}
+
+.history-wrapper.hidden {
+  height: 0;
+  /* overflow: hidden; */
+  max-height: 0;
+  opacity: 0;
+
+  /* animation: none; */
+
+
+}
+
+@keyframes revealtable {
+  0% {
+
+    max-height: 0;
+    /* height: 0; */
+    opacity: 0;
+
+  }
+  33% {
+    max-height: var(--history-table-height);
+    /* height: auto; */
+    opacity: 0;
+
+  }
+  100% {
+    max-height: var(--history-table-height);
+    /* height: auto; */
+    opacity: 1;
+
+  }
+}
+
+@keyframes hidetable {
+  0% {
+    max-height: var(--history-table-height);
+    /* height: auto; */
+    opacity: 1;
+
+  }
+  33% {
+    max-height: var(--history-table-height);
+    /* height: auto; */
+    opacity: 0;
+
+  }
+  100% {
+    max-height: 0;
+    /* height: 0; */
+    opacity: 0;
+
+    
+  }
+}
+
+/* ! HISTORY TABLE */
 .history-table {
   padding: 5px;
   /* overflow-y: scroll;
@@ -94,7 +179,6 @@
 .history-row {
   cursor: pointer;
   /* border-bottom: 1px dotted black; */
-  border-top: 1px dotted black;
   border-bottom: 1px dotted black;
 }
 .history-row:last-of-type {
@@ -115,76 +199,4 @@
   border-right: 1px dotted black;
 }
 
-.btn-history {
-  font-family: 'Share Tech Mono', monospace;
-  background: lightgreen;
-  margin: 5px;
-  padding: 1px 8px 1px 8px;
-}
 
-.history-wrapper.collapse {
-  animation: hidetable .6s ease-in-out forwards;
-}
-
-.history-wrapper.reveal {
-  animation: revealtable .6s ease-in-out forwards;
-}
-
-.history-wrapper.revealed {
-  max-height: var(--history-table-height);
-}
-
-.history-wrapper.hidden {
-  height: 0;
-  overflow: hidden;
-  max-height: 0;
-  opacity: 0;
-
-  animation: none;
-
-
-}
-
-@keyframes revealtable {
-  0% {
-
-    max-height: 0;
-    /* height: 0; */
-    opacity: 0;
-
-  }
-  33% {
-    max-height: var(--history-table-height);
-    /* height: auto; */
-    opacity: 0;
-
-  
-
-  }
-  100% {
-    max-height: var(--history-table-height);
-    /* height: auto; */
-    opacity: 1;
-
-  }
-}
-
-@keyframes hidetable {
-  0% {
-    max-height: var(--history-table-height);
-    /* height: auto; */
-    opacity: 1;
-  }
-  33% {
-    max-height: var(--history-table-height);
-    /* height: auto; */
-    opacity: 0;
-  }
-  100% {
-    max-height: 0;
-    /* height: 0; */
-    opacity: 0;
-
-    
-  }
-}

@@ -24,8 +24,9 @@ const History = props => {
       setHistoryTableHidden(false)
 
       setTimeout(() => {
-        setHistoryTableRevealAnimationRunning(false)
         setHistoryTableRevealed(true)
+        setHistoryTableRevealAnimationRunning(false)
+        
       }, 600)
 
     // If history table is closed...
@@ -54,11 +55,21 @@ const History = props => {
 
   // ! COMPONENT
   return (
-    <div className={`history-component-wrapper ${historyTableHidden ? 'compressed' : historyTableRevealed ? 'uncompressed' : historyTableRevealAnimationRunning ? 'uncompressing' : historyTableHideAnimationRunning ? 'compressing' : ''} ${datesLength >= 6 ? 'scrollbar-corner-radius' : ''}`}>
+    <div className={`history-component-wrapper
+      ${historyTableHidden ? 'compressed'
+        : historyTableRevealed ? 'uncompressed'
+        : ''}`}
+    >
 
-      <button onClick={handleHistoryClick} className='btn btn-history'>History</button>
+      <button
+        onClick={handleHistoryClick}
+        className={`btn-history
+          ${historyTableRevealAnimationRunning || historyTableRevealed ? 'expanded' : ''}
+      `}>
+        History
+      </button>
 
-      <div className={`slide-able history-wrapper ${datesLength >= 6 ? 'scrollbar-y' : ''} ${historyTableHidden ? 'hidden' : historyTableRevealed ? 'revealed' : historyTableRevealAnimationRunning ? 'reveal' : historyTableHideAnimationRunning ? 'collapse' : ''}`}>
+      <div className={`history-wrapper ${datesLength >= 6 ? 'scrollbar-y scrollbar-corner-radius' : ''} ${historyTableHidden ? 'hidden' : historyTableRevealed ? 'revealed' : historyTableRevealAnimationRunning ? 'reveal' : historyTableHideAnimationRunning ? 'collapse' : ''}`}>
       
         <table className={`history-table text-shadow `}>
           <tbody className={``}>
