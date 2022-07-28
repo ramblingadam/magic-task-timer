@@ -8,7 +8,6 @@ import Button from '../Button/Button'
 import './Task.css'
 // Icons
 import { MdEdit, MdDelete, MdAvTimer, MdHistoryEdu, MdHistory, MdHistoryToggleOff, MdExpandLess, MdExpandMore, MdCalendarToday, MdCalendarViewMonth, MdPlayArrow, MdStop, MdAllInclusive} from "react-icons/md"
-import { FaCalendar } from 'react-icons/fa'
 
 const Task = (props) => {
 
@@ -20,7 +19,7 @@ const Task = (props) => {
 
   // Initialize timer start time to null. Changes every 1 second when timer running.
   const [startTime, setStartTime] = useState(null)
-  
+
   // Store current time of ticking timer only, NOT including previous time in task
   const [runningTime, setRunningTime] = useState(0)
 
@@ -327,7 +326,16 @@ const Task = (props) => {
 
           <p className=''>
             <span className='timeframe-toggle-btn-big'>{mainTimeIsGrandTotal ? <MdAllInclusive className='icon-shadow'/> :<MdCalendarToday className='icon-shadow'/>}</span>
-            {mainTimeIsGrandTotal ? convertTime(totalTime) : convertTime(props.task.dates[0].time + runningTime)}
+            {mainTimeIsGrandTotal // If timeframe set to Grand Total,
+              // Display grand total time.
+              ? convertTime(totalTime) 
+              // else(timeframe set to Today), check if the current task has a date entry at all, AND if task's most recent entry is from today.
+              : props.task.dates[0] && props.task.dates[0].date === getToday() 
+                //If both are true, then render the time as most recent entry + runningTime of timer.
+                ? convertTime(props.task.dates[0].time + runningTime)
+                // Else(Task has no dates logged, or most recent logged date is not today), display runningTime only. Time will be saved as today once the timer is stopped.
+                : convertTime(runningTime)
+            }
           </p>
 
         </div>
@@ -337,7 +345,9 @@ const Task = (props) => {
             {timerRunning ? <MdStop /> : <MdPlayArrow />}
           </button>
         </div>
+
       </div>
+      {/* //// End Task Info: Sort Buttons, Time Display, Start Button */}
 
       {/*//// Add Time Form  */}
       <div className={`slide-able ${showAddTimeForm && !addTimeFormAnimationDone ? 'reveal' : showAddTimeForm ? 'revealed' : addTimeFormCollapsed || (!showAddTimeForm && addTimeFormAnimationDone) ? 'hidden' : 'collapse'}`}>

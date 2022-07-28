@@ -75,8 +75,10 @@ table {
 
   /* // 3D Button Shine */
   --button-shine: inset 2px 2px 10px rgba(255,255,255, .9), inset -2px -2px 5px rgba(0,0,0,.9);
-  --button-shine-click: inset -2px -2px 5px rgba(0,0,0,.9), inset 2px 2px 10px rgba(255,255,255, .9);
+  /* --button-shine-click: inset -2px -2px 5px rgba(0,0,0,.9), inset 2px 2px 10px rgba(255,255,255, .9); */
   --button-shine-click: 0 0 15px white;
+  --button-shine-click: 0 0 15px white;
+  --button-shine-invis: inset 2px 2px 10px rgba(255,255,255, 0), inset -2px -2px 5px rgba(0,0,0,0);
 }
 
 
