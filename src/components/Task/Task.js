@@ -1,6 +1,5 @@
 // Hooks
-import { useState } from "react"
-import { useEffect } from "react"
+import { useState, useEffect } from "react"
 // Components
 import AddTime from "../AddTime/AddTime"
 import Button from '../Button/Button'
@@ -230,7 +229,10 @@ const Task = (props) => {
   }
 
 
-  //// Show "Add/Subtract/Set" Time Form
+  //// Show "Add/Subtract/Set" Time Form/Heatmap/History Table
+   // TODO change selecteddate in addtime form to today whenever form opened
+
+ 
   const toggleAddTimeForm = () => {
     setAddTimeFormAnimationDone(false)
     // TODO if this line is uncommented, it will ignore clicks on the button if form is open- old behavior, when time form auto-hides and can't be opened while timer running.
@@ -292,6 +294,10 @@ const Task = (props) => {
     setMainTimeIsGrandTotal(!mainTimeIsGrandTotal)
   }
 
+
+
+ 
+
   //! Component
   return (
     <li className={`task ${timerRunning ? 'running' : ''}`}>
@@ -304,9 +310,9 @@ const Task = (props) => {
           {/* <div onClick={toggleTimeframe} className='timeframe-toggle-btn-wrapper' data-tooltip='Toggle display between today only and total time spent.'>
             {mainTimeIsGrandTotal ? <MdAllInclusive  className='timeframe-toggle-btn'/> :<MdCalendarToday  className='timeframe-toggle-btn'/>}
           </div> */}
-          {/* //TODO Disables opening time form when timer running. Maybe have this an option in settings?  */}
+          {/* //TODO This version disables hisory button when timer running.  */}
           {/* <MdHistoryToggleOff className={`edit-time-btn ${timerRunning ? 'disabled' : ''} ${showAddTimeForm ? 'edit-time-btn-form-visible' : ''}`} onClick={toggleAddTimeForm}/> */}
-          {/* //TODO  this version does not disable button when form/heatmap open.*/}
+          {/* //TODO  this version does not disable button when timer running. */}
           <MdHistoryToggleOff className={`edit-time-btn ${showAddTimeForm ? 'edit-time-btn-form-visible' : ''}`} onClick={toggleAddTimeForm}/>
 
           {/*  */}

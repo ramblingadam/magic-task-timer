@@ -231,7 +231,7 @@
   box-shadow: 0 0 5px white;
 } */
 .task-time:active {
-  box-shadow: 0 0 5px white;
+  box-shadow: var(--button-shine-click);
 }
 
 .task-time p {
