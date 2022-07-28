@@ -177,8 +177,10 @@ const Task = (props) => {
     if(!timerRunning) {
       setTimerRunning(true)     
       setStartTime(Date.now())
+
+      // TODO Maybe make this an option? Kinda like the heatmap staying open. Adding/adjusting time, even for current day while timer is running, doesn't seem to cause any problems.
       // If form is currently out, toggle it back to closed.
-      if(showAddTimeForm) toggleAddTimeForm()
+      // if(showAddTimeForm) toggleAddTimeForm()
 
     // If Timer IS currently running:
     } else { 
@@ -231,7 +233,9 @@ const Task = (props) => {
   //// Show "Add/Subtract/Set" Time Form
   const toggleAddTimeForm = () => {
     setAddTimeFormAnimationDone(false)
-    if(timerRunning) return
+    // TODO if this line is uncommented, it will ignore clicks on the button if form is open- old behavior, when time form auto-hides and can't be opened while timer running.
+    // if(timerRunning) return
+
     if(addTimeFormCollapsed) {
       setTimeout(() => {
         // Trigger swapping hide animation CSS class with hidden static CSS class.
@@ -300,13 +304,18 @@ const Task = (props) => {
           {/* <div onClick={toggleTimeframe} className='timeframe-toggle-btn-wrapper' data-tooltip='Toggle display between today only and total time spent.'>
             {mainTimeIsGrandTotal ? <MdAllInclusive  className='timeframe-toggle-btn'/> :<MdCalendarToday  className='timeframe-toggle-btn'/>}
           </div> */}
-          <MdHistoryToggleOff className={`edit-time-btn ${timerRunning ? 'disabled' : ''} ${showAddTimeForm ? 'edit-time-btn-form-visible' : ''}`} onClick={toggleAddTimeForm}/>
+          {/* //TODO Disables opening time form when timer running. Maybe have this an option in settings?  */}
+          {/* <MdHistoryToggleOff className={`edit-time-btn ${timerRunning ? 'disabled' : ''} ${showAddTimeForm ? 'edit-time-btn-form-visible' : ''}`} onClick={toggleAddTimeForm}/> */}
+          {/* //TODO  this version does not disable button when form/heatmap open.*/}
+          <MdHistoryToggleOff className={`edit-time-btn ${showAddTimeForm ? 'edit-time-btn-form-visible' : ''}`} onClick={toggleAddTimeForm}/>
+
+          {/*  */}
           <MdEdit className="edit-btn" onClick={editTask}/>
           <MdDelete className="delete-btn" onClick={deleteTask}/>
         </div>
       </div>
 
-      {/*//// Task Info: Sort Buttons, Time Display, Start Button  */}
+      {/*//// Task Info: Sort Buttons, Time Display, Big Start Timer Button */}
       <div className='task-info'>
 
         {/* //// SORT BUTTONS */}
@@ -340,6 +349,7 @@ const Task = (props) => {
 
         </div>
 
+        {/* Big Start Time Button */}
         <div className='task-buttons'>
           <button className={`task-btn btn ${timerRunning ? 'running' : ''}`} onClick={toggleTimer}>
             {timerRunning ? <MdStop /> : <MdPlayArrow />}
