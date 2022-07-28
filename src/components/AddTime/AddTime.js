@@ -46,9 +46,12 @@ const AddTime = (props) => {
   
 
   // // Subtract, Set, or Add the time entered into the time form
-  const updateTime = (operation, date) => {
+  const updateTime = (operation) => {
+    console.log('SOMETHING pushed')
     const totalTimeInput = ((hoursToAdd * 60) + minutesToAdd) * 60000
-    if(totalTimeInput === 0) return
+
+    if(operation !== 'delete' && totalTimeInput === 0) return
+    
     const selectedDateOldTime = props.task.dates[props.task.dates.findIndex(date => date.date === selectedDate)]?.time
     console.log('prev time', selectedDateOldTime, 'time input', totalTimeInput, 'new total', selectedDateOldTime + totalTimeInput)
     // console.log(selectedDateOldTime)
@@ -71,6 +74,18 @@ const AddTime = (props) => {
         }
       } else props.updateTask(undefined, totalTimeInput, selectedDate)
     }
+    if(operation === 'delete') {
+      console.log('delete pushed')
+      // If a time entry exists for selected date, ask for confirmation, then delete.
+      if(selectedDateOldTime) {
+        if(window.confirm(`Really DELETE all time spent on '${props.task.name}' for the date ${selectedDate}? This is not reversible.`)) {
+          props.updateTask(undefined, -1, selectedDate)
+        }
+      }
+    }
+
+
+
     // Reset Time Form states on submission.
     setHoursToAdd('')
     setMinutesToAdd('')
@@ -129,8 +144,11 @@ const AddTime = (props) => {
         </div>
         <div className='add-subtract-btns'>
           <MdRemoveCircle id='subtract-time' className='time-edit-btn' onClick={() => updateTime('subtract')}/>
-          <p id='set-time' className='time-edit-btn yellow'onClick={() => updateTime('set', selectedDate)}>SET</p>
+          <p id='set-time' className='time-edit-btn yellow'onClick={() => updateTime('set')}>SET</p>
           <MdAddCircle id='add-time' className='time-edit-btn' onClick={() => updateTime('add')}/>
+        </div>
+        <div>
+          <p id='delete-time' className='time-edit-btn' onClick={() => updateTime('delete')}>DELETE</p>
         </div>
       </form>
 

@@ -116,33 +116,41 @@ const Task = (props) => {
     // Copy current task. We will modify this copy with the requested changes before injecting it back into the database.
     const updatedTask = props.task
     
+
+
     // If a valid time passed in, update time for selected date OR today.
     // In other words- if ONLY a new name is passed in, skip the following and just update the name.
-    if(time && time > 0) {
+    if(time) {
     
-
-      // TODO ADD TIME TO CURRENT DAY
       const today = getToday()
-  
 
       // If no date passed in, default to today
       if(!date) date = today
 
+      // Grab index of the current date entry within the current task.
       const currentDateIndex = updatedTask.dates.findIndex(dateEntry => dateEntry.date === date)
-      if(currentDateIndex === -1) {
-        updatedTask.dates.push({date: date, time: time})
-      } else {
-        updatedTask.dates[currentDateIndex].time = time
-      }
+      // If time passed in greater than 0, update time for selected dates entry. Otherwise, if time passed in is explicitly -1, then user pressed Delete button- so delete the dateentry for the selected date.
+      if(time > 0) {
+        if(currentDateIndex === -1) {
+          updatedTask.dates.push({date: date, time: time})
+        } else {
+          updatedTask.dates[currentDateIndex].time = time
+        }
+      } else if(time === -1) { //! If time passed in is -1, then DELETE that date.
+        updatedTask.dates.splice(currentDateIndex, 1)
+      } 
     }
+
     // Only update name if a name is passed in.
     if(name) updatedTask.name = name
 
     // Sort all dates by most recent.
     updatedTask.dates.sort( (a, b) => b.date.localeCompare(a.date))
 
+    // Update totalTime state to reflect any changes.
     setTotalTime(props.task.dates.reduce( (acc, date) => acc + date.time, 0))
-    // Grab tasks from localStorage, and replace current task with updatedTask.
+
+    // Grab tasks object from localStorage, and replace current task with updatedTask.
     const tasks = JSON.parse(localStorage.getItem('tasks'))
     tasks.splice(tasks.findIndex(task => task.id === props.task.id), 1, updatedTask)
     localStorage.setItem('tasks', JSON.stringify(tasks))
