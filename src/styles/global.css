@@ -79,6 +79,19 @@ table {
   --button-shine-click: 0 0 15px white;
   --button-shine-click: 0 0 15px white;
   --button-shine-invis: inset 2px 2px 10px rgba(255,255,255, 0), inset -2px -2px 5px rgba(0,0,0,0);
+
+  /* // Button Colors */
+  --button-green: lightgreen;
+  --button-blue: rgb(144, 216, 238);
+  --button-transparent: rgba(19, 208, 255, 0.2);
+  /* --button-transparent: rgb(144, 216, 238); */
+
+
+  /* // Scrollbar Colors */
+  --scrollbar-thumb: rgb(144, 216, 238);
+  --scrollbar-track: grey;
+  --scrollbar-thumb-border: black;
+
 }
 
 
@@ -121,7 +134,7 @@ body {
 
 .hidden {
   height: 0;
-  overflow: hidden;
+  /* overflow: hidden; */
   max-height: 0;
   opacity: 0;
   animation: none;
@@ -231,7 +244,7 @@ body {
 /* Works on Firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: orange grey;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
 }
 
 /* Works on Chrome, Edge, and Safari */
@@ -240,11 +253,11 @@ body {
 }
 
 *::-webkit-scrollbar-track {
-  background: grey;
+  background: var(--scrollbar-track);
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: blue;
+  background-color: var(--scrollbar-thumb);
   border-radius: 20px;
-  border: 3px solid orange;
+  /* border: 1px solid var(--scrollbar-thumb-border); */
 }

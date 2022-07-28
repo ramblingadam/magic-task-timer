@@ -8,6 +8,7 @@
   /* Wrapper Styles */
   border-radius: 10px;
   margin-top: 5px;
+  /* margin-bottom: 1rem; */
 
   display: flex;
   flex-flow: column nowrap;
@@ -34,14 +35,14 @@
 
   width: 10rem;
 
-  background: lightgreen;
+  /* background: lightgreen; */
+  background: var(--button-blue);
 
   border-radius: 20px;
   border: 2px solid black;
 
   box-shadow: var(--button-shine);
   transition: border .4s, width .4s ease .4s, border-radius .4s ease .4s;
-  /* transition: .4s ease .4s; */
 
   cursor: pointer;
 }

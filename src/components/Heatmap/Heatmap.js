@@ -156,7 +156,7 @@ const Heatmap = props => {
             className={`week-column ${i === 0 ? 'first-week' : ''}`}
             key={`Week ${i + 1}`}
           >
-            <div className='day-box day-box-month'>
+            <div className='day-box day-box-month text-shadow'>
               
               {week.find(day => day.date.slice(8) === '01') && monthArray[+(week.find(day => day.date.slice(8) === '01').date.slice(5, 7))]}
             </div>
@@ -191,14 +191,14 @@ const Heatmap = props => {
           </div>
         ))}
           <div className='week-column'>
-            <div className='day-box day-box-text'></div>
-            <div className='day-box day-box-text'></div>
-            <div className='day-box day-box-text'>Mon</div>
-            <div className='day-box day-box-text'></div>
-            <div className='day-box day-box-text'>Wed</div>
-            <div className='day-box day-box-text'></div>
-            <div className='day-box day-box-text'>Fri</div>
-            <div className='day-box day-box-text'></div>
+            <div className='day-box day-box-text text-shadow'></div>
+            <div className='day-box day-box-text text-shadow'></div>
+            <div className='day-box day-box-text text-shadow'>Mon</div>
+            <div className='day-box day-box-text text-shadow'></div>
+            <div className='day-box day-box-text text-shadow'>Wed</div>
+            <div className='day-box day-box-text text-shadow'></div>
+            <div className='day-box day-box-text text-shadow'>Fri</div>
+            <div className='day-box day-box-text text-shadow'></div>
           </div>
         
 

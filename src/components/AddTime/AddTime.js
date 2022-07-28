@@ -11,16 +11,17 @@ import { MdAddCircle, MdRemoveCircle } from "react-icons/md"
 const AddTime = (props) => {
 
   // ! Pieces Of State
+  // Tracks values in hours and minutes input box.
   const [hoursToAdd, setHoursToAdd] = useState('')
   const [minutesToAdd, setMinutesToAdd] = useState('')
+  // Tracks the date in the date input box..
   const [selectedDate, setSelectedDate] = useState('')
   const [today, setToday] = useState('')
-
+  // Causes the date input to flash whenever the selected date is updated via clicking on heatmap or the history table.
   const [dateInputFlash, setDateInputFlash] = useState(false)
 
 
-
-  // Set today as the default date in the add time form.
+  // Set today as the default date in the add time form. In addition, if a future date is selected, automatically change the selection to today.
   useEffect(() => {
     const today = props.getToday()
     if(selectedDate > today || selectedDate === '') setDateInForm('today')
@@ -47,14 +48,13 @@ const AddTime = (props) => {
 
   // // Subtract, Set, or Add the time entered into the time form
   const updateTime = (operation) => {
-    console.log('SOMETHING pushed')
     const totalTimeInput = ((hoursToAdd * 60) + minutesToAdd) * 60000
 
     if(operation !== 'delete' && totalTimeInput === 0) return
-    
+
+    // Grab the currently stored time for the selected date, if it exists.
     const selectedDateOldTime = props.task.dates[props.task.dates.findIndex(date => date.date === selectedDate)]?.time
-    console.log('prev time', selectedDateOldTime, 'time input', totalTimeInput, 'new total', selectedDateOldTime + totalTimeInput)
-    // console.log(selectedDateOldTime)
+    // console.log('prev time', selectedDateOldTime, 'time input', totalTimeInput, 'new total', selectedDateOldTime + totalTimeInput)
 
     if(operation === 'add') {
       // If selected date exists, add value to old value. Otherwise, initialize with entered time.
@@ -75,16 +75,13 @@ const AddTime = (props) => {
       } else props.updateTask(undefined, totalTimeInput, selectedDate)
     }
     if(operation === 'delete') {
-      console.log('delete pushed')
-      // If a time entry exists for selected date, ask for confirmation, then delete.
+      // If a time entry exists for selected date, ask for confirmation, then delete. If no time entry for the selected date, then nothing happens.
       if(selectedDateOldTime) {
         if(window.confirm(`Really DELETE all time spent on '${props.task.name}' for the date ${selectedDate}? This is not reversible.`)) {
           props.updateTask(undefined, -1, selectedDate)
         }
       }
     }
-
-
 
     // Reset Time Form states on submission.
     setHoursToAdd('')
@@ -93,7 +90,7 @@ const AddTime = (props) => {
     // TODO Set dat back to today by default.... maybe not have this?
     // setDateInForm('today')
 
-    // Hide form on entry of anything.
+    // Auto-Hide form on entry of anything.
     // props.toggleAddTimeForm()
   }
 
@@ -129,25 +126,26 @@ const AddTime = (props) => {
         
       <form>
         <div>
-          {/* Date Input */}
+          {/*//// Date Input */}
           <label className={`${dateInputFlash ? 'flash' : ''}`}><span className='heading'>Date</span>
             <input type="date" id="choose-date"  value={selectedDate} max={today} onChange={(e) => handleTimeChange('date', e)}/>
           </label>
-          {/* Hours Input */}
+          {/*//// Hours Input */}
           <label><span className='heading'>Hours</span>
             <input type="number" id="add-hours" value={hoursToAdd} onChange={(e) => handleTimeChange('hours', e)}/>
           </label>
-          {/* Minutes Input */}
+          {/*//// Minutes Input */}
           <label><span className='heading'>Minutes</span>
             <input type="number" id="add-minutes" value={minutesToAdd} onChange={(e) => handleTimeChange('mins', e)}/>
           </label>
         </div>
+        {/*//// Subtract, Set, Add, and Delete Buttons */}
         <div className='add-subtract-btns'>
           <MdRemoveCircle id='subtract-time' className='time-edit-btn' onClick={() => updateTime('subtract')}/>
           <p id='set-time' className='time-edit-btn yellow'onClick={() => updateTime('set')}>SET</p>
           <MdAddCircle id='add-time' className='time-edit-btn' onClick={() => updateTime('add')}/>
         </div>
-        <div>
+        <div className='delete-time-btn-wrapper'>
           <p id='delete-time' className='time-edit-btn' onClick={() => updateTime('delete')}>DELETE</p>
         </div>
       </form>

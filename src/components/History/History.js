@@ -68,20 +68,23 @@ const History = props => {
         History
       </button>
 
-      <div className={`history-wrapper ${datesLength >= 6 ? 'scrollbar-y scrollbar-corner-radius' : ''} ${historyTableHidden ? 'hidden' : historyTableRevealed ? 'revealed' : historyTableRevealAnimationRunning ? 'reveal' : historyTableHideAnimationRunning ? 'collapse' : ''}`}>
+      <div className={`history-wrapper ${datesLength > 6 ? 'scrollbar-y scrollbar-corner-radius' : ''} ${historyTableHidden ? 'hidden' : historyTableRevealed ? 'revealed' : historyTableRevealAnimationRunning ? 'reveal' : historyTableHideAnimationRunning ? 'collapse' : ''}`}>
       
         <table className={`history-table text-shadow `}>
-          <tbody className={``}>
-            {props.task.dates.map(date => (
-              <tr key={date.date} className='history-row' onClick={() => props.setDateInForm(date.date)}>
-                <td className='history-date'>
-                  {formatDate(date.date, 'short')}
-                </td>
-                <td className='history-time'>
-                  {props.convertTime(date.time)}
-                </td>
-              </tr>
-            ))}
+          <tbody>
+            {props.task.dates.length 
+              ? props.task.dates.map(date => (
+                <tr key={date.date} className='history-row' onClick={() => props.setDateInForm(date.date)}>
+                  <td className='history-date'>
+                    {formatDate(date.date, 'short')}
+                  </td>
+                  <td className='history-time'>
+                    {props.convertTime(date.time)}
+                  </td>
+                </tr>
+              ))
+              : <tr><td>No time recorded.</td></tr>
+            }
           </tbody>
         </table>
     </div>

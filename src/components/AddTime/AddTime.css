@@ -71,6 +71,9 @@
 #subtract-time {
   fill: lightcoral;
 }
+#delete-time {
+  color: lightcoral;
+}
 
 .time-edit-btn:hover {
   transform: scale(1.1);
