@@ -70,7 +70,7 @@
   display: flex;
 }
 
-.timeframe-toggle-btn,
+/* .timeframe-toggle-btn, */
 .edit-time-btn,
 .edit-btn,
 .delete-btn {
@@ -81,7 +81,7 @@
 
 
 /* // Edit and Delete Icon Buttons Hover */
-.timeframe-toggle-btn:hover,
+/* .timeframe-toggle-btn:hover, */
 .edit-time-btn:hover,
 .edit-btn:hover {
   fill: yellow;
@@ -109,26 +109,27 @@
 }
 
 /* //TODO Icon Tooltips??? Might be better to do with pure programminginstead of data-attributes. */
-.timeframe-toggle-btn-wrapper {
+/* .timeframe-toggle-btn-wrapper {
   position: relative;
-}
+} */
 
 .timeframe-toggle-btn-wrapper:hover::after {
-  content: attr(data-tooltip);
-  font-size: 1rem;
-  padding: 5px;
+  /* content: attr(data-tooltip); */
+  /* font-size: 1rem; */
+  /* padding: 5px; */
 
-  background: tan;
+  /* background: tan; */
 
   /* white-space: nowrap; */
 
-  position: absolute;
+  /* position: absolute; */
 }
 
-/* ! Task Info Area + Big Timer Button */
+/* ! Task Info Area: Sort Buttons, Live Timer, Big Timer Button */
 .task-info {
   display: flex;
   justify-content: center;
+  align-items: center;
   /* height: 8rem; */
 }
 
@@ -139,7 +140,6 @@
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-between;
-
 
   align-self: flex-start;
 }
@@ -179,6 +179,7 @@
 .task-buttons {
   flex: 1;
 }
+/* --End Task time and Task Buttons Flex */
 
 /* Task Time & Today/Infinite Icons */
 .task-time {
@@ -187,6 +188,11 @@
   /* flex-flow: column nowrap; */
   justify-content: center;
   align-items: center;
+
+  border: 2px solid rgba(0,0,0,0);
+  border-radius: 50px;
+
+  height: 4rem;
 
   transition: .6s;
 
@@ -200,19 +206,30 @@
 }
 
 .task-time:hover {
-  filter: drop-shadow(0 0 2px white);
-  text-shadow: 0 0 1px white;
+  /* filter: drop-shadow(0 0 2px white); */
+  /* text-shadow: 0 0 1px white; */
+  box-shadow: var(--button-shine);
+  background: rgba(19, 208, 255, 0.2);
+  border: 2px solid rgba(0,0,0,.5);
 
   transition: .3s;
 }
 
-.task-time:hover .timeframe-toggle-btn-big {
+/* .task-time:hover .timeframe-toggle-btn-big {
   border: 2px solid white;
 
   transition: .3s;
+} */
+.task-time:hover .timeframe-toggle-btn-big {
+  /* border: 2px solid white; */
+
+  /* transition: .3s; */
 }
 
-.task-time:active .timeframe-toggle-btn-big {
+/* .task-time:active .timeframe-toggle-btn-big {
+  box-shadow: 0 0 5px white;
+} */
+.task-time:active {
   box-shadow: 0 0 5px white;
 }
 
@@ -232,17 +249,19 @@
 
   padding: .7rem;
 
-  background: lightgreen;
-  color: black;
+  /* background: lightgreen; */
+  /* color: black; */
 
-  border-radius: 10px 0 0 10px;
+  /* border-radius: 10px 0 0 10px; */
 
-  border: 2px solid black;
+  /* border: 2px solid black; */
 
-  box-shadow: var(--button-shine);
+  /* box-shadow: var(--button-shine); */
 }
 
-
+.icon-shadow {
+  filter: drop-shadow(-2px 2px 2px black);
+}
 
 @media all and (max-width: 420px) {
   .timeframe-toggle-btn-big {

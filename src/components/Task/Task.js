@@ -13,23 +13,24 @@ import { FaCalendar } from 'react-icons/fa'
 const Task = (props) => {
 
   //! Pieces of State
-  // Timer Stuff
+  //// Timer Stuff
   const [timerRunning, setTimerRunning] = useState(false)
   // TODO NEW TOTAL TIME
   const [totalTime, setTotalTime] = useState((props.task.dates.reduce( (acc, date) => acc + date.time, 0)))
-  const [startTime, setStartTime] = useState(null)
 
+  // Initialize timer start time to null. Changes every 1 second when timer running.
+  const [startTime, setStartTime] = useState(null)
+  
   // Store current time of ticking timer only, NOT including previous time in task
   const [runningTime, setRunningTime] = useState(0)
 
-  // Add Time Form stuff
+  //// Add Time Form stuff
   const [showAddTimeForm, setShowAddTimeForm] = useState(false)
   const [addTimeFormCollapsed, setAddTimeFormCollapsed] = useState(true)
-
   // Track animation completion to determine reveal/revealed or hide/hidden class on task form
   const [addTimeFormAnimationDone, setAddTimeFormAnimationDone] = useState(true)
 
-  // TODO day or total time displaye
+  //// Determines if Time Display set to All-Time or to Today 
   const [mainTimeIsGrandTotal, setMainTimeIsGrandTotal] = useState(true)
 
 
@@ -297,9 +298,9 @@ const Task = (props) => {
         <p>{props.task.name}</p>
         <div className='icon-buttons'>
           {/* //TODO  Data attributes as a tooltip??? May not want to keep it this way. */}
-          <div onClick={toggleTimeframe} className='timeframe-toggle-btn-wrapper' data-tooltip='Toggle display between today only and total time spent.'>
+          {/* <div onClick={toggleTimeframe} className='timeframe-toggle-btn-wrapper' data-tooltip='Toggle display between today only and total time spent.'>
             {mainTimeIsGrandTotal ? <MdAllInclusive  className='timeframe-toggle-btn'/> :<MdCalendarToday  className='timeframe-toggle-btn'/>}
-          </div>
+          </div> */}
           <MdHistoryToggleOff className={`edit-time-btn ${timerRunning ? 'disabled' : ''} ${showAddTimeForm ? 'edit-time-btn-form-visible' : ''}`} onClick={toggleAddTimeForm}/>
           <MdEdit className="edit-btn" onClick={editTask}/>
           <MdDelete className="delete-btn" onClick={deleteTask}/>
@@ -308,16 +309,24 @@ const Task = (props) => {
 
       {/*//// Task Info: Sort Buttons, Time Display, Start Button  */}
       <div className='task-info'>
+
+        {/* //// SORT BUTTONS */}
         <div className='sort-btns'>
           <MdExpandLess className='sort-btn' onClick={props.task.sortPosition > 1 ? () => reorder('up') : null}/>
           <MdExpandMore className='sort-btn' onClick={props.task.sortPosition < JSON.parse(localStorage.getItem('tasks')).length ? () => reorder('down') : null}/>
          </div>
+
          {/* //// TASK TIME */}
         <div className='task-time text-shadow' onClick={toggleTimeframe}>
  
           {/* //TODO TOGGLE TIMEFRAME BIG BUTTON NEXT TO TIME */}
-          <p className=''>
+          {/* <p className=''>
             <span className='timeframe-toggle-btn-big'>{mainTimeIsGrandTotal ? <MdAllInclusive /> :<MdCalendarToday />}</span>
+            {mainTimeIsGrandTotal ? convertTime(totalTime) : convertTime(props.task.dates[0].time + runningTime)}
+          </p> */}
+
+          <p className=''>
+            <span className='timeframe-toggle-btn-big'>{mainTimeIsGrandTotal ? <MdAllInclusive className='icon-shadow'/> :<MdCalendarToday className='icon-shadow'/>}</span>
             {mainTimeIsGrandTotal ? convertTime(totalTime) : convertTime(props.task.dates[0].time + runningTime)}
           </p>
 
