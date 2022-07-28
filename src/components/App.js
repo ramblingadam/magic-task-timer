@@ -12,7 +12,6 @@ const App = () => {
   const renderAll = () => {
     setReRender(reRender + 1)
   }
-
   return (
     <div className="app">
       <Header renderAll={renderAll}/>

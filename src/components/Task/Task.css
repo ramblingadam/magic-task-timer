@@ -63,6 +63,7 @@
 
   text-transform: capitalize;
   /* margin-bottom: 1rem; */
+
 }
 
 /* Icon Buttons */
@@ -197,6 +198,7 @@
 
   transition: .6s;
 
+  user-select: none;
   cursor: pointer;
 }
 
@@ -211,7 +213,7 @@
   /* text-shadow: 0 0 1px white; */
   box-shadow: var(--button-shine);
   background: var(--button-transparent);
-  border: 2px solid rgba(0,0,0,.5);
+  border: 2px solid rgba(255,255,255,.5);
 
   transition: .3s;
 }

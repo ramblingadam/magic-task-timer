@@ -10,6 +10,7 @@
   margin-top: 5px;
   /* margin-bottom: 1rem; */
 
+
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
@@ -30,7 +31,8 @@
 /* !----------------*/
 /* ! HISTORY BUTTON */
 .btn-history {
-  font-family: 'Share Tech Mono', monospace;
+  /* font-family: 'Share Tech Mono', monospace; */
+  font-family: 'Acme', sans-serif;
   font-size: 2rem;
 
   width: 10rem;
@@ -40,6 +42,7 @@
 
   border-radius: 20px;
   border: 2px solid black;
+
 
   box-shadow: var(--button-shine);
   transition: border .4s, width .4s ease .4s, border-radius .4s ease .4s;

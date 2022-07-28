@@ -49,6 +49,7 @@ table {
 
 * {
   box-sizing: border-box;
+  /* user-select: none; */
 }
 
 /* ! Global + App.js Styles */
@@ -143,17 +144,14 @@ body {
 @keyframes reveal {
   0% {
     max-height: 0;
-    /* height: 0; */
     opacity: 0;
   }
   33% {
     max-height: 15rem;
-    /* height: auto; */
     opacity: 0;
   }
   100% {
     max-height: 15rem;
-    /* height: auto; */
     opacity: 1;
   }
 }
@@ -161,17 +159,14 @@ body {
 @keyframes hide {
   0% {
     max-height: 15rem;
-    /* height: auto; */
     opacity: 1;
   }
   33% {
     max-height: 15rem;
-    /* height: auto; */
     opacity: 0;
   }
   100% {
     max-height: 0;
-    /* height: 0; */
     opacity: 0;
   }
 }
@@ -179,17 +174,14 @@ body {
 @keyframes revealbig {
   0% {
     max-height: 0;
-    /* height: 0; */
     opacity: 0;
   }
   33% {
     max-height: 49rem;
-    /* height: auto; */
     opacity: 0;
   }
   100% {
     max-height: 49rem;
-    /* height: auto; */
     opacity: 1;
   }
 }
@@ -197,17 +189,14 @@ body {
 @keyframes hidebig {
   0% {
     max-height: 49rem;
-    /* height: auto; */
     opacity: 1;
   }
   33% {
     max-height: 49rem;
-    /* height: auto; */
     opacity: 0;
   }
   100% {
     max-height: 0;
-    /* height: 0; */
     opacity: 0;
   }
 }
@@ -226,6 +215,7 @@ body {
   border-radius: 10px;
 }
 
+/* // Convert app into a 'fullscreen app' on smaller width devices */
 @media all and (max-width: 800px) {
   .app {
     margin: 0;
