@@ -6,7 +6,12 @@ import { useState, useEffect } from 'react'
 // Styles
 import './AddTime.css'
 // Icons
-import { MdAddCircle, MdRemoveCircle } from "react-icons/md"
+import { MdAddCircle, MdRemoveCircle, MdAdd, MdRemove } from "react-icons/md"
+
+
+
+import plusButton from '../../icons/add_FILL0_wght400_GRAD0_opsz48.svg'
+import removeButton from '../../icons/remove_FILL0_wght400_GRAD0_opsz48.svg'
 
 const AddTime = (props) => {
 
@@ -120,11 +125,12 @@ const AddTime = (props) => {
     <div className="add-time">
 
       <div className='add-time-instructions'>
-          <p>Select a date from the heatmap or the history table.</p>
-          <p> Then, press <span className='red'>Subtract</span>, <span className='yellow'>Set</span>, or <span className='green'>Add</span> to adjust the time for the selected date.</p>
-        </div>
+        <p>Select a date from the heatmap or the history table.</p>
+        <p> Then, press <span className='red'>Subtract</span>, <span className='yellow'>Set</span>, or <span className='green'>Add</span> to adjust the time for the selected date.</p>
+      </div>
         
-      <form>
+      <form className='add-time-form'>
+
         <div>
           {/*//// Date Input */}
           <label className={`${dateInputFlash ? 'flash' : ''}`}><span className='heading'>Date</span>
@@ -139,14 +145,42 @@ const AddTime = (props) => {
             <input type="number" id="add-minutes" value={minutesToAdd} onChange={(e) => handleTimeChange('mins', e)}/>
           </label>
         </div>
+
         {/*//// Subtract, Set, Add, and Delete Buttons */}
         <div className='add-subtract-btns'>
-          <MdRemoveCircle id='subtract-time' className='time-edit-btn' onClick={() => updateTime('subtract')}/>
-          <p id='set-time' className='time-edit-btn yellow'onClick={() => updateTime('set')}>SET</p>
+
+          {/* //// Subtract Time */}
+          <div className='subtract-time-wrapper'>
+            {/* <MdRemoveCircle id='subtract-time' className='time-edit-btn' onClick={() => updateTime('subtract')}/> */}
+            {/* <MdRemove id='subtract-time' className='time-edit-btn' onClick={() => updateTime('subtract')}/> */}
+            {/* <img src={removeButton} id='subtract-time' className='time-edit-btn' onClick={() => updateTime('add')}/> */}
+            <svg id='subtract-time' className='time-edit-btn' onClick={() => updateTime('add')} xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M9.15 26.35v-4.7h29.7v4.7Z"/></svg>
+          </div>
+          
+
+          {/* //TODO GROUP SET AND DELETE BUTTONS? */}
+          <div className='time-set-delete-wrapper'>
+            <p id='set-time' className='time-edit-btn yellow'onClick={() => updateTime('set')}>SET</p>
+            <p id='delete-time' className='time-edit-btn' onClick={() => updateTime('delete')}>DELETE</p>
+          </div>
+
+          {/* //// Add Time */}
+          <div className='add-time-wrapper'>
+            {/* <MdAddCircle id='add-time' className='time-edit-btn' onClick={() => updateTime('add')}/> */}
+            {/* <img src={plusButton} id='add-time' className='time-edit-btn' onClick={() => updateTime('add')}/> */}
+            {/* <img src={plusButton}></img> */}
+            {/* <svg id='add-time' className='time-edit-btn' onClick={() => updateTime('add')} xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M22.5 38V25.5H10v-3h12.5V10h3v12.5H38v3H25.5V38Z"/></svg> */}
+            <svg id='add-time' className='time-edit-btn' onClick={() => updateTime('add')} xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M21.65 38.85v-12.5H9.15v-4.7h12.5V9.15h4.7v12.5h12.5v4.7h-12.5v12.5Z"/></svg>
+          </div>
+          
+         
+          {/* <p id='set-time' className='time-edit-btn yellow'onClick={() => updateTime('set')}>SET</p>
+          <p id='delete-time' className='time-edit-btn' onClick={() => updateTime('delete')}>DELETE</p>
           <MdAddCircle id='add-time' className='time-edit-btn' onClick={() => updateTime('add')}/>
         </div>
         <div className='delete-time-btn-wrapper'>
-          <p id='delete-time' className='time-edit-btn' onClick={() => updateTime('delete')}>DELETE</p>
+          <p id='delete-time' className='time-edit-btn' onClick={() => updateTime('delete')}>DELETE</p> */}
+
         </div>
       </form>
 

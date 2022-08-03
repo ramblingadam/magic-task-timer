@@ -24,14 +24,8 @@
   text-align: center;
 }
 
-.add-subtract-btns {
-  font-size: 5rem;
 
-  display: flex;
-  align-items: center;
-}
-
-.add-time form {
+.add-time-form {
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -40,17 +34,11 @@
 .add-time form div {
   display: flex;
   flex-flow: row;
+  flex: 1;
 }
 
-#choose-date {
-  width: 105px;
-}
 
-#add-hours,
-#add-minutes {
-  width: 80px;
-}
-
+/* Time Form Input Labels */
 .heading {
   display: block;
   text-align: center;
@@ -58,21 +46,82 @@
   font-family: 'Share Tech Mono', monospace;
   font-size: 1.7rem;
 }
+/* Date Input */
+#choose-date {
+  width: 105px;
+}
+/* Hours and Minutes Inputs */
+#add-hours,
+#add-minutes {
+  width: 80px;
+}
+
+
+/* ! SUBRACT/SET/DELETE/ADD TIME BUTTONS */
+.add-subtract-btns {
+  font-size: 5rem;
+}
+
 
 .time-edit-btn {
   cursor: pointer;
   transition: .6s;
-  margin: .5rem .5rem 0 .5rem;
+  /* margin: .5rem .5rem 0 .5rem; */
+
 }
 
-#add-time {
-  fill: lightgreen;
+p.time-edit-btn {
+  font-size: 2.8rem;
+  border: 1px solid black;
 }
+
+.add-time-wrapper,
+.subtract-time-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 100%; */
+}
+
+#add-time,
 #subtract-time {
-  fill: lightcoral;
+  fill: white;
+  stroke: black;
+  stroke-width: 1px;
+  /* filter: drop-shadow(0 0 1px black); */
+}
+
+.add-time-wrapper {
+  /* fill: lightgreen; */
+  border: 1px solid black;
+  border-radius: 0 10px 10px 0;
+  background: lightgreen;
+  /* filter: drop-shadow(0 0 5px blue); */
+}
+.subtract-time-wrapper {
+  /* fill: lightcoral;  */
+  border: 1px solid black;
+  border-radius: 10px 0 0 10px;
+  background: lightcoral;
+}
+#set-time,
+#delete-time {
+  color: white;
+  text-shadow: 0 0 1px black, 0 0 2px black, 0 0 3px black;
+}
+#set-time {
+  /* color: black; */
+  background: yellow;
 }
 #delete-time {
-  color: lightcoral;
+  /* color: black; */
+  background: lightcoral;
+}
+
+/* TODO wrap set and delete buttons */
+.time-set-delete-wrapper {
+  display: flex;
+  flex-flow: column nowrap !important;
 }
 
 .time-edit-btn:hover {
