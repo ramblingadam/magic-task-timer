@@ -150,11 +150,12 @@ const AddTime = (props) => {
         <div className='add-subtract-btns'>
 
           {/* //// Subtract Time */}
-          <div className='subtract-time-wrapper'>
+          <div className='subtract-time-wrapper time-edit-btn'>
             {/* <MdRemoveCircle id='subtract-time' className='time-edit-btn' onClick={() => updateTime('subtract')}/> */}
             {/* <MdRemove id='subtract-time' className='time-edit-btn' onClick={() => updateTime('subtract')}/> */}
             {/* <img src={removeButton} id='subtract-time' className='time-edit-btn' onClick={() => updateTime('add')}/> */}
-            <svg id='subtract-time' className='time-edit-btn' onClick={() => updateTime('add')} xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M9.15 26.35v-4.7h29.7v4.7Z"/></svg>
+            {/* <svg id='subtract-time' className='time-edit-btn' onClick={() => updateTime('add')} xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M9.15 26.35v-4.7h29.7v4.7Z"/></svg> */}
+            <svg id='subtract-time'  onClick={() => updateTime('add')} xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M9.15 26.35v-4.7h29.7v4.7Z"/></svg>
           </div>
           
 
@@ -165,12 +166,13 @@ const AddTime = (props) => {
           </div>
 
           {/* //// Add Time */}
-          <div className='add-time-wrapper'>
+          <div className='add-time-wrapper time-edit-btn'>
             {/* <MdAddCircle id='add-time' className='time-edit-btn' onClick={() => updateTime('add')}/> */}
             {/* <img src={plusButton} id='add-time' className='time-edit-btn' onClick={() => updateTime('add')}/> */}
             {/* <img src={plusButton}></img> */}
             {/* <svg id='add-time' className='time-edit-btn' onClick={() => updateTime('add')} xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M22.5 38V25.5H10v-3h12.5V10h3v12.5H38v3H25.5V38Z"/></svg> */}
-            <svg id='add-time' className='time-edit-btn' onClick={() => updateTime('add')} xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M21.65 38.85v-12.5H9.15v-4.7h12.5V9.15h4.7v12.5h12.5v4.7h-12.5v12.5Z"/></svg>
+            {/* <svg id='add-time' className='time-edit-btn' onClick={() => updateTime('add')} xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M21.65 38.85v-12.5H9.15v-4.7h12.5V9.15h4.7v12.5h12.5v4.7h-12.5v12.5Z"/></svg> */}
+            <svg id='add-time' onClick={() => updateTime('add')} xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M21.65 38.85v-12.5H9.15v-4.7h12.5V9.15h4.7v12.5h12.5v4.7h-12.5v12.5Z"/></svg>
           </div>
           
          

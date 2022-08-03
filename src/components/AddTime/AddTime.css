@@ -59,7 +59,9 @@
 
 /* ! SUBRACT/SET/DELETE/ADD TIME BUTTONS */
 .add-subtract-btns {
-  font-size: 5rem;
+  /* font-size: 5rem; */
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 
@@ -67,12 +69,18 @@
   cursor: pointer;
   transition: .6s;
   /* margin: .5rem .5rem 0 .5rem; */
-
+  /* border: 2px solid black; */
+  box-shadow: var(--button-shine);
+  outline: 2px solid black;
 }
 
 p.time-edit-btn {
   font-size: 2.8rem;
-  border: 1px solid black;
+  text-align: center;
+  /* border: 1px solid black; */
+  padding: 5px 3px;
+  margin-right: 2px;
+
 }
 
 .add-time-wrapper,
@@ -85,36 +93,41 @@ p.time-edit-btn {
 
 #add-time,
 #subtract-time {
-  fill: white;
-  stroke: black;
-  stroke-width: 1px;
+  fill: black;
+  /* stroke: black; */
+  /* stroke-width: 1px; */
   /* filter: drop-shadow(0 0 1px black); */
 }
 
 .add-time-wrapper {
   /* fill: lightgreen; */
-  border: 1px solid black;
+  /* border: 1px solid black; */
   border-radius: 0 10px 10px 0;
   background: lightgreen;
+  border-left: 1px;
   /* filter: drop-shadow(0 0 5px blue); */
 }
 .subtract-time-wrapper {
   /* fill: lightcoral;  */
-  border: 1px solid black;
+  /* border: 1px solid black; */
   border-radius: 10px 0 0 10px;
   background: lightcoral;
+  border-right: 1px;
 }
 #set-time,
 #delete-time {
-  color: white;
-  text-shadow: 0 0 1px black, 0 0 2px black, 0 0 3px black;
+  color: black;
+  /* text-shadow: 0 0 1px black, 0 0 2px black, 0 0 3px black; */
 }
 #set-time {
   /* color: black; */
+  color: rgb(105, 77, 5);
+  /* text-shadow: 0 0 1px white, 0 0 2px white; */
   background: yellow;
+  border-bottom: none;
 }
 #delete-time {
-  /* color: black; */
+  color: darkred;
   background: lightcoral;
 }
 
@@ -125,15 +138,19 @@ p.time-edit-btn {
 }
 
 .time-edit-btn:hover {
-  transform: scale(1.1);
+  z-index: 2;
+  box-shadow: var(--button-shine);
+  border-color: white;
   /* filter: drop-shadow(0 0 3px white); */
   transition: .3s;
+  outline: 2px solid white;
+
 }
 
 .time-edit-btn:active {
-  transform: scale(1.1);
-  filter: drop-shadow(0 0 2px white);
-  text-shadow: 0 0 3px white;
+  /* filter: drop-shadow(0 0 2px white); */
+  /* text-shadow: 0 0 10px white; */
+  box-shadow: 0 0 10px white;
   transition: .1s;
 }
 
