@@ -52,16 +52,6 @@ table {
   /* user-select: none; */
 }
 
-/* ! Global + App.js Styles */
-/* Fonts */
-/* Share Tech Mono */
-@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
-/* source Sans Pro */
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
-/* Acme */
-@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
-
-
 /* ! ROOT VARIABLES */
 :root {
   /* // HTML Background Color */
@@ -92,12 +82,21 @@ table {
   --scrollbar-thumb: rgb(144, 216, 238);
   --scrollbar-track: grey;
   --scrollbar-thumb-border: black;
-
 }
+/* ! END ROOT VARIABLES */
+
+/* ! Global Styles */
+/* //Fonts */
+/* Share Tech Mono */
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+/* source Sans Pro */
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+/* Acme */
+@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
 
 
 
-/* //Global Styles */
+
 html {
   font-size: 62.5%;
   height: 100vh;
@@ -210,36 +209,7 @@ body {
   }
 }
 
-/*! App.js */
-.app {
-  font-family: 'Acme';
-
-  max-width: 800px;
-  margin: 1rem auto auto auto;
-  padding: 1rem;
-
-  background: var(--app-bg);
-
-  border: 1px solid black;
-  border-radius: 10px;
-}
-
-/* // Convert app into a 'fullscreen app' on smaller width devices */
-@media all and (max-width: 800px) {
-  .app {
-    margin: 0;
-
-    min-height: 100vh;
-    /* height: 100%; */
-
-    border: 0;
-    /* border-radius: 0 0 10px 10px; */
-    border-radius: 0;
-  }
-}
-
-
-/* ! SCROLLBARS */
+/*// SCROLLBARS */
 /* Works on Firefox */
 * {
   scrollbar-width: thin;
@@ -260,3 +230,37 @@ body {
   border-radius: 20px;
   /* border: 1px solid var(--scrollbar-thumb-border); */
 }
+
+/* ! END Global Styles */
+
+/*! App.js */
+.app {
+  position: relative;
+  font-family: 'Acme';
+
+  max-width: 800px;
+  margin: 1rem auto auto auto;
+  padding: 1rem;
+
+  background: var(--app-bg);
+
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+
+/* // Convert app into a 'fullscreen app' on smaller width devices */
+@media all and (max-width: 800px) {
+  .app {
+    margin: 0;
+
+    min-height: 100vh;
+    /* height: 100%; */
+
+    border: 0;
+    /* border-radius: 0 0 10px 10px; */
+    border-radius: 0;
+  }
+}
+/* ! END App.js  */
+

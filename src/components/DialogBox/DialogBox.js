@@ -7,9 +7,9 @@ const DialogBox = () => {
     <div className='dialog-box-wrapper'>
 
       <div className='dialog-box'>
-      <p>Are you sure?</p>
-      <button>Yes</button>
-      <button>No</button>
+        <p>Are you sure?</p>
+        <button>Yes</button>
+        <button>No</button>
       </div>
 
     </div>

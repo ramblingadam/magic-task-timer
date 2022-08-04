@@ -1,18 +1,40 @@
+.welcomeWindow {
+
+  
+}
+
 .dialog-box-wrapper {
-  width: 100vh;
+  /* width: 100vh;
   height: 100vw;
-  position: fixed;
+  position: fixed; */
   
   /* background: rgba(0,0,0,.6); */
   background: cyan;
+  
+  position: absolute;
+  left: 50%;
+  top: 5%;
+  transform: translate(-50%);
+  background: rgb(255, 222, 113);
+  border-radius: 10px;
+  width: 90%;
+  max-width: 70rem;
+  border: 2px dashed black;
+  padding-bottom: 2rem;
+  max-height: 90vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-gutter: auto;
 }
 
 .dialog-box {
-  position: absolute;
+  /* position: absolute;
   width: 95%;
   height: 95%;
   background-color: blue;
-  font-size: 5rem;
+  font-size: 5rem; */
+
+
 }
 
 .invisible {
