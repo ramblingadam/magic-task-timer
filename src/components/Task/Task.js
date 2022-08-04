@@ -3,6 +3,7 @@ import { useState, useEffect } from "react"
 // Components
 import AddTime from "../AddTime/AddTime"
 import Button from '../Button/Button'
+import DialogBox from "../DialogBox/DialogBox"
 // Style
 import './Task.css'
 // Icons
@@ -32,6 +33,11 @@ const Task = (props) => {
   const [mainTimeIsGrandTotal, setMainTimeIsGrandTotal] = useState(true)
 
 
+  // TODO Dialog Box Pieces of State/description/buttons values
+  const [dialogBoxVisible, setDialogBoxVisible] = useState(false)
+  const [dialogMessage, setDialogMessage] = useState('')
+
+
   // TODO Window Resizing for tiem display
   // const [screenWidth, setScreenWidth] = useState()
 
@@ -44,6 +50,20 @@ const Task = (props) => {
 
 
   //! Helper Functions
+  //// TODO Shows confirmaiton dialogue, and sets DialogBox/confirmation window message.
+  const toggleDialogBox = (message) => {
+    if(!dialogBoxVisible) {
+      setDialogMessage(message)
+      setDialogBoxVisible(true)
+    } else {
+      setDialogBoxVisible(false)
+    }
+  }
+
+
+
+
+
   //// Converts ms into a a string with hrs, mins, secs
   const convertTime = (ms, format = 'long') => {
     // let seconds = Math.round(ms / 1000)
@@ -309,6 +329,15 @@ const Task = (props) => {
   //! Component
   return (
     <li className={`task ${timerRunning ? 'running' : ''}`}>
+
+      {/* //TODO Dialog/Confirmation Box */}
+      {/* <div className={`${dialogBoxVisible ? '' : 'hidden'}`}> */}
+      {/* <div className='relative full-size'>
+        <DialogBox
+          toggleDialogBox={toggleDialogBox}
+        />
+      </div> */}
+
 
       {/*//// Task Top Row: Task Name, Setting Buttons  */}
       <div className='task-name text-shadow'>

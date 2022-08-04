@@ -1,0 +1,20 @@
+.dialog-box-wrapper {
+  width: 100vh;
+  height: 100vw;
+  position: fixed;
+  
+  /* background: rgba(0,0,0,.6); */
+  background: cyan;
+}
+
+.dialog-box {
+  position: absolute;
+  width: 95%;
+  height: 95%;
+  background-color: blue;
+  font-size: 5rem;
+}
+
+.invisible {
+  display: none
+}
