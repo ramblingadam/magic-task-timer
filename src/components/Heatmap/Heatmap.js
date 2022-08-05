@@ -90,14 +90,14 @@ const Heatmap = props => {
         //   week.unshift({date: null})
         // }
         yearArray.push(week)
-        console.log(week)
+        // console.log(week)
         week = []
       }
 
       // When loop reaches today, if we haven't yet pushed current week into year array based on weekStart, then push current week.
       // if(areDatesEqual(date, today) && date.getDay() !== weekStart) {
       if(areDatesEqual(date, today)) {
-        console.log('this is the end, did we make it on sunday?')
+        // console.log('this is the end, did we make it on sunday?')
         yearArray.push(week)
       }
 

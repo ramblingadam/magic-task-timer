@@ -83,6 +83,8 @@ const Task = (props) => {
     }
   }
 
+ 
+
   //// Visual time update functions
   useEffect(() => {
     // TODO WHY ISN'T HIDE FORM ANIMATION WORKING ON CLICK OF PLAY?
@@ -102,6 +104,9 @@ const Task = (props) => {
 
   const updateTime = () => {
     setTotalTime(totalTime + (Date.now() - startTime))
+    console.log('we adding a second')
+
+   
 
     // Store running time
     setRunningTime(Date.now() - startTime)
@@ -155,6 +160,7 @@ const Task = (props) => {
     localStorage.setItem('tasks', JSON.stringify(tasks))
 
     props.renderAll() // Re-render app so user can see changes.
+
   }
 
   // TODO SUM TIME FROM ALL DATES HELPER
@@ -200,6 +206,8 @@ const Task = (props) => {
       setRunningTime(0)
     }
   }
+
+  
 
 
   //// Delete Task
@@ -313,10 +321,7 @@ const Task = (props) => {
       <div className='task-name text-shadow'>
         <p>{props.task.name}</p>
         <div className='icon-buttons'>
-          {/* //TODO  Data attributes as a tooltip??? May not want to keep it this way. */}
-          {/* <div onClick={toggleTimeframe} className='timeframe-toggle-btn-wrapper' data-tooltip='Toggle display between today only and total time spent.'>
-            {mainTimeIsGrandTotal ? <MdAllInclusive  className='timeframe-toggle-btn'/> :<MdCalendarToday  className='timeframe-toggle-btn'/>}
-          </div> */}
+ 
           {/* //TODO This version disables hisory button when timer running.  */}
           {/* <MdHistoryToggleOff className={`edit-time-btn ${timerRunning ? 'disabled' : ''} ${showAddTimeForm ? 'edit-time-btn-form-visible' : ''}`} onClick={toggleAddTimeForm}/> */}
           {/* //TODO  this version does not disable button when timer running. */}
