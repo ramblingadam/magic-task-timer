@@ -106,7 +106,9 @@ const Task = (props) => {
     setTotalTime(totalTime + (Date.now() - startTime))
     console.log('we adding a second')
 
-   
+    console.log(totalTime + runningTime)
+
+    updateTaskFromTimer()
 
     // Store running time
     setRunningTime(Date.now() - startTime)
@@ -114,14 +116,22 @@ const Task = (props) => {
     setStartTime(Date.now())
   }
 
+
+  // TODO AUTOSAVE ENABLING FUNCITONS
+
+  const updateTaskFromTimer = () => {
+    updateTask(undefined, props.task.dates[0]?.date === getToday() ? runningTime + props.task.dates[0].time : runningTime)
+
+      // Reset running time to 0 when timer stopped.
+      // setRunningTime(0)
+  }
+
+
   // // Task object updater - localStorage
-  // TODO THE TIME PARAMETER AAAHH
   const updateTask = (name, time, date) => {
     // Copy current task. We will modify this copy with the requested changes before injecting it back into the database.
     const updatedTask = props.task
     
-
-
     // If a valid time passed in, update time for selected date OR today.
     // In other words- if ONLY a new name is passed in, skip the following and just update the name.
     if(time) {
@@ -161,6 +171,7 @@ const Task = (props) => {
 
     props.renderAll() // Re-render app so user can see changes.
 
+    console.log('task updated:', props.tasks)
   }
 
   // TODO SUM TIME FROM ALL DATES HELPER
@@ -197,17 +208,20 @@ const Task = (props) => {
     // If Timer IS currently running:
     } else { 
       setTimerRunning(false)
-      // TODO New Running Time addition
       console.log(runningTime)
       // If most recent date in dates array is today, pass in runningTime + the time already recorded for today. Otherwise,just pass in runningTime, so that a new date will be created with the value.
-      updateTask(undefined, props.task.dates[0]?.date === getToday() ? runningTime + props.task.dates[0].time : runningTime)
 
-      // Reset running time to 0 when timer stopped.
+      // updateTask(undefined, props.task.dates[0]?.date === getToday() ? runningTime + props.task.dates[0].time : runningTime)
+
+      // // Reset running time to 0 when timer stopped.
       setRunningTime(0)
+
+
+      updateTaskFromTimer()
+
     }
   }
 
-  
 
 
   //// Delete Task
@@ -361,8 +375,18 @@ const Task = (props) => {
                 //If both are true, then render the time as most recent entry + runningTime of timer.
                 ? convertTime(props.task.dates[0].time + runningTime)
                 // Else(Task has no dates logged, or most recent logged date is not today), display runningTime only. Time will be saved as today once the timer is stopped.
-                : convertTime(runningTime)
+                : convertTime(0)
             }
+            {/* {mainTimeIsGrandTotal // If timeframe set to Grand Total,
+              // Display grand total time.
+              ? convertTime(totalTime) 
+              // else(timeframe set to Today), check if the current task has a date entry at all, AND if task's most recent entry is from today.
+              : props.task.dates[0] && props.task.dates[0].date === getToday() 
+                //If both are true, then render the time as most recent entry + runningTime of timer.
+                ? convertTime(props.task.dates[0].time + runningTime)
+                // Else(Task has no dates logged, or most recent logged date is not today), display runningTime only. Time will be saved as today once the timer is stopped.
+                : convertTime(runningTime)
+            } */}
           </p>
 
         </div>
