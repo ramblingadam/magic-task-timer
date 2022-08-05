@@ -33,12 +33,15 @@ const App = () => {
 
   // ! COMPONENT
   return (
-    <div className="app">
-      <DialogBox
-        toggleDialogBox={toggleDialogBox}
-      />
-      <Header renderAll={renderAll}/>
-      <Tasks renderAll={renderAll}/>
+    <div className="app-wrapper">
+      {/* <DialogBox
+          toggleDialogBox={toggleDialogBox}
+        /> */}
+      <div className="app">
+        
+        <Header renderAll={renderAll}/>
+        <Tasks renderAll={renderAll}/>
+      </div>
     </div>
   )
 }
