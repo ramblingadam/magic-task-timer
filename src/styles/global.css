@@ -71,7 +71,7 @@ table {
   /* --app-bg: rgba(50, 50, 50); */
   /* --app-bg: linear-gradient(rgb(0, 66, 68), rgb(0, 204, 211), rgb(0, 247, 255)); */
   --app-bg: linear-gradient(rgb(0, 66, 68), rgb(0, 156, 161));
-
+  --app-max-width: 800px;
 
 
   /* // 3D Button Shine */
@@ -140,7 +140,7 @@ table {
 }
 :root .theme-halloween {
   --text-color: orange;
-  
+
 }
 :root .theme-light {
   --text-color: black;
@@ -328,7 +328,7 @@ body {
   font-family: 'Acme';
   color: var(--text-color);
 
-  max-width: 800px;
+  max-width: var(--app-max-width);
   /* margin: 1rem auto auto auto;
   padding: 1rem; */
   margin: 0 auto auto auto;

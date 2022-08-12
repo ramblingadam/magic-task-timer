@@ -25,6 +25,7 @@ const App = () => {
   const [theme, setTheme] = useState(`${localStorage.getItem('tasks')?.settings?.globalTheme || 'mako'}`)
   const changeTheme = (theme) => {
     setTheme(theme)
+    console.log('changetheme clicked')
   }
 
   //// TODO Shows confirmaiton dialogue, and sets DialogBox/confirmation window message.
@@ -45,7 +46,7 @@ const App = () => {
         /> */}
       <div className="app">
         
-        <Header renderAll={renderAll}/>
+        <Header renderAll={renderAll} changeTheme={changeTheme}/>
         <Tasks renderAll={renderAll}/>
       </div>
     </div>

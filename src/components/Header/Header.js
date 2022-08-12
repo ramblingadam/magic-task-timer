@@ -1,18 +1,19 @@
 // Hooks
 import { useState } from 'react'
 // Components
-
+import Settings from '../Settings/Settings'
 // Styles
 import './Header.css'
 
 // Icons
 import { MdAddCircle, MdSettings, Mddashci } from "react-icons/md"
 
-const Header = ({renderAll}) => {
+const Header = ({renderAll, changeTheme}) => {
 
   //// Pieces of State ////
   const [showNewTaskForm, setShowNewTaskForm] = useState(false)
   const [taskFormCollapsed, setTaskFormCollapsed] = useState(true)
+  const [settingsOpen, setSettingsOpen] = useState(false)
 
   //// Helper Functions /////
   //// Toggles visibility of New Task Form
@@ -109,15 +110,28 @@ const Header = ({renderAll}) => {
     renderAll() // Re-renders App.js, which re-renders Tasks.js, so that the newly added task shows up right away.
   }
 
+  //// SETTINGS MENU CONTROL
+  const toggleSettingsMenu = () => {
+    if(settingsOpen) setSettingsOpen(false)
+    else setSettingsOpen(true)
+  }
+
   //! Component 
   return (
     <div className='header-wrapper'>
+      {settingsOpen && (
+        <Settings 
+          changeTheme={changeTheme}
+          toggleSettingsMenu={toggleSettingsMenu}
+        />
+      )}
       <div className='header-main text-shadow'>
         <h1>Magic Task Timer&nbsp;<MdAddCircle className={`plus ${showNewTaskForm ? 'open' : ''}`} onClick={toggleNewTaskForm} /></h1>
         
         <div className='header-buttons'>
           
-          <MdSettings className='settings-btn'/>
+          <MdSettings className='settings-btn' onClick={toggleSettingsMenu}/>
+          
         </div>
       </div>
       <div className={`new-task-form slide-able ${showNewTaskForm ? 'reveal' : taskFormCollapsed ? 'hidden' : 'collapse'} `}>
