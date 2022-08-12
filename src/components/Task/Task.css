@@ -136,10 +136,11 @@
 
 .hover-popup {
   opacity: 0;
+  display: none;
 
   position: absolute;
   left: 50%;
-  top: -20px;
+  bottom: -25px;
   transform: translateX(-50%);
   white-space: nowrap;
 
@@ -154,6 +155,7 @@
 
 .task-time:hover > .hover-popup {
   opacity: 1;
+  display: block;
 
   transition: .3s ease .75s;
 

@@ -22,7 +22,7 @@ const App = () => {
   }
 
   //// TODO THEMING
-  const [theme, setTheme] = useState(JSON.parse(localStorage.getItem('settings')).theme || 'dark')
+  const [theme, setTheme] = useState(JSON.parse(localStorage.getItem('settings')).theme || 'mako')
   const changeTheme = (theme) => {
     setTheme(theme)
     console.log('changetheme clicked')

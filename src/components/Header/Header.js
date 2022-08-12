@@ -89,12 +89,6 @@ const Header = ({renderAll, changeTheme}) => {
         // {date: '2022-10-22', time: 23045},
       ],
       created: today,
-
-      // TODO ADD SETTINGS, USER INFO
-      settings: [
-        {globalTheme: 'mako'}
-      ]
-
     }
 
     // Check if tasks cache already exists in localStorage.
