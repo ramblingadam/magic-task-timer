@@ -62,7 +62,7 @@ table {
 /* ! ROOT VARIABLES */
 :root {
   /* // TEXT */
-  /* --text-color: white; */
+  --text-color: yellow;
 
   /* // HTML Background Color */
   /* --global-bg: linear-gradient(170deg, rgb(72, 253, 238), rgb(0,0,0), rgb(20,20,20)); */

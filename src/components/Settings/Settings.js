@@ -26,32 +26,49 @@ const Settings = (props) => {
     }
   ]
 
-
+  // // When a setting property's value's option has been clicked, this is called. Applies the selected setting.
   const handleOptionClick = (category, option) => {
     if(category === 'Theme') {
       switch(option) {
-        case 'Mako' : props.changeTheme('mako')
+        case 'mako' : props.changeTheme('mako')
         break
-        case 'Dark' : props.changeTheme('dark')
+        case 'dark' : props.changeTheme('dark')
         break
-        case 'Light' : props.changeTheme('light')
+        case 'light' : props.changeTheme('light')
         break
-        case 'Halloween' : props.changeTheme('halloween')
+        case 'halloween' : props.changeTheme('halloween')
         break
         // case 'Mako' : props.changeTheme('mako')
         // break
         default : props.changeTheme('mako')
       }
+      updateUserSetting(category.toLowerCase(), option)
     }
   }
 
+  
+  const updateUserSetting = (category, option) => {
+    // First, check if user has settings in localStorage yet. If not, create them.
+    if(!localStorage.getItem('settings')) {
+      const defaultSettings = {
+        theme: 'mako'
+      }
+      localStorage.setItem('settings', JSON.stringify(defaultSettings))
+    }
 
+    const settings = JSON.parse(localStorage.getItem('settings'))
 
+    settings[category] = option
+    localStorage.setItem('settings', JSON.stringify(settings))
+    
+
+    console.log(settings)
+  }
 
 
   // ! COMPONENT
   return (
-    <div class='menu-wrapper'>
+    <div className='menu-wrapper'>
       {/* //// SETTINGS MENU HEADER / CLOSE SETTINGS BUTTON*/}
       <h1 className='menu-header'><span>Settings</span><MdCancel className='cancel-btn' onClick={props.toggleSettingsMenu}/></h1>
       {/* //// SETTINGS MENU - Populates by iterating through menuItems array, defined above. Helloooo dynamic, extensible menu! */}
@@ -66,7 +83,7 @@ const Settings = (props) => {
             <div className='menu-value menu-select-wrapper'>
               <ul className='menu-select' id='theme-menu-select'>
                 {menuItem.options.map(option => (
-                  <li className='menu-select-option' id={option} onClick={() => handleOptionClick(menuItem.category, option)}>{option}</li>
+                  <li className='menu-select-option' id={option} onClick={() => handleOptionClick(menuItem.category, option.toLowerCase())}>{option}</li>
                 ))}
               </ul>
             </div>

@@ -4,7 +4,7 @@ import Tasks from './Tasks/Tasks'
 import DialogBox from "./DialogBox/DialogBox"
 
 // Hooks
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 const App = () => {
 
@@ -22,11 +22,17 @@ const App = () => {
   }
 
   //// TODO THEMING
-  const [theme, setTheme] = useState(`${localStorage.getItem('tasks')?.settings?.globalTheme || 'mako'}`)
+  const [theme, setTheme] = useState(JSON.parse(localStorage.getItem('settings')).theme || 'dark')
   const changeTheme = (theme) => {
     setTheme(theme)
     console.log('changetheme clicked')
   }
+  useEffect(() => {
+    console.log(theme)
+    setTheme(theme)
+    // renderAll()
+  }, [theme])
+
 
   //// TODO Shows confirmaiton dialogue, and sets DialogBox/confirmation window message.
   const toggleDialogBox = (message) => {

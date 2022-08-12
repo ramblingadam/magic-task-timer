@@ -156,6 +156,8 @@
   opacity: 1;
 
   transition: .3s ease .75s;
+
+  pointer-events: none;
 }
 
 /* ! Task Info Area: Sort Buttons, Live Timer, Big Timer Button */
@@ -209,6 +211,13 @@
     flex: 3;
   }
 }
+
+@media all and (max-width: 335px) {
+  .task-time {
+    flex: 5;
+  }
+}
+
 .task-buttons {
   flex: 1;
 }
@@ -239,6 +248,7 @@
     font-size: 2rem;
   }
 }
+
 
 .task-time:hover {
   /* filter: drop-shadow(0 0 2px white); */
