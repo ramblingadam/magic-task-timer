@@ -82,8 +82,33 @@ table {
   --scrollbar-thumb: rgb(144, 216, 238);
   --scrollbar-track: grey;
   --scrollbar-thumb-border: black;
+
+  /* // Task Colors */
+  /* --task-bg: darkslategray; */
+  --task-bg: darkslategray;
+  --task-border-color: white;
+  --task-running-gradient: linear-gradient(90deg, #23a6d5, #23d5ab,#23a6d5)
+  /* --task-running-gradient: linear-gradient(90deg, #d52923, #c023d5,#d52923);  */
+
 }
 /* ! END ROOT VARIABLES */
+
+/* ! THEMES */
+:root .theme-mako {
+
+}
+:root .theme-dark {
+
+}
+:root .theme-dracula {
+
+}
+:root .theme-light {
+
+}
+
+
+/* ! END THEMES */
 
 /* ! Global Styles */
 /* //Fonts */
@@ -238,7 +263,7 @@ body {
 /*! App.js */
 /* // APP-WRAPPER */
 .app-wrapper {
-  width: 100vw;
+  width: 100%;
   height: 100%;
   margin: 0;
 }

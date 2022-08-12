@@ -21,6 +21,12 @@ const App = () => {
     setReRender(reRender + 1)
   }
 
+  //// TODO THEMING
+  const [theme, setTheme] = useState('mako')
+  const changeTheme = (theme) => {
+    setTheme(theme)
+  }
+
   //// TODO Shows confirmaiton dialogue, and sets DialogBox/confirmation window message.
   const toggleDialogBox = (message) => {
     if(!dialogBoxVisible) {

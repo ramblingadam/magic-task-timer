@@ -196,7 +196,7 @@ const Task = (props) => {
 
   //// Delete Task
   const deleteTask = () => {
-    if(window.confirm(`Are you sure you want to delete ${props.task.name}?`)) {
+    if(window.confirm(`Are you sure you want to delete ALL records of time spent on '${props.task.name}'? This cannot be undone.`)) {
       // Grab tasks from localStorage and delete current task.
       const tasks = JSON.parse(localStorage.getItem('tasks'))
       // Reassign sort order for all items occuring AFTER current item by moving them all up one position (position -1)
@@ -327,7 +327,8 @@ const Task = (props) => {
          </div>
 
          {/* //// TASK TIME */}
-        <div className='task-time text-shadow' onClick={toggleTimeframe}>
+        <div className='task-time text-shadow' onClick={toggleTimeframe} title={`${mainTimeIsGrandTotal ? 'All Time. Click to show Today only.' : 'Today. Click to show All Time.'}`}>
+          <span className='hover-popup'>{`${mainTimeIsGrandTotal ? 'All Time. Click to show Today only.' : 'Today. Click to show All Time.'}`}</span>
  
           {/* //TODO TOGGLE TIMEFRAME BIG BUTTON NEXT TO TIME */}
           {/* <p className=''>
@@ -350,6 +351,7 @@ const Task = (props) => {
           </p>
 
         </div>
+
 
         {/* Big Start Time Button */}
         <div className='task-buttons'>

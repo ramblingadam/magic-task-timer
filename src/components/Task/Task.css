@@ -8,8 +8,8 @@
 .task {
   list-style-type: none;
 
-  background: darkslategray;
-  border: 1px solid white;
+  background: var(--task-bg);
+  border: 1px solid var(--task-border-color);
   /* border: 1px solid rgba(255,255,255, .5); */
   border-radius: 10px;
 
@@ -32,7 +32,8 @@
 /* // Run Background Gradient Animation when task is running */
 .task.running {
   /* background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab); */
-  background: linear-gradient(90deg, #23a6d5, #23d5ab,#23a6d5);
+  /* background: linear-gradient(90deg, #227ea0, #23d5ab,#23a6d5); */
+  background: var(--task-running-gradient);
   /* //TODO transparent version....? */
   /* background: linear-gradient(90deg, rgba(35, 165, 213, .5), rgba(35, 213, 171, .7),rgba(35, 165, 213,.5)); */
 	background-size: 400% 400%;
@@ -127,6 +128,32 @@
   /* white-space: nowrap; */
 
   /* position: absolute; */
+}
+
+.task-time {
+  position: relative;
+}
+
+.hover-popup {
+  opacity: 0;
+
+  position: absolute;
+  left: 50%;
+  top: -10px;
+  transform: translateX(-50%);
+  white-space: nowrap;
+
+  background: cyan;
+  border-radius: 5px;
+  border: 1px solid white;
+
+  font-size: 1.5rem;
+}
+
+.task-time:hover > .hover-popup {
+  opacity: 1;
+
+  transition: .3s ease .75s;
 }
 
 /* ! Task Info Area: Sort Buttons, Live Timer, Big Timer Button */

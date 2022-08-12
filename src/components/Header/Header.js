@@ -108,7 +108,7 @@ const Header = ({renderAll}) => {
   return (
     <div className='header-wrapper'>
       <div className='header-main text-shadow'>
-        <h1>Project Time!&nbsp;<MdAddCircle className={`plus ${showNewTaskForm ? 'open' : ''}`} onClick={toggleNewTaskForm} /></h1>
+        <h1>Magic Task Timer&nbsp;<MdAddCircle className={`plus ${showNewTaskForm ? 'open' : ''}`} onClick={toggleNewTaskForm} /></h1>
         
         <div className='header-buttons'>
           
