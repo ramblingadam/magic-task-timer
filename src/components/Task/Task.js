@@ -44,22 +44,7 @@ const Task = (props) => {
 
 
   //// Converts ms into a a string with hrs, mins, secs
-  const convertTime = (ms, format = 'long') => {
-    // let seconds = Math.round(ms / 1000)
-    // let minutes = 0
-    // let hours = 0
-    // let days = 0
-    // while(seconds >= 60) {
-    //   minutes += 1
-    //   seconds -= 60
-    // }
-    // while(minutes >= 60) {
-    //   hours += 1
-    //   minutes -= 60
-    // }
-
-    // TODO make it cheaper CPU wise
-    let seconds = Math.floor(ms / 1000)
+  const convertTime = (ms, format = 'long') => { let seconds = Math.floor(ms / 1000)
     let minutes = Math.floor(seconds / 60)
     let hours = Math.floor(minutes / 60)
 
@@ -115,7 +100,6 @@ const Task = (props) => {
   }
 
   // // Task object updater - localStorage
-  // TODO THE TIME PARAMETER AAAHH
   const updateTask = (name, time, date) => {
     // Copy current task. We will modify this copy with the requested changes before injecting it back into the database.
     const updatedTask = props.task
@@ -354,8 +338,8 @@ const Task = (props) => {
           <p className=''>
             <span className='timeframe-toggle-btn-big'>{mainTimeIsGrandTotal ? <MdAllInclusive className='icon-shadow'/> :<MdCalendarToday className='icon-shadow'/>}</span>
             {mainTimeIsGrandTotal // If timeframe set to Grand Total,
-              // Display grand total time.
-              ? convertTime(totalTime) 
+              // Display grand total time. 
+              ? convertTime(props.task.dates.reduce( (acc, date) => acc + date.time, 0) + runningTime) 
               // else(timeframe set to Today), check if the current task has a date entry at all, AND if task's most recent entry is from today.
               : props.task.dates[0] && props.task.dates[0].date === getToday() 
                 //If both are true, then render the time as most recent entry + runningTime of timer.
@@ -385,6 +369,7 @@ const Task = (props) => {
           toggleAddTimeForm={toggleAddTimeForm}
           convertTime={convertTime}
           getToday={getToday}
+          // updateTimeForTotalTimer={updateTime}
         />
        
 
