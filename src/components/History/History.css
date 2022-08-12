@@ -38,7 +38,7 @@
   width: 10rem;
 
   /* background: lightgreen; */
-  background: var(--button-blue);
+  background: var(--button-history);
 
   border-radius: 20px;
   border: 2px solid black;

@@ -22,7 +22,7 @@ const App = () => {
   }
 
   //// TODO THEMING
-  const [theme, setTheme] = useState('mako')
+  const [theme, setTheme] = useState(`${localStorage.getItem('tasks')?.settings?.globalTheme || 'mako'}`)
   const changeTheme = (theme) => {
     setTheme(theme)
   }
@@ -39,7 +39,7 @@ const App = () => {
 
   // ! COMPONENT
   return (
-    <div className="app-wrapper">
+    <div className={`app-wrapper theme-${theme}`}>
       {/* <DialogBox
           toggleDialogBox={toggleDialogBox}
         /> */}

@@ -9,7 +9,7 @@
   list-style-type: none;
 
   background: var(--task-bg);
-  border: 1px solid var(--task-border-color);
+  border: 1px solid black;
   /* border: 1px solid rgba(255,255,255, .5); */
   border-radius: 10px;
 
@@ -139,13 +139,15 @@
 
   position: absolute;
   left: 50%;
-  top: -10px;
+  top: -20px;
   transform: translateX(-50%);
   white-space: nowrap;
 
-  background: cyan;
+  background: var(--tooltip-bg);
   border-radius: 5px;
   border: 1px solid white;
+
+  padding: .5rem;
 
   font-size: 1.5rem;
 }
@@ -177,7 +179,7 @@
 
 .sort-btn {
   font-size: 2.5rem;
-  filter: drop-shadow(-2px 2px 1px black);
+  filter: drop-shadow(-2px 2px 1px var(--text-shadow-color));
   cursor: pointer;
   transform: scale(1.4);
 
@@ -293,7 +295,7 @@
 }
 
 .icon-shadow {
-  filter: drop-shadow(-2px 2px 2px black);
+  filter: drop-shadow(-2px 2px 2px var(--text-shadow-color));
 }
 
 @media all and (max-width: 420px) {
