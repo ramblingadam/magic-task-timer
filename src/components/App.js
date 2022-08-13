@@ -62,6 +62,7 @@ const App = () => {
         <Settings 
             changeTheme={changeTheme}
             toggleSettingsMenu={toggleSettingsMenu}
+            renderAll={renderAll}
           />
         )}
         <Header renderAll={renderAll} changeTheme={changeTheme} toggleSettingsMenu={toggleSettingsMenu}/>

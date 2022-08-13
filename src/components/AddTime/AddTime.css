@@ -103,7 +103,7 @@ p.time-edit-btn {
   /* fill: lightgreen; */
   /* border: 1px solid black; */
   border-radius: 0 10px 10px 0;
-  background: lightgreen;
+  background: var(--button-add);
   border-left: 1px;
   /* filter: drop-shadow(0 0 5px blue); */
 }
@@ -111,7 +111,7 @@ p.time-edit-btn {
   /* fill: lightcoral;  */
   /* border: 1px solid black; */
   border-radius: 10px 0 0 10px;
-  background: lightcoral;
+  background: var(--button-subtract);
   border-right: 1px;
   margin-right: 2px;
 }
@@ -122,14 +122,14 @@ p.time-edit-btn {
 }
 #set-time {
   /* color: black; */
-  color: rgb(105, 77, 5);
+  /* color: rgb(105, 77, 5); */
   /* text-shadow: 0 0 1px white, 0 0 2px white; */
-  background: yellow;
+  background: var(--button-set);
   border-bottom: none;
 }
 #delete-time {
-  color: darkred;
-  background: lightcoral;
+  /* color: darkred; */
+  background: var(--button-delete);
 }
 
 /* TODO wrap set and delete buttons */

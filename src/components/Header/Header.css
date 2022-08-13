@@ -31,7 +31,7 @@ h1 {
 .plus {
   left: 5px;
 
-  fill: lightgreen;
+  fill: var(--button-green);
   filter: drop-shadow(0 0 2px black);
 
   transition: .3s;
@@ -40,7 +40,7 @@ h1 {
 }
 
 .plus.open {
-  fill: lightcoral;
+  fill: var(--button-red);
 
   transform: rotate(45deg);
   transition: .3s;
@@ -54,7 +54,7 @@ h1 {
 }
 
 .plus.open:hover {
-  fill: lightcoral;
+  fill: var(--button-red);
   transform: rotate(45deg) scale(1.2);
 }
 
@@ -104,7 +104,7 @@ h1 {
   border-radius: 0 7px 7px 0;
   height: 2.5rem;
 
-  background: lightgreen;
+  background: var(--button-green);
 
   transition: .5s;
 

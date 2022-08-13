@@ -9,12 +9,14 @@
 
   z-index: 5;
 
-  background-color: var(--app-bg);
-  background-color: rgba(0,0,0,.9);
+  background-color: rgb(192, 192, 192);
+  /* background-color: rgba(0,0,0,.9); */
+  background-color: rgba(255,255,255,.7);
+  background: var(--app-bg);
 
   padding: 0 0 0 0;
 
-  border: 1px solid black;
+  border: 1px solid var(--app-border-color);
   border-radius: 5px;
 
   white-space: nowrap;
@@ -23,8 +25,8 @@
   flex-flow: column nowrap;
   justify-content: flex-start;
   align-items: center;
-
 }
+
 
 .menu-header,
 .menu {
@@ -40,36 +42,27 @@
   /* background: cyan; */
 }
 
-.menu-header h1 {
-
-}
-
 .cancel-btn {
   position: absolute;
   top: 1rem;
   right: 1rem;
   width: 35px;
   height: 35px;
-  fill: lightcoral;
+  fill: var(--button-red);
 
   cursor: pointer;
 }
 
-
 .menu {
-
-
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
   align-items: center;
-
 }
-
-.menu
 
 .menu-item {
   display: flex;
+  /* align-items: center; */
   width: 100%;
   margin-bottom: 1rem;
 }
@@ -96,5 +89,14 @@
 }
 
 .menu-select-option {
-  margin-bottom: 1rem;
+  display: inline-block;
+  margin-bottom: .2rem;
+  cursor: pointer;
+  padding: .5rem;
+
+  border-radius: 10px;
+}
+
+.active-setting {
+  border: 2px solid white;
 }

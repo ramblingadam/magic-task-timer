@@ -364,7 +364,7 @@ button {
 }
 
 .task-btn.running {
-  background: lightcoral;
+  background: var(--button-red);
 }
 
 .btn:hover {
