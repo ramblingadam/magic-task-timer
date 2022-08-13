@@ -1,3 +1,18 @@
+# things learned:
+CSSVariables: Used CSS variables and conditional classes in React/JSX to allow user to theme the app to their preference.
+
+became comfortable with props
+
+extensive use of useState and useEffect hooks
+
+LOTS of practice with conditional rendering and conditional animations
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
