@@ -86,6 +86,7 @@
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
+  width: fit-content;
 }
 
 .menu-select-option {
@@ -93,6 +94,7 @@
   margin-bottom: .2rem;
   cursor: pointer;
   padding: .5rem;
+  width:100%;
 
   border-radius: 10px;
 }

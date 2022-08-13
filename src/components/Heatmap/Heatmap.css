@@ -46,6 +46,7 @@
   border-radius: 2px;
   /* border: 1px solid white; */
   margin: 1px;
+  
 
   user-select: none;
   position: relative;
@@ -126,13 +127,13 @@
   background: var(--heat-low);
 }
 .heat-lowmed {
-  background: rgb(var(--heat-lowmed));
+  background: var(--heat-lowmed);
 }
 .heat-med {
   background: var(--heat-med);
 }
 .heat-medhigh {
-  background: rgb(var(--heat-medhigh));
+  background: var(--heat-medhigh);
 }
 .heat-high {
   background: var(--heat-high);
