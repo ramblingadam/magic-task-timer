@@ -137,6 +137,9 @@
 .hover-popup {
   opacity: 0;
   display: none;
+  color: white;
+
+  text-shadow:none;
 
   position: absolute;
   left: 50%;

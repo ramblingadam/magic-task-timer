@@ -192,6 +192,10 @@ body {
   text-shadow: -2px 2px 2px var(--text-shadow-color), 0 0 1px var(--text-shadow-color), 0 0 2px var(--text-shadow-color);
 }
 
+h1 {
+  font-size: 3rem;
+}
+
 /* // COLLAPSE/REVEAL ANIMATIONS + HIDDEN */
 .slide-able {
   overflow: hidden;
@@ -205,6 +209,13 @@ body {
 .reveal {
   animation: revealbig .6s ease-in-out forwards;
 }
+.collapse-small {
+  animation: hide .3s ease-in-out forwards;
+}
+
+.reveal-small {
+  animation: reveal .3s ease-in-out forwards;
+}
 
 .revealed {
   max-height: fit-content;
@@ -216,6 +227,7 @@ body {
   max-height: 0;
   opacity: 0;
   animation: none;
+
 }
 
 .relative {
@@ -230,14 +242,17 @@ body {
 @keyframes reveal {
   0% {
     max-height: 0;
+    margin-bottom: 0;
     opacity: 0;
   }
   33% {
     max-height: 15rem;
+    margin-bottom: 1rem;
     opacity: 0;
   }
   100% {
     max-height: 15rem;
+    margin-bottom: 1rem;
     opacity: 1;
   }
 }
@@ -245,14 +260,17 @@ body {
 @keyframes hide {
   0% {
     max-height: 15rem;
+    margin-bottom: 1rem;
     opacity: 1;
   }
   33% {
     max-height: 15rem;
+    margin-bottom: 1rem;
     opacity: 0;
   }
   100% {
     max-height: 0;
+    margin-bottom: 0;
     opacity: 0;
   }
 }
@@ -285,6 +303,20 @@ body {
     max-height: 0;
     opacity: 0;
   }
+}
+
+/* // BUTTON ANIMATIONS */
+.hover-grow:hover {
+  transform: scale(1.2);
+  transition: .3s;
+  
+  cursor: pointer;
+}
+
+.glow-click:active {
+  filter: drop-shadow(0 0 1px white);
+  fill: white;
+  transition: .1s;
 }
 
 /*// SCROLLBARS */
@@ -324,7 +356,7 @@ body {
 
 
 .app {
-  /* position: relative; */
+  position: relative;
   font-family: 'Acme';
   color: var(--text-color);
 
@@ -332,7 +364,7 @@ body {
   /* margin: 1rem auto auto auto;
   padding: 1rem; */
   margin: 0 auto auto auto;
-  padding: 1rem;
+  padding: 0 1rem 1rem 1rem;
 
   background: var(--app-bg);
 
@@ -353,8 +385,13 @@ body {
 
     border: 0;
     border-radius: 0;
+
+
   }
   .app-wrapper {
+    padding-top: 0;
+  }
+  .menu-wrapper {
     padding-top: 0;
   }
 }

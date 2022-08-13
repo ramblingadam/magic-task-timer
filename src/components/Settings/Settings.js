@@ -14,7 +14,9 @@ const Settings = (props) => {
         'Mako',
         'Dark',
         'Light',
-        'Halloween'
+        'Halloween',
+        'Love',
+        'Pickles'
       ]
     },
     {
@@ -22,6 +24,15 @@ const Settings = (props) => {
       options: [
         'MM/DD/YYYY',
         'YYYY/MM/DD'
+      ]
+    }
+    ,
+    {
+      category: 'Music Volume',
+      options: [
+        'low',
+        'med',
+        'high'
       ]
     }
   ]
@@ -70,7 +81,10 @@ const Settings = (props) => {
   return (
     <div className='menu-wrapper'>
       {/* //// SETTINGS MENU HEADER / CLOSE SETTINGS BUTTON*/}
-      <h1 className='menu-header'><span>Settings</span><MdCancel className='cancel-btn' onClick={props.toggleSettingsMenu}/></h1>
+      <div className='menu-header'>
+          <h1>Settings</h1><MdCancel className='cancel-btn hover-grow glow-click' onClick={props.toggleSettingsMenu}/>
+      </div>
+
       {/* //// SETTINGS MENU - Populates by iterating through menuItems array, defined above. Helloooo dynamic, extensible menu! */}
       <ul className='menu'>
         {menuItems.map(menuItem => (
@@ -89,11 +103,8 @@ const Settings = (props) => {
             </div>
           </li>
         ))}
+      </ul>
 
-
-
-
-    </ul>
     </div>
   )
 }

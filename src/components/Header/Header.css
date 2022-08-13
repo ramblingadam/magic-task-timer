@@ -6,7 +6,7 @@
   display: flex;
   justify-content: center;
 
-  padding: .5rem 0 1rem 0;
+  padding: 1rem 0 1rem 0;
 }
 
 h1 {
@@ -58,6 +58,8 @@ h1 {
   transform: rotate(45deg) scale(1.2);
 }
 
+
+
 /* Plus Button Active */
 .plus:active,
 .plus.open:active {
@@ -69,6 +71,7 @@ h1 {
 /* ! SETTINGS BUTTON */
 .settings-btn:hover {
   animation: spin 2s linear infinite;
+  cursor: pointer;
 }
 
 @keyframes spin {
@@ -85,8 +88,9 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 1rem;
+  /* margin-bottom: 1rem; */
 }
+
 
 #task-name {
   border-radius: 7px 0 0 7px;

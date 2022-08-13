@@ -2,6 +2,7 @@
 import Header from "./Header/Header"
 import Tasks from './Tasks/Tasks'
 import DialogBox from "./DialogBox/DialogBox"
+import Settings from "./Settings/Settings"
 
 // Hooks
 import { useState, useEffect } from "react"
@@ -12,7 +13,7 @@ const App = () => {
   // TODO Dialog Box Pieces of State/description/buttons values
   const [dialogBoxVisible, setDialogBoxVisible] = useState(false)
   const [dialogMessage, setDialogMessage] = useState('')
-
+  const [settingsOpen, setSettingsOpen] = useState(false)
 
   //! Helper Functions
   // Function and state to enable any component to trigger a full app re-render
@@ -33,6 +34,12 @@ const App = () => {
     // renderAll()
   }, [theme])
 
+  //// SETTINGS MENU CONTROL
+  const toggleSettingsMenu = () => {
+    if(settingsOpen) setSettingsOpen(false)
+    else setSettingsOpen(true)
+  }
+
 
   //// TODO Shows confirmaiton dialogue, and sets DialogBox/confirmation window message.
   const toggleDialogBox = (message) => {
@@ -51,8 +58,13 @@ const App = () => {
           toggleDialogBox={toggleDialogBox}
         /> */}
       <div className="app">
-        
-        <Header renderAll={renderAll} changeTheme={changeTheme}/>
+        {settingsOpen && (
+        <Settings 
+            changeTheme={changeTheme}
+            toggleSettingsMenu={toggleSettingsMenu}
+          />
+        )}
+        <Header renderAll={renderAll} changeTheme={changeTheme} toggleSettingsMenu={toggleSettingsMenu}/>
         <Tasks renderAll={renderAll}/>
       </div>
     </div>
