@@ -75,6 +75,9 @@ const Header = ({renderAll, changeTheme, toggleSettingsMenu}) => {
     tasks.forEach(task => {
       task.sortPosition += 1
     })
+    tasks.filter(task => task.category === '').forEach(task => {
+      task.categorySort += 1
+    })
     localStorage.setItem('tasks', JSON.stringify(tasks))
    
     // create new task object
@@ -83,6 +86,7 @@ const Header = ({renderAll, changeTheme, toggleSettingsMenu}) => {
       name: taskInput,
 
       category: '',
+      categorySort: 1,
       sortPosition: 1,
       dates: [
         // {date: '2022-10-20', time: 45670},

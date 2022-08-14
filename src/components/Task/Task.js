@@ -7,9 +7,12 @@ import Button from '../Button/Button'
 // Style
 import './Task.css'
 // Icons
-import { MdEdit, MdDelete, MdAvTimer, MdHistoryEdu, MdHistory, MdHistoryToggleOff, MdExpandLess, MdExpandMore, MdCalendarToday, MdCalendarViewMonth, MdPlayArrow, MdStop, MdAllInclusive} from "react-icons/md"
+import { MdEdit, MdDelete, MdAvTimer, MdHistoryEdu, MdHistory, MdHistoryToggleOff, MdExpandLess, MdExpandMore, MdCalendarToday, MdCalendarViewMonth, MdPlayArrow, MdStop, MdAllInclusive, MdFolder, MdFolderOpen, MdFolderSpecial, MdCategory, MdTopic} from "react-icons/md"
 
 const Task = (props) => {
+
+
+
 
   //! Pieces of State
   //// Timer Stuff
@@ -133,7 +136,23 @@ const Task = (props) => {
     if(name) updatedTask.name = name
 
     // Only update category if a category passed in.
-    if(category) updatedTask.category = category
+    if(category || category === '') {
+      if(category === '') {
+        updatedTask.categorySort = null
+      } else {
+        const tasks = JSON.parse(localStorage.getItem('tasks'))
+        tasks.forEach(task => {
+          if(task.category === category) {
+            task.categorySort +=1
+          }
+          
+        })
+        updatedTask.categorySort = 1
+        localStorage.setItem('tasks', JSON.stringify(tasks))
+      }
+      updatedTask.category = category
+      
+    }
 
     // Sort all dates by most recent.
     updatedTask.dates.sort( (a, b) => b.date.localeCompare(a.date))
@@ -213,7 +232,7 @@ const Task = (props) => {
     }
   }
 
-  //// Edit Task
+  //// Edit Task Name
   const editTask = () => {
 
     const newName = window.prompt('Enter new task name.', props.task.name)
@@ -227,9 +246,20 @@ const Task = (props) => {
       return
     }
 
-    const newCategory = window.prompt('Enter a category for this task.', props.task?.category || 'Uncategorized')
+    updateTask(newName)
+  
+  }
 
-    updateTask(newName, null, null, newCategory)
+  //// Edit Task Category
+  const editTaskCategory = () => {
+    const oldCategory = props.task?.category || ''
+    const newCategory = window.prompt('Enter a category for this task.', oldCategory)
+
+
+
+    updateTask(null, null, null, newCategory)
+    props.checkCurrentCategoryEmpty(oldCategory)
+    props.renderAll()
   }
 
 
@@ -260,6 +290,10 @@ const Task = (props) => {
 
   //// Task Reordering
   const reorder = direction => {
+
+    const sortMode = props.currentCategory === 'All' ? 'sortPosition' : 'categorySort'
+
+
     // Store current task position. (redundant...)
     const currentTaskPosition = props.task.sortPosition
 
@@ -318,6 +352,7 @@ const Task = (props) => {
 
           {/*  */}
           <MdEdit className="edit-btn" onClick={editTask}/>
+          <MdTopic className="edit-btn" onClick={editTaskCategory}/>
           <MdDelete className="delete-btn" onClick={deleteTask}/>
         </div>
       </div>
