@@ -27,7 +27,11 @@ const Tasks = ({renderAll}) => {
     else if(b === 'Uncategorized') return -1
     else return a.localeCompare(b)
   })
-  if(categories.length <= 2) categories.pop()
+
+  //// If user has no categorized tasks, trim categories array to only have 'All'.
+  if(categories.filter(category => category !== 'All' && category !== 'Uncategorized').length === 0) {
+    categories.pop()
+  }
 
   // console.log(categories)
 
@@ -51,7 +55,8 @@ const Tasks = ({renderAll}) => {
   return (
     <div className='tasks'>
       <ul className='categories'>
-        {categories.map(category => (
+        {/* //// If categories array has more categories than just 'All', render category tabs. Otherwise, don't bother. */}
+        {categories.length > 1 && categories.map(category => (
             <li
               key={category}
               className={`category btn text-shadow ${category === currentCategory ? 'current-category' : ''} ${category === 'Uncategorized' ? 'uncategorized' : ''}`} 

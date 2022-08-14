@@ -92,7 +92,7 @@ const Task = (props) => {
 
   const updateTime = () => {
     setTotalTime(totalTime + (Date.now() - startTime))
-    console.log('we adding a second')
+    // console.log('we adding a second')
 
    
 
@@ -137,24 +137,31 @@ const Task = (props) => {
 
     // Only update category if a category passed in.
     if(newCategory || newCategory === '') {
-      // if(category === '') {
-      //   updatedTask.categorySort = null
-      // } else {
-        const tasks = JSON.parse(localStorage.getItem('tasks'))
-        tasks.forEach(task => {
-          if(task.category === newCategory) {
-            task.categorySort +=1
-          }
-          
-        })
-        tasks.filter(task => task.category === oldCategory).forEach(task => {
-          if(task.categorySort > updatedTask.categorySort) {
-            task.categorySort -= 1
-          }
-        })
-        updatedTask.categorySort = 1
-        localStorage.setItem('tasks', JSON.stringify(tasks))
-      // }
+      newCategory = newCategory.toLowerCase()
+      oldCategory = oldCategory.toLowerCase()
+      // Grab tasks.
+      const tasks = JSON.parse(localStorage.getItem('tasks'))
+
+      // This "makes room" in the tasks new category by moving all tasks that were already in that category down by one. The new task will occupy position 1.
+      tasks.forEach(task => {
+        if(task.category === newCategory) {
+          task.categorySort +=1
+        }
+      })
+
+      // This reorders the tasks in the tasks' previous category to reflect the fact that a task has left. Any tasks which were ordered below the task that has moved has their position moved up by one.
+      tasks.filter(task => task.category === oldCategory).forEach(task => {
+        if(task.categorySort > updatedTask.categorySort) {
+          task.categorySort -= 1
+        }
+      })
+      // Place new task at position 1 within its new category.
+      updatedTask.categorySort = 1
+
+      // Update localStorage with new orders.
+      localStorage.setItem('tasks', JSON.stringify(tasks))
+
+      // Officially change the tasks category.
       updatedTask.category = newCategory
       
     }

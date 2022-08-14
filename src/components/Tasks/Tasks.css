@@ -1,12 +1,15 @@
 .categories {
   display: flex;
+  /* display: flow-root; */
   margin-left: .8rem;
   margin-right: .8rem;
+  /* overflow: visible; */
   overflow-x: auto;
-  overflow-y: visible;
+
 }
 
 .category {
+  display: inline-block;
   padding: 1rem;
   margin-right: .2rem;
 
@@ -29,6 +32,10 @@
 
 .category:hover {
   border-bottom: none;
+}
+
+.category:active {
+  box-shadow: none;
 }
 
 .current-category {
