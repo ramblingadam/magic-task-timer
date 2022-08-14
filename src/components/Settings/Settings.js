@@ -33,6 +33,8 @@ const Settings = (props) => {
     // }
   ]
 
+ 
+
   // // When a setting property's value's option has been clicked, this is called. Applies the selected setting.
   const handleOptionClick = (category, option) => {
     if(category === 'Theme') {

@@ -328,20 +328,30 @@ const Task = (props) => {
       // ...then change current tasks position by -1 (moving it up the list)
       // ...and change the task directly above the current tasks position by +1 (moving it down)
       tasks.forEach(task => {
-        if(task[sortMode] === currentTaskPosition) {
-          task[sortMode] -= 1
-        } else if (task[sortMode] === currentTaskPosition - 1) {
-          task[sortMode] += 1
+        // Only change sort position of items in current category.
+        if(props.currentCategory === 'All'
+        || (props.currentCategory === 'Uncategorized' && task.category === '')
+        || props.currentCategory === task.category){
+          if(task[sortMode] === currentTaskPosition) {
+            task[sortMode] -= 1
+          } else if (task[sortMode] === currentTaskPosition - 1) {
+            task[sortMode] += 1
+          }
         }
       })
     } else if(direction === 'down') { //If sorting down, do the opposite of above...
       // ...by changing current tasks position by +1 (moving it down one slot)
       // ...and changing the task directly below the current tasks position by -1 (moving it up)
       tasks.forEach(task => {
-        if(task[sortMode] === currentTaskPosition) {
-          task[sortMode] += 1
-        } else if (task[sortMode] === currentTaskPosition + 1) {
-          task[sortMode] -= 1
+        // Only change sort position of items in current category.
+        if(props.currentCategory === 'All'
+        || (props.currentCategory === 'Uncategorized' && task.category === '')
+        || props.currentCategory === task.category){
+          if(task[sortMode] === currentTaskPosition) {
+            task[sortMode] += 1
+          } else if (task[sortMode] === currentTaskPosition + 1) {
+            task[sortMode] -= 1
+          }
         }
       })
     }
@@ -349,7 +359,13 @@ const Task = (props) => {
     localStorage.setItem('tasks', JSON.stringify(tasks))
     // Re-render Tasks so that new order is instantly visible.
     props.renderAll()
-    console.log(tasks)
+    
+    const sortedTasks = tasks.slice().sort((a,b) => {
+      if(a.category !== b.category) return a.category.localeCompare(b.category)
+      else return a.categorySort - b.categorySort
+    })
+    console.log('frog')
+    console.log(sortedTasks)
   }
 
   // TODO TOGGLE timeframe from Day Total to Overall Total
@@ -362,7 +378,14 @@ const Task = (props) => {
   //! Component
   return (
     // <li className={`task ${timerRunning ? 'running' : ''} ${(props.currentCategory !== 'All' && props.task.category !== props.currentCategory) || (props.currentCategory === 'Uncategorized' && props.task.category !== '') ? 'display-none' : ''}`}>
-    <li className={`task ${timerRunning ? 'running' : ''} ${props.currentCategory === 'All' || props.task.category === props.currentCategory || (props.currentCategory === 'Uncategorized' && props.task.category === '') ? '' : 'display-none'}`}>
+    <li className={`task ${timerRunning ? 'running' : ''} ${props.currentCategory === 'All' || props.task.category === props.currentCategory || (props.currentCategory === 'Uncategorized' && props.task.category === '') ? '' : 'display-none'} ${props.task.categorySort === props.tasks.filter(task => task.category === props.currentCategory || task.category === '' && props.currentCategory === 'Uncategorized').reduce( (acc, curr) => {
+      if(curr.categorySort > acc) return curr.categorySort
+      else return acc
+    }, -Infinity) ? 'clear-bottom-margin' : ''}`}>
+    {/* <li className={`task ${timerRunning ? 'running' : ''} ${props.currentCategory === 'All' || props.task.category === props.currentCategory || (props.currentCategory === 'Uncategorized' && props.task.category === '') ? '' : 'display-none'} ${props.task.categorySort === props.tasks.filter(task => task.category === props.currentCategory || task.category === '' && props.currentCategory === 'Uncategorized').reduce( (acc, curr) => {
+      if(curr.categorySort > acc) return curr.categorySort
+      else return acc
+    }, -Infinity) ? 'clear-bottom-margin' : ''}`}> */}
 
       {/*//// Task Top Row: Task Name, Setting Buttons  */}
       <div className='task-name text-shadow'>

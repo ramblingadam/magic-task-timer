@@ -513,7 +513,7 @@ h1 {
 
   background: var(--app-bg);
 
-  border: 1px solid var(--app-border-color);
+  border: 2px solid var(--app-border-color);
   border-radius: 10px;
 }
 

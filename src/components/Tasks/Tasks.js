@@ -1,5 +1,5 @@
 // Hooks
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 // Components
 import Task from '../Task/Task'
@@ -9,7 +9,7 @@ import './Tasks.css'
 
 
 
-const Tasks = ({renderAll}) => {
+const Tasks = (props) => {
 
   
 
@@ -42,6 +42,10 @@ const Tasks = ({renderAll}) => {
   const handleCategoryClick = (category) => {
     setCurrentCategory(category)
   }
+
+  useEffect(() => {
+    props.changeGlobalCategory(currentCategory)
+  }, [currentCategory])
 
   //// This is called from Task.js when a user changes the category of an item. If there are no more items with the old category, change view/set current category to 'All'
   const checkCurrentCategoryEmpty = (category) => {    
@@ -96,7 +100,7 @@ const Tasks = ({renderAll}) => {
             task={task}
             tasks={tasks}
             settings={settings}
-            renderAll={renderAll}
+            renderAll={props.renderAll}
             currentCategory={currentCategory}
             checkCurrentCategoryEmpty={checkCurrentCategoryEmpty}
     
