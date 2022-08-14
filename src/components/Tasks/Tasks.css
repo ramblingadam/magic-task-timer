@@ -2,6 +2,8 @@
   display: flex;
   margin-left: .8rem;
   margin-right: .8rem;
+  overflow-x: auto;
+  overflow-y: visible;
 }
 
 .category {
@@ -33,4 +35,8 @@
   border-left: 2px solid white;
   border-right: 2px solid white;
   border-top: 2px solid white;
+}
+
+.uncategorized {
+  margin-left: auto;
 }

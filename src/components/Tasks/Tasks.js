@@ -24,8 +24,10 @@ const Tasks = ({renderAll}) => {
     if(a === 'All') return -1
     else if(b === 'All') return 1
     else if(a === 'Uncategorized') return 1
+    else if(b === 'Uncategorized') return -1
     else return a.localeCompare(b)
   })
+  if(categories.length <= 2) categories.pop()
 
   // console.log(categories)
 
@@ -52,7 +54,7 @@ const Tasks = ({renderAll}) => {
         {categories.map(category => (
             <li
               key={category}
-              className={`category btn text-shadow ${category === currentCategory ? 'current-category' : ''}`} 
+              className={`category btn text-shadow ${category === currentCategory ? 'current-category' : ''} ${category === 'Uncategorized' ? 'uncategorized' : ''}`} 
               onClick={() => handleCategoryClick(category)}
             >
               {category.slice(0,1).toUpperCase() + category.slice(1)}
