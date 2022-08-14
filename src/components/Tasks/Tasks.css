@@ -6,7 +6,8 @@
   margin-right: .8rem;
   /* overflow: visible; */
   overflow-x: auto;
-  height: 5rem;
+  overflow-y: auto;
+  height: 6rem;
 
 }
 
@@ -31,6 +32,7 @@
 
   flex: 0;
   
+  background: var(--app-bg);
 
   cursor: pointer;
 }

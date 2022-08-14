@@ -55,7 +55,7 @@ const Tasks = ({renderAll}) => {
 
   return (
     <div className='tasks'>
-      <ul className='categories'>
+      <ul className={`categories ${categories.length <= 1 ? 'display-none': ''}`}>
         {/* //// If categories array has more categories than just 'All', render category tabs. Otherwise, don't bother. */}
         {categories.length > 1 && categories.map(category => (
             <li

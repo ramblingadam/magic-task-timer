@@ -409,7 +409,7 @@ const Task = (props) => {
 
          {/* //// TASK TIME */}
         <div className='task-time text-shadow' onClick={toggleTimeframe}>
-          <span className='hover-popup'>{`${mainTimeIsGrandTotal ? 'All Time. Click to show Today.' : 'Today. Click to show All Time.'}`}</span>
+          <span className='hover-popup text-shadow'>{`${mainTimeIsGrandTotal ? 'All Time. Click to show Today.' : 'Today. Click to show All Time.'}`}</span>
  
           {/* //TODO TOGGLE TIMEFRAME BIG BUTTON NEXT TO TIME */}
           {/* <p className=''>
