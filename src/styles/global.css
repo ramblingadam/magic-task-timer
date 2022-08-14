@@ -89,9 +89,9 @@ table {
 
 
   /* // Scrollbar Colors */
-  --scrollbar-thumb: rgb(144, 216, 238);
-  --scrollbar-track: grey;
-  --scrollbar-thumb-border: black;
+  --scrollbar-thumb: grey;
+  --scrollbar-track: rgb(49, 49, 49);
+  --scrollbar-thumb-border: rgb(255, 255, 255);
 
   /* // Task Colors */
   /* --task-bg: darkslategray; */
@@ -114,7 +114,7 @@ table {
 /* ! END ROOT VARIABLES */
 
 /* ! THEMES */
-/* // ----- MAKO THEME ----- */
+/* //! ----- MAKO THEME ----- */
 :root .theme-mako {
   /* // Text */
   --text-color: white;
@@ -151,9 +151,14 @@ table {
   --heat-med: rgb(0, 131, 0);
   --heat-medhigh: rgb(0, 177, 0);
   --heat-high: rgb(0, 255, 0);
+
+  /* // Scrollbars */
+  --scrollbar-thumb: rgb(144, 216, 238);
+  --scrollbar-track: grey;
+  --scrollbar-thumb-border: black;
 }
 
-/*// ---- DARK THEME ---- */
+/*//! ---- DARK THEME ---- */
 :root .theme-dark {
   /* // Text */
   --text-color: rgb(255, 255, 255);
@@ -189,9 +194,14 @@ table {
   --heat-med: rgb(131, 131, 131);
   --heat-medhigh: rgb(177, 177, 177);
   --heat-high: rgb(255, 255, 255);
+
+    /* // Scrollbars */
+    --scrollbar-thumb: white;
+    --scrollbar-track: grey;
+    --scrollbar-thumb-border: black;
 }
 
-/* // ----- HALLOWEEN THEME ----- */
+/* //! ----- HALLOWEEN THEME ----- */
 :root .theme-halloween {
   --text-color: orange;
   --text-shadow-color: black;
@@ -229,7 +239,7 @@ table {
 
 }
 
-/* // ----- LIGHT THEME ----- */
+/* //! ----- LIGHT THEME ----- */
 :root .theme-light {
   /* // Text */
   --text-color: black;
@@ -346,6 +356,10 @@ h1 {
 
 }
 
+.display-none {
+  display: none !important;
+}
+
 .relative {
   position: relative;
 }
@@ -459,6 +473,7 @@ h1 {
 /* Works on Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
   width: 5px;
+  height: 10px;
 }
 
 *::-webkit-scrollbar-track {
@@ -498,7 +513,7 @@ h1 {
 
   background: var(--app-bg);
 
-  border: 1px solid var(--app-border-color);
+  border: 2px solid var(--app-border-color);
   border-radius: 10px;
 }
 

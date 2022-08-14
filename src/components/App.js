@@ -22,8 +22,14 @@ const App = () => {
     setReRender(reRender + 1)
   }
 
-  //// TODO THEMING
-  const [theme, setTheme] = useState(JSON.parse(localStorage.getItem('settings')).theme || 'mako')
+  // Function and state to track current category so that we can adjust behavior in the header based on the current category- namely, when a category is selected and a new task is created, automatically place that task into the current category.
+  const [globalCurrentCategory, setGlobalCurrentCategory] = useState('Mako')
+  const changeGlobalCategory = (category) => {
+    setGlobalCurrentCategory(category)
+  }
+
+  //// THEMING
+  const [theme, setTheme] = useState(JSON.parse(localStorage.getItem('settings'))?.theme || 'mako')
   const changeTheme = (theme) => {
     setTheme(theme)
     console.log('changetheme clicked')
@@ -63,10 +69,20 @@ const App = () => {
             changeTheme={changeTheme}
             toggleSettingsMenu={toggleSettingsMenu}
             renderAll={renderAll}
+          
           />
         )}
-        <Header renderAll={renderAll} changeTheme={changeTheme} toggleSettingsMenu={toggleSettingsMenu}/>
-        <Tasks renderAll={renderAll}/>
+        <Header
+          renderAll={renderAll}
+          changeTheme={changeTheme}
+          toggleSettingsMenu={toggleSettingsMenu}
+          globalCurrentCategory={globalCurrentCategory}
+        />
+        <Tasks
+          renderAll={renderAll}
+          globalCurrentCategory={globalCurrentCategory}
+          changeGlobalCategory={changeGlobalCategory}
+        />
       </div>
     </div>
   )

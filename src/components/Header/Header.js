@@ -8,11 +8,12 @@ import './Header.css'
 // Icons
 import { MdAddCircle, MdSettings, Mddashci } from "react-icons/md"
 
-const Header = ({renderAll, changeTheme, toggleSettingsMenu}) => {
+const Header = ({renderAll, changeTheme, toggleSettingsMenu, globalCurrentCategory}) => {
 
   //// Pieces of State ////
   const [showNewTaskForm, setShowNewTaskForm] = useState(false)
   const [taskFormCollapsed, setTaskFormCollapsed] = useState(true)
+
 
 
   //// Helper Functions /////
@@ -72,8 +73,14 @@ const Header = ({renderAll, changeTheme, toggleSettingsMenu}) => {
 
     // Set sort position to put new task on top by decreasing sort position of all other tasks
     const tasks = localStorage.getItem('tasks') ? JSON.parse(localStorage.getItem('tasks')) : []
+
+    const newTaskCategory = globalCurrentCategory === 'All' || globalCurrentCategory === 'Uncategorized' ? '' : globalCurrentCategory
+
     tasks.forEach(task => {
       task.sortPosition += 1
+    })
+    tasks.filter(task => task.category === newTaskCategory).forEach(task => {
+      task.categorySort += 1
     })
     localStorage.setItem('tasks', JSON.stringify(tasks))
    
@@ -82,7 +89,8 @@ const Header = ({renderAll, changeTheme, toggleSettingsMenu}) => {
       id: Date.now(),
       name: taskInput,
 
-      category: '',
+      category: newTaskCategory,
+      categorySort: 1,
       sortPosition: 1,
       dates: [
         // {date: '2022-10-20', time: 45670},

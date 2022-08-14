@@ -9,7 +9,7 @@
   list-style-type: none;
 
   background: var(--task-bg);
-  border: 1px solid black;
+  border: 2px solid black;
   /* border: 1px solid rgba(255,255,255, .5); */
   border-radius: 10px;
 
@@ -26,6 +26,10 @@
 
 
 .task:last-of-type {
+  margin-bottom: 0;
+}
+
+.clear-bottom-margin {
   margin-bottom: 0;
 }
 
@@ -54,7 +58,8 @@
     /* box-shadow: 0 0 10px white; */
   }
 	100% {
-		background-position: 120% 50%;
+		/* background-position: 120% 50%; */
+		background-position: 115% 50%;
     /* box-shadow: 0 0 1px white; */
 	}
 }

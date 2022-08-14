@@ -7,9 +7,12 @@ import Button from '../Button/Button'
 // Style
 import './Task.css'
 // Icons
-import { MdEdit, MdDelete, MdAvTimer, MdHistoryEdu, MdHistory, MdHistoryToggleOff, MdExpandLess, MdExpandMore, MdCalendarToday, MdCalendarViewMonth, MdPlayArrow, MdStop, MdAllInclusive} from "react-icons/md"
+import { MdEdit, MdDelete, MdAvTimer, MdHistoryEdu, MdHistory, MdHistoryToggleOff, MdExpandLess, MdExpandMore, MdCalendarToday, MdCalendarViewMonth, MdPlayArrow, MdStop, MdAllInclusive, MdFolder, MdFolderOpen, MdFolderSpecial, MdCategory, MdTopic} from "react-icons/md"
 
 const Task = (props) => {
+
+
+
 
   //! Pieces of State
   //// Timer Stuff
@@ -89,7 +92,7 @@ const Task = (props) => {
 
   const updateTime = () => {
     setTotalTime(totalTime + (Date.now() - startTime))
-    console.log('we adding a second')
+    // console.log('we adding a second')
 
    
 
@@ -100,7 +103,7 @@ const Task = (props) => {
   }
 
   // // Task object updater - localStorage
-  const updateTask = (name, time, date) => {
+  const updateTask = (name, time, date, oldCategory, newCategory) => {
     // Copy current task. We will modify this copy with the requested changes before injecting it back into the database.
     const updatedTask = props.task
     
@@ -131,6 +134,37 @@ const Task = (props) => {
 
     // Only update name if a name is passed in.
     if(name) updatedTask.name = name
+
+    // Only update category if a category passed in.
+    if(newCategory || newCategory === '') {
+      newCategory = newCategory.toLowerCase()
+      oldCategory = oldCategory.toLowerCase()
+      // Grab tasks.
+      const tasks = JSON.parse(localStorage.getItem('tasks'))
+
+      // This "makes room" in the tasks new category by moving all tasks that were already in that category down by one. The new task will occupy position 1.
+      tasks.forEach(task => {
+        if(task.category === newCategory) {
+          task.categorySort +=1
+        }
+      })
+
+      // This reorders the tasks in the tasks' previous category to reflect the fact that a task has left. Any tasks which were ordered below the task that has moved has their position moved up by one.
+      tasks.filter(task => task.category === oldCategory).forEach(task => {
+        if(task.categorySort > updatedTask.categorySort) {
+          task.categorySort -= 1
+        }
+      })
+      // Place new task at position 1 within its new category.
+      updatedTask.categorySort = 1
+
+      // Update localStorage with new orders.
+      localStorage.setItem('tasks', JSON.stringify(tasks))
+
+      // Officially change the tasks category.
+      updatedTask.category = newCategory
+      
+    }
 
     // Sort all dates by most recent.
     updatedTask.dates.sort( (a, b) => b.date.localeCompare(a.date))
@@ -199,18 +233,29 @@ const Task = (props) => {
     if(window.confirm(`Are you sure you want to delete ALL records of time spent on '${props.task.name}'? This cannot be undone.`)) {
       // Grab tasks from localStorage and delete current task.
       const tasks = JSON.parse(localStorage.getItem('tasks'))
+      const oldCategory = props.task.category
+
       // Reassign sort order for all items occuring AFTER current item by moving them all up one position (position -1)
       tasks.forEach(task => {
         if(task.sortPosition > props.task.sortPosition) task.sortPosition -= 1
       })
+      // Reassign sort order for tasks within deleted tasks category.
+      tasks.filter(task => task.category === props.task.category).forEach(task => {
+        if(task.categorySort > props.task.categorySort) task.categorySort -= 1
+      })
       // Delete current task.
       tasks.splice(tasks.findIndex(task => task.id === props.task.id), 1)
       localStorage.setItem('tasks', JSON.stringify(tasks))
+
+      console.log('post delete tasks: ', tasks)
+
+      props.checkCurrentCategoryEmpty(oldCategory)
+
       props.renderAll() // Re-render app.
     }
   }
 
-  //// Edit Task
+  //// Edit Task Name
   const editTask = () => {
 
     const newName = window.prompt('Enter new task name.', props.task.name)
@@ -225,6 +270,19 @@ const Task = (props) => {
     }
 
     updateTask(newName)
+  
+  }
+
+  //// Edit Task Category
+  const editTaskCategory = () => {
+    const oldCategory = props.task?.category || ''
+    const newCategory = window.prompt('Enter a category for this task.', oldCategory)
+
+
+
+    updateTask(null, null, null, oldCategory, newCategory)
+    props.checkCurrentCategoryEmpty(oldCategory)
+    props.renderAll()
   }
 
 
@@ -254,9 +312,14 @@ const Task = (props) => {
   }
 
   //// Task Reordering
+  const sortMode = props.currentCategory === 'All' ? 'sortPosition' : 'categorySort'
   const reorder = direction => {
+
+    
+
+
     // Store current task position. (redundant...)
-    const currentTaskPosition = props.task.sortPosition
+    const currentTaskPosition = props.task[sortMode]
 
     // First, grab all tasks.
     const tasks = JSON.parse(localStorage.getItem('tasks'))
@@ -265,20 +328,30 @@ const Task = (props) => {
       // ...then change current tasks position by -1 (moving it up the list)
       // ...and change the task directly above the current tasks position by +1 (moving it down)
       tasks.forEach(task => {
-        if(task.sortPosition === currentTaskPosition) {
-          task.sortPosition -= 1
-        } else if (task.sortPosition === currentTaskPosition - 1) {
-          task.sortPosition += 1
+        // Only change sort position of items in current category.
+        if(props.currentCategory === 'All'
+        || (props.currentCategory === 'Uncategorized' && task.category === '')
+        || props.currentCategory === task.category){
+          if(task[sortMode] === currentTaskPosition) {
+            task[sortMode] -= 1
+          } else if (task[sortMode] === currentTaskPosition - 1) {
+            task[sortMode] += 1
+          }
         }
       })
     } else if(direction === 'down') { //If sorting down, do the opposite of above...
       // ...by changing current tasks position by +1 (moving it down one slot)
       // ...and changing the task directly below the current tasks position by -1 (moving it up)
       tasks.forEach(task => {
-        if(task.sortPosition === currentTaskPosition) {
-          task.sortPosition += 1
-        } else if (task.sortPosition === currentTaskPosition + 1) {
-          task.sortPosition -= 1
+        // Only change sort position of items in current category.
+        if(props.currentCategory === 'All'
+        || (props.currentCategory === 'Uncategorized' && task.category === '')
+        || props.currentCategory === task.category){
+          if(task[sortMode] === currentTaskPosition) {
+            task[sortMode] += 1
+          } else if (task[sortMode] === currentTaskPosition + 1) {
+            task[sortMode] -= 1
+          }
         }
       })
     }
@@ -286,6 +359,13 @@ const Task = (props) => {
     localStorage.setItem('tasks', JSON.stringify(tasks))
     // Re-render Tasks so that new order is instantly visible.
     props.renderAll()
+    
+    const sortedTasks = tasks.slice().sort((a,b) => {
+      if(a.category !== b.category) return a.category.localeCompare(b.category)
+      else return a.categorySort - b.categorySort
+    })
+    console.log('frog')
+    console.log(sortedTasks)
   }
 
   // TODO TOGGLE timeframe from Day Total to Overall Total
@@ -295,11 +375,17 @@ const Task = (props) => {
 
 
 
- 
-
   //! Component
   return (
-    <li className={`task ${timerRunning ? 'running' : ''}`}>
+    // <li className={`task ${timerRunning ? 'running' : ''} ${(props.currentCategory !== 'All' && props.task.category !== props.currentCategory) || (props.currentCategory === 'Uncategorized' && props.task.category !== '') ? 'display-none' : ''}`}>
+    <li className={`task ${timerRunning ? 'running' : ''} ${props.currentCategory === 'All' || props.task.category === props.currentCategory || (props.currentCategory === 'Uncategorized' && props.task.category === '') ? '' : 'display-none'} ${props.task.categorySort === props.tasks.filter(task => task.category === props.currentCategory || task.category === '' && props.currentCategory === 'Uncategorized').reduce( (acc, curr) => {
+      if(curr.categorySort > acc) return curr.categorySort
+      else return acc
+    }, -Infinity) ? 'clear-bottom-margin' : ''}`}>
+    {/* <li className={`task ${timerRunning ? 'running' : ''} ${props.currentCategory === 'All' || props.task.category === props.currentCategory || (props.currentCategory === 'Uncategorized' && props.task.category === '') ? '' : 'display-none'} ${props.task.categorySort === props.tasks.filter(task => task.category === props.currentCategory || task.category === '' && props.currentCategory === 'Uncategorized').reduce( (acc, curr) => {
+      if(curr.categorySort > acc) return curr.categorySort
+      else return acc
+    }, -Infinity) ? 'clear-bottom-margin' : ''}`}> */}
 
       {/*//// Task Top Row: Task Name, Setting Buttons  */}
       <div className='task-name text-shadow'>
@@ -313,6 +399,7 @@ const Task = (props) => {
 
           {/*  */}
           <MdEdit className="edit-btn" onClick={editTask}/>
+          <MdTopic className="edit-btn" onClick={editTaskCategory}/>
           <MdDelete className="delete-btn" onClick={deleteTask}/>
         </div>
       </div>
@@ -322,13 +409,30 @@ const Task = (props) => {
 
         {/* //// SORT BUTTONS */}
         <div className='sort-btns'>
-          <MdExpandLess className='sort-btn' onClick={props.task.sortPosition > 1 ? () => reorder('up') : null}/>
-          <MdExpandMore className='sort-btn' onClick={props.task.sortPosition < JSON.parse(localStorage.getItem('tasks')).length ? () => reorder('down') : null}/>
+          <MdExpandLess className='sort-btn' onClick={props.task[sortMode] > 1 ? () => reorder('up') : null}/>
+          {/* <MdExpandMore className='sort-btn' onClick={props.task[sortMode] < JSON.parse(localStorage.getItem('tasks')).length ? () => reorder('down') : null}/> */}
+          <MdExpandMore
+            className='sort-btn'
+            onClick={
+              props.currentCategory === 'All'
+              ? props.task[sortMode] < JSON.parse(localStorage.getItem('tasks')).length
+                ? () => reorder('down')
+                : null
+
+              : props.currentCategory === 'Uncategorized'
+                ? props.task[sortMode] < JSON.parse(localStorage.getItem('tasks')).filter(task => '' === task.category).length
+                  ? () => reorder('down')
+                  : null
+
+              : props.task[sortMode] < JSON.parse(localStorage.getItem('tasks')).filter(task => props.currentCategory === task.category).length
+                ? () => reorder('down')
+                : null}
+          />
          </div>
 
          {/* //// TASK TIME */}
         <div className='task-time text-shadow' onClick={toggleTimeframe}>
-          <span className='hover-popup'>{`${mainTimeIsGrandTotal ? 'All Time. Click to show Today.' : 'Today. Click to show All Time.'}`}</span>
+          <span className='hover-popup text-shadow'>{`${mainTimeIsGrandTotal ? 'All Time. Click to show Today.' : 'Today. Click to show All Time.'}`}</span>
  
           {/* //TODO TOGGLE TIMEFRAME BIG BUTTON NEXT TO TIME */}
           {/* <p className=''>

@@ -33,6 +33,8 @@ const Settings = (props) => {
     // }
   ]
 
+ 
+
   // // When a setting property's value's option has been clicked, this is called. Applies the selected setting.
   const handleOptionClick = (category, option) => {
     if(category === 'Theme') {
@@ -70,7 +72,7 @@ const Settings = (props) => {
     localStorage.setItem('settings', JSON.stringify(settings))
     setCurrentSettings(settings)
 
-    console.log(settings)
+    // console.log(settings)
   }
 
  
@@ -99,12 +101,13 @@ const Settings = (props) => {
               <ul className='menu-select' id='theme-menu-select'>
                 {menuItem.options.map(option => (
                   <li
+                  key={option}
                   className={`menu-select-option invis-button ${option.toLowerCase() === currentSettings[menuItem.setting.toLowerCase()] ? 'active-setting' : ''}`}
                   id={option}
                   onClick={() => handleOptionClick(menuItem.setting, option.toLowerCase())}
                   >
                     {option}
-                    {console.log(option.toLowerCase(), currentSettings, menuItem.setting.toLowerCase(), currentSettings[menuItem.setting.toLowerCase()])}
+                    {/* {console.log(option.toLowerCase(), currentSettings, menuItem.setting.toLowerCase(), currentSettings[menuItem.setting.toLowerCase()])} */}
                   </li>
                 ))}
               </ul>
