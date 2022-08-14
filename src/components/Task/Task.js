@@ -233,6 +233,8 @@ const Task = (props) => {
     if(window.confirm(`Are you sure you want to delete ALL records of time spent on '${props.task.name}'? This cannot be undone.`)) {
       // Grab tasks from localStorage and delete current task.
       const tasks = JSON.parse(localStorage.getItem('tasks'))
+      const oldCategory = props.task.category
+
       // Reassign sort order for all items occuring AFTER current item by moving them all up one position (position -1)
       tasks.forEach(task => {
         if(task.sortPosition > props.task.sortPosition) task.sortPosition -= 1
@@ -244,6 +246,11 @@ const Task = (props) => {
       // Delete current task.
       tasks.splice(tasks.findIndex(task => task.id === props.task.id), 1)
       localStorage.setItem('tasks', JSON.stringify(tasks))
+
+      console.log('post delete tasks: ', tasks)
+      
+      props.checkCurrentCategoryEmpty(oldCategory)
+
       props.renderAll() // Re-render app.
     }
   }

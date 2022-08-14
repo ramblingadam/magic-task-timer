@@ -44,7 +44,8 @@ const Tasks = ({renderAll}) => {
   }
 
   //// This is called from Task.js when a user changes the category of an item. If there are no more items with the old category, change view/set current category to 'All'
-  const checkCurrentCategoryEmpty = (category) => {
+  const checkCurrentCategoryEmpty = (category) => {    
+    const tasks = JSON.parse(localStorage.getItem('tasks'))
     const tasksInCategory = tasks.filter(task => task.category === category).length
     if(tasksInCategory === 0) {
       setCurrentCategory('All')
