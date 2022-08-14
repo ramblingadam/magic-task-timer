@@ -54,7 +54,8 @@
     /* box-shadow: 0 0 10px white; */
   }
 	100% {
-		background-position: 120% 50%;
+		/* background-position: 120% 50%; */
+		background-position: 115% 50%;
     /* box-shadow: 0 0 1px white; */
 	}
 }

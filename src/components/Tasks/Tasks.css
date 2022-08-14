@@ -1,0 +1,36 @@
+.categories {
+  display: flex;
+  margin-left: .8rem;
+  margin-right: .8rem;
+}
+
+.category {
+  padding: 1rem;
+  margin-right: .2rem;
+
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  border-top: 2px solid black;
+  border-bottom: none;
+
+  border-radius: 15px 15px 0 0;
+
+  text-align: center;
+
+  box-shadow: var(--button-shine);
+
+  flex: 0;
+  
+
+  cursor: pointer;
+}
+
+.category:hover {
+  border-bottom: none;
+}
+
+.current-category {
+  border-left: 2px solid white;
+  border-right: 2px solid white;
+  border-top: 2px solid white;
+}

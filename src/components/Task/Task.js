@@ -100,7 +100,7 @@ const Task = (props) => {
   }
 
   // // Task object updater - localStorage
-  const updateTask = (name, time, date) => {
+  const updateTask = (name, time, date, category) => {
     // Copy current task. We will modify this copy with the requested changes before injecting it back into the database.
     const updatedTask = props.task
     
@@ -131,6 +131,9 @@ const Task = (props) => {
 
     // Only update name if a name is passed in.
     if(name) updatedTask.name = name
+
+    // Only update category if a category passed in.
+    if(category) updatedTask.category = category
 
     // Sort all dates by most recent.
     updatedTask.dates.sort( (a, b) => b.date.localeCompare(a.date))
@@ -224,7 +227,9 @@ const Task = (props) => {
       return
     }
 
-    updateTask(newName)
+    const newCategory = window.prompt('Enter a category for this task.', props.task?.category || 'Uncategorized')
+
+    updateTask(newName, null, null, newCategory)
   }
 
 
