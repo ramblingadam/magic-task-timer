@@ -248,7 +248,7 @@ const Task = (props) => {
       localStorage.setItem('tasks', JSON.stringify(tasks))
 
       console.log('post delete tasks: ', tasks)
-      
+
       props.checkCurrentCategoryEmpty(oldCategory)
 
       props.renderAll() // Re-render app.
@@ -359,11 +359,10 @@ const Task = (props) => {
 
 
 
- 
-
   //! Component
   return (
-    <li className={`task ${timerRunning ? 'running' : ''}`}>
+    // <li className={`task ${timerRunning ? 'running' : ''} ${(props.currentCategory !== 'All' && props.task.category !== props.currentCategory) || (props.currentCategory === 'Uncategorized' && props.task.category !== '') ? 'display-none' : ''}`}>
+    <li className={`task ${timerRunning ? 'running' : ''} ${props.currentCategory === 'All' || props.task.category === props.currentCategory || (props.currentCategory === 'Uncategorized' && props.task.category === '') ? '' : 'display-none'}`}>
 
       {/*//// Task Top Row: Task Name, Setting Buttons  */}
       <div className='task-name text-shadow'>

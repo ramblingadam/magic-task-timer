@@ -71,18 +71,22 @@ const Tasks = ({renderAll}) => {
 
       <ul>
         {tasks.length >= 1
-          ? tasks.filter(task => {
-            if(currentCategory === 'All') {
-              return task
-            }
-            else if(currentCategory === 'Uncategorized') {
-              return task.category === ''
-            }
-            else {
-              return task.category === currentCategory
-            }
-          })
-          .sort( (a,b) => {
+          // ? tasks.filter(task => {
+          //   if(currentCategory === 'All') {
+          //     return task
+          //   }
+          //   else if(currentCategory === 'Uncategorized') {
+          //     return task.category === ''
+          //   }
+          //   else {
+          //     return task.category === currentCategory
+          //   }
+          // })
+          // .sort( (a,b) => {
+          //   if(currentCategory === 'All') return a.sortPosition - b.sortPosition
+          //   else return a.categorySort - b.categorySort
+          // })
+          ? tasks.sort( (a,b) => {
             if(currentCategory === 'All') return a.sortPosition - b.sortPosition
             else return a.categorySort - b.categorySort
           })
@@ -95,6 +99,7 @@ const Tasks = ({renderAll}) => {
             renderAll={renderAll}
             currentCategory={currentCategory}
             checkCurrentCategoryEmpty={checkCurrentCategoryEmpty}
+    
           />
         ))
         : <p className='add-task-msg'>Click the + button to add a task!</p>}
