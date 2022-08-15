@@ -503,6 +503,7 @@ const Task = (props) => {
           convertTime={convertTime}
           getToday={getToday}
           // updateTimeForTotalTimer={updateTime}
+          settings={props.settings}
         />
        
 

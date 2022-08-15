@@ -68,6 +68,17 @@ h1 {
   transition: .1s;
 }
 
+/* ! HELP BUTTON */
+.help-btn:hover {
+  fill: yellow;
+  filter: drop-shadow(0 0 2px yellow);
+
+  animation: spin 2s linear infinite;
+
+  transition: .1s ease;
+  cursor: pointer;
+}
+
 /* ! SETTINGS BUTTON */
 .settings-btn:hover {
   fill: yellow;

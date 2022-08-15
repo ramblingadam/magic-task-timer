@@ -198,15 +198,17 @@
 
 .hover-popup {
   opacity: 0;
-  display: none;
+  /* display: none; */
   color: white;
   z-index: 2;
 
-  text-shadow:none;
+  text-align: center;
+  text-shadow: none;
 
   position: absolute;
   left: 50%;
-  bottom: -25px;
+  /* bottom: -25px; */
+  top: -26px;
   transform: translateX(-50%);
   white-space: nowrap;
 
@@ -218,15 +220,35 @@
 
   font-size: 1.5rem;
   transition: .2s;
+
+  pointer-events: none;
+}
+
+.icon-buttons .hover-popup,
+.sort-btns .hover-popup {
+  left: unset;
+  right: -18px;
+  transform: none;
 }
 
 .hover-popup-wrapper:hover > .hover-popup {
   opacity: 1;
-  display: block;
+  /* display: block; */
 
-  transition: .3s ease .75s;
+  transition: .3s ease .3s;
 
   pointer-events: none;
+}
+
+.hover-popup-wrapper:hover > .hover-popup-delay {
+  transition: .3s ease 1s;
+}
+
+.hover-popup.two-line {
+  top: -40px;
+}
+.hover-popup.three-line {
+  top: -55px;
 }
 
 /* ! Task Info Area: Sort Buttons, Live Timer, Big Timer Button */

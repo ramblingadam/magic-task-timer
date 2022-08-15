@@ -10,7 +10,8 @@ const Settings = (props) => {
 
   // ! STATE
   const defaultSettings = {
-    theme: 'mako'
+    theme: 'mako',
+    helptext: true
   }
   const [currentSettings, setCurrentSettings] = useState(!localStorage.getItem('settings') ? defaultSettings : JSON.parse(localStorage.getItem('settings')))
 
@@ -24,6 +25,13 @@ const Settings = (props) => {
         'Halloween'
       ]
     },
+    {
+      setting: 'Help Text',
+      options: [
+        'On',
+        'Off'
+      ]
+    },
     // {
     //   setting: 'Date Format',
     //   options: [
@@ -35,9 +43,9 @@ const Settings = (props) => {
 
  
 
-  // // When a setting property's value's option has been clicked, this is called. Applies the selected setting.
-  const handleOptionClick = (category, option) => {
-    if(category === 'Theme') {
+  // // When a setting's value's option has been clicked, this is called. Applies the selected setting.
+  const handleOptionClick = (setting, option) => {
+    if(setting === 'Theme') {
       switch(option) {
         case 'mako' :
           props.changeTheme('mako')
@@ -55,12 +63,25 @@ const Settings = (props) => {
         // break
         default : props.changeTheme('mako')
       }
-      updateUserSetting(category.toLowerCase(), option)
+      updateUserSetting(setting.toLowerCase(), option)
+    }
+
+    if(setting === 'Help Text') {
+      switch(option) {
+        case 'on' :
+          props.updateHelpTextPref(true)
+        break
+        case 'off' :
+          props.updateHelpTextPref(false)
+        break
+      }
+      setting = 'helptext'
+      updateUserSetting(setting.toLowerCase(), option)
     }
   }
 
   
-  const updateUserSetting = (category, option) => {
+  const updateUserSetting = (setting, option) => {
     // First, check if user has settings in localStorage yet. If not, create them.
     if(!localStorage.getItem('settings')) {
       localStorage.setItem('settings', JSON.stringify(defaultSettings))
@@ -68,7 +89,7 @@ const Settings = (props) => {
 
     const settings = JSON.parse(localStorage.getItem('settings'))
 
-    settings[category] = option
+    settings[setting] = option
     localStorage.setItem('settings', JSON.stringify(settings))
     setCurrentSettings(settings)
 
@@ -102,7 +123,7 @@ const Settings = (props) => {
                 {menuItem.options.map(option => (
                   <li
                   key={option}
-                  className={`menu-select-option invis-button ${option.toLowerCase() === currentSettings[menuItem.setting.toLowerCase()] ? 'active-setting' : ''}`}
+                  className={`menu-select-option invis-button ${option.toLowerCase() === currentSettings[menuItem.setting.split(' ').join('').toLowerCase()] ? 'active-setting' : ''}`}
                   id={option}
                   onClick={() => handleOptionClick(menuItem.setting, option.toLowerCase())}
                   >

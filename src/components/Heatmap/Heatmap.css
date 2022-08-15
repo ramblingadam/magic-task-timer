@@ -76,6 +76,10 @@
 .day-box:hover > .day-popup {
   display: block;
 }
+/* This will show the day pop-up for the currently selected date, even if not being hovered. */
+/* .day-box.selected-date > .day-popup {
+  display: block;
+} */
 
 .day-popup {
   display: none;
@@ -98,6 +102,7 @@
   pointer-events: none;
 }
 
+/* Little rotated square to point at box */
 .day-popup::after {
   content: '';
   height: 10px;

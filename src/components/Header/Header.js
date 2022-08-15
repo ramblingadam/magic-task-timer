@@ -6,7 +6,7 @@ import Settings from '../Settings/Settings'
 import './Header.css'
 
 // Icons
-import { MdAddCircle, MdSettings, Mddashci } from "react-icons/md"
+import { MdAddCircle, MdSettings, Mddashci, MdHelp, MdQuestionAnswer, MdHelpOutline, MdHelpCenter } from "react-icons/md"
 
 const Header = ({renderAll, changeTheme, toggleSettingsMenu, globalCurrentCategory}) => {
 
@@ -122,7 +122,10 @@ const Header = ({renderAll, changeTheme, toggleSettingsMenu, globalCurrentCatego
         <h1>Magic Task Timer&nbsp;<MdAddCircle className={`plus ${showNewTaskForm ? 'open' : ''}`} onClick={toggleNewTaskForm} /></h1>
         
         <div className='header-buttons'>
-          
+          <MdHelpOutline className='edit-btn'/>
+          {/* <MdHelpCenter />
+          <MdQuestionAnswer />
+          <MdHelp /> */}
           <MdSettings className='settings-btn' onClick={toggleSettingsMenu}/>
           
         </div>

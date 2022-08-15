@@ -9,6 +9,8 @@ import { useState, useEffect } from "react"
 
 const App = () => {
 
+  const settings = JSON.parse(localStorage.getItem('settings'))
+
   // ! STATE
   // TODO Dialog Box Pieces of State/description/buttons values
   const [dialogBoxVisible, setDialogBoxVisible] = useState(false)
@@ -28,8 +30,15 @@ const App = () => {
     setGlobalCurrentCategory(category)
   }
 
+  // ! SETTINGS-RELATED FUNCTIONS, STATE, AND PROPS TO PASS DOWN COMPONENTS
+  //// SETTINGS MENU CONTROL
+  const toggleSettingsMenu = () => {
+    if(settingsOpen) setSettingsOpen(false)
+    else setSettingsOpen(true)
+  }
+
   //// THEMING
-  const [theme, setTheme] = useState(JSON.parse(localStorage.getItem('settings'))?.theme || 'mako')
+  const [theme, setTheme] = useState(settings?.theme || 'mako')
   const changeTheme = (theme) => {
     setTheme(theme)
     console.log('changetheme clicked')
@@ -40,12 +49,17 @@ const App = () => {
     // renderAll()
   }, [theme])
 
-  //// SETTINGS MENU CONTROL
-  const toggleSettingsMenu = () => {
-    if(settingsOpen) setSettingsOpen(false)
-    else setSettingsOpen(true)
+  //// HELP TEXT VISIBILITY
+  const [helpTextPref, setHelpTextPref] = useState(settings?.helptext || true)
+  const updateHelpTextPref = () => {
+    if(helpTextPref) {
+      settings.helptext = false
+    } else {
+      settings.helptext = true
+    }
+    localStorage.setItem('settings', JSON.stringify(settings))
+    setHelpTextPref(!helpTextPref)
   }
-
 
   //// TODO Shows confirmaiton dialogue, and sets DialogBox/confirmation window message.
   const toggleDialogBox = (message) => {
@@ -67,6 +81,9 @@ const App = () => {
         {settingsOpen && (
         <Settings 
             changeTheme={changeTheme}
+            updateHelpTextPref={updateHelpTextPref}
+
+
             toggleSettingsMenu={toggleSettingsMenu}
             renderAll={renderAll}
           
@@ -77,11 +94,13 @@ const App = () => {
           changeTheme={changeTheme}
           toggleSettingsMenu={toggleSettingsMenu}
           globalCurrentCategory={globalCurrentCategory}
+          settings={settings}
         />
         <Tasks
           renderAll={renderAll}
           globalCurrentCategory={globalCurrentCategory}
           changeGlobalCategory={changeGlobalCategory}
+          settings={settings}
         />
       </div>
     </div>
