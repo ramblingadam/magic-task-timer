@@ -40,7 +40,11 @@ const Tasks = (props) => {
   //// currentCategory handling. 'All' by default.
   const [currentCategory, setCurrentCategory] = useState('All')
   const handleCategoryClick = (category) => {
+    // props.changeGlobalCategory(currentCategory)
     setCurrentCategory(category)
+    // console.log('from tasks: ', currentCategory)
+    // setTimeout(() => console.log(currentCategory), 1000)
+
   }
 
   useEffect(() => {

@@ -74,7 +74,7 @@ const History = props => {
           <tbody>
             {props.task.dates.length 
               ? props.task.dates.map(date => (
-                <tr key={date.date} className='history-row' onClick={() => props.setDateInForm(date.date)}>
+              <tr key={date.date} className={`history-row ${date.date === props.selectedDate ? 'selected-date-history' : ''}`} onClick={() => props.setDateInForm(date.date)}>
                   <td className='history-date'>
                     {formatDate(date.date, 'short')}
                   </td>

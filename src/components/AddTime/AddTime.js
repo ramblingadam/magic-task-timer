@@ -32,7 +32,10 @@ const AddTime = (props) => {
     if(selectedDate > today || selectedDate === '') setDateInForm('today')
   }, [selectedDate])
 
+
+
   // ! Helper Functions
+
   // // Manage Controlled Time and Date Inputs
   const handleTimeChange = (denomination, e) => {
     // console.log(e)
@@ -111,6 +114,7 @@ const AddTime = (props) => {
     } else {
       setSelectedDate(specificDate)
     }
+    // props.renderAll()
     setDateInputFlash(true)
     setTimeout(() => setDateInputFlash(false), 1000)
   }
@@ -191,6 +195,7 @@ const AddTime = (props) => {
         convertTime={props.convertTime}
         task={props.task}
         setDateInForm={setDateInForm}
+        selectedDate={selectedDate}
       />
 
       {/* //// Task History Table*/}
@@ -198,6 +203,7 @@ const AddTime = (props) => {
         task={props.task}
         convertTime={props.convertTime}
         setDateInForm={setDateInForm}
+        selectedDate={selectedDate}
       />
 
       

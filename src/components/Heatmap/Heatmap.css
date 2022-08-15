@@ -138,3 +138,7 @@
 .heat-high {
   background: var(--heat-high);
 }
+
+.selected-date {
+  border: 2px solid white;
+}

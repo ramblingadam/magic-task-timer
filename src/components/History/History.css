@@ -176,4 +176,6 @@
   border-right: 1px dotted black;
 }
 
-
+.selected-date-history {
+  outline: 2px solid white;
+}

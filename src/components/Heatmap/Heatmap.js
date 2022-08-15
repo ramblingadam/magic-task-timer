@@ -166,8 +166,7 @@ const Heatmap = props => {
             {week.map(day => (
               
             <div
-              className={`day-box day-box-hoverable
-                ${day.time ?
+              className={`day-box day-box-hoverable ${day.time ?
                   (
                   day.time < 600000 ? 'heat-low'
                   : day.time < 1800000 ? 'heat-lowmed'
@@ -176,6 +175,8 @@ const Heatmap = props => {
                   : 'heat-high'
                   )
                   : ''
+                } ${
+                  day.date === props.selectedDate ? 'selected-date' : ''
                 }`
               }
               key={day.date}

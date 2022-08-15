@@ -9,12 +9,13 @@
   overflow-y: auto;
   height: 6rem;
 
+  transition: .1s linear;
 }
 
 .category {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 
   padding: 1rem;
   margin-right: .2rem;
@@ -32,9 +33,13 @@
 
   flex: 0;
   
-  background: var(--app-bg);
+  /* background: var(--app-bg); */
+  background: var(--task-bg);
+  /* background: var(--button-transparent); */
 
   cursor: pointer;
+
+  white-space: nowrap;
 }
 
 .category:last-of-type {
@@ -47,6 +52,7 @@
 
 .category:active {
   box-shadow: none;
+
 }
 
 .current-category {
@@ -54,6 +60,9 @@
   border-right: 2px solid white;
   border-top: 2px solid white;
   height: 5rem;
+  /* background: var(--app-bg); */
+  /* background: var(--task-running-gradient); */
+  background: var(--button-transparent);
 }
 
 .uncategorized {
