@@ -378,18 +378,27 @@ const Task = (props) => {
   //! Component
   return (
     // <li className={`task ${timerRunning ? 'running' : ''} ${(props.currentCategory !== 'All' && props.task.category !== props.currentCategory) || (props.currentCategory === 'Uncategorized' && props.task.category !== '') ? 'display-none' : ''}`}>
-    <li className={`task ${timerRunning ? 'running' : ''} ${props.currentCategory === 'All' || props.task.category === props.currentCategory || (props.currentCategory === 'Uncategorized' && props.task.category === '') ? '' : 'display-none'} ${props.task.categorySort === props.tasks.filter(task => task.category === props.currentCategory || task.category === '' && props.currentCategory === 'Uncategorized').reduce( (acc, curr) => {
+    <li className={`task ${
+        timerRunning ? 'running' : ''
+      } ${
+        props.currentCategory === 'All' || props.task.category === props.currentCategory || (props.currentCategory === 'Uncategorized' && props.task.category === '') ? '' : 'display-none'
+      } ${
+        props.task.categorySort === props.tasks.filter(task => task.category === props.currentCategory || task.category === '' && props.currentCategory === 'Uncategorized').reduce( (acc, curr) => {
       if(curr.categorySort > acc) return curr.categorySort
       else return acc
-    }, -Infinity) ? 'clear-bottom-margin' : ''}`}>
+    }, -Infinity) ? 'clear-bottom-margin' : ''
+      } ${
+        props.task.name.toLowerCase() === 'divider' ? 'divider' : ''
+      }`}>
     {/* <li className={`task ${timerRunning ? 'running' : ''} ${props.currentCategory === 'All' || props.task.category === props.currentCategory || (props.currentCategory === 'Uncategorized' && props.task.category === '') ? '' : 'display-none'} ${props.task.categorySort === props.tasks.filter(task => task.category === props.currentCategory || task.category === '' && props.currentCategory === 'Uncategorized').reduce( (acc, curr) => {
       if(curr.categorySort > acc) return curr.categorySort
       else return acc
     }, -Infinity) ? 'clear-bottom-margin' : ''}`}> */}
 
       {/*//// Task Top Row: Task Name, Setting Buttons  */}
-      <div className='task-name text-shadow'>
-        <p>{props.task.name}</p>
+      <div className={`task-name text-shadow`}>
+        <p className="task-name-text">{props.task.name}</p>
+        {/* <p className={`${props.task.name.toLowerCase() === 'divider' ? 'display-none' : ''}`}>{props.task.name}</p> */}
         <div className='icon-buttons'>
  
           {/* //TODO This version disables hisory button when timer running.  */}
@@ -411,7 +420,7 @@ const Task = (props) => {
             <MdTopic className="edit-btn icon-button" onClick={editTaskCategory}/>
           </div>
 
-          <div className="icon-button-wrapper hover-popup-wrapper">
+          <div className="icon-button-wrapper hover-popup-wrapper delete-btn-wrapper">
           <span className='hover-popup text-shadow'>Delete Task</span>
             <MdDelete className="delete-btn icon-button" onClick={deleteTask}/>
           </div>
@@ -422,7 +431,8 @@ const Task = (props) => {
       </div>
 
       {/*//// Task Info: Sort Buttons, Time Display, Big Start Timer Button */}
-      <div className='task-info'>
+      <div className={`task-info`}>
+      {/* <div className={`task-info ${props.task.name.toLowerCase() === 'divider' ? 'display-none' : ''}`}> */}
 
         {/* //// SORT BUTTONS */}
         <div className='sort-btns'>
@@ -446,6 +456,11 @@ const Task = (props) => {
                 ? () => reorder('down')
                 : null}
           />
+          {/* Special delete button, used only when task is a divider */}
+          <div className={`icon-button-wrapper hover-popup-wrapper delete-btn-wrapper divider-only divider-delete`}>
+            <span className='hover-popup text-shadow'>Delete Divider</span>
+            <MdDelete className="delete-btn icon-button" onClick={deleteTask}/>
+          </div>
          </div>
 
          {/* //// TASK TIME */}
@@ -480,7 +495,7 @@ const Task = (props) => {
       {/* //// End Task Info: Sort Buttons, Time Display, Start Button */}
 
       {/*//// Add Time Form  */}
-      <div className={`slide-able ${showAddTimeForm && !addTimeFormAnimationDone ? 'reveal' : showAddTimeForm ? 'revealed' : addTimeFormCollapsed || (!showAddTimeForm && addTimeFormAnimationDone) ? 'hidden' : 'collapse'}`}>
+      <div className={`slide-able add-time-component-wrapper ${showAddTimeForm && !addTimeFormAnimationDone ? 'reveal' : showAddTimeForm ? 'revealed' : addTimeFormCollapsed || (!showAddTimeForm && addTimeFormAnimationDone) ? 'hidden' : 'collapse'}`}>
         <AddTime
           task={props.task}
           updateTask={updateTask}

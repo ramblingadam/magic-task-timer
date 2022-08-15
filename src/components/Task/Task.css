@@ -24,7 +24,6 @@
 
 }
 
-
 .task:last-of-type {
   margin-bottom: 0;
 }
@@ -62,6 +61,60 @@
 		background-position: 115% 50%;
     /* box-shadow: 0 0 1px white; */
 	}
+}
+
+/* // DIVIDER-TASK STYLES */
+.divider-only {
+  display: none;
+}
+.divider {
+  padding: 0 1rem 0 1rem;
+}
+
+.divider .task-info {
+  width: 100%;
+}
+
+.divider .divider-only{
+  display: unset;
+}
+
+.divider .delete-btn-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.divider-delete {
+  margin-left: auto;
+}
+
+.divider .task-name,
+.divider .task-info > *:not(.sort-btns),
+.divider .add-time-component-wrapper {
+  display: none;
+}
+
+.divider {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+
+.divider .task-info {
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.divider .sort-btns {
+  flex-flow: row nowrap;
+  flex: 1;
+  opacity: 0;
+}
+
+.divider:hover .sort-btns {
+  opacity: 1;
 }
 
 
@@ -147,6 +200,7 @@
   opacity: 0;
   display: none;
   color: white;
+  z-index: 2;
 
   text-shadow:none;
 
@@ -163,6 +217,7 @@
   padding: .5rem;
 
   font-size: 1.5rem;
+  transition: .2s;
 }
 
 .hover-popup-wrapper:hover > .hover-popup {
