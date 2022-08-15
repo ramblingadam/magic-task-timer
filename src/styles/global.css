@@ -119,6 +119,7 @@ table {
   /* // Text */
   --text-color: white;
   --text-shadow-color: black;
+  --text-shadow: 0 0 1px black, -1px 1px black, -2px 2px black;
 
   /* // Global/App */
   --global-bg: linear-gradient(rgb(72, 253, 238), rgb(0, 30, 31), rgb(0, 0, 0));
@@ -163,6 +164,7 @@ table {
   /* // Text */
   --text-color: rgb(255, 255, 255);
   --text-shadow-color: black;
+  --text-shadow: 0 0 1px black, -1px 1px black, -2px 2px black;
 
   /* // Global/App */
   --global-bg: #1E1E1E;

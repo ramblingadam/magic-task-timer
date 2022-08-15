@@ -17,7 +17,7 @@
   justify-content: center;
   align-items: flex-start;
 
-  padding: 1rem;
+  padding: .75rem 1rem 1rem 1rem;
   margin-right: .2rem;
 
   border-left: 2px solid black;

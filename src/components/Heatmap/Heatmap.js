@@ -182,7 +182,7 @@ const Heatmap = props => {
               key={day.date}
               onClick={() => props.setDateInForm(day.date)}
             >
-              <div className={`day-popup
+              <div className={`day-popup text-shadow
                 ${day.date < parseDate(twoMonthsAgoToday) ? 'hover-left' : ''}`
                 }>
                 <p>{convertDateFormat(day.date, 'M/D/YY')}</p>

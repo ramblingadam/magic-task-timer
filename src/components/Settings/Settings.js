@@ -11,7 +11,8 @@ const Settings = (props) => {
   // ! STATE
   const defaultSettings = {
     theme: 'mako',
-    helptext: true
+    helptext: true,
+    helpviewed: true
   }
   const [currentSettings, setCurrentSettings] = useState(!localStorage.getItem('settings') ? defaultSettings : JSON.parse(localStorage.getItem('settings')))
 

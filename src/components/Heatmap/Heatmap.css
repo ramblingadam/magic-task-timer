@@ -76,7 +76,8 @@
 .day-box:hover > .day-popup {
   display: block;
 }
-/* This will show the day pop-up for the currently selected date, even if not being hovered. */
+
+/* //This will show the day pop-up for the currently selected date, even if not being hovered. */
 /* .day-box.selected-date > .day-popup {
   display: block;
 } */
@@ -84,7 +85,8 @@
 .day-popup {
   display: none;
 
-  color: black;
+  color: var(--text-color);
+  text-shadow: var(--text-shadow);
 
   position: absolute;
   right: -5px;
@@ -94,7 +96,9 @@
 
   padding: 5px;
 
-  background: lightgoldenrodyellow;
+  background: var(--task-bg);
+
+  border: 1px solid var(--app-border-color);
   border-radius: 5px;
 
   white-space: nowrap;
@@ -107,7 +111,7 @@
   content: '';
   height: 10px;
   width: 10px;
-  background: lightgoldenrodyellow;
+  background: var(--task-bg);
   transform: rotate(45deg);
 
   position: absolute;

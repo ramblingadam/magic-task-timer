@@ -8,7 +8,7 @@ import './Header.css'
 // Icons
 import { MdAddCircle, MdSettings, Mddashci, MdHelp, MdQuestionAnswer, MdHelpOutline, MdHelpCenter } from "react-icons/md"
 
-const Header = ({renderAll, changeTheme, toggleSettingsMenu, globalCurrentCategory}) => {
+const Header = ({renderAll, changeTheme, toggleSettingsMenu, globalCurrentCategory, toggleHelpOpen}) => {
 
   //// Pieces of State ////
   const [showNewTaskForm, setShowNewTaskForm] = useState(false)
@@ -122,7 +122,7 @@ const Header = ({renderAll, changeTheme, toggleSettingsMenu, globalCurrentCatego
         <h1>Magic Task Timer&nbsp;<MdAddCircle className={`plus ${showNewTaskForm ? 'open' : ''}`} onClick={toggleNewTaskForm} /></h1>
         
         <div className='header-buttons'>
-          <MdHelpOutline className='edit-btn'/>
+          <MdHelpOutline className='edit-btn' onClick={toggleHelpOpen}/>
           {/* <MdHelpCenter />
           <MdQuestionAnswer />
           <MdHelp /> */}

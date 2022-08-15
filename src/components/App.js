@@ -3,19 +3,26 @@ import Header from "./Header/Header"
 import Tasks from './Tasks/Tasks'
 import DialogBox from "./DialogBox/DialogBox"
 import Settings from "./Settings/Settings"
+import Help from "./Help/Help"
 
 // Hooks
 import { useState, useEffect } from "react"
 
 const App = () => {
 
-  const settings = JSON.parse(localStorage.getItem('settings'))
+  const defaultSettings = {
+    theme: 'mako',
+    helptext: true,
+    helpviewed: false
+  }
+  const settings = localStorage.getItem('settings') ? JSON.parse(localStorage.getItem('settings')) : defaultSettings
 
   // ! STATE
   // TODO Dialog Box Pieces of State/description/buttons values
   const [dialogBoxVisible, setDialogBoxVisible] = useState(false)
   const [dialogMessage, setDialogMessage] = useState('')
   const [settingsOpen, setSettingsOpen] = useState(false)
+  const [helpOpen, setHelpOpen] = useState(settings?.helpviewed ? false : true)
 
   //! Helper Functions
   // Function and state to enable any component to trigger a full app re-render
@@ -61,6 +68,14 @@ const App = () => {
     setHelpTextPref(!helpTextPref)
   }
 
+  //// SHOW INTRO/HELP WINDOW
+  const toggleHelpOpen = () => {
+    settings.helpviewed = true
+    localStorage.setItem('settings', JSON.stringify(settings))
+    setHelpOpen(!helpOpen)
+
+  }
+
   //// TODO Shows confirmaiton dialogue, and sets DialogBox/confirmation window message.
   const toggleDialogBox = (message) => {
     if(!dialogBoxVisible) {
@@ -78,6 +93,11 @@ const App = () => {
           toggleDialogBox={toggleDialogBox}
         /> */}
       <div className="app">
+        {helpOpen && (
+          <Help
+            toggleHelpOpen={toggleHelpOpen}  
+          />
+        )}
         {settingsOpen && (
         <Settings 
             changeTheme={changeTheme}
@@ -92,6 +112,7 @@ const App = () => {
         <Header
           renderAll={renderAll}
           changeTheme={changeTheme}
+          toggleHelpOpen={toggleHelpOpen}
           toggleSettingsMenu={toggleSettingsMenu}
           globalCurrentCategory={globalCurrentCategory}
           settings={settings}
