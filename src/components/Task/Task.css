@@ -80,6 +80,10 @@
   display: flex;
 }
 
+.icon-button {
+  position: relative;
+}
+
 /* .timeframe-toggle-btn, */
 .edit-time-btn,
 .edit-btn,
@@ -135,7 +139,7 @@
   /* position: absolute; */
 }
 
-.task-time {
+.hover-popup-wrapper {
   position: relative;
 }
 
@@ -161,7 +165,7 @@
   font-size: 1.5rem;
 }
 
-.task-time:hover > .hover-popup {
+.hover-popup-wrapper:hover > .hover-popup {
   opacity: 1;
   display: block;
 

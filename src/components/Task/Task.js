@@ -395,12 +395,29 @@ const Task = (props) => {
           {/* //TODO This version disables hisory button when timer running.  */}
           {/* <MdHistoryToggleOff className={`edit-time-btn ${timerRunning ? 'disabled' : ''} ${showAddTimeForm ? 'edit-time-btn-form-visible' : ''}`} onClick={toggleAddTimeForm}/> */}
           {/* //TODO  this version does not disable button when timer running. */}
-          <MdHistoryToggleOff className={`edit-time-btn ${showAddTimeForm ? 'edit-time-btn-form-visible' : ''}`} onClick={toggleAddTimeForm}/>
+        
 
-          {/*  */}
-          <MdEdit className="edit-btn" onClick={editTask}/>
-          <MdTopic className="edit-btn" onClick={editTaskCategory}/>
-          <MdDelete className="delete-btn" onClick={deleteTask}/>
+          <div className="icon-button-wrapper hover-popup-wrapper">
+          <span className='hover-popup text-shadow'>View/Edit History</span>
+            <MdHistoryToggleOff className={`edit-time-btn icon-button${showAddTimeForm ? 'edit-time-btn-form-visible' : ''}`} onClick={toggleAddTimeForm}/>
+            
+          </div>
+          <div className="icon-button-wrapper hover-popup-wrapper">
+          <span className='hover-popup text-shadow'>Edit Name</span>
+            <MdEdit className="edit-btn icon-button" onClick={editTask} />
+          </div>
+          <div className="icon-button-wrapper hover-popup-wrapper">
+          <span className='hover-popup text-shadow'>Edit Category</span>
+            <MdTopic className="edit-btn icon-button" onClick={editTaskCategory}/>
+          </div>
+
+          <div className="icon-button-wrapper hover-popup-wrapper">
+          <span className='hover-popup text-shadow'>Delete Task</span>
+            <MdDelete className="delete-btn icon-button" onClick={deleteTask}/>
+          </div>
+         
+       
+      
         </div>
       </div>
 
@@ -409,8 +426,9 @@ const Task = (props) => {
 
         {/* //// SORT BUTTONS */}
         <div className='sort-btns'>
+          {/* Sort Up */}
           <MdExpandLess className='sort-btn' onClick={props.task[sortMode] > 1 ? () => reorder('up') : null}/>
-          {/* <MdExpandMore className='sort-btn' onClick={props.task[sortMode] < JSON.parse(localStorage.getItem('tasks')).length ? () => reorder('down') : null}/> */}
+          {/* Sort Down */}
           <MdExpandMore
             className='sort-btn'
             onClick={
@@ -431,14 +449,8 @@ const Task = (props) => {
          </div>
 
          {/* //// TASK TIME */}
-        <div className='task-time text-shadow' onClick={toggleTimeframe}>
+        <div className='task-time text-shadow hover-popup-wrapper' onClick={toggleTimeframe}>
           <span className='hover-popup text-shadow'>{`${mainTimeIsGrandTotal ? 'All Time. Click to show Today.' : 'Today. Click to show All Time.'}`}</span>
- 
-          {/* //TODO TOGGLE TIMEFRAME BIG BUTTON NEXT TO TIME */}
-          {/* <p className=''>
-            <span className='timeframe-toggle-btn-big'>{mainTimeIsGrandTotal ? <MdAllInclusive /> :<MdCalendarToday />}</span>
-            {mainTimeIsGrandTotal ? convertTime(totalTime) : convertTime(props.task.dates[0].time + runningTime)}
-          </p> */}
 
           <p className=''>
             <span className='timeframe-toggle-btn-big'>{mainTimeIsGrandTotal ? <MdAllInclusive className='icon-shadow'/> :<MdCalendarToday className='icon-shadow'/>}</span>
