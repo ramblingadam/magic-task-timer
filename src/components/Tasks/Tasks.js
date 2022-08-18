@@ -52,11 +52,19 @@ const Tasks = (props) => {
   }, [currentCategory])
 
   //// This is called from Task.js when a user changes the category of an item. If there are no more items with the old category, change view/set current category to 'All'
+  // const checkCurrentCategoryEmpty = (category) => {    
+  //   const tasks = JSON.parse(localStorage.getItem('tasks'))
+  //   const tasksInCategory = tasks.filter(task => task.category === category).length
+  //   if(tasksInCategory === 0) {
+  //     setCurrentCategory('All')
+  //   }
+  // }
+  // TODO Default back to Uncategorized instead of 'All'
   const checkCurrentCategoryEmpty = (category) => {    
     const tasks = JSON.parse(localStorage.getItem('tasks'))
     const tasksInCategory = tasks.filter(task => task.category === category).length
     if(tasksInCategory === 0) {
-      setCurrentCategory('All')
+      setCurrentCategory('Uncategorized')
     }
   }
 
@@ -65,7 +73,7 @@ const Tasks = (props) => {
     <div className='tasks'>
       <ul className={`categories ${categories.length <= 1 ? 'display-none': ''}`}>
         {/* //// If categories array has more categories than just 'All', render category tabs. Otherwise, don't bother. */}
-        {categories.length > 1 && categories.map(category => (
+        {categories.length > 1 && categories.slice(1).map(category => (
             <li
               key={category}
               className={`category btn text-shadow ${category === currentCategory ? 'current-category' : ''} ${category === 'Uncategorized' ? 'uncategorized' : ''}`} 
