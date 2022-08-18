@@ -56,9 +56,9 @@
 }
 
 .current-category {
-  border-left: 2px solid white;
-  border-right: 2px solid white;
-  border-top: 2px solid white;
+  border-left: 2px solid var(--current-category-tab-border-color);
+  border-right: 2px solid var(--current-category-tab-border-color);
+  border-top: 2px solid var(--current-category-tab-border-color);
   height: 5rem;
   /* background: var(--app-bg); */
   /* background: var(--task-running-gradient); */

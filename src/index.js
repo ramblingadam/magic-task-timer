@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client';
 
 // Styles - Global
 import './styles/global.css'
+// Themes
+import './styles/themes.css'
 
 // Components
 import App from './components/App';

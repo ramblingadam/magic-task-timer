@@ -21,7 +21,7 @@ const Settings = (props) => {
       setting: 'Theme',
       options: [
         'Mako',
-        'Dark',
+        'Casper',
         'Light',
         'Halloween'
       ]
@@ -51,8 +51,8 @@ const Settings = (props) => {
         case 'mako' :
           props.changeTheme('mako')
         break
-        case 'dark' : 
-          props.changeTheme('dark')
+        case 'casper' : 
+          props.changeTheme('casper')
         break
         case 'light' : 
           props.changeTheme('light')

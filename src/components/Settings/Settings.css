@@ -10,7 +10,7 @@
   max-width: var(--app-max-width);
   /* height: 100%; */
 
-  z-index: 5;
+  z-index: 10;
 
   background-color: rgb(192, 192, 192);
   /* background-color: rgba(0,0,0,.9); */

@@ -1,0 +1,200 @@
+/* ! THEMES */
+/* //! ----- MAKO THEME ----- */
+:root .theme-mako {
+  /* // Text */
+  --text-color: white;
+  --text-shadow-color: black;
+  --text-shadow: 0 0 1px black, -1px 1px black, -2px 2px black;
+
+  /* // Global/App */
+  --global-bg: linear-gradient(rgb(72, 253, 238), rgb(0, 30, 31), rgb(0, 0, 0));
+  --app-bg: linear-gradient(rgb(0, 66, 68), rgb(0, 156, 161));
+  --app-border-color: black;
+  --header-footer-bg: rgb(20, 109, 99);
+  
+
+  /* // Task */
+  --task-bg: darkslategray;
+  --task-running-gradient: linear-gradient(90deg, #23a6d5, #23d5ab,#23a6d5);
+  /* // Tasks */
+  --current-category-tab-border-color: white;
+
+  /* // Tooltips */
+  --tooltip-bg: darkslategray;
+
+  /* // Buttons */
+  --button-green: lightgreen;
+  --button-red: lightcoral;
+
+  --button-subtract: lightcoral;
+  --button-add: lightgreen; 
+  --button-set: yellow;
+  --button-delete: lightcoral;
+
+  --button-history: rgb(144, 216, 238);
+  --button-transparent: rgba(19, 208, 255, 0.2);
+
+  --button-history-text-color: white;
+  --button-history-text-shadow-color: black;
+
+
+  /* // Heatmap */
+  --heat-low: rgb(0, 58, 0);
+  --heat-lowmed: rgb(0, 99, 0);
+  --heat-med: rgb(0, 131, 0);
+  --heat-medhigh: rgb(0, 177, 0);
+  --heat-high: rgb(0, 255, 0);
+
+  /* // Scrollbars */
+  --scrollbar-thumb: rgb(144, 216, 238);
+  --scrollbar-track: grey;
+  --scrollbar-thumb-border: black;
+}
+
+/*//! ---- CASPER THEME ---- */
+:root .theme-casper {
+  /* // Text */
+  --text-color: rgb(255, 255, 255);
+  --text-shadow-color: black;
+  --text-shadow: 0 0 1px black, -1px 1px black, -2px 2px black;
+
+  /* // Global/App */
+  --global-bg: #1E1E1E;
+  --app-bg: linear-gradient(rgb(2, 2, 2), rgb(29, 29, 29));
+  --app-border-color: black;
+  --header-footer-bg: rgb(39, 39, 39);
+  
+  /* // Task */
+  --task-bg: #1E1E1E;
+  --task-running-gradient: linear-gradient(90deg, #1E1E1E, #5e5e5e,#1E1E1E);
+
+  /* // Tasks */
+  --current-category-tab-border-color: white;
+
+  /* // Tooltips */
+  --tooltip-bg: rgb(46, 46, 46);
+
+  /* // Buttons */
+  --button-green: rgb(255, 255, 255);
+  --button-red: rgb(255, 255, 255);
+
+  --button-subtract: white;
+  --button-add: white; 
+  --button-set: white;
+  --button-delete: white;
+
+  --button-history: rgb(255, 255, 255);
+  --button-transparent: rgba(245, 245, 245, 0.2);
+  --button-history-text-color: black;
+  --button-history-text-shadow-color: rgb(182, 182, 182);
+
+  /* // Heatmap */
+  --heat-low: rgb(58, 58, 58);
+  --heat-lowmed: rgb(99, 99, 99);
+  --heat-med: rgb(131, 131, 131);
+  --heat-medhigh: rgb(177, 177, 177);
+  --heat-high: rgb(255, 255, 255);
+
+    /* // Scrollbars */
+    --scrollbar-thumb: white;
+    --scrollbar-track: grey;
+    --scrollbar-thumb-border: black;
+}
+
+/* //! ----- HALLOWEEN THEME ----- */
+:root .theme-halloween {
+  --text-color: orange;
+  --text-shadow-color: black;
+  
+
+  /* // Global/App */
+  --global-bg: #1E1E1E;
+  --app-bg: linear-gradient(rgb(2, 2, 2), rgb(29, 29, 29));
+  --app-border-color: black;
+  --header-footer-bg: rgb(20, 109, 99);
+  
+  
+  /* // Task */
+  --task-bg: #1E1E1E;
+  --task-running-gradient: linear-gradient(90deg, #1E1E1E, #5e5e5e,#1E1E1E);
+
+  /* // Tasks */
+  --current-category-tab-border-color: white;
+
+  /* // Tooltips */
+  --tooltip-bg: rgb(46, 46, 46);
+
+  /* // Buttons */
+  --button-green: rgb(255, 255, 255);
+  --button-red: rgb(255, 255, 255);
+
+  --button-subtract: white;
+  --button-add: white; 
+  --button-set: white;
+  --button-delete: white;
+
+  --button-history: rgb(255, 255, 255);
+  --button-transparent: rgba(245, 245, 245, 0.2);
+
+  /* // Heatmap */
+  --heat-low: rgb(58, 58, 58);
+  --heat-lowmed: rgb(99, 99, 99);
+  --heat-med: rgb(131, 131, 131);
+  --heat-medhigh: rgb(177, 177, 177);
+  --heat-high: rgb(255, 255, 255);
+
+}
+
+/* //! ----- LIGHT THEME ----- */
+:root .theme-light {
+  /* // Text */
+  --text-color: black;
+  --text-shadow-color: rgb(194, 194, 194);
+
+
+  /* // Global/App */
+  --global-bg: rgb(255, 255, 255);
+  --app-bg: rgb(243, 243, 243);
+  --app-bg: linear-gradient(rgb(182, 255, 255), rgb(101, 255, 255));
+  /* --app-bg: linear-gradient(rgb(0, 255, 255), rgb(182, 255, 255)); */
+  --app-bg: linear-gradient(rgb(182, 255, 255), rgb(255, 255, 255));
+  --app-bg: rgb(230, 255, 255);
+  --app-border-color: black;
+  /* --app-border-color: rgba(0,0,0,0); */
+  --header-footer-bg: rgb(182, 255, 255);
+  --header-footer-bg: rgb(255, 255, 255);
+  /* --header-footer-bg: rgb(101, 255, 255); */
+
+  /* // Tasks */
+  --current-category-tab-border-color: black;
+
+
+  /* // Task */
+  --task-bg: rgb(255, 255, 255);
+  --task-running-gradient: linear-gradient(90deg, #ffffff, hsl(175, 68%, 64%),#ffffff);
+
+  /* // Tooltips */
+  --tooltip-bg: rgb(46, 46, 46);
+
+  /* // Buttons */
+  --button-green: lightgreen;
+  --button-red: lightcoral;
+
+  --button-subtract: lightcoral;
+  --button-add: lightgreen; 
+  --button-set: yellow;
+  --button-delete: lightcoral;
+
+  --button-history: rgb(233, 233, 233);
+  --button-transparent: rgba(245, 245, 245, 0.2);
+
+  /* // Heatmap */
+  --heat-low: rgb(0, 58, 58);
+  --heat-lowmed: rgb(0, 99, 99);
+  --heat-med: rgb(0, 131, 131);
+  --heat-medhigh: rgb(0, 177, 177);
+  --heat-high: rgb(0, 255, 255);
+}
+
+
+/* ! END THEMES */

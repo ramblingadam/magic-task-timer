@@ -34,6 +34,7 @@
   /* font-family: 'Share Tech Mono', monospace; */
   font-family: 'Acme', sans-serif;
   font-size: 2rem;
+  color: var(--button-history-text-color);
   /* font-variant: small-caps; */
 
   width: 10rem;

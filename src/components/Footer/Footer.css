@@ -131,9 +131,9 @@
   content: '';
   position: absolute;
   width: 100%;
-  /* border-bottom: 1px dotted var(--text-color); */
+  border-bottom: 1px dotted var(--text-color);
 
-  bottom: 3px;
+  bottom: 1px;
   left: 0;
 }
 

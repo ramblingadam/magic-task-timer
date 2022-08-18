@@ -70,6 +70,7 @@
 .btn-nav {
   height: 7rem;
   margin-bottom: 1rem;
+  color: var(--button-history-text-color);
 }
 
 .dot {

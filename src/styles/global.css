@@ -93,7 +93,7 @@ table {
   --button-history: rgb(144, 216, 238);
   --button-transparent: rgba(19, 208, 255, 0.2);
   /* --button-transparent: rgb(144, 216, 238); */
-
+  --button-history-text-color: black;
 
   /* // Scrollbar Colors */
   --scrollbar-thumb: grey;
@@ -120,175 +120,7 @@ table {
 }
 /* ! END ROOT VARIABLES */
 
-/* ! THEMES */
-/* //! ----- MAKO THEME ----- */
-:root .theme-mako {
-  /* // Text */
-  --text-color: white;
-  --text-shadow-color: black;
-  --text-shadow: 0 0 1px black, -1px 1px black, -2px 2px black;
 
-  /* // Global/App */
-  --global-bg: linear-gradient(rgb(72, 253, 238), rgb(0, 30, 31), rgb(0, 0, 0));
-  --app-bg: linear-gradient(rgb(0, 66, 68), rgb(0, 156, 161));
-  --app-border-color: black;
-
-  /* // Task */
-  --task-bg: darkslategray;
-  --task-running-gradient: linear-gradient(90deg, #23a6d5, #23d5ab,#23a6d5);
-
-  /* // Tooltips */
-  --tooltip-bg: darkslategray;
-
-  /* // Buttons */
-  --button-green: lightgreen;
-  --button-red: lightcoral;
-
-  --button-subtract: lightcoral;
-  --button-add: lightgreen; 
-  --button-set: yellow;
-  --button-delete: lightcoral;
-
-  --button-history: rgb(144, 216, 238);
-  --button-transparent: rgba(19, 208, 255, 0.2);
-
-
-  /* // Heatmap */
-  --heat-low: rgb(0, 58, 0);
-  --heat-lowmed: rgb(0, 99, 0);
-  --heat-med: rgb(0, 131, 0);
-  --heat-medhigh: rgb(0, 177, 0);
-  --heat-high: rgb(0, 255, 0);
-
-  /* // Scrollbars */
-  --scrollbar-thumb: rgb(144, 216, 238);
-  --scrollbar-track: grey;
-  --scrollbar-thumb-border: black;
-}
-
-/*//! ---- DARK THEME ---- */
-:root .theme-dark {
-  /* // Text */
-  --text-color: rgb(255, 255, 255);
-  --text-shadow-color: black;
-  --text-shadow: 0 0 1px black, -1px 1px black, -2px 2px black;
-
-  /* // Global/App */
-  --global-bg: #1E1E1E;
-  --app-bg: linear-gradient(rgb(2, 2, 2), rgb(29, 29, 29));
-  --app-border-color: black;
-  
-  /* // Task */
-  --task-bg: #1E1E1E;
-  --task-running-gradient: linear-gradient(90deg, #1E1E1E, #5e5e5e,#1E1E1E);
-
-  /* // Tooltips */
-  --tooltip-bg: rgb(46, 46, 46);
-
-  /* // Buttons */
-  --button-green: rgb(255, 255, 255);
-  --button-red: rgb(255, 255, 255);
-
-  --button-subtract: white;
-  --button-add: white; 
-  --button-set: white;
-  --button-delete: white;
-
-  --button-history: rgb(255, 255, 255);
-  --button-transparent: rgba(245, 245, 245, 0.2);
-
-  /* // Heatmap */
-  --heat-low: rgb(58, 58, 58);
-  --heat-lowmed: rgb(99, 99, 99);
-  --heat-med: rgb(131, 131, 131);
-  --heat-medhigh: rgb(177, 177, 177);
-  --heat-high: rgb(255, 255, 255);
-
-    /* // Scrollbars */
-    --scrollbar-thumb: white;
-    --scrollbar-track: grey;
-    --scrollbar-thumb-border: black;
-}
-
-/* //! ----- HALLOWEEN THEME ----- */
-:root .theme-halloween {
-  --text-color: orange;
-  --text-shadow-color: black;
-
-  /* // Global/App */
-  --global-bg: #1E1E1E;
-  --app-bg: linear-gradient(rgb(2, 2, 2), rgb(29, 29, 29));
-  --app-border-color: black;
-  
-  /* // Task */
-  --task-bg: #1E1E1E;
-  --task-running-gradient: linear-gradient(90deg, #1E1E1E, #5e5e5e,#1E1E1E);
-
-  /* // Tooltips */
-  --tooltip-bg: rgb(46, 46, 46);
-
-  /* // Buttons */
-  --button-green: rgb(255, 255, 255);
-  --button-red: rgb(255, 255, 255);
-
-  --button-subtract: white;
-  --button-add: white; 
-  --button-set: white;
-  --button-delete: white;
-
-  --button-history: rgb(255, 255, 255);
-  --button-transparent: rgba(245, 245, 245, 0.2);
-
-  /* // Heatmap */
-  --heat-low: rgb(58, 58, 58);
-  --heat-lowmed: rgb(99, 99, 99);
-  --heat-med: rgb(131, 131, 131);
-  --heat-medhigh: rgb(177, 177, 177);
-  --heat-high: rgb(255, 255, 255);
-
-}
-
-/* //! ----- LIGHT THEME ----- */
-:root .theme-light {
-  /* // Text */
-  --text-color: black;
-  --text-shadow-color: rgb(194, 194, 194);
-
-  /* // Global/App */
-  --global-bg: rgb(255, 255, 255);
-  --app-bg: rgb(255, 255, 255);
-  --app-border-color: black;
-  --app-border-color: rgba(0,0,0,0);
-
-  /* // Task */
-  --task-bg: rgb(255, 255, 255);
-  --task-running-gradient: linear-gradient(90deg, #1E1E1E, #5e5e5e,#1E1E1E);
-
-  /* // Tooltips */
-  --tooltip-bg: rgb(46, 46, 46);
-
-  /* // Buttons */
-  --button-green: lightgreen;
-  --button-red: lightcoral;
-
-  --button-subtract: lightcoral;
-  --button-add: lightgreen; 
-  --button-set: yellow;
-  --button-delete: lightcoral;
-
-  --button-history: rgb(233, 233, 233);
-  --button-transparent: rgba(245, 245, 245, 0.2);
-
-  /* // Heatmap */
-  --heat-low: rgb(0, 58, 0);
-  --heat-lowmed: rgb(0, 99, 0);
-  --heat-med: rgb(0, 131, 0);
-  --heat-medhigh: rgb(0, 177, 0);
-  --heat-high: rgb(0, 255, 0);
-}
-
-
-/* ! END THEMES */
 
 /* ! Global Styles */
 /* //Fonts */
@@ -326,6 +158,9 @@ body {
 
 .text-shadow {
   text-shadow: -2px 2px 2px var(--text-shadow-color), 0 0 1px var(--text-shadow-color), 0 0 2px var(--text-shadow-color);
+}
+.btn-history {
+  text-shadow: -2px 2px 2px var(--button-history-text-shadow-color), 0 0 1px var(--button-history-text-shadow-color), 0 0 2px var(--button-history-text-shadow-color);
 }
 
 h1 {
@@ -506,7 +341,7 @@ h1 {
   min-height: 100vh;
   margin: 0;
   background: var(--app-bg);
-
+  background-position: sticky;
 }
 
 
