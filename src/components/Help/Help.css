@@ -1,11 +1,11 @@
 .help-window-wrapper {
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   width: 100%;
   z-index: 10;
   height: 100%;
-  background: rgba(0,0,0,.7);
+  background: rgba(0,0,0,.9);
 
   padding: 1rem;
   /* pointer-events: none; */
@@ -23,22 +23,30 @@
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-start;
-  height: 70rem;
+  height: 100vh;
 }
 
 .slide-header {
   font-family: 'Acme', sans-serif;
   flex-grow: unset;
-  padding-top: 3rem;
+  padding-top: 1rem;
 }
 
 .slide-desc {
   /* margin: auto; */
-  min-height: 30rem;
+  /* min-height: 30rem; */
+}
+
+.slide-desc-sentence {
+  margin-bottom: 2rem;
+}
+
+.slide-desc-sentence:last-of-type {
+  margin-bottom: 0;
 }
 
 .slide-img {
-  height: 25rem;
+  height: 20rem;
 }
 
 .slide-nav {
@@ -46,13 +54,22 @@
   justify-content: center;
   align-items: center;
 
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
 }
 
 .slide-nav-item {
   margin-right: .5rem;
   transition: .3s;
   cursor: pointer;
+}
+
+.nav-btns {
+  margin-top: auto;
+}
+
+.btn-nav {
+  height: 7rem;
+  margin-bottom: 1rem;
 }
 
 .dot {
@@ -71,15 +88,18 @@
 .btn-prev {
   border-radius: 50px 0 0 50px;
   /* background: var(--button-green); */
+  /* background: rgb(255, 255, 76); */
 }
 
 .btn-skip {
   border-radius: 0;
+  /* background: yellow; */
 }
 
 .btn-next {
   border-radius: 0 50px 50px 0;
   /* background: var(--button-green); */
+  /* background: yellow; */
 }
 
 .btn {
@@ -96,5 +116,9 @@
   background-color: grey;
   box-shadow: none !important;
   border: 2px solid black !important;
+}
+
+.next-done {
+  background: var(--button-green);
 }
 

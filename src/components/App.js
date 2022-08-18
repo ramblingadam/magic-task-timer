@@ -4,6 +4,7 @@ import Tasks from './Tasks/Tasks'
 import DialogBox from "./DialogBox/DialogBox"
 import Settings from "./Settings/Settings"
 import Help from "./Help/Help"
+import Footer from "./Footer/Footer"
 
 // Hooks
 import { useState, useEffect } from "react"
@@ -51,7 +52,7 @@ const App = () => {
     console.log('changetheme clicked')
   }
   useEffect(() => {
-    console.log(theme)
+    // console.log(theme)
     setTheme(theme)
     // renderAll()
   }, [theme])
@@ -123,7 +124,9 @@ const App = () => {
           changeGlobalCategory={changeGlobalCategory}
           settings={settings}
         />
+       
       </div>
+      <Footer />
     </div>
   )
 }

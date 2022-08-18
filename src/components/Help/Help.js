@@ -16,17 +16,17 @@ const Help = (props) => {
   const slides = [
     {
       header: 'Welcome to Magic Task Timer!',
-      desc: 'Please take a moment to review the many incredible features of Magic Task Timer- you won\'t regret it!',
+      desc: 'A personal timeclock to track the time you spend on projects, tasks, and goals.\n Please take a moment to review the many incredible features of Magic Task Timer- you won\'t regret it!',
       image: ''
     },
     {
       header: 'Add A Task',
-      desc: 'Click the green plus button in the header to add a task. Gotta start somewhere.',
+      desc: 'Click the green plus button in the header to add a task.\n Gotta start somewhere.',
       image: ''
     },
     {
       header: 'Sort Your Tasks',
-      desc: 'Click the arrows on the left to sort your tasks up and down. Tasks have separate sorting orders within their own categories, if assigned.',
+      desc: 'Click the arrows on the left to sort your tasks up and down.\n Tasks have separate sorting orders within their own categories, if assigned.',
       image: ''
     },
     {
@@ -36,22 +36,22 @@ const Help = (props) => {
     },
     {
       header: 'Play/Pause Task Timer',
-      desc: 'Click the play button to start the timer. Click it again to stop the timer and save the elapsed time to your task for today.',
+      desc: 'Click the play button to start the timer.\n Click it again to stop the timer and save the elapsed time to your task for today.',
       image: ''
     },
     {
-      header: 'View/Edit Task History',
-      desc: 'The clock icon opens the History View/Edit pane. Here, you can view a cool heatmap and/or history table visualizing your time spent on a task over time! Hover over a date on the heatmap to see the time spent on your task on that date. Click on the History button below the heatmap to reveal the history table.',
+      header: 'View Task History',
+      desc: 'The clock icon opens the History pane.\n Hover over a date on the heatmap to see the time spent on your task on that date.\n Click on the History button below the heatmap to reveal the history table.',
       image: ''
     },
     {
-      header: 'Manual Adjustments 1',
-      desc: 'Forgot you had the timer running, or didn\'t have access to the app while performing a task? No problem! You can manually adjust the time spent on a task for any particular day. Somebody\'s got to keep the record straight!',
+      header: 'Edit Task History',
+      desc: 'Forgot you had the timer running, or didn\'t have access to the app while performing a task? No problem!\n You can manually adjust the time spent on a task for any particular day.\n Somebody\'s got to keep the record straight!',
       image: ''
     },
     {
-      header: 'Manual Adjustments 2',
-      desc: `Select a date by entering it manually or by selecting it on either the heatmap or the history table. Then, use the big buttons to adjust the total time for that date.`,
+      header: 'Edit Task History',
+      desc: `Select a date by entering it manually or by selecting it on either the heatmap or the history table.\n Then, use the big buttons to adjust the total time for that date.`,
       image: ''
     },
     // {
@@ -66,12 +66,12 @@ const Help = (props) => {
     },
     {
       header: 'Edit Task Name',
-      desc: 'The pencil icon allows you to change the name of a task- you know, in case the first name wasn\'t exciting enough.',
+      desc: 'The pencil icon allows you to change the name of a task.\n Make it something exciting!',
       image: ''
     },
     {
-      header: 'Categories!',
-      desc: 'Organize your tasks! The folder icon allows you to assign a task to a category. A tab will appear along the top of your tasks list for each category. A place for everything, and everything in its place.',
+      header: 'Categories',
+      desc: 'Organize your tasks with Categories!\n The folder icon allows you to assign a task to a category.\n A tab will appear along the top of your tasks list for each category.\n A place for everything, and everything in its place.',
       image: ''
     },
     {
@@ -81,12 +81,12 @@ const Help = (props) => {
     },
     {
       header: 'One more time...?',
-      desc: 'Fear not, task warrior! If you ever forget anything, you can view this information at any time by clicking the Help button.',
+      desc: 'Fear not, task warrior!\n If you ever forget anything, you can view this information at any time by clicking the Help button.',
       image: ''
     },
     {
       header: 'Enjoy!',
-      desc: 'I hope you find this app useful! If so, share it with your friends, and let me know on Twitter, Github, or LinkedIn!\n(All links open in a new window)',
+      desc: 'I hope you find this app useful!\n If so, share it with your friends, and let me know on Twitter, Github, or LinkedIn!\n(All links open in a new window)',
       image: ''
     },
   ]
@@ -145,13 +145,15 @@ const Help = (props) => {
           </ul>
 
           <p className='slide-desc' onClick={() => navigateSlides('next')}>
-            {slides[currentSlide].desc}
+            {slides[currentSlide].desc.split('\n').map(sentence => (
+              <p className='slide-desc-sentence'>{sentence}</p>
+            ))}
           </p>
 
           
-          <ul className='slide-nav'>
+          <ul className='slide-nav nav-btns'>
           <li
-            className={`btn btn-history btn-prev center ${
+            className={`btn btn-history btn-prev btn-nav center ${
                 currentSlide === 0 ? 'disabled' : ''
               }`}
             onClick={() => navigateSlides('prev')}
@@ -159,17 +161,21 @@ const Help = (props) => {
               Prev
             </li>
             <li
-              className='btn btn-history btn-skip center'
+              className='btn btn-history btn-skip btn-nav center'
               onClick={props.toggleHelpOpen}>
               Skip
             </li>
             <li
-              className={`btn btn-history center btn-next ${
-                currentSlide === slides.indexOf(slides[slides.length - 1]) ? 'disabled': ''
+              className={`btn btn-history center btn-next btn-nav  ${
+                currentSlide === slides.indexOf(slides[slides.length - 1]) ? 'next-done': ''
               }`}
-              onClick={() => navigateSlides('next')}
+              onClick={
+                () => {
+                if(currentSlide === slides.indexOf(slides[slides.length - 1])) props.toggleHelpOpen()
+                else navigateSlides('next')
+              }}
             >
-              Next
+              {currentSlide === slides.indexOf(slides[slides.length - 1]) ? 'Start!': 'Next'}
             </li>
           </ul>
           {/* <p className='btn btn-history btn-skip' onClick={props.toggleHelpOpen}>Skip</p> */}

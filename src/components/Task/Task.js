@@ -276,7 +276,7 @@ const Task = (props) => {
   //// Edit Task Category
   const editTaskCategory = () => {
     const oldCategory = props.task?.category || ''
-    const newCategory = window.prompt('Enter a category for this task.', oldCategory)
+    const newCategory = window.prompt('Enter a category for this task.', oldCategory.slice(0,1).toUpperCase() + oldCategory.slice(1))
 
 
 

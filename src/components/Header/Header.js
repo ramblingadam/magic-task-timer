@@ -120,6 +120,9 @@ const Header = ({renderAll, changeTheme, toggleSettingsMenu, globalCurrentCatego
       
       <div className='header-main text-shadow'>
         <h1>Magic Task Timer&nbsp;<MdAddCircle className={`plus ${showNewTaskForm ? 'open' : ''}`} onClick={toggleNewTaskForm} /></h1>
+        {/* <h1>Magic Task Timer</h1> */}
+
+        {/* <MdAddCircle className={`plus ${showNewTaskForm ? 'open' : ''}`} onClick={toggleNewTaskForm} /> */}
         
         <div className='header-buttons'>
           <MdHelpOutline className='edit-btn' onClick={toggleHelpOpen}/>

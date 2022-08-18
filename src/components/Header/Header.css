@@ -1,12 +1,50 @@
+.header-wrapper {
+  z-index: 5;
+  position: fixed;
+  top: 0;
+  /* width: 100%; */
+  left: 0;
+  right: 0;
+  /* height: var(--header-height); */
+  background: var(--header-footer-bg);
+  border-bottom: 1px solid black;
+
+  display: flex;
+  justify-content: center;
+  flex-flow: column nowrap;
+}
+
 .header-main {
   position: relative;
+
+  width: 100%;
+  max-width: 800px;
 
   font-size: 3rem;
 
   display: flex;
   justify-content: center;
 
-  padding: 1rem 0 1rem 0;
+  margin: auto;
+  padding: 1rem;
+
+
+
+  /* background: var(--task-bg); */
+
+  /* padding: 1rem 0 1rem 0; */
+  padding: 1rem;
+}
+
+@media all and (max-width: 500px) {
+  .header-main {
+    justify-content: flex-start;
+    
+  }
+  .header-main h1 {
+    /* font-size: 2rem; */
+    justify-content: flex-start;
+  }
 }
 
 h1 {
@@ -15,12 +53,14 @@ h1 {
   justify-content: center;
   flex-grow: 1;
 
+  /* font-variant: small-caps; */
+
   user-select: none;
 }
 
 .header-buttons {
   position: absolute;
-  right: 0;
+  right: 1rem;
 
   display: flex;
   align-items: center;
@@ -29,8 +69,9 @@ h1 {
 
 /* // Plus Task Button */
 .plus {
-  left: 5px;
-
+  /* left: 5px; */
+  /* flex-grow: 1; */
+  /* margin-right: auto; */
   fill: var(--button-green);
   filter: drop-shadow(0 0 2px black);
 
@@ -106,6 +147,7 @@ h1 {
   justify-content: center;
   align-items: center;
   /* margin-bottom: 1rem; */
+  background: none;
 }
 
 

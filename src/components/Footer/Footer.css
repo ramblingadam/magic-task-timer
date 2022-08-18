@@ -1,0 +1,146 @@
+.footer-wrapper {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+
+  /* padding: 1rem; */
+
+  height: var(--footer-height);
+
+  /* margin: auto; */
+
+  font-size: 1.7rem;
+  font-family: 'Acme', sans-serif;
+  color: var(--text-color);
+  text-shadow: var(--text-shadow);
+
+  /* background: rgba(0,0,0, .7); */
+  /* background: var(--task-bg); */
+  background: var(--header-footer-bg);
+
+  /* border-top: 1px dashed black; */
+  /* border-left: 1px dashed black; */
+  /* border-right: 1px dashed black; */
+  border-top: 1px solid black;
+
+  /* border-radius: 5px 5px 0 0; */
+
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.footer-content {
+  height: var(--footer-height);
+  width: 100%;
+  max-width: 800px;
+  padding: 1rem;
+  /* margin: auto; */
+  /* background: var(--task-bg); */
+  background: var(--header-footer-bg);
+
+  display: flex;
+  justify-content: center;
+  /* border-top: 2px solid black; */
+
+
+  /* z-index: 2; */
+
+}
+/* 
+.footer-left,
+.footer-right {
+  flex: 1; 
+} */
+
+
+.footer-left {
+  position: relative;
+  white-space: nowrap;
+}
+
+.footer-right {
+  display: flex;
+  justify-content: flex-end;
+  
+}
+
+.footer-about-btn {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  /* text-transform: uppercase; */
+  height: 100%;
+}
+
+.footer-about-btn-active {
+  color: yellow;
+}
+
+.footer-popup {
+  /* height: 5rem; */
+
+  position: absolute;
+  top: 10rem;
+  left: 0;
+  right: 0;
+  bottom: var(--footer-height);
+
+  z-index: -1;
+
+  background: var(--task-bg);
+  background: var(--header-footer-bg);
+  /* left: -100rem; */
+
+  /* border-top: 2px solid black; */
+  padding: 1rem;
+
+
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  
+  transition: .5s ease;
+}
+
+.footer-popup.footer-popup-reveal {
+  /* left: 0; */
+  top: -7rem;
+  /* transition: .3s; */
+}
+
+.footer-popup p:first-of-type {
+  margin-bottom: .5rem;
+}
+
+.footer-link,
+.footer-link:visited {
+  position: relative;
+  color: var(--text-color);
+  text-decoration: none;
+  /* border-bottom: 1px dotted black; */
+}
+
+.footer-underline::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  /* border-bottom: 1px dotted var(--text-color); */
+
+  bottom: 3px;
+  left: 0;
+}
+
+.footer-social-links {
+  display: flex;
+}
+
+.margin-right {
+  margin-right: .5rem;
+}
