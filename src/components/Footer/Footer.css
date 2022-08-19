@@ -1,5 +1,5 @@
 .footer-wrapper {
-  position: fixed;
+  position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
@@ -7,7 +7,7 @@
 
   /* padding: 1rem; */
 
-  height: var(--footer-height);
+  /* height: var(--footer-height); */
 
   /* margin: auto; */
 
@@ -38,7 +38,7 @@
 .footer-content {
   height: var(--footer-height);
   width: 100%;
-  max-width: 800px;
+  /* max-width: 800px; */
   padding: 1rem;
   /* margin: auto; */
   /* background: var(--task-bg); */
@@ -80,43 +80,6 @@
 
 .footer-about-btn-active {
   color: yellow;
-}
-
-.footer-popup {
-  /* height: 5rem; */
-
-  position: absolute;
-  top: 10rem;
-  left: 0;
-  right: 0;
-  bottom: var(--footer-height);
-
-  z-index: -1;
-
-  background: var(--task-bg);
-  background: var(--header-footer-bg);
-  /* left: -100rem; */
-
-  /* border-top: 2px solid black; */
-  padding: 1rem;
-
-
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  align-items: center;
-  
-  transition: .5s ease;
-}
-
-.footer-popup.footer-popup-reveal {
-  /* left: 0; */
-  top: -7rem;
-  /* transition: .3s; */
-}
-
-.footer-popup p:first-of-type {
-  margin-bottom: .5rem;
 }
 
 .footer-link,

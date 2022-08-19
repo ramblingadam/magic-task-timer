@@ -1,6 +1,7 @@
 .header-wrapper {
-  z-index: 5;
+  z-index: 7;
   position: fixed;
+  /* position: relative; */
   top: 0;
   /* width: 100%; */
   left: 0;
@@ -54,7 +55,8 @@ h1 {
   flex-grow: 1;
 
   /* font-variant: small-caps; */
-
+  font-family: 'Acme', sans-serif;
+  color: var(--text-color);
   user-select: none;
 }
 

@@ -343,6 +343,7 @@ h1 {
   margin: 0;
   background: var(--app-bg);
   background-position: sticky;
+  position: relative;
 }
 
 

@@ -38,7 +38,7 @@ const Tasks = (props) => {
   // console.log(tasks)
 
   //// currentCategory handling. 'All' by default.
-  const [currentCategory, setCurrentCategory] = useState(settings.currentcategory || 'All')
+  const [currentCategory, setCurrentCategory] = useState(settings.currentcategory || 'Uncategorized')
   const handleCategoryClick = (category) => {
     // props.changeGlobalCategory(currentCategory)
     setCurrentCategory(category)

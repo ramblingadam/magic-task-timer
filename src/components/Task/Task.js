@@ -230,7 +230,7 @@ const Task = (props) => {
 
   //// Delete Task
   const deleteTask = () => {
-    if(window.confirm(`Are you sure you want to delete ALL records of time spent on '${props.task.name}'? This cannot be undone.`)) {
+    if(props.task.name.toLowerCase() === 'divider' || window.confirm(`Are you sure you want to delete ALL records of time spent on '${props.task.name}'? This cannot be undone.`)) {
       // Grab tasks from localStorage and delete current task.
       const tasks = JSON.parse(localStorage.getItem('tasks'))
       const oldCategory = props.task.category
@@ -258,7 +258,7 @@ const Task = (props) => {
   //// Edit Task Name
   const editTask = () => {
 
-    const newName = window.prompt('Enter new task name.', props.task.name)
+    const newName = window.prompt(`Enter a new name for '${props.task.name}'.`, props.task.name)
     // User passes in any empty string. Warn, and exit without updating.
     if(newName === '') {
       alert('Task name cannot be blank.')
@@ -276,7 +276,7 @@ const Task = (props) => {
   //// Edit Task Category
   const editTaskCategory = () => {
     const oldCategory = props.task?.category || ''
-    const newCategory = window.prompt('Enter a category for this task.', oldCategory.slice(0,1).toUpperCase() + oldCategory.slice(1))
+    const newCategory = window.prompt(`Enter a category for '${props.task.name}'.`, oldCategory.slice(0,1).toUpperCase() + oldCategory.slice(1))
     // If new category is the same as items current category, ignore/return.
     if(oldCategory.toLowerCase() === newCategory.toLowerCase()) return
 

@@ -96,13 +96,23 @@ const App = () => {
       {/* <DialogBox
           toggleDialogBox={toggleDialogBox}
         /> */}
+
+      <Header
+          renderAll={renderAll}
+          changeTheme={changeTheme}
+          toggleHelpOpen={toggleHelpOpen}
+          toggleSettingsMenu={toggleSettingsMenu}
+          globalCurrentCategory={globalCurrentCategory}
+          settings={settings}
+        />
+        
       <div className="app">
         {helpOpen && (
           <Help
             toggleHelpOpen={toggleHelpOpen}  
           />
         )}
-        {/* {settingsOpen && ( */}
+        {settingsOpen && (
         <Settings 
             changeTheme={changeTheme}
             updateHelpTextPref={updateHelpTextPref}
@@ -112,15 +122,15 @@ const App = () => {
             renderAll={renderAll}
           
           />
-        {/* )} */}
-        <Header
+        )}
+        {/* <Header
           renderAll={renderAll}
           changeTheme={changeTheme}
           toggleHelpOpen={toggleHelpOpen}
           toggleSettingsMenu={toggleSettingsMenu}
           globalCurrentCategory={globalCurrentCategory}
           settings={settings}
-        />
+        /> */}
         <Tasks
           renderAll={renderAll}
           globalCurrentCategory={globalCurrentCategory}

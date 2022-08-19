@@ -34,8 +34,8 @@
   --button-history: rgb(144, 216, 238);
   --button-transparent: rgba(19, 208, 255, 0.2);
 
-  --button-history-text-color: white;
-  --button-history-text-shadow-color: black;
+  --button-history-text-color: black;
+  --button-history-text-shadow-color: rgba(0,0,0,0);
 
   --icon-hover-color: yellow;
 
@@ -139,7 +139,7 @@
 
   --button-history: rgb(255, 255, 255);
   --button-transparent: rgba(245, 245, 245, 0.2);
-
+  --button-history-text-color: black;
   --icon-hover-color: yellow;
 
   /* // Heatmap */
@@ -196,6 +196,7 @@
   --button-history: rgb(182, 255, 255);
   --button-transparent: rgba(245, 245, 245, 0.2);
 
+  --button-history-text-color: black;
   --icon-hover-color: rgb(148, 136, 255);
 
   /* // Heatmap */
