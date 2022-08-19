@@ -15,7 +15,7 @@ const Tasks = (props) => {
 
 
   const tasks = localStorage.getItem('tasks') ? JSON.parse(localStorage.getItem('tasks')) : []
-  const settings = localStorage.getItem('settings') ? JSON.parse(localStorage.getItem('settings')) : { currentCategory: 'All' }
+  const settings = localStorage.getItem('settings') ? JSON.parse(localStorage.getItem('settings')) : { currentcategory: 'All' }
 
 
 
@@ -38,7 +38,7 @@ const Tasks = (props) => {
   // console.log(tasks)
 
   //// currentCategory handling. 'All' by default.
-  const [currentCategory, setCurrentCategory] = useState('All')
+  const [currentCategory, setCurrentCategory] = useState(settings.currentcategory || 'All')
   const handleCategoryClick = (category) => {
     // props.changeGlobalCategory(currentCategory)
     setCurrentCategory(category)

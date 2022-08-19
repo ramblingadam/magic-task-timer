@@ -94,6 +94,7 @@ table {
   --button-transparent: rgba(19, 208, 255, 0.2);
   /* --button-transparent: rgb(144, 216, 238); */
   --button-history-text-color: black;
+  --icon-hover-color: yellow;
 
   /* // Scrollbar Colors */
   --scrollbar-thumb: grey;
@@ -354,7 +355,7 @@ h1 {
   /* margin: 1rem auto auto auto;
   padding: 1rem; */
   margin: 0 auto auto auto;
-  padding: calc(var(--header-height) + 1rem) 1rem calc(var(--footer-height) + 1rem) 1rem;
+  padding: calc(var(--header-height) + .5rem) 1rem calc(var(--footer-height) + 1rem) 1rem;
 
   /* background: var(--app-bg); */
 
@@ -365,7 +366,7 @@ h1 {
 }
 
 .app-wrapper {
-  padding-top: 1rem;
+  /* padding-top: 1rem; */
 }
 
 /* // Convert app into a 'fullscreen app' on smaller width devices */

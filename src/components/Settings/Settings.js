@@ -22,7 +22,7 @@ const Settings = (props) => {
       options: [
         'Mako',
         'Casper',
-        'Light',
+        'Frost',
         'Halloween'
       ]
     },
@@ -54,8 +54,8 @@ const Settings = (props) => {
         case 'casper' : 
           props.changeTheme('casper')
         break
-        case 'light' : 
-          props.changeTheme('light')
+        case 'frost' : 
+          props.changeTheme('frost')
         break
         case 'halloween' : 
           props.changeTheme('halloween')
@@ -104,11 +104,16 @@ const Settings = (props) => {
 
   // ! COMPONENT
   return (
-    <div className='menu-wrapper text-shadow'>
+    <div className={`menu-wrapper text-shadow ${props.settingsOpen ? 'menu-open' : ''}`}>
       {/* //// SETTINGS MENU HEADER / CLOSE SETTINGS BUTTON*/}
-      <div className='menu-header'>
-          <h1>Settings</h1><MdCancel className='cancel-btn hover-grow glow-click' onClick={props.toggleSettingsMenu}/>
+      <div className='menu-header-wrapper'>
+        <div className='menu-header'>
+            <h1>Settings</h1><MdCancel className='cancel-btn hover-grow glow-click' onClick={props.toggleSettingsMenu}/>
+        </div>
       </div>
+      {/* <div className='menu-header'>
+          <h1>Settings</h1><MdCancel className='cancel-btn hover-grow glow-click' onClick={props.toggleSettingsMenu}/>
+      </div> */}
 
       {/* //// SETTINGS MENU - Populates by iterating through menuItems array, defined above. Helloooo dynamic, extensible menu! */}
       <ul className='menu'>

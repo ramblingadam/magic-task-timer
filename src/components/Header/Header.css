@@ -72,8 +72,13 @@ h1 {
   /* left: 5px; */
   /* flex-grow: 1; */
   /* margin-right: auto; */
-  fill: var(--button-green);
-  filter: drop-shadow(0 0 2px black);
+  /* fill: var(--button-green); */
+  /* filter: drop-shadow(0 0 2px black); */
+  fill: black;
+  /* filter: drop-shadow(0 0 2px black); */
+  background: var(--button-green);
+  border-radius: 50%;
+  border: 1px solid black;
 
   transition: .3s;
 
@@ -81,8 +86,8 @@ h1 {
 }
 
 .plus.open {
-  fill: var(--button-red);
-
+  /* fill: var(--button-red); */
+  background: var(--button-red);
   transform: rotate(45deg);
   transition: .3s;
 }
@@ -95,7 +100,7 @@ h1 {
 }
 
 .plus.open:hover {
-  fill: var(--button-red);
+  /* fill: var(--button-red); */
   transform: rotate(45deg) scale(1.2);
 }
 
@@ -104,15 +109,16 @@ h1 {
 /* Plus Button Active */
 .plus:active,
 .plus.open:active {
-  filter: drop-shadow(0 0 1px white);
-  fill: white;
+  /* filter: drop-shadow(0 0 1px white); */
+  /* fill: white; */
+  background: white;
   transition: .1s;
 }
 
 /* ! HELP BUTTON */
 .help-btn:hover {
-  fill: yellow;
-  filter: drop-shadow(0 0 2px yellow);
+  fill: var(--icon-hover-color);
+  /* filter: drop-shadow(0 0 2px yellow); */
 
   animation: spin 2s linear infinite;
 
@@ -122,8 +128,8 @@ h1 {
 
 /* ! SETTINGS BUTTON */
 .settings-btn:hover {
-  fill: yellow;
-  filter: drop-shadow(0 0 2px yellow);
+  fill: var(--icon-hover-color);
+  /* filter: drop-shadow(0 0 2px yellow); */
 
   animation: spin 2s linear infinite;
 

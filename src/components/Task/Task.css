@@ -151,7 +151,7 @@
 /* .timeframe-toggle-btn:hover, */
 .edit-time-btn:hover,
 .edit-btn:hover {
-  fill: yellow;
+  fill: var(--icon-hover-color);
   filter: drop-shadow(0 0 1px white);
   transition: .3s;
 }
@@ -164,14 +164,15 @@
 
 /* Edit Time Icon Button When Time Editing Form is Open */
 .edit-time-btn.edit-time-btn-form-visible {
-  fill: yellow;
-  filter: drop-shadow(0 0 1px black);
+  fill: var(--icon-hover-color);
+  /* fill: pink; */
+  filter: drop-shadow(0 0 1px var(--icon-hover-color));
   transition: .3s;
 }
 
 .edit-time-btn.edit-time-btn-form-visible:hover {
-  fill: yellow;
-  filter: drop-shadow(0 0 1px white);
+  fill: var(--icon-hover-color);
+  filter: drop-shadow(0 0 1px var(--icon-hover-color));
   transition: .3s;
 }
 
@@ -281,7 +282,7 @@
 
 .sort-btn:hover {
   transform: scale(1.5);
-  fill: yellow;
+  fill: var(--icon-hover-color);
   cursor: pointer;
 
   transition: .3s;

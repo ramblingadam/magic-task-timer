@@ -1,13 +1,13 @@
 .menu-wrapper {
-  position: absolute;
+  position: fixed;
   left: 50%;
   top: 0;
   transform: translateX(-50%);
   /* top: 50%; */
   /* transform: translateX(-50%) translateY(-50%); */
   
-  width: 100%;
-  max-width: var(--app-max-width);
+  width: 100vw;
+  /* max-width: var(--app-max-width); */
   /* height: 100%; */
 
   z-index: 10;
@@ -19,7 +19,9 @@
 
   padding: 0 0 0 0;
 
-  border: 2px solid var(--app-border-color);
+  /* border: 2px solid var(--app-border-color); */
+  /* border-bottom: 2px solid var(--app-border-color); */
+  border-bottom: 2px solid black;
   border-radius: 5px;
 
   white-space: nowrap;
@@ -28,26 +30,47 @@
   flex-flow: column nowrap;
   justify-content: flex-start;
   align-items: center;
+
+  /* top: -50rem; */
+  opacity: 0;
+  pointer-events: none;
+  transition: .3;
+
 }
 
+.menu-wrapper.menu-open {
+  top: 0;
+  opacity: 1;
+  pointer-events: all;
+  transition: .3s ease;
+}
+
+.menu-header-wrapper {
+  width: 100%;
+  background: var(--header-footer-bg);
+  border-bottom: 1px solid black;
+}
 
 .menu-header,
 .menu {
+  position: relative;
   width: 100%;
-
+  max-width: var(--app-max-width);
+  margin: auto;
 }
 
 .menu-header {
   width: 100%;
   /* height: 5%; */
-  margin-bottom: 2rem;
-  padding-top: 1rem;
-  /* background: cyan; */
+  /* margin-bottom: 2rem; */
+  padding: 1rem;
+  background: var(--header-footer-bg);
+  /* border-bottom: 1px solid black; */
 }
 
 .cancel-btn {
   position: absolute;
-  top: 1rem;
+  top: .75rem;
   right: 1rem;
   width: 35px;
   height: 35px;
@@ -61,6 +84,7 @@
   flex-flow: row wrap;
   justify-content: flex-start;
   align-items: center;
+  margin-top: 1rem;
 }
 
 .menu-item {
@@ -90,7 +114,8 @@
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
-  width: fit-content;
+  width: 140px;
+  min-width: fit-content;
 }
 
 .menu-select-option {
@@ -98,11 +123,15 @@
   margin-bottom: .2rem;
   cursor: pointer;
   padding: .5rem;
-  width:100%;
+  width: 100%;
 
   border-radius: 10px;
 }
 
+.menu-select-option:hover {
+  border: 2px solid var(--app-border-color);
+}
+
 .active-setting {
-  border: 2px solid white;
+  border: 2px solid var(--app-border-color);
 }

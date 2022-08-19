@@ -37,6 +37,8 @@
   --button-history-text-color: white;
   --button-history-text-shadow-color: black;
 
+  --icon-hover-color: yellow;
+
 
   /* // Heatmap */
   --heat-low: rgb(0, 58, 0);
@@ -61,7 +63,7 @@
   /* // Global/App */
   --global-bg: #1E1E1E;
   --app-bg: linear-gradient(rgb(2, 2, 2), rgb(29, 29, 29));
-  --app-border-color: black;
+  --app-border-color: white;
   --header-footer-bg: rgb(39, 39, 39);
   
   /* // Task */
@@ -87,6 +89,8 @@
   --button-transparent: rgba(245, 245, 245, 0.2);
   --button-history-text-color: black;
   --button-history-text-shadow-color: rgb(182, 182, 182);
+
+  --icon-hover-color: yellow;
 
   /* // Heatmap */
   --heat-low: rgb(58, 58, 58);
@@ -136,6 +140,8 @@
   --button-history: rgb(255, 255, 255);
   --button-transparent: rgba(245, 245, 245, 0.2);
 
+  --icon-hover-color: yellow;
+
   /* // Heatmap */
   --heat-low: rgb(58, 58, 58);
   --heat-lowmed: rgb(99, 99, 99);
@@ -145,8 +151,8 @@
 
 }
 
-/* //! ----- LIGHT THEME ----- */
-:root .theme-light {
+/* //! ----- FROST THEME ----- */
+:root .theme-frost {
   /* // Text */
   --text-color: black;
   --text-shadow-color: rgb(194, 194, 194);
@@ -171,22 +177,26 @@
 
   /* // Task */
   --task-bg: rgb(255, 255, 255);
-  --task-running-gradient: linear-gradient(90deg, #ffffff, hsl(175, 68%, 64%),#ffffff);
+  --task-running-gradient: linear-gradient(90deg, #ffffff, rgb(182, 255, 255),#ffffff);
 
   /* // Tooltips */
   --tooltip-bg: rgb(46, 46, 46);
 
   /* // Buttons */
   --button-green: lightgreen;
+  --button-green: rgb(182, 255, 255);
   --button-red: lightcoral;
+  --button-red: rgb(148, 136, 255);
 
-  --button-subtract: lightcoral;
-  --button-add: lightgreen; 
-  --button-set: yellow;
-  --button-delete: lightcoral;
+  --button-subtract: rgb(148, 136, 255);
+  --button-add: rgb(182, 255, 255); 
+  --button-set: rgb(182, 255, 255);
+  --button-delete: rgb(148, 136, 255);;
 
-  --button-history: rgb(233, 233, 233);
+  --button-history: rgb(182, 255, 255);
   --button-transparent: rgba(245, 245, 245, 0.2);
+
+  --icon-hover-color: rgb(148, 136, 255);
 
   /* // Heatmap */
   --heat-low: rgb(0, 58, 58);

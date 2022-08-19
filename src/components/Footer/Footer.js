@@ -36,7 +36,7 @@ const Footer = () => {
           About&nbsp;<MdInfoOutline />
         </p> */}
        
-       <p className='margin-right'>© <a className='footer-link footer-underline' href="adammorsa.com">Adam Morsa</a>. All rights reserved.</p>
+       <p className='margin-right'>© <a className='footer-link footer-underline' href="https://adammorsa.com" target="_blank">Adam Morsa</a>. All rights reserved.</p>
        <ul className='footer-social-links'>
         <li>
           <a href="https://github.com/ramblingadam" className='footer-link' target="_blank">

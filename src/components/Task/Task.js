@@ -365,7 +365,7 @@ const Task = (props) => {
       if(a.category !== b.category) return a.category.localeCompare(b.category)
       else return a.categorySort - b.categorySort
     })
-    console.log('frog')
+    console.log('sorted tasks:')
     console.log(sortedTasks)
   }
 
@@ -409,7 +409,7 @@ const Task = (props) => {
 
           <div className="icon-button-wrapper hover-popup-wrapper">
           <span className='hover-popup text-shadow'>View/Edit History</span>
-            <MdHistoryToggleOff className={`edit-time-btn icon-button${showAddTimeForm ? 'edit-time-btn-form-visible' : ''}`} onClick={toggleAddTimeForm}/>
+            <MdHistoryToggleOff className={`edit-time-btn icon-button ${showAddTimeForm ? 'edit-time-btn-form-visible' : ''}`} onClick={toggleAddTimeForm}/>
             
           </div>
           <div className="icon-button-wrapper hover-popup-wrapper">

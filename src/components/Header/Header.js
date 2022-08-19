@@ -6,7 +6,7 @@ import Settings from '../Settings/Settings'
 import './Header.css'
 
 // Icons
-import { MdAddCircle, MdSettings, Mddashci, MdHelp, MdQuestionAnswer, MdHelpOutline, MdHelpCenter } from "react-icons/md"
+import { MdAddCircle, MdSettings, Mddashci, MdHelp, MdQuestionAnswer, MdHelpOutline, MdHelpCenter, MdAdd } from "react-icons/md"
 
 const Header = ({renderAll, changeTheme, toggleSettingsMenu, globalCurrentCategory, toggleHelpOpen}) => {
 
@@ -119,7 +119,8 @@ const Header = ({renderAll, changeTheme, toggleSettingsMenu, globalCurrentCatego
     <div className='header-wrapper'>
       
       <div className='header-main text-shadow'>
-        <h1>Magic Task Timer&nbsp;<MdAddCircle className={`plus ${showNewTaskForm ? 'open' : ''}`} onClick={toggleNewTaskForm} /></h1>
+        {/* <h1>Magic Task Timer&nbsp;<MdAddCircle className={`plus ${showNewTaskForm ? 'open' : ''}`} onClick={toggleNewTaskForm} /></h1> */}
+        <h1>Magic Task Timer&nbsp;<MdAdd className={`plus ${showNewTaskForm ? 'open' : ''}`} onClick={toggleNewTaskForm} /></h1>
         {/* <h1>Magic Task Timer</h1> */}
 
         {/* <MdAddCircle className={`plus ${showNewTaskForm ? 'open' : ''}`} onClick={toggleNewTaskForm} /> */}
