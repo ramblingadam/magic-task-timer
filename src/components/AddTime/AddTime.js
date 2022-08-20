@@ -20,7 +20,9 @@ const AddTime = (props) => {
   const [hoursToAdd, setHoursToAdd] = useState('')
   const [minutesToAdd, setMinutesToAdd] = useState('')
   // Tracks the date in the date input box..
-  const [selectedDate, setSelectedDate] = useState('')
+  // TODO HEYOOO
+  // const [selectedDate, setSelectedDate] = useState(props.getToday())
+  // TODO ---------^
   const [today, setToday] = useState('')
   // Causes the date input to flash whenever the selected date is updated via clicking on heatmap or the history table.
   const [dateInputFlash, setDateInputFlash] = useState(false)
@@ -29,8 +31,8 @@ const AddTime = (props) => {
   // Set today as the default date in the add time form. In addition, if a future date is selected, automatically change the selection to today.
   useEffect(() => {
     const today = props.getToday()
-    if(selectedDate > today || selectedDate === '') setDateInForm('today')
-  }, [selectedDate])
+    if(props.selectedDate > today || props.selectedDate === '') setDateInForm('today')
+  }, [props.selectedDate])
 
 
 
@@ -48,7 +50,7 @@ const AddTime = (props) => {
     }
     if(denomination === 'date') {
       // console.log('we are in the date')
-      setSelectedDate(e.target.value)
+      props.setSelectedDate(e.target.value)
     }
   }
 
@@ -61,32 +63,32 @@ const AddTime = (props) => {
     if(operation !== 'delete' && totalTimeInput === 0) return
 
     // Grab the currently stored time for the selected date, if it exists.
-    const selectedDateOldTime = props.task.dates[props.task.dates.findIndex(date => date.date === selectedDate)]?.time
+    const selectedDateOldTime = props.task.dates[props.task.dates.findIndex(date => date.date === props.selectedDate)]?.time
     // console.log('prev time', selectedDateOldTime, 'time input', totalTimeInput, 'new total', selectedDateOldTime + totalTimeInput)
 
     if(operation === 'add') {
       // If selected date exists, add value to old value. Otherwise, initialize with entered time.
-      props.updateTask(undefined, selectedDateOldTime ? selectedDateOldTime + totalTimeInput : totalTimeInput, selectedDate)
+      props.updateTask(undefined, selectedDateOldTime ? selectedDateOldTime + totalTimeInput : totalTimeInput, props.selectedDate)
     }
     if(operation === 'subtract') {
       // If selected date exists, subtract input value from old value. If it doesn't exist, ignore.
       if(selectedDateOldTime) {
-        props.updateTask(undefined, selectedDateOldTime - totalTimeInput, selectedDate)
+        props.updateTask(undefined, selectedDateOldTime - totalTimeInput, props.selectedDate)
       }
     }
     if(operation === 'set') {
       // If a time already exists for selected date, have user confirm overwrite. Otherwise, set time for selected date without confirmation.
       if(selectedDateOldTime) {
-        if(window.confirm(`Really overwrite the time spent on '${props.task.name}' for the date ${selectedDate}? This is not reversible.`)) {
-          props.updateTask(undefined, totalTimeInput, selectedDate)
+        if(window.confirm(`Really overwrite the time spent on '${props.task.name}' for the date ${props.selectedDate}? This is not reversible.`)) {
+          props.updateTask(undefined, totalTimeInput, props.selectedDate)
         }
-      } else props.updateTask(undefined, totalTimeInput, selectedDate)
+      } else props.updateTask(undefined, totalTimeInput, props.selectedDate)
     }
     if(operation === 'delete') {
       // If a time entry exists for selected date, ask for confirmation, then delete. If no time entry for the selected date, then nothing happens.
       if(selectedDateOldTime) {
-        if(window.confirm(`Really DELETE all time spent on '${props.task.name}' for the date ${selectedDate}? This is not reversible.`)) {
-          props.updateTask(undefined, -1, selectedDate)
+        if(window.confirm(`Really DELETE all time spent on '${props.task.name}' for the date ${props.selectedDate}? This is not reversible.`)) {
+          props.updateTask(undefined, -1, props.selectedDate)
         }
       }
     }
@@ -109,10 +111,10 @@ const AddTime = (props) => {
     // If this function is called by state intialization, set date to today.
     if(specificDate === 'today') {
       const today = props.getToday()
-      setSelectedDate(today)
+      props.setSelectedDate(today)
       setToday(today)
     } else {
-      setSelectedDate(specificDate)
+      props.setSelectedDate(specificDate)
     }
     // props.renderAll()
     setDateInputFlash(true)
@@ -144,7 +146,7 @@ const AddTime = (props) => {
         <div>
           {/*//// Date Input */}
           <label className={`${dateInputFlash ? 'flash' : ''}`}><span className='heading'>Date</span>
-            <input type="date" id="choose-date"  value={selectedDate} max={today} onChange={(e) => handleTimeChange('date', e)}/>
+            <input type="date" id="choose-date"  value={props.selectedDate} max={today} onChange={(e) => handleTimeChange('date', e)}/>
           </label>
           {/*//// Hours Input */}
           <label><span className='heading'>Hours</span>
@@ -206,7 +208,7 @@ const AddTime = (props) => {
         convertTime={props.convertTime}
         task={props.task}
         setDateInForm={setDateInForm}
-        selectedDate={selectedDate}
+        selectedDate={props.selectedDate}
       />
 
       {/* //// Task History Table*/}
@@ -214,7 +216,7 @@ const AddTime = (props) => {
         task={props.task}
         convertTime={props.convertTime}
         setDateInForm={setDateInForm}
-        selectedDate={selectedDate}
+        selectedDate={props.selectedDate}
       />
 
       

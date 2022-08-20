@@ -87,6 +87,7 @@
 
   --button-history: rgb(255, 255, 255);
   --button-transparent: rgba(245, 245, 245, 0.2);
+
   --button-history-text-color: black;
   --button-history-text-shadow-color: rgb(182, 182, 182);
 
@@ -139,6 +140,7 @@
 
   --button-history: rgb(255, 255, 255);
   --button-transparent: rgba(245, 245, 245, 0.2);
+
   --button-history-text-color: black;
   --icon-hover-color: yellow;
 
@@ -150,6 +152,7 @@
   --heat-high: rgb(255, 255, 255);
 
 }
+
 
 /* //! ----- FROST THEME ----- */
 :root .theme-frost {
@@ -177,7 +180,11 @@
 
   /* // Task */
   --task-bg: rgb(255, 255, 255);
-  --task-running-gradient: linear-gradient(90deg, #ffffff, rgb(182, 255, 255),#ffffff);
+  /* --task-running-gradient: linear-gradient(90deg, #ffffff, rgb(182, 255, 255),#ffffff); */
+  /* --task-running-gradient: linear-gradient(90deg, rgb(227, 255, 255), rgb(182, 255, 255),rgb(227, 255, 255)); */
+  /* --task-running-gradient: linear-gradient(90deg, #f6dfff, rgb(182, 255, 255),#f6dfff); */
+  /* --task-running-gradient: linear-gradient(90deg, #bb86ff, rgb(182, 255, 255),#bb86ff); */
+  --task-running-gradient: linear-gradient(90deg, #ddc3ff, rgb(182, 255, 255),#ddc3ff);
 
   /* // Tooltips */
   --tooltip-bg: rgb(46, 46, 46);
@@ -206,6 +213,7 @@
   --heat-medhigh: rgb(0, 177, 177);
   --heat-high: rgb(0, 255, 255);
 }
+
 
 
 /* ! END THEMES */

@@ -117,6 +117,8 @@ h1 {
   transition: .1s;
 }
 
+
+
 /* ! HELP BUTTON */
 .help-btn:hover {
   fill: var(--icon-hover-color);
@@ -137,6 +139,15 @@ h1 {
 
   transition: .1s ease;
   cursor: pointer;
+}
+
+
+
+.header-icon-btn:hover {
+  fill: var(--text-color);
+}
+.header-icon-btn:hover {
+  fill: var(--icon-hover-color);
 }
 
 

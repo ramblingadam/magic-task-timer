@@ -344,13 +344,14 @@ h1 {
   background: var(--app-bg);
   background-position: sticky;
   position: relative;
+  color: var(--text-color);
 }
 
 
 .app {
   position: relative;
   font-family: 'Acme';
-  color: var(--text-color);
+ 
 
   max-width: var(--app-max-width);
   /* margin: 1rem auto auto auto;

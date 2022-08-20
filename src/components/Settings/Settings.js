@@ -23,7 +23,8 @@ const Settings = (props) => {
         'Mako',
         'Casper',
         'Frost',
-        'Halloween'
+        // 'Sophie',
+        // 'Halloween'
       ]
     },
     {
@@ -47,23 +48,7 @@ const Settings = (props) => {
   // // When a setting's value's option has been clicked, this is called. Applies the selected setting.
   const handleOptionClick = (setting, option) => {
     if(setting === 'Theme') {
-      switch(option) {
-        case 'mako' :
-          props.changeTheme('mako')
-        break
-        case 'casper' : 
-          props.changeTheme('casper')
-        break
-        case 'frost' : 
-          props.changeTheme('frost')
-        break
-        case 'halloween' : 
-          props.changeTheme('halloween')
-        break
-        // case 'Mako' : props.changeTheme('mako')
-        // break
-        default : props.changeTheme('mako')
-      }
+      props.changeTheme(option)
       updateUserSetting(setting.toLowerCase(), option)
     }
 

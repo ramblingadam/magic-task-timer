@@ -52,7 +52,7 @@ const App = () => {
   const [theme, setTheme] = useState(settings?.theme || 'mako')
   const changeTheme = (theme) => {
     setTheme(theme)
-    console.log('changetheme clicked')
+    // console.log('changetheme clicked')
   }
   useEffect(() => {
     // console.log(theme)
@@ -107,11 +107,13 @@ const App = () => {
         />
         
       <div className="app">
+
         {helpOpen && (
           <Help
             toggleHelpOpen={toggleHelpOpen}  
           />
         )}
+
         {settingsOpen && (
         <Settings 
             changeTheme={changeTheme}
@@ -123,14 +125,7 @@ const App = () => {
           
           />
         )}
-        {/* <Header
-          renderAll={renderAll}
-          changeTheme={changeTheme}
-          toggleHelpOpen={toggleHelpOpen}
-          toggleSettingsMenu={toggleSettingsMenu}
-          globalCurrentCategory={globalCurrentCategory}
-          settings={settings}
-        /> */}
+
         <Tasks
           renderAll={renderAll}
           globalCurrentCategory={globalCurrentCategory}
@@ -139,7 +134,9 @@ const App = () => {
         />
        
       </div>
+
       <Footer />
+
     </div>
   )
 }

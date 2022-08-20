@@ -289,7 +289,7 @@ const Task = (props) => {
 
   //// Show "Add/Subtract/Set" Time Form/Heatmap/History Table
    // TODO change selecteddate in addtime form to today whenever form opened
-
+  const [selectedDate, setSelectedDate] = useState(getToday())
  
   const toggleAddTimeForm = () => {
     setAddTimeFormAnimationDone(false)
@@ -297,10 +297,12 @@ const Task = (props) => {
     // if(timerRunning) return
 
     if(addTimeFormCollapsed) {
+      setSelectedDate(getToday())
       setTimeout(() => {
         // Trigger swapping hide animation CSS class with hidden static CSS class.
         setAddTimeFormCollapsed(false)
         setAddTimeFormAnimationDone(true)
+
       }, 601)
     } else {
       setTimeout(() => {
@@ -505,6 +507,9 @@ const Task = (props) => {
           getToday={getToday}
           // updateTimeForTotalTimer={updateTime}
           settings={props.settings}
+          // TODO HEYOO
+          selectedDate={selectedDate}
+          setSelectedDate={setSelectedDate}
         />
        
 
