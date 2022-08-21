@@ -88,6 +88,13 @@
   color: var(--text-color);
   text-decoration: none;
   /* border-bottom: 1px dotted black; */
+  transition: .3s;
+}
+.footer-link:hover,
+.footer-link:visited:hover {
+  color: var(--icon-hover-color);
+  text-decoration: none;
+  /* border-bottom: 1px dotted black; */
 }
 
 .footer-underline::after {

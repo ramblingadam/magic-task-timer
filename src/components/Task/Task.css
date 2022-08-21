@@ -152,12 +152,12 @@
 .edit-time-btn:hover,
 .edit-btn:hover {
   fill: var(--icon-hover-color);
-  filter: drop-shadow(0 0 1px white);
+  /* filter: drop-shadow(0 0 1px white); */
   transition: .3s;
 }
 .delete-btn:hover {
   fill: coral;
-  filter: drop-shadow(0 0 1px red);
+  /* filter: drop-shadow(-1px 1px 1px red); */
   transition: .3s;
 }
 
@@ -166,13 +166,13 @@
 .edit-time-btn.edit-time-btn-form-visible {
   fill: var(--icon-hover-color);
   /* fill: pink; */
-  filter: drop-shadow(0 0 1px var(--icon-hover-color));
+  /* filter: drop-shadow(0 0 1px var(--icon-hover-color)); */
   transition: .3s;
 }
 
 .edit-time-btn.edit-time-btn-form-visible:hover {
   fill: var(--icon-hover-color);
-  filter: drop-shadow(0 0 1px var(--icon-hover-color));
+  /* filter: drop-shadow(0 0 1px var(--icon-hover-color)); */
   transition: .3s;
 }
 
@@ -396,9 +396,6 @@
   /* box-shadow: var(--button-shine); */
 }
 
-.icon-shadow {
-  filter: drop-shadow(-2px 2px 2px var(--text-shadow-color));
-}
 
 @media all and (max-width: 420px) {
   .timeframe-toggle-btn-big {

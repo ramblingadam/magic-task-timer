@@ -282,6 +282,10 @@ h1 {
 }
 
 /* // BUTTON/ BUTTON ANIMATIONS */
+a:hover {
+  color: var(--icon-hover-color);
+}
+
 .hover-grow:hover {
   transform: scale(1.2);
   transition: .3s;
@@ -307,6 +311,11 @@ h1 {
   border: 2px solid rgba(255,255,255,.5);
 
   transition: .3s;
+}
+
+/* // ICON SHADOW */
+.icon-shadow {
+  filter: drop-shadow(-1px 1px 1px black);
 }
 
 /*// SCROLLBARS */
@@ -358,6 +367,7 @@ h1 {
   padding: 1rem; */
   margin: 0 auto auto auto;
   padding: calc(var(--header-height) + .5rem) 1rem calc(var(--footer-height) + 1rem) 1rem;
+  padding: .5rem 1rem calc(var(--footer-height) + 1rem) 1rem;
 
   /* background: var(--app-bg); */
 

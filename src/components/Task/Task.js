@@ -411,21 +411,21 @@ const Task = (props) => {
 
           <div className="icon-button-wrapper hover-popup-wrapper">
           <span className='hover-popup text-shadow'>View/Edit History</span>
-            <MdHistoryToggleOff className={`edit-time-btn icon-button ${showAddTimeForm ? 'edit-time-btn-form-visible' : ''}`} onClick={toggleAddTimeForm}/>
+            <MdHistoryToggleOff className={`edit-time-btn icon-button icon-shadow ${showAddTimeForm ? 'edit-time-btn-form-visible' : ''}`} onClick={toggleAddTimeForm}/>
             
           </div>
           <div className="icon-button-wrapper hover-popup-wrapper">
           <span className='hover-popup text-shadow'>Edit Name</span>
-            <MdEdit className="edit-btn icon-button" onClick={editTask} />
+            <MdEdit className="edit-btn icon-button icon-shadow" onClick={editTask} />
           </div>
           <div className="icon-button-wrapper hover-popup-wrapper">
           <span className='hover-popup text-shadow'>Edit Category</span>
-            <MdTopic className="edit-btn icon-button" onClick={editTaskCategory}/>
+            <MdTopic className="edit-btn icon-button icon-shadow" onClick={editTaskCategory}/>
           </div>
 
           <div className="icon-button-wrapper hover-popup-wrapper delete-btn-wrapper">
           <span className='hover-popup text-shadow'>Delete Task</span>
-            <MdDelete className="delete-btn icon-button" onClick={deleteTask}/>
+            <MdDelete className="delete-btn icon-button icon-shadow" onClick={deleteTask}/>
           </div>
          
        
@@ -462,7 +462,7 @@ const Task = (props) => {
           {/* Special delete button, used only when task is a divider */}
           <div className={`icon-button-wrapper hover-popup-wrapper delete-btn-wrapper divider-only divider-delete`}>
             <span className='hover-popup text-shadow'>Delete Divider</span>
-            <MdDelete className="delete-btn icon-button" onClick={deleteTask}/>
+            <MdDelete className="delete-btn icon-button icon-shadow" onClick={deleteTask}/>
           </div>
          </div>
 

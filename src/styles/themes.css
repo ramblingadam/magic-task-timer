@@ -57,7 +57,6 @@
 :root .theme-casper {
   /* // Text */
   --text-color: rgb(255, 255, 255);
-  --text-shadow-color: black;
   --text-shadow: 0 0 1px black, -1px 1px black, -2px 2px black;
 
   /* // Global/App */
@@ -65,13 +64,13 @@
   --app-bg: linear-gradient(rgb(2, 2, 2), rgb(29, 29, 29));
   --app-border-color: white;
   --header-footer-bg: rgb(39, 39, 39);
+
+  /* // Tasks */
+  --current-category-tab-border-color: white;
   
   /* // Task */
   --task-bg: #1E1E1E;
   --task-running-gradient: linear-gradient(90deg, #1E1E1E, #5e5e5e,#1E1E1E);
-
-  /* // Tasks */
-  --current-category-tab-border-color: white;
 
   /* // Tooltips */
   --tooltip-bg: rgb(46, 46, 46);
@@ -108,48 +107,7 @@
 
 /* //! ----- HALLOWEEN THEME ----- */
 :root .theme-halloween {
-  --text-color: orange;
-  --text-shadow-color: black;
-  
-
-  /* // Global/App */
-  --global-bg: #1E1E1E;
-  --app-bg: linear-gradient(rgb(2, 2, 2), rgb(29, 29, 29));
-  --app-border-color: black;
-  --header-footer-bg: rgb(20, 109, 99);
-  
-  
-  /* // Task */
-  --task-bg: #1E1E1E;
-  --task-running-gradient: linear-gradient(90deg, #1E1E1E, #5e5e5e,#1E1E1E);
-
-  /* // Tasks */
-  --current-category-tab-border-color: white;
-
-  /* // Tooltips */
-  --tooltip-bg: rgb(46, 46, 46);
-
-  /* // Buttons */
-  --button-green: rgb(255, 255, 255);
-  --button-red: rgb(255, 255, 255);
-
-  --button-subtract: white;
-  --button-add: white; 
-  --button-set: white;
-  --button-delete: white;
-
-  --button-history: rgb(255, 255, 255);
-  --button-transparent: rgba(245, 245, 245, 0.2);
-
-  --button-history-text-color: black;
-  --icon-hover-color: yellow;
-
-  /* // Heatmap */
-  --heat-low: rgb(58, 58, 58);
-  --heat-lowmed: rgb(99, 99, 99);
-  --heat-med: rgb(131, 131, 131);
-  --heat-medhigh: rgb(177, 177, 177);
-  --heat-high: rgb(255, 255, 255);
+ 
 
 }
 
@@ -214,6 +172,119 @@
   --heat-high: rgb(0, 255, 255);
 }
 
+/* //! ----- UNDERSEA THEME ----- */
+:root .theme-undersea {
+  /* // Text */
+  --text-color: white;
+  /* --text-shadow: 0 0 1px black, -1px 1px black, -2px 2px black; */
+  /* --text-shadow-color: 0 0 1px black, -1px 1px black, -2px 2px black; */
+  --text-shadow-color: black;
 
+
+  /* // Global/App */
+  --global-bg: #3e6469;
+  --app-bg: linear-gradient(rgb(14, 30, 32), rgb(33, 55, 58));
+  --app-bg: linear-gradient(rgb(45, 98, 105), rgb(14, 30, 32));
+  
+  --app-border-color: white;
+
+  --header-footer-bg: rgb(48, 134, 134);
+  --header-footer-bg: rgb(61, 177, 177);
+  /* --header-footer-bg: rgb(72, 51, 80); */
+  /* --header-footer-bg: rgb(33, 55, 58); */
+
+  /* // Tasks */
+  --current-category-tab-border-color: white;
+
+  /* // Task */
+  --task-bg: rgb(87, 62, 97);
+  --task-bg: rgb(48, 134, 134);
+  --task-bg: rgb(48, 134, 134);
+  --task-running-gradient: linear-gradient(90deg, #78facf, rgb(39, 193, 240),#78facf);
+
+  /* // Tooltips */
+  --tooltip-bg: rgb(46, 46, 46);
+
+  /* // Buttons */
+  --button-green: lightgreen;
+  --button-green: rgb(129, 255, 217);
+  --button-red: lightcoral;
+  --button-red: rgb(49, 174, 206);
+
+  --button-subtract: rgb(77, 187, 214);
+  --button-add: rgb(129, 255, 217); 
+  --button-set: rgb(129, 255, 217);
+  --button-delete: rgb(77, 187, 214);;
+
+  --button-history: rgb(129, 255, 217);
+  --button-transparent: rgba(245, 245, 245, 0.2);
+
+  --button-history-text-color: black;
+  --icon-hover-color: rgb(148, 136, 255);
+  --icon-hover-color: rgb(129, 255, 217);
+
+  /* // Heatmap */
+  --heat-low: rgb(0, 58, 58);
+  --heat-lowmed: rgb(0, 99, 99);
+  --heat-med: rgb(0, 131, 131);
+  --heat-medhigh: rgb(0, 177, 177);
+  --heat-high: rgb(0, 255, 255);
+}
+
+
+/* //! ----- PURPLECORAL THEME ----- */
+:root .theme-purpleCORAL {
+  /* // Text */
+  --text-color: white;
+  /* --text-shadow: 0 0 1px black, -1px 1px black, -2px 2px black; */
+  /* --text-shadow-color: 0 0 1px black, -1px 1px black, -2px 2px black; */
+  --text-shadow-color: black;
+
+
+  /* // Global/App */
+  --global-bg: #3e6469;
+  --app-bg: linear-gradient(rgb(14, 30, 32), rgb(33, 55, 58));
+  --app-bg: linear-gradient(rgb(45, 98, 105), rgb(14, 30, 32));
+  
+  --app-border-color: white;
+
+  --header-footer-bg: rgb(48, 134, 134);
+  --header-footer-bg: rgb(72, 51, 80);
+  /* --header-footer-bg: rgb(33, 55, 58); */
+
+  /* // Tasks */
+  --current-category-tab-border-color: white;
+
+  /* // Task */
+  --task-bg: rgb(87, 62, 97);
+  --task-running-gradient: linear-gradient(90deg, #ddc3ff, rgb(182, 255, 255),#ddc3ff);
+
+  /* // Tooltips */
+  --tooltip-bg: rgb(46, 46, 46);
+
+  /* // Buttons */
+  --button-green: lightgreen;
+  --button-green: rgb(182, 255, 255);
+  --button-red: lightcoral;
+  --button-red: rgb(148, 136, 255);
+
+  --button-subtract: rgb(148, 136, 255);
+  --button-add: rgb(182, 255, 255); 
+  --button-set: rgb(182, 255, 255);
+  --button-delete: rgb(148, 136, 255);;
+
+  --button-history: rgb(182, 255, 255);
+  --button-transparent: rgba(245, 245, 245, 0.2);
+
+  --button-history-text-color: black;
+  --icon-hover-color: rgb(148, 136, 255);
+
+  /* // Heatmap */
+  --heat-low: rgb(0, 58, 58);
+  --heat-lowmed: rgb(0, 99, 99);
+  --heat-med: rgb(0, 131, 131);
+  --heat-medhigh: rgb(0, 177, 177);
+  --heat-high: rgb(0, 255, 255);
+}
 
 /* ! END THEMES */

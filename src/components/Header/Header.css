@@ -1,7 +1,7 @@
 .header-wrapper {
   z-index: 7;
-  position: fixed;
-  /* position: relative; */
+  /* position: fixed; */
+  position: relative;
   top: 0;
   /* width: 100%; */
   left: 0;
@@ -133,7 +133,8 @@ h1 {
 /* ! SETTINGS BUTTON */
 .settings-btn:hover {
   fill: var(--icon-hover-color);
-  /* filter: drop-shadow(0 0 2px yellow); */
+  /* filter: drop-shadow(0 0 2px black); */
+  filter: drop-shadow(0 0 2px var(--text-shadow-color));
 
   animation: spin 2s linear infinite;
 

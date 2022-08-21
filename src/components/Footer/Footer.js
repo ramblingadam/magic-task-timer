@@ -36,25 +36,25 @@ const Footer = () => {
           About&nbsp;<MdInfoOutline />
         </p> */}
        
-       <p className='margin-right'>© <a className='footer-link footer-underline' href="https://adammorsa.com" target="_blank">Adam Morsa</a>. All rights reserved.</p>
-       <ul className='footer-social-links'>
-        <li>
-          <a href="https://github.com/ramblingadam" className='footer-link' target="_blank">
-            <FaGithub className='edit-time-btn margin-right'/>
-          </a>
-        </li>
-        <li>
-          <a href="https://twitter.com/ramblingadam" className='footer-link' target="_blank">
-            <FaTwitter className='edit-time-btn margin-right'/>
-          </a>
-        </li>
-        <li>
-          <a href="https://linkedin.com/in/adam-morsa" className='footer-link' target="_blank">
-            <FaLinkedin className='edit-time-btn'/>
-          </a>
-        </li>
-          
-          </ul>
+        <p className='margin-right text-shadow'>© <a className='footer-link footer-underline' href="https://adammorsa.com" target="_blank">Adam Morsa</a>. All rights reserved.</p>
+        <ul className='footer-social-links'>
+          <li>
+            <a href="https://github.com/ramblingadam" className='footer-link' target="_blank">
+              <FaGithub className='edit-time-btn margin-right icon-shadow'/>
+            </a>
+          </li>
+          <li>
+            <a href="https://twitter.com/ramblingadam" className='footer-link' target="_blank">
+              <FaTwitter className='edit-time-btn margin-right icon-shadow'/>
+            </a>
+          </li>
+          <li>
+            <a href="https://linkedin.com/in/adam-morsa" className='footer-link' target="_blank">
+              <FaLinkedin className='edit-time-btn icon-shadow'/>
+            </a>
+          </li>
+        </ul>
+        
       </div>
   
 

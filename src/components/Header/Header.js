@@ -126,11 +126,11 @@ const Header = ({renderAll, changeTheme, toggleSettingsMenu, globalCurrentCatego
         {/* <MdAddCircle className={`plus ${showNewTaskForm ? 'open' : ''}`} onClick={toggleNewTaskForm} /> */}
         
         <div className='header-buttons'>
-          <MdHelpOutline className='header-icon-btn edit-btn' onClick={toggleHelpOpen}/>
+          <MdHelpOutline className='header-icon-btn edit-btn icon-shadow' onClick={toggleHelpOpen}/>
           {/* <MdHelpCenter />
           <MdQuestionAnswer />
           <MdHelp /> */}
-          <MdSettings className='settings-btn header-icon-button' onClick={toggleSettingsMenu}/>
+          <MdSettings className='settings-btn header-icon-button icon-shadow' onClick={toggleSettingsMenu}/>
           
         </div>
       </div>
