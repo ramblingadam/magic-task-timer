@@ -30,6 +30,7 @@
   text-align: center;
 
   box-shadow: var(--button-shine);
+  box-shadow: inset 2px 2px 4px rgba(255,255,255,.6), inset -4px 0 4px rgba(0,0,0,.4);
 
   flex: 0;
   
@@ -62,7 +63,9 @@
   height: 5rem;
   /* background: var(--app-bg); */
   /* background: var(--task-running-gradient); */
-  background: var(--button-transparent);
+  /* background: var(--button-transparent); */
+  /* background: var(--button-green); */
+  background: rgba(255,255,255,.2);
 }
 
 .uncategorized {

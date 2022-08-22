@@ -17,7 +17,7 @@
 
 .add-time-instructions {
   margin-bottom: 1rem;
-  font-size: 1.7rem;
+  font-size: 2rem;
 }
 
 .add-time p {
@@ -157,16 +157,20 @@ p.time-edit-btn {
 
 
 /* // Colors for tutorial text. */
+.tutorial-highlight {
+  text-shadow: 0 0 1px black, -1px 1px 1px black;
+  /* text-shadow: 0 0 1px black; */
+}
 .yellow {
-  color: rgb(255, 255, 86);
+  color: var(--button-set);
 }
 
 .red {
-  color: lightcoral;
+  color: var(--button-subtract);
 }
 
 .green {
-  color: lightgreen;
+  color: var(--button-add);
 }
 
 

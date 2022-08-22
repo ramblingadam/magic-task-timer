@@ -31,6 +31,8 @@
   justify-content: flex-start;
   align-items: center;
 
+  user-select: none;
+
   /* top: -50rem; */
   opacity: 0;
   pointer-events: none;

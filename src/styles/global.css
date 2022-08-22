@@ -315,7 +315,10 @@ a:hover {
 
 /* // ICON SHADOW */
 .icon-shadow {
-  filter: drop-shadow(-1px 1px 1px black);
+  filter: drop-shadow(-1px 1px 1px var(--text-shadow-color));
+}
+.icon-shadow-deep {
+  filter: drop-shadow(-2px 2px 1px var(--text-shadow-color));
 }
 
 /*// SCROLLBARS */
@@ -366,7 +369,7 @@ a:hover {
   /* margin: 1rem auto auto auto;
   padding: 1rem; */
   margin: 0 auto auto auto;
-  padding: calc(var(--header-height) + .5rem) 1rem calc(var(--footer-height) + 1rem) 1rem;
+  /* padding: calc(var(--header-height) + .5rem) 1rem calc(var(--footer-height) + 1rem) 1rem; */
   padding: .5rem 1rem calc(var(--footer-height) + 1rem) 1rem;
 
   /* background: var(--app-bg); */

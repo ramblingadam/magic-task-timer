@@ -107,6 +107,16 @@
   left: 0;
 }
 
+.footer-underline:hover::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  border-bottom: 1px dotted var(--icon-hover-color);
+
+  bottom: 1px;
+  left: 0;
+}
+
 .footer-social-links {
   display: flex;
 }

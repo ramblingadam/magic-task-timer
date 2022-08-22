@@ -130,10 +130,10 @@ const AddTime = (props) => {
   return (
     <div className="add-time">
 
-      <div className={`add-time-instructions ${props.settings.helptext === 'on' ? '' : 'display-none'}`}>
+      <div className={`add-time-instructions text-shadow ${props.settings.helptext === 'on' ? '' : 'display-none'}`}>
         <p>Enter a date, or select one from the heatmap or the history table.</p>
         <p>Enter a number of hours/minutes in the form.</p>
-        <p>Then, press <span className='red'>Subtract</span>, <span className='yellow'>Set</span>, or <span className='green'>Add</span> to adjust the time for the selected date.</p>
+        <p>Then, press <span className='red tutorial-highlight'>Subtract</span>, <span className='yellow tutorial-highlight'>Set</span>, or <span className='green tutorial-highlight'>Add</span> to adjust the time for the selected date.</p>
       </div>
       {/* <div className='add-time-instructions-prototype'>
         <p>Select a date from the heatmap or the history table.</p>

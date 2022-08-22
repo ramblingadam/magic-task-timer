@@ -471,7 +471,7 @@ const Task = (props) => {
           <span className='hover-popup text-shadow'>{`${mainTimeIsGrandTotal ? 'All Time. Click to show Today.' : 'Today. Click to show All Time.'}`}</span>
 
           <p className=''>
-            <span className='timeframe-toggle-btn-big'>{mainTimeIsGrandTotal ? <MdAllInclusive className='icon-shadow'/> :<MdCalendarToday className='icon-shadow'/>}</span>
+            <span className='timeframe-toggle-btn-big'>{mainTimeIsGrandTotal ? <MdAllInclusive className='icon-shadow-deep'/> :<MdCalendarToday className='icon-shadow-deep'/>}</span>
             {mainTimeIsGrandTotal // If timeframe set to Grand Total,
               // Display grand total time. 
               ? convertTime(props.task.dates.reduce( (acc, date) => acc + date.time, 0) + runningTime) 

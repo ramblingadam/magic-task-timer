@@ -26,6 +26,7 @@ const Settings = (props) => {
         // 'Sophie',
         // 'Halloween'
         'Undersea',
+        'Amethyst',
       ]
     },
     {
