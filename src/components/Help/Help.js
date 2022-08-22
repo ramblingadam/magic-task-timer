@@ -31,7 +31,7 @@ const Help = (props) => {
   const slides = [
     {
       header: 'Welcome to Magic Task Timer!',
-      desc: 'Take control of how you spend your time by becoming aware of how you spend it.\nMagic Task Timer is your own personal timeclock.\nTrack the time you spend on projects, tasks, freelancing, getting fit, needlework, chores, socializing, breakdancing, dragon slaying- whatever you want. If you can do it, you can track it.\nPlease take a moment to review the many incredible features of Magic Task Timer- you won\'t regret it, I guarantee it.*\n*lack of regret not guaranteed. void where prohibited.',
+      desc: 'Take control of how you spend your time by becoming aware of how you spend it.\nMagic Task Timer is your own personal timeclock.\nTrack the time you spend on projects, tasks, freelancing, getting fit, needlework, chores, socializing, breakdancing, dragon slaying- whatever you want.\nPlease take a moment to review the many incredible features of Magic Task Timer- you won\'t regret it, I guarantee it.*\n*lack of regret not guaranteed. void where prohibited.',
       image: slide01
     },
     {
@@ -100,8 +100,8 @@ const Help = (props) => {
       image: slide13
     },
     {
-      header: 'One more time...?',
-      desc: 'Fear not, task warrior!\nIf you ever forget anything, you can view this tutorial at any time by clicking the Help button.',
+      header: 'Help',
+      desc: 'Fear not, braave task warrior!\nIf you ever forget anything, you can view this tutorial at any time by clicking the Help button.',
       image: slide14
     },
     {

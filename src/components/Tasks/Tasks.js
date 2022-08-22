@@ -37,7 +37,7 @@ const Tasks = (props) => {
 
   // console.log(tasks)
 
-  //// currentCategory handling. 'All' by default.
+  //// currentCategory handling. 'Uncategorized' by default.
   const [currentCategory, setCurrentCategory] = useState(settings.currentcategory || 'Uncategorized')
   const handleCategoryClick = (category) => {
     // props.changeGlobalCategory(currentCategory)
@@ -47,24 +47,24 @@ const Tasks = (props) => {
 
   }
 
+  //// Updates the global category whenever the category is changed locally.
   useEffect(() => {
     props.changeGlobalCategory(currentCategory)
   }, [currentCategory])
 
   //// This is called from Task.js when a user changes the category of an item. If there are no more items with the old category, change view/set current category to 'All'
-  // const checkCurrentCategoryEmpty = (category) => {    
-  //   const tasks = JSON.parse(localStorage.getItem('tasks'))
-  //   const tasksInCategory = tasks.filter(task => task.category === category).length
-  //   if(tasksInCategory === 0) {
-  //     setCurrentCategory('All')
-  //   }
-  // }
-  // TODO Default back to Uncategorized instead of 'All'
   const checkCurrentCategoryEmpty = (category) => {    
     const tasks = JSON.parse(localStorage.getItem('tasks'))
     const tasksInCategory = tasks.filter(task => task.category === category).length
+
     if(tasksInCategory === 0) {
-      setCurrentCategory('Uncategorized')
+      // console.log(categories)
+
+      if(category === '') {
+        setCurrentCategory(categories[1])
+      } else {
+        setCurrentCategory('Uncategorized')
+      }
     }
   }
 
