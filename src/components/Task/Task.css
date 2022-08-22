@@ -201,10 +201,12 @@
   opacity: 0;
   /* display: none; */
   color: white;
+  color: var(--text-color);
   z-index: 2;
 
   text-align: center;
   text-shadow: none;
+  text-shadow: -1px 1px 1px var(--text-shadow-color);
 
   position: absolute;
   left: 50%;
@@ -215,7 +217,7 @@
 
   background: var(--tooltip-bg);
   border-radius: 5px;
-  border: 1px solid white;
+  border: 1px solid var(--app-border-color);
 
   padding: .5rem;
 

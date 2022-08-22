@@ -145,17 +145,22 @@ const AddTime = (props) => {
 
         <div>
           {/*//// Date Input */}
-          <label className={`${dateInputFlash ? 'flash' : ''}`}><span className='heading'>Date</span>
+          <label className={`${dateInputFlash ? 'flash' : ''} text-shadow`}><span className='heading'>Selected Date</span>
             <input type="date" id="choose-date"  value={props.selectedDate} max={today} onChange={(e) => handleTimeChange('date', e)}/>
           </label>
+
           {/*//// Hours Input */}
-          <label><span className='heading'>Hours</span>
+          <label><span className='heading text-shadow'>Hours</span>
             <input type="number" id="add-hours" value={hoursToAdd} onChange={(e) => handleTimeChange('hours', e)}/>
           </label>
           {/*//// Minutes Input */}
-          <label><span className='heading'>Minutes</span>
+          <label><span className='heading text-shadow'>Minutes</span>
             <input type="number" id="add-minutes" value={minutesToAdd} onChange={(e) => handleTimeChange('mins', e)}/>
           </label>
+        </div>
+        <div className='logged-time text-shadow'>
+        Time logged on selected date: {props.task.dates[props.task.dates?.findIndex(date => date.date === props.selectedDate)]?.time ?
+              props.convertTime(props.task.dates[props.task.dates?.findIndex(date => date.date === props.selectedDate)]?.time) : props.convertTime(0)}
         </div>
 
         {/*//// Subtract, Set, Add, and Delete Buttons */}
@@ -177,7 +182,7 @@ const AddTime = (props) => {
           <div className='time-set-delete-wrapper'>
             <p id='set-time' className='time-edit-btn yellow hover-popup-wrapper' onClick={() => updateTime('set')}>SET <span className='hover-popup hover-popup-delay two-line'>Completely overwrite the selected date's total time<br />
             with the entered time.</span></p>
-            <p id='delete-time' className='time-edit-btn hover-popup-wrapper' onClick={() => updateTime('delete')}>DELETE<span className='hover-popup hover-popup-delay'>Deletes all time spent on the selected date.</span></p>
+            <p id='delete-time' className='time-edit-btn hover-popup-wrapper' onClick={() => updateTime('delete')}>DELETE<span className='hover-popup hover-popup-delay'>Deletes all time logged on the selected date.</span></p>
           </div>
 
           {/* //// Add Time */}

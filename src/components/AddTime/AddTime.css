@@ -37,6 +37,17 @@
   flex: 1;
 }
 
+.logged-time {
+  margin-top: .75rem;
+  font-family: 'Acme', monospace;
+}
+
+@media all and (max-width: 370px) {
+  .logged-time {
+    font-size: 1.7rem;
+  }
+}
+
 
 /* Time Form Input Labels */
 .heading {
