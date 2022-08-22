@@ -71,6 +71,7 @@ table {
   /* --app-bg: rgba(50, 50, 50); */
   /* --app-bg: linear-gradient(rgb(0, 66, 68), rgb(0, 204, 211), rgb(0, 247, 255)); */
   --app-bg: linear-gradient(rgb(0, 66, 68), rgb(0, 156, 161));
+
   --app-max-width: 800px;
 
 
@@ -354,7 +355,7 @@ a:hover {
   min-height: 100vh;
   margin: 0;
   background: var(--app-bg);
-  background-position: sticky;
+  background-attachment: fixed;
   position: relative;
   color: var(--text-color);
 }

@@ -9,7 +9,7 @@
   /* // Global/App */
   --global-bg: linear-gradient(rgb(72, 253, 238), rgb(0, 30, 31), rgb(0, 0, 0));
   --app-bg: linear-gradient(rgb(0, 66, 68), rgb(0, 156, 161));
-  --app-border-color: black;
+  --app-border-color: white;
   --header-footer-bg: rgb(20, 109, 99);
   /* --header-footer-bg: rgb(17, 99, 89); */
   
@@ -39,7 +39,7 @@
   --button-history-text-color: black;
   --button-history-text-shadow-color: rgba(0,0,0,0);
 
-  --icon-hover-color: yellow;
+  --icon-hover-color: rgb(55, 255, 161);
 
 
   /* // Heatmap */
@@ -175,8 +175,8 @@
   --heat-high: rgb(0, 255, 255);
 }
 
-/* //! ----- UNDERSEA THEME ----- */
-:root .theme-undersea {
+/* //! ----- SEAFOAM THEME ----- */
+:root .theme-seafoam {
   /* // Text */
   --text-color: white;
   /* --text-shadow: 0 0 1px black, -1px 1px black, -2px 2px black; */
