@@ -41,14 +41,6 @@ const History = props => {
     }
   }
 
-  // TODO REPLACE THIS WITH MORE ROBUST changeDateFormat FUNCTION, currently in HEATMAP
-  //// Format Date
-  const formatDate = (date, format) => {
-    if(format === 'short') {
-      return date.slice(5, 7) + '/' + date.slice(8)
-    }
-  }
-
   //// ! VARIABLES / INIT
   const datesLength = props.task.dates.length
 
@@ -76,7 +68,8 @@ const History = props => {
               ? props.task.dates.map(date => (
               <tr key={date.date} className={`history-row ${date.date === props.selectedDate ? 'selected-date-history' : ''}`} onClick={() => props.setDateInForm(date.date)}>
                   <td className='history-date'>
-                    {formatDate(date.date, 'short')}
+                    {/* {formatDate(date.date, 'short')} */}
+                    {props.convertDateFormat(date.date, 'M/D/YY')}
                   </td>
                   <td className='history-time'>
                     {props.convertTime(date.time)}

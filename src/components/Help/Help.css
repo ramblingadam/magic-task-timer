@@ -117,6 +117,12 @@
   font-size: 2.75rem;
 }
 
+@media all and (max-width: 370px) {
+  .dot {
+    font-size: 2rem;
+  }
+}
+
 .dot:hover {
   color: var(--icon-hover-color);
 }

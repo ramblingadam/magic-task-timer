@@ -101,6 +101,8 @@ table {
   --scrollbar-thumb: grey;
   --scrollbar-track: rgb(49, 49, 49);
   --scrollbar-thumb-border: rgb(255, 255, 255);
+  /* --scrollbar-thumb: var(--button-history); */
+
 
   /* // Task Colors */
   /* --task-bg: darkslategray; */

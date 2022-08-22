@@ -16,8 +16,8 @@ const Heatmap = props => {
   const today = new Date()
   const oneYearAgoToday = new Date(new Date().setDate(new Date().getDate()-365))
   const twoMonthsAgoToday = new Date(new Date().setDate(new Date().getDate()-60))
-  const oneMonthAgoToday = new Date(new Date().setDate(new Date().getDate()-30))
-  const oneWeekAgoToday = new Date(new Date().setDate(new Date().getDate()-7))
+  // const oneMonthAgoToday = new Date(new Date().setDate(new Date().getDate()-30))
+  // const oneWeekAgoToday = new Date(new Date().setDate(new Date().getDate()-7))
   
   const monthArray = [null, 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
@@ -39,25 +39,7 @@ const Heatmap = props => {
   }
 
 
-  // TODO convert YYYY-MM-DD to other date formats
-  const convertDateFormat = (dateString, format) => {
-    let result = dateString
-    const dateStringArray = dateString.split('-')
-    const yyyy = dateStringArray[0]
-    const mm = dateStringArray[1]
-    const dd = dateStringArray[2]
 
-    const yy = yyyy.slice(2)
-    const m = mm.startsWith('0') ? mm.slice(1) : mm
-    const d = dd.startsWith('0') ? dd.slice(1) : dd
-
-    if(format === 'M/D/YY') {
-      result = `${m}/${d}/${yy}`
-    } else if(format === 'D/M/YY') {
-      result = `${d}/${m}/${yy}`
-    }
-    return result
-  }
 
   //// addDays takes in a date and a number of days, returning a new date object which is -days- after the original date.
   const addDays = (date, days) => {
@@ -185,7 +167,7 @@ const Heatmap = props => {
               <div className={`day-popup text-shadow
                 ${day.date < parseDate(twoMonthsAgoToday) ? 'hover-left' : ''}`
                 }>
-                <p>{convertDateFormat(day.date, 'M/D/YY')}</p>
+                <p>{props.convertDateFormat(day.date, 'M/D/YY')}</p>
                 {/* <p>{day.day}</p> */}
                 {/* Only display time if time logged for that date. */}
                 <p>{day.time && props.convertTime(day.time)}</p>

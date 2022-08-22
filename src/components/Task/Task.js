@@ -510,6 +510,8 @@ const Task = (props) => {
           // TODO HEYOO
           selectedDate={selectedDate}
           setSelectedDate={setSelectedDate}
+
+          convertDateFormat={props.convertDateFormat}
         />
        
 

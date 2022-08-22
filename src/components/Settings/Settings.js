@@ -30,12 +30,19 @@ const Settings = (props) => {
       ]
     },
     {
-      setting: 'Help Text',
+      setting: 'History Help Text',
       options: [
         'On',
         'Off'
       ]
     },
+    // {
+    //   setting: 'Sticky Heatmap Tooltip',
+    //   options: [
+    //     'On',
+    //     'Off'
+    //   ]
+    // },
     // {
     //   setting: 'Date Format',
     //   options: [

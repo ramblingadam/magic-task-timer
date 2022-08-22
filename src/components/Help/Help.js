@@ -10,6 +10,17 @@ import slide02 from './slides/slide-02.gif'
 import slide03 from './slides/slide-03.gif'
 import slide04 from './slides/slide-04.gif'
 import slide05 from './slides/slide-05.gif'
+import slide06 from './slides/slide-06.gif'
+import slide07 from './slides/slide-07.gif'
+import slide08 from './slides/slide-08.gif'
+import slide09 from './slides/slide-09.gif'
+import slide10 from './slides/slide-10.gif'
+import slide11 from './slides/slide-11.gif'
+import slide12 from './slides/slide-12.gif'
+import slide13 from './slides/slide-13.gif'
+import slide14 from './slides/slide-14.gif'
+import slide15 from './slides/slide-15.gif'
+import slide16 from './slides/slide-16.gif'
 
 
 const Help = (props) => {
@@ -20,17 +31,17 @@ const Help = (props) => {
   const slides = [
     {
       header: 'Welcome to Magic Task Timer!',
-      desc: 'Take control of how you spend your time by becoming aware of how you spend it. Magic Task Timer is your own personal timeclock.\nTrack the time you spend on projects, tasks, freelancing, getting fit, needlework, chores, socializing, breakdancing, dragon slaying- whatever you want.\nPlease take a moment to review the many incredible features of Magic Task Timer- you won\'t regret it, I guarantee it.*\n*lack of regret not guaranteed. void where prohibited.',
+      desc: 'Take control of how you spend your time by becoming aware of how you spend it.\nMagic Task Timer is your own personal timeclock.\nTrack the time you spend on projects, tasks, freelancing, getting fit, needlework, chores, socializing, breakdancing, dragon slaying- whatever you want. If you can do it, you can track it.\nPlease take a moment to review the many incredible features of Magic Task Timer- you won\'t regret it, I guarantee it.*\n*lack of regret not guaranteed. void where prohibited.',
       image: slide01
     },
     {
       header: 'Add A Task',
-      desc: 'Click the plus button in the header to add a task.\n',
+      desc: 'This is it. This is your story.\nIt all begins now.\n...\nClick the plus button in the header to add a task.\n',
       image: slide02
     },
     {
       header: 'Play/Pause Task Timer',
-      desc: 'Click a task\'s play button to start the timer for that task. You may have any number of task timers running simultaneously.\nClick it again to stop the timer, which will save the elapsed time to your task for today.\nIf you close or suspend the browser tab while a timer is running, the most recent interval will not be saved. Please remember to stop all running timers before closing or suspending the browser tab to ensure you do not lose any time.',
+      desc: 'Click a task\'s play button to start the timer for that task. You may have any number of task timers running simultaneously.\nClick it again to stop the timer, which will save the elapsed time to your task for today.\nIf you close or suspend the browser tab while a timer is running, the currently running interval will NOT be saved. Please remember to stop all running timers before closing or suspending the browser tab to ensure you do not lose any time.',
       image: slide04
     },
     {
@@ -40,58 +51,63 @@ const Help = (props) => {
     },
     {
       header: 'Toggle Timer Timeframe',
-      desc: 'Click the task time to toggle the timer\'s display between \'All Time\' and \'Today\'.',
+      desc: 'Click the task timer display to toggle the between \'All Time\' and \'Today\'.',
       image: slide05
     },
     {
       header: 'View Task History',
       desc: 'The clock icon opens the History pane.\n Hover over a date on the heatmap to see the time spent on your task on that date.\n Click on the History button below the heatmap to reveal the history table.',
-      image: ''
+      image: slide06
+    },
+    {
+      header: 'Woops.',
+      desc: 'Forgot you had the timer running, or didn\'t have access to the app while performing a task?\nNo problem!\n You can manually adjust the time spent on a task for any particular day.\nLucky you.',
+      image: slide07
     },
     {
       header: 'Edit Task History',
-      desc: 'Forgot you had the timer running, or didn\'t have access to the app while performing a task? No problem!\n You can manually adjust the time spent on a task for any particular day.',
-      image: ''
+      desc: `Select a date by entering it manually or by selecting it on either the heatmap or the history table.\nEnter a number of hours and/or minutes into the form.\nThen, use the big friendly buttons to add to, subtract from, overwrite, or completely delete the logged time for that date.\n`,
+      image: slide08
     },
-    {
-      header: 'Edit Task History',
-      desc: `Select a date by entering it manually or by selecting it on either the heatmap or the history table.\n Then, use the big friendly buttons to add to, subtract from, overwrite, or completely delete the logged time for that date.`,
-      image: ''
-    },
-    // {
-    //   header: 'Manual Adjustments 2',
-    //   desc: `Select a date by entering it manually or by selecting it on either the heatmap or the history table. Then, use the big buttons to adjust the time spent on that date- <span className='green'>adding</span> or <span className='red'>subtracting</span> from the recorded total, <span className='yellow'>setting/overwriting</span> the recorded total with a specific time, or <span className='red'>deleting</span> the time spent on that day entirely.`,
-    //   image: ''
-    // },
     {
       header: 'Close History View',
       desc: 'You can close the History pane by clicking the clock icon again.',
-      image: ''
+      image: slide09
     },
     {
       header: 'Edit Task Name',
-      desc: 'The pencil icon allows you to change the name of a task.\n Make it something exciting!',
-      image: ''
+      desc: 'The pencil icon allows you to change the name of a task.',
+      image: slide10
     },
     {
-      header: 'Categories',
-      desc: 'Organize your tasks with Categories!\n The folder icon allows you to assign a task to a category.\n A tab will appear along the top of your tasks list for each category.\n A place for everything, and everything in its place.',
-      image: ''
+      header: 'Categorize A Task',
+      desc: 'Organize your tasks with Categories!\nThe folder icon allows you to assign a task to a category.\nA tab will appear along the top of your tasks list for each category.\nClick on a tab to show the tasks for that category.\nA task\'s category can be changed at any time.',
+      image: slide11
+    },
+    {
+      header: 'Delete Task',
+      desc: 'Click the trash icon to permanently delete a task and all time logged for it.\nTo delete ALL of your data forever and ever, clear your browser cache.\nSometimes, it\'s just not meant to be.\nC\'est la vie.\n',
+      image: slide16
+    },
+    {
+      header: 'Dividers',
+      desc: 'You can also add horizontal dividers into your task lists by creating a task with the name \'divider\'.\nDividers can be sorted and deleted just like tasks.\nFor that extra exquisite extra li\'l bit of organization to keep your many projects nice and tidy.\nGive it a try!',
+      image: slide12
     },
     {
       header: 'Settings',
-      desc: 'Click the Settings button to personalize your Magic Task Timer experience with theming and other exciting options.',
-      image: ''
+      desc: 'Click the Settings button to personalize your Magic Task Timer experience with theming and other exciting options.*\n\n\n\n*options may not be exciting',
+      image: slide13
     },
     {
       header: 'One more time...?',
-      desc: 'Fear not, task warrior!\n If you ever forget anything, you can view this information at any time by clicking the Help button.',
-      image: ''
+      desc: 'Fear not, task warrior!\nIf you ever forget anything, you can view this tutorial at any time by clicking the Help button.',
+      image: slide14
     },
     {
       header: 'Enjoy!',
-      desc: 'I hope you find this app useful!\n If so, share it with your friends, and let me know on Twitter, Github, or LinkedIn!\n(All links open in a new window)',
-      image: ''
+      desc: 'I hope you find this app useful!\nIf so, share it with your friends, and reach out with feedback via Twitter or Github!\n(Links can be found in the footer)',
+      image: slide15
     },
   ]
 

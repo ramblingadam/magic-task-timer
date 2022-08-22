@@ -198,7 +198,7 @@ p.time-edit-btn {
     outline: 2px solid rgba(0,0,0,0);
   }
   50% {
-    outline: 2px solid yellow;
+    outline: 10px solid var(--button-green);
     /* color: yellow; */
   }
   100% {

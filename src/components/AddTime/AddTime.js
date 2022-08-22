@@ -214,6 +214,7 @@ const AddTime = (props) => {
         task={props.task}
         setDateInForm={setDateInForm}
         selectedDate={props.selectedDate}
+        convertDateFormat={props.convertDateFormat}
       />
 
       {/* //// Task History Table*/}
@@ -222,6 +223,7 @@ const AddTime = (props) => {
         convertTime={props.convertTime}
         setDateInForm={setDateInForm}
         selectedDate={props.selectedDate}
+        convertDateFormat={props.convertDateFormat}
       />
 
       

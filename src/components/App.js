@@ -80,6 +80,31 @@ const App = () => {
 
   }
 
+
+    // TODO convert YYYY-MM-DD to other date formats
+    const convertDateFormat = (dateString, format) => {
+      let result = dateString
+      const dateStringArray = dateString.split('-')
+      const yyyy = dateStringArray[0]
+      const mm = dateStringArray[1]
+      const dd = dateStringArray[2]
+  
+      const yy = yyyy.slice(2)
+      const m = mm.startsWith('0') ? mm.slice(1) : mm
+      const d = dd.startsWith('0') ? dd.slice(1) : dd
+  
+      if(format === 'M/D/YY') {
+        result = `${m}/${d}/${yy}`
+      } else if(format === 'D/M/YY') {
+        result = `${d}/${m}/${yy}`
+      }
+      return result
+    }
+
+
+
+
+
   //// TODO Shows confirmaiton dialogue, and sets DialogBox/confirmation window message.
   const toggleDialogBox = (message) => {
     if(!dialogBoxVisible) {
@@ -131,6 +156,7 @@ const App = () => {
           globalCurrentCategory={globalCurrentCategory}
           changeGlobalCategory={changeGlobalCategory}
           settings={settings}
+          convertDateFormat={convertDateFormat}
         />
        
       </div>

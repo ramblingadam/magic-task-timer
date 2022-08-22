@@ -115,6 +115,7 @@ const Tasks = (props) => {
             renderAll={props.renderAll}
             currentCategory={currentCategory}
             checkCurrentCategoryEmpty={checkCurrentCategoryEmpty}
+            convertDateFormat={props.convertDateFormat}
     
           />
         ))
