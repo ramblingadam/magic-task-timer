@@ -410,7 +410,7 @@ const Task = (props) => {
         
 
           <div className="icon-button-wrapper hover-popup-wrapper">
-          <span className='hover-popup text-shadow'>View/Edit History</span>
+          <span className='hover-popup text-shadow'>{`${addTimeFormCollapsed ? 'View/Edit History' : 'Close History'}`}</span>
             <MdHistoryToggleOff className={`edit-time-btn icon-button icon-shadow ${showAddTimeForm ? 'edit-time-btn-form-visible' : ''}`} onClick={toggleAddTimeForm}/>
             
           </div>

@@ -5,7 +5,11 @@ import './Help.css'
 import { useState } from 'react'
 
 // Images
-
+import slide01 from './slides/slide-01.png'
+import slide02 from './slides/slide-02.gif'
+import slide03 from './slides/slide-03.gif'
+import slide04 from './slides/slide-04.gif'
+import slide05 from './slides/slide-05.gif'
 
 
 const Help = (props) => {
@@ -16,28 +20,28 @@ const Help = (props) => {
   const slides = [
     {
       header: 'Welcome to Magic Task Timer!',
-      desc: 'A personal timeclock to track the time you spend on projects, tasks, and goals.\n Please take a moment to review the many incredible features of Magic Task Timer- you won\'t regret it!',
-      image: ''
+      desc: 'Take control of how you spend your time by becoming aware of how you spend it. Magic Task Timer is your own personal timeclock.\nTrack the time you spend on projects, tasks, freelancing, getting fit, needlework, chores, socializing, breakdancing, dragon slaying- whatever you want.\nPlease take a moment to review the many incredible features of Magic Task Timer- you won\'t regret it, I guarantee it.*\n*lack of regret not guaranteed. void where prohibited.',
+      image: slide01
     },
     {
       header: 'Add A Task',
-      desc: 'Click the green plus button in the header to add a task.\n Gotta start somewhere.',
-      image: ''
+      desc: 'Click the plus button in the header to add a task.\n',
+      image: slide02
+    },
+    {
+      header: 'Play/Pause Task Timer',
+      desc: 'Click a task\'s play button to start the timer for that task. You may have any number of task timers running simultaneously.\nClick it again to stop the timer, which will save the elapsed time to your task for today.\nIf you close or suspend the browser tab while a timer is running, the most recent interval will not be saved. Please remember to stop all running timers before closing or suspending the browser tab to ensure you do not lose any time.',
+      image: slide04
     },
     {
       header: 'Sort Your Tasks',
-      desc: 'Click the arrows on the left to sort your tasks up and down.\n Tasks have separate sorting orders within their own categories, if assigned.',
-      image: ''
+      desc: 'Click the arrows on the left of a task to sort it up or down.',
+      image: slide03
     },
     {
       header: 'Toggle Timer Timeframe',
       desc: 'Click the task time to toggle the timer\'s display between \'All Time\' and \'Today\'.',
-      image: ''
-    },
-    {
-      header: 'Play/Pause Task Timer',
-      desc: 'Click the play button to start the timer.\n Click it again to stop the timer and save the elapsed time to your task for today.',
-      image: ''
+      image: slide05
     },
     {
       header: 'View Task History',
@@ -46,12 +50,12 @@ const Help = (props) => {
     },
     {
       header: 'Edit Task History',
-      desc: 'Forgot you had the timer running, or didn\'t have access to the app while performing a task? No problem!\n You can manually adjust the time spent on a task for any particular day.\n Somebody\'s got to keep the record straight!',
+      desc: 'Forgot you had the timer running, or didn\'t have access to the app while performing a task? No problem!\n You can manually adjust the time spent on a task for any particular day.',
       image: ''
     },
     {
       header: 'Edit Task History',
-      desc: `Select a date by entering it manually or by selecting it on either the heatmap or the history table.\n Then, use the big buttons to adjust the total time for that date.`,
+      desc: `Select a date by entering it manually or by selecting it on either the heatmap or the history table.\n Then, use the big friendly buttons to add to, subtract from, overwrite, or completely delete the logged time for that date.`,
       image: ''
     },
     // {
@@ -110,50 +114,41 @@ const Help = (props) => {
   }
 
   return (
-    <div className='help-window-wrapper text-shadow'>
-      {/* <h1 className='help-header'>Welcome to Magic Task Timer!</h1>
-      <h3>Please take a moment to review the app's features below.</h3> */}
-      {/* <ul className='slides'> */}
-        {/* {slides.map(slide => (
-          <li className='slide'>
-          <h3>{slide.header}</h3>
-          <img src={slide.image} alt="" />
-          <p>
-            {slide.desc}
-          </p>
-        </li>
-        ))} */}
+    <div className='help-window-wrapper'>
         <div className='slide'>
+
           <h1 className='slide-header'>
             {slides[currentSlide].header}
           </h1>
 
-          <img className='slide-img' src={slides[currentSlide].image} alt="" onClick={() => navigateSlides('next')}/>
+          <div className='slide-content'>
+            
+            <div className='slide-img-wrapper'>
+              <img className='slide-img' src={slides[currentSlide].image} alt="" onClick={() => navigateSlides('next')}/>
+            </div>
 
+            <div className='slide-desc' onClick={() => navigateSlides('next')}>
+              {slides[currentSlide].desc.split('\n').map(sentence => (
+                <p className='slide-desc-sentence'>
+                  {sentence}
+                </p>
+              ))}
+            </div>
+
+          </div>
+
+          <div className='slide-nav-wrapper'>
           <ul className='slide-nav'>
-            {/* <li className='slide-nav-item' onClick={() => navigateSlides('prev')}>
-              Prev
-            </li> */}
-
             {slides.map((slide, i) => (
               <li className={`slide-nav-item dot ${currentSlide === i ? 'current-dot' : ''}`} onClick={() => navigateSlides(i)} title={slide.header}>&#9679;</li>
             ))}
-
-            {/* <li onClick={() => navigateSlides('next')}>
-              Next
-            </li> */}
           </ul>
 
-          <p className='slide-desc' onClick={() => navigateSlides('next')}>
-            {slides[currentSlide].desc.split('\n').map(sentence => (
-              <p className='slide-desc-sentence'>{sentence}</p>
-            ))}
-          </p>
-
-          
           <ul className='slide-nav nav-btns'>
+           
+            
           <li
-            className={`btn btn-history btn-prev btn-nav center ${
+            className={`btn btn-help btn-history btn-prev btn-nav center ${
                 currentSlide === 0 ? 'disabled' : ''
               }`}
             onClick={() => navigateSlides('prev')}
@@ -161,12 +156,12 @@ const Help = (props) => {
               Prev
             </li>
             <li
-              className='btn btn-history btn-skip btn-nav center'
+              className='btn btn-help btn-history btn-skip btn-nav center'
               onClick={props.toggleHelpOpen}>
               Skip
             </li>
             <li
-              className={`btn btn-history center btn-next btn-nav  ${
+              className={`btn btn-help btn-history center btn-next btn-nav  ${
                 currentSlide === slides.indexOf(slides[slides.length - 1]) ? 'next-done': ''
               }`}
               onClick={
@@ -178,6 +173,8 @@ const Help = (props) => {
               {currentSlide === slides.indexOf(slides[slides.length - 1]) ? 'Start!': 'Next'}
             </li>
           </ul>
+          </div>
+          
           {/* <p className='btn btn-history btn-skip' onClick={props.toggleHelpOpen}>Skip</p> */}
         </div>
       {/* </ul> */}

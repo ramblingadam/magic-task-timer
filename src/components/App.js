@@ -12,7 +12,7 @@ import { useState, useEffect } from "react"
 const App = () => {
 
   const defaultSettings = {
-    theme: 'mako',
+    theme: 'lifestream',
     helptext: true,
     helpviewed: false
   }
@@ -33,7 +33,7 @@ const App = () => {
   }
 
   // Function and state to track current category so that we can adjust behavior in the header based on the current category- namely, when a category is selected and a new task is created, automatically place that task into the current category.
-  const [globalCurrentCategory, setGlobalCurrentCategory] = useState('Mako')
+  const [globalCurrentCategory, setGlobalCurrentCategory] = useState('Lifestream')
   const changeGlobalCategory = (category) => {
     settings.currentcategory = category
     localStorage.setItem('settings', JSON.stringify(settings))

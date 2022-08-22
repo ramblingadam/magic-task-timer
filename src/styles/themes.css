@@ -1,6 +1,6 @@
 /* ! THEMES */
 /* //! ----- MAKO THEME ----- */
-:root .theme-mako {
+:root .theme-lifestream {
   /* // Text */
   --text-color: white;
   --text-shadow-color: black;
@@ -39,7 +39,7 @@
   --button-history-text-color: black;
   --button-history-text-shadow-color: rgba(0,0,0,0);
 
-  --icon-hover-color: rgb(55, 255, 161);
+  --icon-hover-color: yellow;
 
 
   /* // Heatmap */
@@ -115,8 +115,8 @@
 }
 
 
-/* //! ----- FROST THEME ----- */
-:root .theme-frost {
+/* //! ----- RIMEFROST THEME ----- */
+:root .theme-rimefrost {
   /* // Text */
   --text-color: black;
   --text-shadow-color: rgb(194, 194, 194);

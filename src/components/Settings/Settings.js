@@ -20,9 +20,9 @@ const Settings = (props) => {
     {
       setting: 'Theme',
       options: [
-        'Mako',
+        'Lifestream',
         'Casper',
-        'Frost',
+        'Rimefrost',
         // 'Sophie',
         // 'Halloween'
         'Seafoam',
