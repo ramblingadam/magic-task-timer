@@ -20,13 +20,26 @@ const Tasks = (props) => {
 
 
   //// Creates an array of all categories based on category proprty of all tasks. By using Set we ensure array of categories does not have duplicates. The Sort ensures 'All' is always the first category, and 'Uncategorized' is always the last category.
-  const categories = Array.from(new Set(['All'].concat(tasks.map(task => task.category ? task.category : 'Uncategorized')))).sort( (a, b) => {
-    if(a === 'All') return -1
-    else if(b === 'All') return 1
-    else if(a === 'Uncategorized') return 1
-    else if(b === 'Uncategorized') return -1
-    else return a.localeCompare(b)
-  })
+  // const categories = Array.from(new Set(['All'].concat(tasks.map(task => task.category ? task.category : 'Uncategorized')))).sort( (a, b) => {
+  //   if(a === 'All') return -1
+  //   else if(b === 'All') return 1
+  //   else if(a === 'Uncategorized') return 1
+  //   else if(b === 'Uncategorized') return -1
+  //   else return a.localeCompare(b)
+  // })
+ 
+
+  const getCategories = () => {
+    return Array.from(new Set(['All'].concat(tasks.map(task => task.category ? task.category : 'Uncategorized')))).sort( (a, b) => {
+      if(a === 'All') return -1
+      else if(b === 'All') return 1
+      else if(a === 'Uncategorized') return 1
+      else if(b === 'Uncategorized') return -1
+      else return a.localeCompare(b)
+    })
+  }
+
+  let categories = getCategories()
 
   //// If user has no categorized tasks, trim categories array to only have 'All'.
   if(categories.filter(category => category !== 'All' && category !== 'Uncategorized').length === 0) {
@@ -53,19 +66,31 @@ const Tasks = (props) => {
   }, [currentCategory])
 
   //// This is called from Task.js when a user changes the category of an item. If there are no more items with the old category, change view/set current category to 'All'
-  const checkCurrentCategoryEmpty = (category) => {    
+  const checkCurrentCategoryEmpty = (category, newCategory) => {    
     const tasks = JSON.parse(localStorage.getItem('tasks'))
     const tasksInCategory = tasks.filter(task => task.category === category).length
+    console.log(tasks)
+    const categories = getCategories()
+    console.log(categories, category)
+    console.log('tasks in', category, ':', tasksInCategory)
 
     if(tasksInCategory === 0) {
-      // console.log(categories)
+      if(categories.length === 1) {
+        setCurrentCategory(categories[0])
+      // } else setCurrentCategory(categories[1])
+      } else newCategory ? setCurrentCategory(newCategory) : setCurrentCategory(categories[1])
+      
+      // if(category === '') {
 
-      if(category === '') {
-        setCurrentCategory(categories[1])
-      } else {
-        setCurrentCategory('Uncategorized')
-      }
+      //   // setCurrentCategory(newCategory)
+      //   setCurrentCategory(categories[1])
+      // } else {
+        
+      //   setCurrentCategory('Uncategorized')
+      // }
     }
+    props.renderAll()
+    setTimeout(() => {console.log(currentCategory)}, 500) 
   }
 
 
