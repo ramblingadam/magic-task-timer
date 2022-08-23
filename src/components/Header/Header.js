@@ -8,6 +8,12 @@ import './Header.css'
 // Icons
 import { MdAddCircle, MdSettings, Mddashci, MdHelp, MdQuestionAnswer, MdHelpOutline, MdHelpCenter, MdAdd } from "react-icons/md"
 
+//Images
+// import logoSilv from'../../images/logo-silver.png'
+// import logoSilvSm from'../../images/logo-silver_sm.png'
+// import logoGold from'../../images/logo-gold.png'
+import logoGoldSm from'../../images/logo-gold_sm.png'
+
 const Header = ({renderAll, changeTheme, toggleSettingsMenu, globalCurrentCategory, toggleHelpOpen}) => {
 
   //// Pieces of State ////
@@ -119,11 +125,10 @@ const Header = ({renderAll, changeTheme, toggleSettingsMenu, globalCurrentCatego
     <div className='header-wrapper'>
       
       <div className='header-main text-shadow'>
-        {/* <h1>Magic Task Timer&nbsp;<MdAddCircle className={`plus ${showNewTaskForm ? 'open' : ''}`} onClick={toggleNewTaskForm} /></h1> */}
-        <h1>Magic Task Timer&nbsp;<MdAdd className={`plus ${showNewTaskForm ? 'open' : ''}`} onClick={toggleNewTaskForm} /></h1>
-        {/* <h1>Magic Task Timer</h1> */}
 
-        {/* <MdAddCircle className={`plus ${showNewTaskForm ? 'open' : ''}`} onClick={toggleNewTaskForm} /> */}
+
+        <h1 className='header-h1'><img src={logoGoldSm} alt="Logo" className='logo'/>Magic Task Timer&nbsp;<MdAdd className={`plus ${showNewTaskForm ? 'open' : ''}`} onClick={toggleNewTaskForm} /></h1>
+
         
         <div className='header-buttons'>
           <MdHelpOutline className='header-icon-btn edit-btn icon-shadow' onClick={toggleHelpOpen}/>

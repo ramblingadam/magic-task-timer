@@ -72,9 +72,11 @@
   /* background: var(--task-running-gradient); */
   /* background: var(--button-transparent); */
   /* background: var(--button-green); */
-  /* background: rgba(255,255,255,.2); */
+  background: rgba(255,255,255,.2);
   /* background: var(--button-green); */
+  /* animation: gradient 2s linear infinite reverse; */
 }
+
 
 .uncategorized {
   margin-left: auto;

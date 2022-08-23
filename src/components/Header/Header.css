@@ -53,11 +53,28 @@ h1 {
   align-items: center;
   justify-content: center;
   flex-grow: 1;
+  /* position: relative; */
 
   /* font-variant: small-caps; */
   font-family: 'Acme', sans-serif;
   color: var(--text-color);
   user-select: none;
+}
+
+.logo {
+  height: 4.3rem;
+  /* position: absolute; */
+  left: 0;
+  margin: -.5rem .5rem -.5rem 0;
+}
+
+@media all and (max-width: 365px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+  .logo {
+    height: 2.5rem;
+  }
 }
 
 .header-buttons {
@@ -83,6 +100,7 @@ h1 {
   border: 1px solid black;
 
   transition: .3s;
+  font-size: 3rem;
 
   cursor: pointer;
 }
