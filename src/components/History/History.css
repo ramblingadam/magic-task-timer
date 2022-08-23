@@ -2,8 +2,8 @@
 .history-component-wrapper {
   /*// Component Variables */
   --history-table-height: 200px;
-  --table-border-visible: 1px solid black;
-  --table-border-hidden: 1px solid rgba(0,0,0,0);
+  --table-border-visible: 2px solid black;
+  --table-border-hidden: 2px solid rgba(0,0,0,0);
 
   /* Wrapper Styles */
   border-radius: 10px;
@@ -165,7 +165,7 @@
 }
 
 .history-row:hover {
-  outline: 2px solid white;
+  outline: 1px solid var(--button-green);
   background: rgba(255,255,255, .2)
 }
 
@@ -179,5 +179,5 @@
 }
 
 .selected-date-history {
-  outline: 2px solid white;
+  outline: 2px solid var(--button-green);
 }

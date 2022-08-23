@@ -92,6 +92,8 @@ const Tasks = (props) => {
       setCurrentCategory('All')
     } else if(tasksInCategory === 0) {
       newCategory ? setCurrentCategory(newCategory) : setCurrentCategory(categories[1])
+    } else {
+      // setCurrentCategory('Uncategorized')
     }
 
     // if(tasksInCategory === 0) {
@@ -108,7 +110,7 @@ const Tasks = (props) => {
     // }
 
     props.renderAll()
-    setTimeout(() => {console.log('current cat is ', currentCategory)}, 500) 
+    setTimeout(() => {console.log('current cat is ', currentCategory)}, 1000) 
     console.log('--------------------')
   }
 
