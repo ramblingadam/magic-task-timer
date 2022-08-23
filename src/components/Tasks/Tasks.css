@@ -44,6 +44,8 @@
 
   white-space: nowrap;
   transition: .8s;
+
+  text-transform: capitalize;
 }
 
 .category:last-of-type {
