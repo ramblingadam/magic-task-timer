@@ -32,6 +32,8 @@
   box-shadow: var(--button-shine);
   box-shadow: inset 2px 2px 4px rgba(255,255,255,.6), inset -4px 0 4px rgba(0,0,0,.4);
 
+  height: 4rem;
+
   flex: 0;
   
   /* background: var(--app-bg); */
@@ -41,6 +43,7 @@
   cursor: pointer;
 
   white-space: nowrap;
+  transition: .8s;
 }
 
 .category:last-of-type {
@@ -48,7 +51,11 @@
 }
 
 .category:hover {
+  border: 2px solid var(--app-border-color);
   border-bottom: none;
+
+  /* background: var(--app-bg); */
+  background: rgba(255,255,255,.4);
 }
 
 .category:active {
@@ -65,7 +72,8 @@
   /* background: var(--task-running-gradient); */
   /* background: var(--button-transparent); */
   /* background: var(--button-green); */
-  background: rgba(255,255,255,.2);
+  /* background: rgba(255,255,255,.2); */
+  /* background: var(--button-green); */
 }
 
 .uncategorized {

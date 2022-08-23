@@ -122,7 +122,7 @@ const Tasks = (props) => {
         {categories.length > 1 && categories.slice(1).map(category => (
             <li
               key={category}
-              className={`category btn text-shadow ${category === currentCategory ? 'current-category' : ''} ${category === 'Uncategorized' ? 'uncategorized' : ''}`} 
+              className={`category text-shadow ${category === currentCategory ? 'current-category' : ''} ${category === 'Uncategorized' ? 'uncategorized' : ''}`} 
               onClick={() => handleCategoryClick(category)}
             >
               {category.slice(0,1).toUpperCase() + category.slice(1)}
