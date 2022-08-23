@@ -75,15 +75,18 @@
 
 .day-box:hover > .day-popup {
   display: block;
+  z-index: 2;
 }
 
 /* //This will show the day pop-up for the currently selected date, even if not being hovered. */
-/* .day-box.selected-date > .day-popup {
+.day-box.selected-date.stickytooltip > .day-popup {
   display: block;
-} */
+}
 
 .day-popup {
   display: none;
+
+ 
 
   color: var(--text-color);
   text-shadow: -2px 2px 2px var(--text-shadow-color);

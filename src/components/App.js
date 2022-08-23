@@ -13,7 +13,8 @@ const App = () => {
 
   const defaultSettings = {
     theme: 'lifestream',
-    helptext: true,
+    historyhelptext: 'on',
+    stickyheatmaptooltip: 'off',
     helpviewed: false
   }
   const settings = localStorage.getItem('settings') ? JSON.parse(localStorage.getItem('settings')) : defaultSettings
@@ -26,13 +27,13 @@ const App = () => {
   const [helpOpen, setHelpOpen] = useState(settings?.helpviewed ? false : true)
 
   //! Helper Functions
-  // Function and state to enable any component to trigger a full app re-render
+  //// Function and state to enable any component to trigger a full app re-render
   const [reRender, setReRender] = useState(0)
   const renderAll = () => {
     setReRender(reRender + 1)
   }
 
-  // Function and state to track current category so that we can adjust behavior in the header based on the current category- namely, when a category is selected and a new task is created, automatically place that task into the current category.
+  //// Function and state to track current category so that we can adjust behavior in the header based on the current category- namely, when a category is selected and a new task is created, automatically place that task into the current category.
   const [globalCurrentCategory, setGlobalCurrentCategory] = useState('Lifestream')
   const changeGlobalCategory = (category) => {
     settings.currentcategory = category
@@ -61,15 +62,29 @@ const App = () => {
   }, [theme])
 
   //// HELP TEXT VISIBILITY
-  const [helpTextPref, setHelpTextPref] = useState(settings?.helptext || true)
-  const updateHelpTextPref = () => {
-    if(helpTextPref) {
-      settings.helptext = false
-    } else {
-      settings.helptext = true
-    }
+  const [helpTextPref, setHelpTextPref] = useState(settings?.helptext || 'on')
+  const updateHelpTextPref = (option) => {
+    // if(helpTextPref) {
+    //   settings.historyhelptext = false
+    // } else {
+    //   settings.historyhelptext = true
+    // }
+    settings.historyhelptext = option
     localStorage.setItem('settings', JSON.stringify(settings))
-    setHelpTextPref(!helpTextPref)
+    setHelpTextPref(option)
+  }
+
+  //// STICKY HEATMAP TOOLTIP
+  const [stickyHeatmapTooltip, setStickyHeatmapTooltip] = useState(settings?.stickyheatmaptooltip || false)
+  const updateStickyHeatmapTooltip = (option) => {
+    // if(stickyHeatmapTooltip) {
+    //   settings.stickyheatmaptooltip = false
+    // } else {
+    //   settings.stickyheatmaptooltip = true
+    // }
+    settings.stickyheatmaptooltip = option
+    localStorage.setItem('settings', JSON.stringify(settings))
+    setStickyHeatmapTooltip(option)
   }
 
   //// SHOW INTRO/HELP WINDOW
@@ -141,10 +156,12 @@ const App = () => {
 
         {settingsOpen && (
         <Settings 
+            toggleSettingsMenu={toggleSettingsMenu}
             changeTheme={changeTheme}
             updateHelpTextPref={updateHelpTextPref}
+            updateStickyHeatmapTooltip={updateStickyHeatmapTooltip}
 
-            toggleSettingsMenu={toggleSettingsMenu}
+            
             settingsOpen={settingsOpen}
             renderAll={renderAll}
           

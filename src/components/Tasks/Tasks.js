@@ -69,10 +69,11 @@ const Tasks = (props) => {
   const checkCurrentCategoryEmpty = (category, newCategory) => {    
     const tasks = JSON.parse(localStorage.getItem('tasks'))
     const tasksInCategory = tasks.filter(task => task.category === category).length
-    console.log(tasks)
     const categories = getCategories()
-    console.log(categories, category)
-    console.log('tasks in', category, ':', tasksInCategory)
+    // console.log(tasks)
+ 
+    // console.log(categories, category)
+    // console.log('tasks in', category, ':', tasksInCategory)
 
     if(tasksInCategory === 0) {
       if(categories.length === 1) {
@@ -90,7 +91,7 @@ const Tasks = (props) => {
       // }
     }
     props.renderAll()
-    setTimeout(() => {console.log(currentCategory)}, 500) 
+    // setTimeout(() => {console.log(currentCategory)}, 500) 
   }
 
 

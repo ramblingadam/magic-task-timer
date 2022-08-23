@@ -106,29 +106,6 @@ const Heatmap = props => {
   return (
     <div className='heatmap-wrapper'>
       <div className='heatmap-grid'>
-        {/* {yearArray.map(day => (
-          //// thresholds:
-          //// < 10mins(600000): low
-          //// < 30mins(1800000): lowmed
-          //// < 1 hour(3600000): med
-          //// < 2 hours(7200000): medhigh
-          //// > 2 hours(10800000): high
-          <div
-            className={`day-box ${day.time && (
-              day.time < 600000 ? 'heat-low'
-              : day.time < 1800000 ? 'heat-lowmed'
-              : day.time < 3600000 ? 'heat-med'
-              : day.time < 7200000 ? 'heat-medhigh'
-              : 'heat-high')}`}
-            key={day.date}
-          >
-            <div className='day-popup'>
-              <p>{day.date}</p> */}
-              {/* Only display time if time logged for that date. */}
-              {/* <p>{day.time && props.convertTime(day.time)}</p>
-            </div>
-          </div>
-        ))} */}
 
         {yearArray.map((week,i) => (
           //// thresholds:
@@ -159,6 +136,8 @@ const Heatmap = props => {
                   : ''
                 } ${
                   day.date === props.selectedDate ? 'selected-date' : ''
+                } ${
+                  props.settings?.stickyheatmaptooltip === 'on' ? 'stickytooltip' : ''
                 }`
               }
               key={day.date}

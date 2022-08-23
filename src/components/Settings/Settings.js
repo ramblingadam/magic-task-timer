@@ -10,11 +10,13 @@ const Settings = (props) => {
 
   // ! STATE
   const defaultSettings = {
-    theme: 'mako',
-    helptext: true,
-    helpviewed: true
+    theme: 'lifestream',
+    historyhelptext: 'on',
+    stickyheatmaptooltip: 'off',
+    helpviewed: false
   }
   const [currentSettings, setCurrentSettings] = useState(!localStorage.getItem('settings') ? defaultSettings : JSON.parse(localStorage.getItem('settings')))
+  // const [currentSettings, setCurrentSettings] = useState(props.settings)
 
   const menuItems = [
     {
@@ -36,13 +38,13 @@ const Settings = (props) => {
         'Off'
       ]
     },
-    // {
-    //   setting: 'Sticky Heatmap Tooltip',
-    //   options: [
-    //     'On',
-    //     'Off'
-    //   ]
-    // },
+    {
+      setting: 'Sticky Heatmap Tooltip',
+      options: [
+        'On',
+        'Off'
+      ]
+    },
     // {
     //   setting: 'Date Format',
     //   options: [
@@ -56,23 +58,38 @@ const Settings = (props) => {
 
   // // When a setting's value's option has been clicked, this is called. Applies the selected setting.
   const handleOptionClick = (setting, option) => {
+    // THEME
     if(setting === 'Theme') {
       props.changeTheme(option)
       updateUserSetting(setting.toLowerCase(), option)
     }
-
-    if(setting === 'Help Text') {
+    // HISTORY HELP TEXT
+    if(setting === 'History Help Text') {
       switch(option) {
         case 'on' :
-          props.updateHelpTextPref(true)
+          props.updateHelpTextPref('on')
         break
         case 'off' :
-          props.updateHelpTextPref(false)
+          props.updateHelpTextPref('off')
         break
       }
       setting = 'helptext'
       updateUserSetting(setting.toLowerCase(), option)
     }
+    // STICKY HEATMAP TOOLTIP
+    if(setting === 'Sticky Heatmap Tooltip') {
+      switch(option) {
+        case 'on' :
+          props.updateStickyHeatmapTooltip('on')
+        break
+        case 'off' :
+          props.updateStickyHeatmapTooltip('off')
+        break
+      }
+      setting = 'stickyheatmaptooltip'
+      updateUserSetting(setting.toLowerCase(), option)
+    }
+    console.log(currentSettings)
   }
 
   
@@ -124,7 +141,8 @@ const Settings = (props) => {
                 {menuItem.options.map(option => (
                   <li
                   key={option}
-                  className={`menu-select-option invis-button ${option.toLowerCase() === currentSettings[menuItem.setting.split(' ').join('').toLowerCase()] ? 'active-setting' : ''}`}
+                  className={`menu-select-option invis-button ${
+                    option.toLowerCase() === currentSettings[menuItem.setting.split(' ').join('').toLowerCase()] ? 'active-setting' : ''}`}
                   id={option}
                   onClick={() => handleOptionClick(menuItem.setting, option.toLowerCase())}
                   >

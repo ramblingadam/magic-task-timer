@@ -36,7 +36,7 @@ const Help = (props) => {
     },
     {
       header: 'Add A Task',
-      desc: 'This is it. This is your story.\nIt all begins now.\n...\nClick the plus button in the header to add a task.\n',
+      desc: 'This is it. This is your story.\nIt all begins now.\nClick the plus button in the header to add a task.\n',
       image: slide02
     },
     {

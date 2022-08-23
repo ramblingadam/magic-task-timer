@@ -130,16 +130,11 @@ const AddTime = (props) => {
   return (
     <div className="add-time">
 
-      <div className={`add-time-instructions text-shadow ${props.settings.helptext === 'on' ? '' : 'display-none'}`}>
+      <div className={`add-time-instructions text-shadow ${props.settings?.historyhelptext === 'on' ? '' : 'display-none'}`}>
         <p>Enter a date, or select one from the heatmap or the history table.</p>
         <p>Enter a number of hours/minutes in the form.</p>
         <p>Then, press <span className='red tutorial-highlight'>Subtract</span>, <span className='yellow tutorial-highlight'>Set</span>, or <span className='green tutorial-highlight'>Add</span> to adjust the time for the selected date.</p>
       </div>
-      {/* <div className='add-time-instructions-prototype'>
-        <p>Select a date from the heatmap or the history table.</p>
-        <p>Enter a number of hours/minutes in the form.</p>
-        <p>Then, press <span className='red'>Subtract</span>, <span className='yellow'>Set</span>, or <span className='green'>Add</span> to adjust the time for the selected date.</p>
-      </div> */}
         
       <form className='add-time-form'>
 
@@ -187,23 +182,12 @@ const AddTime = (props) => {
 
           {/* //// Add Time */}
           <div className='add-time-wrapper time-edit-btn hover-popup-wrapper'>
-            {/* <MdAddCircle id='add-time' className='time-edit-btn' onClick={() => updateTime('add')}/> */}
-            {/* <img src={plusButton} id='add-time' className='time-edit-btn' onClick={() => updateTime('add')}/> */}
-            {/* <img src={plusButton}></img> */}
-            {/* <svg id='add-time' className='time-edit-btn' onClick={() => updateTime('add')} xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M22.5 38V25.5H10v-3h12.5V10h3v12.5H38v3H25.5V38Z"/></svg> */}
-            {/* <svg id='add-time' className='time-edit-btn' onClick={() => updateTime('add')} xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M21.65 38.85v-12.5H9.15v-4.7h12.5V9.15h4.7v12.5h12.5v4.7h-12.5v12.5Z"/></svg> */}
+           
             <span className='hover-popup hover-popup-delay three-line'>Add the entered time<br />
             to the total time for the <br />selected date.</span>
             <svg id='add-time' onClick={() => updateTime('add')} xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M21.65 38.85v-12.5H9.15v-4.7h12.5V9.15h4.7v12.5h12.5v4.7h-12.5v12.5Z"/></svg>
+
           </div>
-          
-         
-          {/* <p id='set-time' className='time-edit-btn yellow'onClick={() => updateTime('set')}>SET</p>
-          <p id='delete-time' className='time-edit-btn' onClick={() => updateTime('delete')}>DELETE</p>
-          <MdAddCircle id='add-time' className='time-edit-btn' onClick={() => updateTime('add')}/>
-        </div>
-        <div className='delete-time-btn-wrapper'>
-          <p id='delete-time' className='time-edit-btn' onClick={() => updateTime('delete')}>DELETE</p> */}
 
         </div>
       </form>
@@ -215,6 +199,8 @@ const AddTime = (props) => {
         setDateInForm={setDateInForm}
         selectedDate={props.selectedDate}
         convertDateFormat={props.convertDateFormat}
+
+        settings={props.settings}
       />
 
       {/* //// Task History Table*/}
@@ -224,6 +210,8 @@ const AddTime = (props) => {
         setDateInForm={setDateInForm}
         selectedDate={props.selectedDate}
         convertDateFormat={props.convertDateFormat}
+
+        settings={props.settings}
       />
 
       
