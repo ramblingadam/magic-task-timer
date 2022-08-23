@@ -15,6 +15,10 @@ const Tasks = (props) => {
 
 
   const tasks = localStorage.getItem('tasks') ? JSON.parse(localStorage.getItem('tasks')) : []
+
+  const getTasks = () => {
+    return localStorage.getItem('tasks') ? JSON.parse(localStorage.getItem('tasks')) : []
+  }
   const settings = localStorage.getItem('settings') ? JSON.parse(localStorage.getItem('settings')) : { currentcategory: 'All' }
 
 
@@ -30,21 +34,26 @@ const Tasks = (props) => {
  
 
   const getCategories = () => {
-    return Array.from(new Set(['All'].concat(tasks.map(task => task.category ? task.category : 'Uncategorized')))).sort( (a, b) => {
+    const categories = Array.from(new Set(['All'].concat(getTasks().map(task => task.category ? task.category : 'Uncategorized')))).sort( (a, b) => {
       if(a === 'All') return -1
       else if(b === 'All') return 1
       else if(a === 'Uncategorized') return 1
       else if(b === 'Uncategorized') return -1
       else return a.localeCompare(b)
     })
+    if(categories.filter(category => category !== 'All' && category !== 'Uncategorized').length === 0) {
+      categories.pop()
+    }
+    return categories
+
   }
 
   let categories = getCategories()
 
   //// If user has no categorized tasks, trim categories array to only have 'All'.
-  if(categories.filter(category => category !== 'All' && category !== 'Uncategorized').length === 0) {
-    categories.pop()
-  }
+  // if(categories.filter(category => category !== 'All' && category !== 'Uncategorized').length === 0) {
+  //   categories.pop()
+  // }
 
   // console.log(categories)
 
@@ -70,28 +79,37 @@ const Tasks = (props) => {
     const tasks = JSON.parse(localStorage.getItem('tasks'))
     const tasksInCategory = tasks.filter(task => task.category === category).length
     const categories = getCategories()
-    // console.log(tasks)
+    console.log('entering checkifempty with cat', category, 'and new cat', newCategory)
+    console.log(tasks)
  
-    // console.log(categories, category)
-    // console.log('tasks in', category, ':', tasksInCategory)
+    console.log(categories, category)
+    console.log('tasks in', category, ':', tasksInCategory)
+    
+    setTimeout(() => {console.log(categories)}, 500) 
 
-    if(tasksInCategory === 0) {
-      if(categories.length === 1) {
-        setCurrentCategory(categories[0])
-      // } else setCurrentCategory(categories[1])
-      } else newCategory ? setCurrentCategory(newCategory) : setCurrentCategory(categories[1])
-      
-      // if(category === '') {
-
-      //   // setCurrentCategory(newCategory)
-      //   setCurrentCategory(categories[1])
-      // } else {
-        
-      //   setCurrentCategory('Uncategorized')
-      // }
+    if(categories.length <= 1) {
+      console.log('only categories are all and uncategorized, ostensibly')
+      setCurrentCategory('All')
+    } else if(tasksInCategory === 0) {
+      newCategory ? setCurrentCategory(newCategory) : setCurrentCategory(categories[1])
     }
+
+    // if(tasksInCategory === 0) {
+    //   console.log('old category is empty')
+    //   if(categories.length <= 1) {
+    //     console.log('only categories are all and uncategorized, ostensibly')
+    //     setCurrentCategory('All')
+    //   // } else setCurrentCategory(categories[1])
+    //   } else {
+    //     console.log('more than 2 category remaining')
+    //     newCategory ? setCurrentCategory(newCategory) : setCurrentCategory(categories[1])
+    //   }
+      
+    // }
+
     props.renderAll()
-    // setTimeout(() => {console.log(currentCategory)}, 500) 
+    setTimeout(() => {console.log('current cat is ', currentCategory)}, 500) 
+    console.log('--------------------')
   }
 
 
