@@ -164,7 +164,7 @@ const Help = (props) => {
            
             
           <li
-            className={`btn btn-help btn-history btn-prev btn-nav center ${
+            className={` btn-help btn-prev btn-nav center ${
                 currentSlide === 0 ? 'disabled' : ''
               }`}
             onClick={() => navigateSlides('prev')}
@@ -172,12 +172,12 @@ const Help = (props) => {
               Prev
             </li>
             <li
-              className='btn btn-help btn-history btn-skip btn-nav center'
+              className='btn-help btn-skip btn-nav center'
               onClick={props.toggleHelpOpen}>
               Skip
             </li>
             <li
-              className={`btn btn-help btn-history center btn-next btn-nav  ${
+              className={`btn-help center btn-next btn-nav  ${
                 currentSlide === slides.indexOf(slides[slides.length - 1]) ? 'next-done': ''
               }`}
               onClick={
