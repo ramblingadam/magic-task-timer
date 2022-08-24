@@ -375,7 +375,7 @@ a:hover {
   /* padding: calc(var(--header-height) + .5rem) 1rem calc(var(--footer-height) + 1rem) 1rem; */
   padding: .5rem 1rem calc(var(--footer-height) + 1rem) 1rem;
   /* TODO FOR RECORDING TUTORIAL ONLY, COMMENT THIS BACK OUT WHEN DONE RECORDING */
-  padding: .5rem 1rem 1rem 1rem;
+  /* padding: .5rem 1rem 1rem 1rem; */
 
   /* background: var(--app-bg); */
 
