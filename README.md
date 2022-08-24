@@ -38,7 +38,7 @@ I am particularly proud of building the Github-style task history heatmaps and t
 | **Sort Your Tasks** | Users can manually sort their tasks up and down as desired. |
 | **Dividers** | Users can add horizontal dividers to their task lists, providing one more level of organization within a category. |
 | **View Task History** | Users can view a complete history of all the time they have spent on a given task via Github-style heatmap or the history table. |
-| **Edit Task History** | Users can edit the time spent on any task for any date. Left the timer running, or worked on a task when you didn't have the app handy? No problem! |
+| **Edit Task History** | No time left behind! Left the timer running, or worked on a task when you didn't have the app handy? No problem! Users can edit the time spent on any task for any date.|
 | **Customization** | Users can choose from several striking visual themes to make Magic Task Timer their own. In addition, there are several other options to tweak the app to the user's liking within the Settings menu. |
 | **Data Privacy** | The user's data is stored locally in their browser's localStorage. Your data is not collected or stored anywhere else. |
 
@@ -60,9 +60,9 @@ Also, more themes! I find that the amount of joy I feel while using an app is di
 
 ## Lessons Learned:
 
-I entered this project as a React newbie. Over the 80+ hours I've spent on Magic Task Timer, I've come to understand why React is so popular for building single-page web applications.
+I entered this project as a React newbie. Over the 80+ hours I've spent on Magic Task Timer, I've come to understand why React is so popular for building single-page web applications. Building an interface with interchangable, modular components is nothing short of a revelation.
 
-In the beginning, I was confused when my component-scoped variables wouldn't reflect changes- until I realized that those variables are re-defined with every component re-render. I suddenly understood why state was important, and made EXTENSIVE use of useState() and useEffect() to build the app. While arcane at first, I am thrilled to say I am now quite comfortable using these two critically important React hooks, using them to manage user/application data and the content of controlled input fields.
+In the beginning, I was confused when my component-scoped variables wkept being reset- until I realized that those variables are re-defined with every component re-render. I suddenly understood why state was important, and made EXTENSIVE use of useState() and useEffect() to build the app. While arcane at first, I am thrilled to say I am now quite comfortable using these two critically important React hooks, using them to manage in-memory user/application data and the content of controlled input fields.
 
 In addition, while I was already familiar with CSS variables, I hadn't used them in a project until I set out to build my own theming system for Magic Task Timer. The more CSS variables I used, the more I loved using them- and I had an absolute blast hand-designing every theme in the app.
 
@@ -73,9 +73,13 @@ Take a look at these other awesome projects from my portfolio:
 
 ![Screenshot of ACNH Database](https://user-images.githubusercontent.com/96756923/170849487-39d5a25f-0ad3-4494-a325-d4502610b54e.gif)
 
+---
+
 **X-Wing VS TIE Fighter:** [https://github.com/ramblingadam/tic-tac-starwars](https://github.com/ramblingadam/tic-tac-starwars)
 
 ![Screenshot of X-Wing VS TIE Fighter](https://user-images.githubusercontent.com/96756923/170849366-e1b8d33b-6236-46f1-8dd9-b38fd2c27380.gif)
+
+---
 
 **NASA Astronomy Photo/Video Browser:** [https://github.com/ramblingadam/nasapod](https://github.com/ramblingadam/nasapod)
 
