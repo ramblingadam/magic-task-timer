@@ -62,7 +62,7 @@ Also, more themes! I find that the amount of joy I feel while using an app is di
 
 I entered this project as a React newbie. Over the 80+ hours I've spent on Magic Task Timer, I've come to understand why React is so popular for building single-page web applications. Building an interface with interchangable, modular components is nothing short of a revelation.
 
-In the beginning, I was confused when my component-scoped variables wkept being reset- until I realized that those variables are re-defined with every component re-render. I suddenly understood why state was important, and made EXTENSIVE use of useState() and useEffect() to build the app. While arcane at first, I am thrilled to say I am now quite comfortable using these two critically important React hooks, using them to manage in-memory user/application data and the content of controlled input fields.
+In the beginning, I was confused when my component-scoped variables kept being reset- until I realized that those variables are re-defined with every component re-render. I suddenly understood why state was important, and made EXTENSIVE use of useState() and useEffect() to build the app. While arcane at first, I am thrilled to say I am now quite comfortable using these two critically important React hooks, using them to manage in-memory user/application data and the content of controlled input fields.
 
 In addition, while I was already familiar with CSS variables, I hadn't used them in a project until I set out to build my own theming system for Magic Task Timer. The more CSS variables I used, the more I loved using them- and I had an absolute blast hand-designing every theme in the app.
 
