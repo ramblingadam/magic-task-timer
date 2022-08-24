@@ -79,16 +79,16 @@ const Tasks = (props) => {
     const tasks = JSON.parse(localStorage.getItem('tasks'))
     const tasksInCategory = tasks.filter(task => task.category === category).length
     const categories = getCategories()
-    console.log('entering checkifempty with cat', category, 'and new cat', newCategory)
-    console.log(tasks)
+    // console.log('entering checkifempty with cat', category, 'and new cat', newCategory)
+    // console.log(tasks)
  
-    console.log(categories, category)
-    console.log('tasks in', category, ':', tasksInCategory)
+    // console.log(categories, category)
+    // console.log('tasks in', category, ':', tasksInCategory)
     
     setTimeout(() => {console.log(categories)}, 500) 
 
     if(categories.length <= 1) {
-      console.log('only categories are all and uncategorized, ostensibly')
+      // console.log('only categories are all and uncategorized, ostensibly')
       setCurrentCategory('All')
     } else if(tasksInCategory === 0) {
       newCategory ? setCurrentCategory(newCategory) : setCurrentCategory(categories[1])
@@ -110,8 +110,8 @@ const Tasks = (props) => {
     // }
 
     props.renderAll()
-    setTimeout(() => {console.log('current cat is ', currentCategory)}, 1000) 
-    console.log('--------------------')
+    // setTimeout(() => {console.log('current cat is ', currentCategory)}, 1000) 
+    // console.log('--------------------')
   }
 
 

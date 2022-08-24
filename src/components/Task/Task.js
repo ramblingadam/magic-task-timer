@@ -216,7 +216,7 @@ const Task = (props) => {
     } else { 
       setTimerRunning(false)
       // TODO New Running Time addition
-      console.log(runningTime)
+      // console.log(runningTime)
       // If most recent date in dates array is today, pass in runningTime + the time already recorded for today. Otherwise,just pass in runningTime, so that a new date will be created with the value.
       updateTask(undefined, props.task.dates[0]?.date === getToday() ? runningTime + props.task.dates[0].time : runningTime)
 
@@ -247,7 +247,7 @@ const Task = (props) => {
       tasks.splice(tasks.findIndex(task => task.id === props.task.id), 1)
       localStorage.setItem('tasks', JSON.stringify(tasks))
 
-      console.log('post delete tasks: ', tasks)
+      // console.log('post delete tasks: ', tasks)
 
       props.checkCurrentCategoryEmpty(oldCategory)
 
@@ -367,8 +367,8 @@ const Task = (props) => {
       if(a.category !== b.category) return a.category.localeCompare(b.category)
       else return a.categorySort - b.categorySort
     })
-    console.log('sorted tasks:')
-    console.log(sortedTasks)
+    // console.log('sorted tasks:')
+    // console.log(sortedTasks)
   }
 
   // TODO TOGGLE timeframe from Day Total to Overall Total

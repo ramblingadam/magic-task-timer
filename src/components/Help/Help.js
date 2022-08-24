@@ -92,8 +92,8 @@ const Help = (props) => {
       video: '',
     },
     {
-      header: 'Categorize A Task',
-      desc: 'Organize your tasks with Categories!\nThe folder icon allows you to assign a task to a category.\nA tab will appear along the top of your tasks list for each category.\nClick on a tab to show the tasks for that category.\nA task\'s category can be changed at any time.',
+      header: 'Categories',
+      desc: 'The folder icon allows you to assign a the task to a category. Each task may have one category.\nA tab will appear along the top of your tasks list for each category. Click on a tab to show the tasks in that category.\nTo remove a task\'s category, click the folder icon, erase all text in the Change Category prompt, and press OK.',
       image: slide11,
       video: '',
     },
@@ -117,7 +117,7 @@ const Help = (props) => {
     },
     {
       header: 'Help',
-      desc: 'Fear not, braave task warrior!\nIf you ever forget anything, you can view this tutorial at any time by clicking the Help button.',
+      desc: 'Fear not, brave task warrior!\nIf you ever forget anything, you can view this tutorial at any time by clicking the Help button.',
       image: slide14,
       video: '',
     },

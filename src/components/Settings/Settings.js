@@ -89,7 +89,7 @@ const Settings = (props) => {
       setting = 'stickyheatmaptooltip'
       updateUserSetting(setting.toLowerCase(), option)
     }
-    console.log(currentSettings)
+    // console.log(currentSettings)
   }
 
   
