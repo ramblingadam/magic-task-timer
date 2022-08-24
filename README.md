@@ -1,6 +1,6 @@
 ## ![Logo](./public/favicon-32x32.png)Magic Task Timer
 
-**"Take control of how you spend your time be becoming aware of how you use it."** -Adam Morsa, Software Engineer
+**"Take control of how you spend your time by becoming aware of how you use it."** -Adam Morsa, Software Engineer
 
 **Magic Task Timer** is a timeclock for your life.
 
@@ -27,7 +27,7 @@ As the project grew I became comfortable with the concept of state and React hoo
 
 I am particularly proud of building the Github-style task history heatmaps and the theming system from scratch.
 
-### Features
+### Features of Magic Task Timer
 
 | *Feature*|*Description*|
 |---|---|
