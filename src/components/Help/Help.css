@@ -54,6 +54,8 @@
 
 }
 
+
+
 .slide-img-wrapper {
   /* min-height: 500px; */
   max-height: 600px;
@@ -192,3 +194,9 @@
   background: var(--button-green);
 }
 
+.img-preloader,
+.img-preloader img {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
