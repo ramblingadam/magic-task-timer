@@ -8,7 +8,7 @@ Track the time you spend each day on projects, tasks, freelancing, getting fit, 
 
 **Magic Task Timer** makes it easy to visualize the time you spend on things, empowering you to make better time management decisions while providing a simple and beautiful way to track the amount of time you've spent working on any task, project, or goal you can imagine.
 
-**Check it out:** [https://task-magic.netlify.app/](https://task-magic.netlify.app/)
+**Check it out here:** [https://task-magic.netlify.app/](https://task-magic.netlify.app/)
 
 ![Screenshot of Magic Task Timer](./public/screenshot.png)
 
@@ -67,23 +67,17 @@ In the beginning, I was confused when my component-scoped variables wouldn't ref
 In addition, while I was already familiar with CSS variables, I hadn't used them in a project until I set out to build my own theming system for Magic Task Timer. The more CSS variables I used, the more I loved using them- and I had an absolute blast hand-designing every theme in the app.
 
 ## Other Projects:
-Take a look at these other awesome projects that I have in my portfolio:
+Take a look at these other awesome projects from my portfolio:
 
-**Animal Crossing: New Horizons Database:**
-
-[https://github.com/ramblingadam/acnh](https://github.com/ramblingadam/acnh)
+**Animal Crossing: New Horizons Database:** [https://github.com/ramblingadam/acnh](https://github.com/ramblingadam/acnh)
 
 ![Screenshot of ACNH Database](https://user-images.githubusercontent.com/96756923/170849487-39d5a25f-0ad3-4494-a325-d4502610b54e.gif)
 
-**X-Wing VS TIE Fighter:**
-
-[https://github.com/ramblingadam/tic-tac-starwars](https://github.com/ramblingadam/tic-tac-starwars)
+**X-Wing VS TIE Fighter:** [https://github.com/ramblingadam/tic-tac-starwars](https://github.com/ramblingadam/tic-tac-starwars)
 
 ![Screenshot of X-Wing VS TIE Fighter](https://user-images.githubusercontent.com/96756923/170849366-e1b8d33b-6236-46f1-8dd9-b38fd2c27380.gif)
 
-**NASA Astronomy Photo/Video Browser:**
-
-[https://github.com/ramblingadam/nasapod](https://github.com/ramblingadam/nasapod)
+**NASA Astronomy Photo/Video Browser:** [https://github.com/ramblingadam/nasapod](https://github.com/ramblingadam/nasapod)
 
 ![Screenshot of NASA Astronomy Photo/Video Browser](https://user-images.githubusercontent.com/96756923/170848850-67f872fc-b92e-438b-add6-47d83673d3c9.gif)
 
