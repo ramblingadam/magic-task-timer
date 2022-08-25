@@ -21,6 +21,7 @@ import slide13 from './slides/slide-13.gif'
 import slide14 from './slides/slide-14.gif'
 import slide15 from './slides/slide-15.gif'
 import slide16 from './slides/slide-16.gif'
+import slide17 from './slides/slide-17.png'
 
 // import slide02v from './slides/slide-02.mp4'
 
@@ -33,7 +34,7 @@ const Help = (props) => {
   const slides = [
     {
       header: 'Welcome to Magic Task Timer!',
-      desc: 'Take control of how you spend your time by becoming aware of how you spend it.\nMagic Task Timer is your own personal timeclock.\nTrack the time you spend on projects, tasks, freelancing, getting fit, needlework, chores, socializing, breakdancing, dragon slaying- whatever you want.\nPlease take a moment to review the many incredible features of Magic Task Timer- you won\'t regret it, I guarantee it.*\n*lack of regret not guaranteed. void where prohibited.',
+      desc: 'Take control of how you spend your time by becoming aware of how you spend it.\nTrack the time you spend on projects, tasks, freelancing, getting fit, needlework, chores, socializing, breakdancing, dragon slaying- whatever you want.\nPlease take a moment to review the many incredible features of Magic Task Timer- you won\'t regret it, I guarantee it.*\n*lack of regret not guaranteed. void where prohibited.',
       image: slide01,
       video: '',
     },
@@ -68,7 +69,7 @@ const Help = (props) => {
       video: '',
     },
     {
-      header: 'Woops.',
+      header: 'Uh oh...',
       desc: 'Forgot you had the timer running, or didn\'t have access to the app while performing a task?\nNo problem!\n You can manually adjust the time spent on a task for any particular day.\nLucky you.',
       image: slide07,
       video: '',
@@ -95,6 +96,12 @@ const Help = (props) => {
       header: 'Categories',
       desc: 'The folder icon allows you to assign a the task to a category. Each task may have one category.\nA tab will appear along the top of your tasks list for each category. Click on a tab to show the tasks in that category.\nTo remove a task\'s category, click the folder icon, erase all text in the Change Category prompt, and press OK.',
       image: slide11,
+      video: '',
+    },
+    {
+      header: 'Emojis',
+      desc: 'Protip: You can use any standard Unicode emojis in your task or category names.\nMake those tasks pop with emoji icons!',
+      image: slide17,
       video: '',
     },
     {
