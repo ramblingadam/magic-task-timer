@@ -132,9 +132,6 @@ const Header = ({renderAll, changeTheme, toggleSettingsMenu, globalCurrentCatego
         
         <div className='header-buttons'>
           <MdHelpOutline className='header-icon-btn edit-btn icon-shadow' onClick={toggleHelpOpen}/>
-          {/* <MdHelpCenter />
-          <MdQuestionAnswer />
-          <MdHelp /> */}
           <MdSettings className='settings-btn header-icon-button icon-shadow' onClick={toggleSettingsMenu}/>
           
         </div>

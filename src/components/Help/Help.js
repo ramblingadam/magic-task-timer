@@ -23,7 +23,7 @@ import slide15 from './slides/slide-15.gif'
 import slide16 from './slides/slide-16.gif'
 import slide17 from './slides/slide-17.png'
 
-// import slide02v from './slides/slide-02.mp4'
+
 
 
 const Help = (props) => {
@@ -42,7 +42,7 @@ const Help = (props) => {
       header: 'Add A Task',
       desc: 'This is it. This is your story.\nIt all begins now.\nClick the plus button in the header to add a task.\n',
       image: slide02,
-      // video: slide02v,
+      video: '',
     },
     {
       header: 'Play/Pause Task Timer',
@@ -154,6 +154,7 @@ const Help = (props) => {
     }
   }
 
+  // ! COMPONENT
   return (
     <div className='help-window-wrapper'>
         <div className='slide'>
@@ -186,16 +187,14 @@ const Help = (props) => {
             ))}
           </ul>
 
-          <ul className='slide-nav nav-btns'>
-           
-            
-          <li
-            className={` btn-help btn-prev btn-nav center ${
-                currentSlide === 0 ? 'disabled' : ''
-              }`}
-            onClick={() => navigateSlides('prev')}
-            >
-              Prev
+          <ul className='slide-nav nav-btns'>            
+            <li
+              className={` btn-help btn-prev btn-nav center ${
+                  currentSlide === 0 ? 'disabled' : ''
+                }`}
+              onClick={() => navigateSlides('prev')}
+              >
+                Prev
             </li>
             <li
               className='btn-help btn-skip btn-nav center'
@@ -217,9 +216,8 @@ const Help = (props) => {
           </ul>
           </div>
           
-          {/* <p className='btn btn-history btn-skip' onClick={props.toggleHelpOpen}>Skip</p> */}
         </div>
-      {/* </ul> */}
+
       <div className='img-preloader'>
         {slides.map(slide => (
           <div>

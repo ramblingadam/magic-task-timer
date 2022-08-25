@@ -5,10 +5,8 @@ import './Heatmap.css'
 
 
 const Heatmap = props => {
-  // console.log(props)
 
   // ! STATE
-
 
 
   // ! FUNCTIONS
@@ -39,8 +37,6 @@ const Heatmap = props => {
   }
 
 
-
-
   //// addDays takes in a date and a number of days, returning a new date object which is -days- after the original date.
   const addDays = (date, days) => {
     let result = new Date(date)
@@ -48,14 +44,13 @@ const Heatmap = props => {
     return result
   }
 
-  //// areDatesEqual takes in two date objects, and compares the parsed string versions of the dates. Returns true if dates are equal, otherwise false.
+  //// areDatesEqual takes in two date objects, and compares the parsed string versions of the dates(YYYY-MM-DD). Returns true if dates are equal, otherwise false.
   const areDatesEqual = (date1, date2) => {
     if(parseDate(date1) === parseDate(date2)) return true
     else return false
   }
 
   //// Assemble year array, consisting of every day from 365 days ago to current date, to use to render heatmap grid
-  // TODO buid heatmap by week....
   const buildHeatmapByWeek = () => {
     // Set the start of the week. 0 = sunday, 6 = saturday
     const weekStart = 0
@@ -77,12 +72,9 @@ const Heatmap = props => {
       }
 
       // When loop reaches today, if we haven't yet pushed current week into year array based on weekStart, then push current week.
-      // if(areDatesEqual(date, today) && date.getDay() !== weekStart) {
       if(areDatesEqual(date, today)) {
-        // console.log('this is the end, did we make it on sunday?')
         yearArray.push(week)
       }
-
 
       // console.log(props.task.dates)
       const workedDate = props.task.dates.find(dateEntry => dateEntry.date === parseDate(date))
@@ -96,9 +88,6 @@ const Heatmap = props => {
 
   // ! INITIALIZATION - BUILD HEAT MAP ARRAY
   buildHeatmapByWeek()
-
-
-
 
 
 
@@ -118,8 +107,8 @@ const Heatmap = props => {
             className={`week-column ${i === 0 ? 'first-week' : ''}`}
             key={`Week ${i + 1}`}
           >
+            {/* First div in each week column checks if the first of a month is present in the associated week. If so, put in the three-letter abbreviation for the month.*/}
             <div className='day-box day-box-month text-shadow'>
-              
               {week.find(day => day.date.slice(8) === '01') && monthArray[+(week.find(day => day.date.slice(8) === '01').date.slice(5, 7))]}
             </div>
             {week.map(day => (
@@ -147,7 +136,6 @@ const Heatmap = props => {
                 ${day.date < parseDate(twoMonthsAgoToday) ? 'hover-left' : ''}`
                 }>
                 <p>{props.convertDateFormat(day.date, 'M/D/YY')}</p>
-                {/* <p>{day.day}</p> */}
                 {/* Only display time if time logged for that date. */}
                 <p>{day.time && props.convertTime(day.time)}</p>
               </div>

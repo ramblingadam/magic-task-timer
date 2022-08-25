@@ -22,7 +22,7 @@ const App = () => {
   // ! STATE
   // TODO Dialog Box Pieces of State/description/buttons values
   const [dialogBoxVisible, setDialogBoxVisible] = useState(false)
-  const [dialogMessage, setDialogMessage] = useState('')
+  // const [dialogMessage, setDialogMessage] = useState('')
   const [settingsOpen, setSettingsOpen] = useState(false)
   const [helpOpen, setHelpOpen] = useState(settings?.helpviewed ? false : true)
 
@@ -34,7 +34,7 @@ const App = () => {
   }
 
   //// Function and state to track current category so that we can adjust behavior in the header based on the current category- namely, when a category is selected and a new task is created, automatically place that task into the current category.
-  const [globalCurrentCategory, setGlobalCurrentCategory] = useState('Lifestream')
+  const [globalCurrentCategory, setGlobalCurrentCategory] = useState('')
   const changeGlobalCategory = (category) => {
     settings.currentcategory = category
     localStorage.setItem('settings', JSON.stringify(settings))
@@ -64,11 +64,6 @@ const App = () => {
   //// HELP TEXT VISIBILITY
   const [helpTextPref, setHelpTextPref] = useState(settings?.helptext || 'on')
   const updateHelpTextPref = (option) => {
-    // if(helpTextPref) {
-    //   settings.historyhelptext = false
-    // } else {
-    //   settings.historyhelptext = true
-    // }
     settings.historyhelptext = option
     localStorage.setItem('settings', JSON.stringify(settings))
     setHelpTextPref(option)
@@ -77,11 +72,6 @@ const App = () => {
   //// STICKY HEATMAP TOOLTIP
   const [stickyHeatmapTooltip, setStickyHeatmapTooltip] = useState(settings?.stickyheatmaptooltip || false)
   const updateStickyHeatmapTooltip = (option) => {
-    // if(stickyHeatmapTooltip) {
-    //   settings.stickyheatmaptooltip = false
-    // } else {
-    //   settings.stickyheatmaptooltip = true
-    // }
     settings.stickyheatmaptooltip = option
     localStorage.setItem('settings', JSON.stringify(settings))
     setStickyHeatmapTooltip(option)
@@ -92,7 +82,6 @@ const App = () => {
     settings.helpviewed = true
     localStorage.setItem('settings', JSON.stringify(settings))
     setHelpOpen(!helpOpen)
-
   }
 
 
@@ -117,18 +106,15 @@ const App = () => {
   }
 
 
-
-
-
   //// TODO Shows confirmaiton dialogue, and sets DialogBox/confirmation window message.
-  const toggleDialogBox = (message) => {
-    if(!dialogBoxVisible) {
-      setDialogMessage(message)
-      setDialogBoxVisible(true)
-    } else {
-      setDialogBoxVisible(false)
-    }
-  }
+  // const toggleDialogBox = (message) => {
+  //   if(!dialogBoxVisible) {
+  //     setDialogMessage(message)
+  //     setDialogBoxVisible(true)
+  //   } else {
+  //     setDialogBoxVisible(false)
+  //   }
+  // }
 
   // ! COMPONENT
   return (

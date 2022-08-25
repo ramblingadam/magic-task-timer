@@ -6,12 +6,8 @@ import { useState, useEffect } from 'react'
 // Styles
 import './AddTime.css'
 // Icons
-import { MdAddCircle, MdRemoveCircle, MdAdd, MdRemove } from "react-icons/md"
+// import { MdAddCircle, MdRemoveCircle, MdAdd, MdRemove } from "react-icons/md"
 
-
-
-import plusButton from '../../icons/add_FILL0_wght400_GRAD0_opsz48.svg'
-import removeButton from '../../icons/remove_FILL0_wght400_GRAD0_opsz48.svg'
 
 const AddTime = (props) => {
 
@@ -19,10 +15,8 @@ const AddTime = (props) => {
   // Tracks values in hours and minutes input box.
   const [hoursToAdd, setHoursToAdd] = useState('')
   const [minutesToAdd, setMinutesToAdd] = useState('')
-  // Tracks the date in the date input box..
-  // TODO HEYOOO
-  // const [selectedDate, setSelectedDate] = useState(props.getToday())
-  // TODO ---------^
+
+
   const [today, setToday] = useState('')
   // Causes the date input to flash whenever the selected date is updated via clicking on heatmap or the history table.
   const [dateInputFlash, setDateInputFlash] = useState(false)
@@ -106,7 +100,7 @@ const AddTime = (props) => {
 
 
 
-  // // Set date
+  // // Sets the date in the date input form.
   const setDateInForm = specificDate => {
     // If this function is called by state intialization, set date to today.
     if(specificDate === 'today') {
@@ -148,11 +142,13 @@ const AddTime = (props) => {
           <label><span className='heading text-shadow'>Hours</span>
             <input type="number" id="add-hours" value={hoursToAdd} onChange={(e) => handleTimeChange('hours', e)}/>
           </label>
+
           {/*//// Minutes Input */}
           <label><span className='heading text-shadow'>Minutes</span>
             <input type="number" id="add-minutes" value={minutesToAdd} onChange={(e) => handleTimeChange('mins', e)}/>
           </label>
         </div>
+
         <div className='logged-time text-shadow'>
         Time logged on selected date: {props.task.dates[props.task.dates?.findIndex(date => date.date === props.selectedDate)]?.time ?
               props.convertTime(props.task.dates[props.task.dates?.findIndex(date => date.date === props.selectedDate)]?.time) : props.convertTime(0)}
@@ -161,26 +157,24 @@ const AddTime = (props) => {
         {/*//// Subtract, Set, Add, and Delete Buttons */}
         <div className='add-subtract-btns'>
 
-          {/* //// Subtract Time */}
+          {/* //// Subtract Time Button*/}
           <div className='subtract-time-wrapper time-edit-btn hover-popup-wrapper'>
-            {/* <MdRemoveCircle id='subtract-time' className='time-edit-btn' onClick={() => updateTime('subtract')}/> */}
-            {/* <MdRemove id='subtract-time' className='time-edit-btn' onClick={() => updateTime('subtract')}/> */}
-            {/* <img src={removeButton} id='subtract-time' className='time-edit-btn' onClick={() => updateTime('add')}/> */}
-            {/* <svg id='subtract-time' className='time-edit-btn' onClick={() => updateTime('add')} xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M9.15 26.35v-4.7h29.7v4.7Z"/></svg> */}
             <span className='hover-popup hover-popup-delay three-line'>Subtract the entered time<br />
             from the total time for the <br />selected date.</span>
             <svg id='subtract-time'  onClick={() => updateTime('subtract')} xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M9.15 26.35v-4.7h29.7v4.7Z"/></svg>
           </div>
           
 
-          {/* //TODO GROUP SET AND DELETE BUTTONS? */}
+          {/* //// Set and Delete Buttons */}
           <div className='time-set-delete-wrapper'>
+
             <p id='set-time' className='time-edit-btn yellow hover-popup-wrapper' onClick={() => updateTime('set')}>SET <span className='hover-popup hover-popup-delay two-line'>Completely overwrite the selected date's total time<br />
             with the entered time.</span></p>
             <p id='delete-time' className='time-edit-btn hover-popup-wrapper' onClick={() => updateTime('delete')}>DELETE<span className='hover-popup hover-popup-delay'>Deletes all time logged on the selected date.</span></p>
+
           </div>
 
-          {/* //// Add Time */}
+          {/* //// Add Time Button*/}
           <div className='add-time-wrapper time-edit-btn hover-popup-wrapper'>
            
             <span className='hover-popup hover-popup-delay three-line'>Add the entered time<br />
@@ -213,8 +207,6 @@ const AddTime = (props) => {
 
         settings={props.settings}
       />
-
-      
 
     </div>
   )

@@ -279,7 +279,7 @@ const Task = (props) => {
     const newCategory = window.prompt(`Enter a category for '${props.task.name}'.`, oldCategory.slice(0,1).toUpperCase() + oldCategory.slice(1))
     // If new category is the same as items current category, ignore/return.
     if(oldCategory?.toLowerCase() === newCategory?.toLowerCase()) return
-
+    if(oldCategory === '') props.updateCurrentCategory('Uncategorized')
 
     updateTask(null, null, null, oldCategory, newCategory)
     props.checkCurrentCategoryEmpty(oldCategory, newCategory)
@@ -288,13 +288,10 @@ const Task = (props) => {
 
 
   //// Show "Add/Subtract/Set" Time Form/Heatmap/History Table
-   // TODO change selecteddate in addtime form to today whenever form opened
   const [selectedDate, setSelectedDate] = useState(getToday())
  
   const toggleAddTimeForm = () => {
     setAddTimeFormAnimationDone(false)
-    // TODO if this line is uncommented, it will ignore clicks on the button if form is open- old behavior, when time form auto-hides and can't be opened while timer running.
-    // if(timerRunning) return
 
     if(addTimeFormCollapsed) {
       setSelectedDate(getToday())
@@ -317,9 +314,6 @@ const Task = (props) => {
   //// Task Reordering
   const sortMode = props.currentCategory === 'All' ? 'sortPosition' : 'categorySort'
   const reorder = direction => {
-
-    
-
 
     // Store current task position. (redundant...)
     const currentTaskPosition = props.task[sortMode]
@@ -371,7 +365,7 @@ const Task = (props) => {
     // console.log(sortedTasks)
   }
 
-  // TODO TOGGLE timeframe from Day Total to Overall Total
+  //// TOGGLE timeframe from Day Total to Overall Total
   const toggleTimeframe = () => {
     setMainTimeIsGrandTotal(!mainTimeIsGrandTotal)
   }

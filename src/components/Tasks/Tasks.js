@@ -85,7 +85,7 @@ const Tasks = (props) => {
     // console.log(categories, category)
     // console.log('tasks in', category, ':', tasksInCategory)
     
-    setTimeout(() => {console.log(categories)}, 500) 
+    // setTimeout(() => {console.log(categories)}, 500) 
 
     if(categories.length <= 1) {
       // console.log('only categories are all and uncategorized, ostensibly')
@@ -162,6 +162,7 @@ const Tasks = (props) => {
             currentCategory={currentCategory}
             checkCurrentCategoryEmpty={checkCurrentCategoryEmpty}
             convertDateFormat={props.convertDateFormat}
+            updateCurrentCategory={handleCategoryClick}
     
           />
         ))

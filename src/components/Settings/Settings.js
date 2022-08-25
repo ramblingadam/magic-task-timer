@@ -3,7 +3,7 @@ import './Settings.css'
 //Hooks
 import { useState } from 'react'
 //Icons
-import { MdCancel, MdAdd } from 'react-icons/md'
+import { MdAdd } from 'react-icons/md'
 
 const Settings = (props) => {
 
@@ -16,7 +16,6 @@ const Settings = (props) => {
     helpviewed: false
   }
   const [currentSettings, setCurrentSettings] = useState(!localStorage.getItem('settings') ? defaultSettings : JSON.parse(localStorage.getItem('settings')))
-  // const [currentSettings, setCurrentSettings] = useState(props.settings)
 
   const menuItems = [
     {
@@ -26,7 +25,7 @@ const Settings = (props) => {
         'Casper',
         'Rimefrost',
         // 'Sophie',
-        // 'Halloween'
+        // 'Halloween',
         'Seafoam',
         'Amethyst',
       ]
@@ -119,13 +118,10 @@ const Settings = (props) => {
       {/* //// SETTINGS MENU HEADER / CLOSE SETTINGS BUTTON*/}
       <div className='menu-header-wrapper'>
         <div className='menu-header'>
-            {/* <h1>Settings</h1><MdCancel className='cancel-btn hover-grow glow-click icon-shadow' onClick={props.toggleSettingsMenu}/> */}
             <h1>Settings</h1><MdAdd className='cancel-btn hover-grow glow-click plus open' onClick={props.toggleSettingsMenu}/>
         </div>
       </div>
-      {/* <div className='menu-header'>
-          <h1>Settings</h1><MdCancel className='cancel-btn hover-grow glow-click' onClick={props.toggleSettingsMenu}/>
-      </div> */}
+  
 
       {/* //// SETTINGS MENU - Populates by iterating through menuItems array, defined above. Helloooo dynamic, extensible menu! */}
       <ul className='menu'>
