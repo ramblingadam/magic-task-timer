@@ -68,6 +68,14 @@ In addition, while I was already familiar with CSS variables, I hadn't used them
 
 ---
 
+## Copyright
+
+All code in this project is ©Adam Morsa. All rights reserved.
+
+Feel free to examine the code for educational purposes, but please note that no license is granted for use or modification of any part of this project.
+
+---
+
 ## Other Projects:
 Take a look at these other awesome projects from my portfolio:
 
@@ -88,11 +96,3 @@ Take a look at these other awesome projects from my portfolio:
 **NASA Astronomy Photo/Video Browser:** [https://github.com/ramblingadam/nasapod](https://github.com/ramblingadam/nasapod)
 
 [![Screenshot of NASA Astronomy Photo/Video Browser](https://user-images.githubusercontent.com/96756923/170848850-67f872fc-b92e-438b-add6-47d83673d3c9.gif)](https://github.com/ramblingadam/nasapod)
-
----
-
-## Copyright
-
-All code in this project is ©Adam Morsa. All rights reserved.
-
-Feel free to examine the code for educational purposes, but please note that no license is granted for use or modification of any part of this project.
