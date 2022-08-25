@@ -10,7 +10,7 @@ Track the time you spend each day on projects, tasks, freelancing, getting fit, 
 
 **Check it out here:** [https://magictasktimer.netlify.app/](https://magictasktimer.netlify.app/)
 
-[![Screenshot of Magic Task Timer](./public/screenshot.png)](https://magictasktimer.netlify.app/)
+[![Screenshot of Magic Task Timer](./public/screenshot.gif)](https://magictasktimer.netlify.app/)
 
 ---
 
