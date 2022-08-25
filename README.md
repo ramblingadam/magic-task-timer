@@ -93,6 +93,6 @@ Take a look at these other awesome projects from my portfolio:
 
 #
 
-**NASA Astronomy Photo/Video Browser:** [https://github.com/ramblingadam/nasapod](https://github.com/ramblingadam/nasapod)
+**The Universe Console** [https://github.com/ramblingadam/nasapod](https://github.com/ramblingadam/nasapod)
 
 [![Screenshot of NASA Astronomy Photo/Video Browser](https://user-images.githubusercontent.com/96756923/170848850-67f872fc-b92e-438b-add6-47d83673d3c9.gif)](https://github.com/ramblingadam/nasapod)
