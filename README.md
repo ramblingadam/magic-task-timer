@@ -48,6 +48,7 @@ I am particularly proud of building the Github-style task history heatmaps and t
 
 If/when time permits, there are several optimizations and improvements that I'd like to integrate into Magic Task Timer.
 
+
 As is, the application accesses the user's data in localStorage quite often- a result of the app growing far beyond my initial conceptualization. This frequent storage access could be refactored to occur only once per render by holding the user's data in an app-level piece of state, and passing that state down to all descendant components for them to use.
 
 I am also aware of many array operations which are repeated verbatim across different components. I would like to separate these WET functions into modules(or define them at the app-level and pass them down as props), so that when I change one function I don't have to track down and change them all. I believe this will improve the app's performance in the case of a user with many tasks by drastically cutting down on the number of similar operations run on every app render. This would also make some of the extremely complex template literal ternary operations within the JSX less difficult for a normal human to parse.
@@ -55,6 +56,8 @@ I am also aware of many array operations which are repeated verbatim across diff
 I'd also like to add custom input forms instead of relying on window.prompt() calls when a user edits a task's name or category.
 
 Also, more themes! I find that the amount of joy I feel while using an app is directly correlated with how beautiful it is. I believe a stellar presentation can make even a modest app really shine, and increase the odds that a user will connect emotionally to an application.
+
+I have many other features in mind as development continues. Keep an ear out. ;)
 
 ---
 
