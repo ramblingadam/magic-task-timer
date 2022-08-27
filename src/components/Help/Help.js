@@ -78,7 +78,7 @@ const Help = (props) => {
     },
     {
       header: 'Toggle Timer Timeframe',
-      desc: 'Click the task timer display to toggle the between \'All Time\' and \'Today\'.',
+      desc: 'Click the task timer display to toggle between \'All Time\' and \'Today\'.',
       image: slide05,
       video: '',
     },
@@ -114,7 +114,7 @@ const Help = (props) => {
     },
     {
       header: 'Categories',
-      desc: 'The folder icon allows you to assign a the task to a category. Each task may have one category.\nA tab will appear along the top of your tasks list for each category. Click on a tab to show the tasks in that category.\nTo remove a task\'s category, click the folder icon, erase all text in the Change Category prompt, and press OK.',
+      desc: 'The folder icon allows you to assign a task to a category. Each task may have one category.\nA tab will appear along the top of your tasks list for each category. Click on a tab to show the tasks in that category.\nTo remove a task\'s category, click the folder icon, erase all text in the Change Category prompt, and press OK.',
       image: slide11,
       video: '',
     },
