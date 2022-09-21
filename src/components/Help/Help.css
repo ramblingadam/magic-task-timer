@@ -16,7 +16,7 @@
 
   text-align: center;
 
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
 }
 
 /* source Sans Pro */
@@ -32,6 +32,7 @@
   flex-flow: column nowrap;
   justify-content: flex-start;
   height: 100%;
+  overflow-y: scroll;
 }
 
 .slide-content {
