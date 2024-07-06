@@ -6,28 +6,42 @@ import Settings from '../Settings/Settings'
 import './Header.css'
 
 // Icons
-import { MdAddCircle, MdSettings, Mddashci, MdHelp, MdQuestionAnswer, MdHelpOutline, MdHelpCenter, MdAdd } from "react-icons/md"
+import {
+  MdAddCircle,
+  MdSettings,
+  Mddashci,
+  MdHelp,
+  MdQuestionAnswer,
+  MdHelpOutline,
+  MdHelpCenter,
+  MdAdd,
+  MdDownload,
+  MdUpload,
+} from 'react-icons/md'
 
 //Images
 // import logoSilv from'../../images/logo-silver.png'
 // import logoSilvSm from'../../images/logo-silver_sm.png'
 // import logoGold from'../../images/logo-gold.png'
-import logoGoldSm from'../../images/logo-gold_sm.png'
+import logoGoldSm from '../../images/logo-gold_sm.png'
 
-const Header = ({renderAll, changeTheme, toggleSettingsMenu, globalCurrentCategory, toggleHelpOpen}) => {
-
+const Header = ({
+  renderAll,
+  changeTheme,
+  toggleSettingsMenu,
+  globalCurrentCategory,
+  toggleHelpOpen,
+}) => {
   //// Pieces of State ////
   const [showNewTaskForm, setShowNewTaskForm] = useState(false)
   const [taskFormCollapsed, setTaskFormCollapsed] = useState(true)
 
-
-
   //// Helper Functions /////
   //// Toggles visibility of New Task Form
   const toggleNewTaskForm = () => {
-
     // Check if task form already visible.
-    if(showNewTaskForm) {  // If it is visible, hide it and revert icon to a '+'
+    if (showNewTaskForm) {
+      // If it is visible, hide it and revert icon to a '+'
 
       // Trigger collapse slide-out/fade-out & plus button animations.
       setShowNewTaskForm(false)
@@ -36,10 +50,11 @@ const Header = ({renderAll, changeTheme, toggleSettingsMenu, globalCurrentCatego
       // setTimeout( () => {
       //   setTaskFormCollapsed(true)
       // }, 700)
-    } else {        // If it's not visible, show it and change icon to a 'x'
+    } else {
+      // If it's not visible, show it and change icon to a 'x'
 
       // Change TaskFormCollpased state to remove .hidden class from form.
-      setTaskFormCollapsed(false) 
+      setTaskFormCollapsed(false)
 
       // Clear the input of any detritus left over from last non-entered input.
       document.getElementById('task-name').value = ''
@@ -48,7 +63,7 @@ const Header = ({renderAll, changeTheme, toggleSettingsMenu, globalCurrentCatego
       setShowNewTaskForm(true)
 
       // Focus user cursor into task name field.
-      document.getElementById('task-name').focus() 
+      document.getElementById('task-name').focus()
     }
   }
 
@@ -62,8 +77,8 @@ const Header = ({renderAll, changeTheme, toggleSettingsMenu, globalCurrentCatego
     // Clear input field.
     document.getElementById('task-name').value = ''
 
-     // Input validation
-    if(!taskInput) {
+    // Input validation
+    if (!taskInput) {
       alert('Task name cannot be blank.')
       return
     }
@@ -78,18 +93,26 @@ const Header = ({renderAll, changeTheme, toggleSettingsMenu, globalCurrentCatego
     const today = `${year}-${month}-${day}`
 
     // Set sort position to put new task on top by decreasing sort position of all other tasks
-    const tasks = localStorage.getItem('tasks') ? JSON.parse(localStorage.getItem('tasks')) : []
+    const tasks = localStorage.getItem('tasks')
+      ? JSON.parse(localStorage.getItem('tasks'))
+      : []
 
-    const newTaskCategory = globalCurrentCategory === 'All' || globalCurrentCategory === 'Uncategorized' ? '' : globalCurrentCategory
+    const newTaskCategory =
+      globalCurrentCategory === 'All' ||
+      globalCurrentCategory === 'Uncategorized'
+        ? ''
+        : globalCurrentCategory
 
-    tasks.forEach(task => {
+    tasks.forEach((task) => {
       task.sortPosition += 1
     })
-    tasks.filter(task => task.category === newTaskCategory).forEach(task => {
-      task.categorySort += 1
-    })
+    tasks
+      .filter((task) => task.category === newTaskCategory)
+      .forEach((task) => {
+        task.categorySort += 1
+      })
     localStorage.setItem('tasks', JSON.stringify(tasks))
-   
+
     // create new task object
     const newTask = {
       id: Date.now(),
@@ -106,40 +129,68 @@ const Header = ({renderAll, changeTheme, toggleSettingsMenu, globalCurrentCatego
     }
 
     // Check if tasks cache already exists in localStorage.
-    if(localStorage.getItem('tasks')) { //If so, grab cache, add new task, and re-set into localStorage.
+    if (localStorage.getItem('tasks')) {
+      //If so, grab cache, add new task, and re-set into localStorage.
       const tasks = JSON.parse(localStorage.getItem('tasks')).concat(newTask)
       localStorage.setItem('tasks', JSON.stringify(tasks))
-    } else { // If not, start the tasks cache from scratch.
-      const tasks = [
-        newTask
-      ]
+    } else {
+      // If not, start the tasks cache from scratch.
+      const tasks = [newTask]
       localStorage.setItem('tasks', JSON.stringify(tasks))
     }
     renderAll() // Re-renders App.js, which re-renders Tasks.js, so that the newly added task shows up right away.
   }
 
-
-
-  //! Component 
+  //! Component
   return (
     <div className='header-wrapper'>
-      
       <div className='header-main text-shadow'>
+        <h1 className='header-h1'>
+          <img
+            src={logoGoldSm}
+            alt='Logo'
+            className='logo'
+          />
+          Magic Task Timer&nbsp;
+          <MdAdd
+            className={`plus ${showNewTaskForm ? 'open' : ''}`}
+            onClick={toggleNewTaskForm}
+          />
+        </h1>
 
-
-        <h1 className='header-h1'><img src={logoGoldSm} alt="Logo" className='logo'/>Magic Task Timer&nbsp;<MdAdd className={`plus ${showNewTaskForm ? 'open' : ''}`} onClick={toggleNewTaskForm} /></h1>
-
-        
         <div className='header-buttons'>
-          <MdHelpOutline className='header-icon-btn edit-btn icon-shadow' onClick={toggleHelpOpen}/>
-          <MdSettings className='settings-btn header-icon-button icon-shadow' onClick={toggleSettingsMenu}/>
-          
+          <MdHelpOutline
+            className='header-icon-btn edit-btn icon-shadow'
+            onClick={toggleHelpOpen}
+          />
+          <MdSettings
+            className='settings-btn header-icon-button icon-shadow'
+            onClick={toggleSettingsMenu}
+          />
         </div>
       </div>
-      <div className={`new-task-form slide-able ${showNewTaskForm ? 'reveal-small' : taskFormCollapsed ? 'hidden' : 'collapse-small'} `}>
-        <form action="">
-          <input onSubmit={addNewTask} id='task-name' type="text" placeholder="Task Name"/>
-          <button onClick={addNewTask} id='add-task-btn'>Add Task</button>
+      <div
+        className={`new-task-form slide-able ${
+          showNewTaskForm
+            ? 'reveal-small'
+            : taskFormCollapsed
+            ? 'hidden'
+            : 'collapse-small'
+        } `}
+      >
+        <form action=''>
+          <input
+            onSubmit={addNewTask}
+            id='task-name'
+            type='text'
+            placeholder='Task Name'
+          />
+          <button
+            onClick={addNewTask}
+            id='add-task-btn'
+          >
+            Add Task
+          </button>
         </form>
       </div>
     </div>
