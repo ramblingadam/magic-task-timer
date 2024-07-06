@@ -118,7 +118,7 @@ const Header = ({
       id: Date.now(),
       name: taskInput,
 
-      category: newTaskCategory,
+      category: newTaskCategory || '',
       categorySort: 1,
       sortPosition: 1,
       dates: [

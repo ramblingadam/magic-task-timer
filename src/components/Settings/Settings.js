@@ -8,6 +8,7 @@ import { MdAdd } from 'react-icons/md'
 import {
   exportTaskHistory,
   importTaskHistory,
+  getFirstCategory,
 } from '../../lib/taskHistoryUtils'
 
 const Settings = (props) => {
@@ -115,8 +116,6 @@ const Settings = (props) => {
     settings[setting] = option
     localStorage.setItem('settings', JSON.stringify(settings))
     setCurrentSettings(settings)
-
-    // console.log(settings)
   }
 
   // ! COMPONENT
@@ -169,7 +168,6 @@ const Settings = (props) => {
                     }
                   >
                     {option}
-                    {/* {console.log(option.toLowerCase(), currentSettings, menuItem.setting.toLowerCase(), currentSettings[menuItem.setting.toLowerCase()])} */}
                   </li>
                 ))}
               </ul>

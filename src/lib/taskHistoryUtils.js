@@ -84,6 +84,35 @@ export const exportTaskHistory = () => {
   link.click()
 }
 
+export const getFirstCategory = () => {
+  const tasks = JSON.parse(localStorage.getItem('tasks'))
+
+  const categories = []
+  for (const task of tasks) {
+    if (task.category && !categories.includes(task.category)) {
+      categories.push(task.category)
+    }
+  }
+  return categories.sort((a, b) => a.localeCompare(b))[0] || 'All'
+}
+
+export const isValidCategorySelected = (category) => {
+  const tasks = JSON.parse(localStorage.getItem('tasks'))
+  let hasCategories = false
+  for (const task of tasks) {
+    if (task.category && !hasCategories) {
+      hasCategories = true
+    }
+    if (task.category === category) {
+      return true
+    }
+  }
+  return (
+    (hasCategories && category === 'Uncategorized') ||
+    (!hasCategories && category === 'All')
+  )
+}
+
 export const importTaskHistory = () => {
   if (
     !window.confirm(
@@ -94,9 +123,10 @@ export const importTaskHistory = () => {
   const fileInput = document.createElement('input')
   fileInput.type = 'file'
   fileInput.accept = '.json'
-  fileInput.addEventListener('change', (event) => {
+  fileInput.addEventListener('change', async (event) => {
     const file = event.target.files[0]
     if (!file) return
+
     const reader = new FileReader()
     reader.addEventListener('load', () => {
       try {

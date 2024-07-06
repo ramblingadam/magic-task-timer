@@ -1,23 +1,28 @@
 // Components
-import Header from "./Header/Header"
+import Header from './Header/Header'
 import Tasks from './Tasks/Tasks'
-import DialogBox from "./DialogBox/DialogBox"
-import Settings from "./Settings/Settings"
-import Help from "./Help/Help"
-import Footer from "./Footer/Footer"
+import DialogBox from './DialogBox/DialogBox'
+import Settings from './Settings/Settings'
+import Help from './Help/Help'
+import Footer from './Footer/Footer'
 
 // Hooks
-import { useState, useEffect } from "react"
+import { useState, useEffect } from 'react'
+import {
+  getFirstCategory,
+  isValidCategorySelected,
+} from '../lib/taskHistoryUtils'
 
 const App = () => {
-
   const defaultSettings = {
     theme: 'lifestream',
     historyhelptext: 'on',
     stickyheatmaptooltip: 'off',
-    helpviewed: false
+    helpviewed: false,
   }
-  const settings = localStorage.getItem('settings') ? JSON.parse(localStorage.getItem('settings')) : defaultSettings
+  const settings = localStorage.getItem('settings')
+    ? JSON.parse(localStorage.getItem('settings'))
+    : defaultSettings
 
   // ! STATE
   // TODO Dialog Box Pieces of State/description/buttons values
@@ -34,31 +39,34 @@ const App = () => {
   }
 
   //// Function and state to track current category so that we can adjust behavior in the header based on the current category- namely, when a category is selected and a new task is created, automatically place that task into the current category.
-  const [globalCurrentCategory, setGlobalCurrentCategory] = useState('')
+  const [currentCategory, setCurrentCategory] = useState('')
   const changeGlobalCategory = (category) => {
     settings.currentcategory = category
     localStorage.setItem('settings', JSON.stringify(settings))
-    setGlobalCurrentCategory(category)
-
+    setCurrentCategory(category)
   }
 
   // ! SETTINGS-RELATED FUNCTIONS, STATE, AND PROPS TO PASS DOWN COMPONENTS
   //// SETTINGS MENU CONTROL
   const toggleSettingsMenu = () => {
-    if(settingsOpen) setSettingsOpen(false)
-    else setSettingsOpen(true)
+    if (settingsOpen) {
+      if (!isValidCategorySelected(currentCategory)) {
+        changeGlobalCategory(getFirstCategory())
+      }
+      setSettingsOpen(false)
+    } else setSettingsOpen(true)
   }
+  useEffect(() => {
+    renderAll()
+  }, [currentCategory])
 
   //// THEMING
   const [theme, setTheme] = useState(settings?.theme || 'mako')
   const changeTheme = (theme) => {
     setTheme(theme)
-    // console.log('changetheme clicked')
   }
   useEffect(() => {
-    // console.log(theme)
     setTheme(theme)
-    // renderAll()
   }, [theme])
 
   //// HELP TEXT VISIBILITY
@@ -70,7 +78,9 @@ const App = () => {
   }
 
   //// STICKY HEATMAP TOOLTIP
-  const [stickyHeatmapTooltip, setStickyHeatmapTooltip] = useState(settings?.stickyheatmaptooltip || false)
+  const [stickyHeatmapTooltip, setStickyHeatmapTooltip] = useState(
+    settings?.stickyheatmaptooltip || false
+  )
   const updateStickyHeatmapTooltip = (option) => {
     settings.stickyheatmaptooltip = option
     localStorage.setItem('settings', JSON.stringify(settings))
@@ -84,7 +94,6 @@ const App = () => {
     setHelpOpen(!helpOpen)
   }
 
-
   // TODO convert YYYY-MM-DD to other date formats
   const convertDateFormat = (dateString, format) => {
     let result = dateString
@@ -97,14 +106,13 @@ const App = () => {
     const m = mm.startsWith('0') ? mm.slice(1) : mm
     const d = dd.startsWith('0') ? dd.slice(1) : dd
 
-    if(format === 'M/D/YY') {
+    if (format === 'M/D/YY') {
       result = `${m}/${d}/${yy}`
-    } else if(format === 'D/M/YY') {
+    } else if (format === 'D/M/YY') {
       result = `${d}/${m}/${yy}`
     }
     return result
   }
-
 
   //// TODO Shows confirmaiton dialogue, and sets DialogBox/confirmation window message.
   // const toggleDialogBox = (message) => {
@@ -124,48 +132,39 @@ const App = () => {
         /> */}
 
       <Header
-          renderAll={renderAll}
-          changeTheme={changeTheme}
-          toggleHelpOpen={toggleHelpOpen}
-          toggleSettingsMenu={toggleSettingsMenu}
-          globalCurrentCategory={globalCurrentCategory}
-          settings={settings}
-        />
-        
-      <div className="app">
+        renderAll={renderAll}
+        changeTheme={changeTheme}
+        toggleHelpOpen={toggleHelpOpen}
+        toggleSettingsMenu={toggleSettingsMenu}
+        currentCategory={currentCategory}
+        settings={settings}
+      />
 
-        {helpOpen && (
-          <Help
-            toggleHelpOpen={toggleHelpOpen}  
-          />
-        )}
+      <div className='app'>
+        {helpOpen && <Help toggleHelpOpen={toggleHelpOpen} />}
 
         {settingsOpen && (
-        <Settings 
+          <Settings
             toggleSettingsMenu={toggleSettingsMenu}
             changeTheme={changeTheme}
             updateHelpTextPref={updateHelpTextPref}
             updateStickyHeatmapTooltip={updateStickyHeatmapTooltip}
-
-            
+            changeGlobalCategory={changeGlobalCategory}
             settingsOpen={settingsOpen}
             renderAll={renderAll}
-          
           />
         )}
 
         <Tasks
           renderAll={renderAll}
-          globalCurrentCategory={globalCurrentCategory}
-          changeGlobalCategory={changeGlobalCategory}
+          currentCategory={currentCategory}
+          setCurrentCategory={changeGlobalCategory}
           settings={settings}
           convertDateFormat={convertDateFormat}
         />
-       
       </div>
 
       <Footer />
-
     </div>
   )
 }
