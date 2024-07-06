@@ -1,4 +1,5 @@
 import { prependZeroToSingleDigit } from './stringUtils'
+import { getTasks } from './utils'
 
 const validateDateString = (dateString) => {
   if (typeof dateString !== 'string' || dateString.length !== 10) {
@@ -67,6 +68,12 @@ export const validateTaskHistoryJson = (json) => {
 }
 
 export const exportTaskHistory = () => {
+  const tasks = getTasks()
+  if (!tasks || tasks.length === 0) {
+    alert('No task history available to export.')
+    return
+  }
+
   const blob = new Blob([localStorage.getItem('tasks')], {
     type: 'application/json',
   })
