@@ -96,7 +96,23 @@ const Settings = (props) => {
     if (setting === 'Import/Export Task History') {
       switch (option) {
         case 'import':
-          importTaskHistory()
+          props.setModalData({
+            title: 'Import Task History',
+            message: () => (
+              <>
+                <p>This will completely overwrite your current task history.</p>
+                <p className='warning'>This cannot be undone.</p>
+                <p>
+                  To save your current task history, close this window and
+                  select <strong>"Export"</strong>.
+                </p>
+                <p>Are you sure you want to continue?</p>
+              </>
+            ),
+            onAccept: () => importTaskHistory(),
+          })
+          props.openModal()
+          // importTaskHistory()
           break
         case 'export':
           exportTaskHistory()

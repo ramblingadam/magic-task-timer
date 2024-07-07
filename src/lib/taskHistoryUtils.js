@@ -121,12 +121,6 @@ export const isValidCategorySelected = (category) => {
 }
 
 export const importTaskHistory = () => {
-  if (
-    !window.confirm(
-      'WARNING: This will overwrite your current task history. All existing tasks will be lost.\n\nTHIS CANNOT BE UNDONE.\n\nTo save your current task history, press cancel, and select Export.'
-    )
-  )
-    return
   const fileInput = document.createElement('input')
   fileInput.type = 'file'
   fileInput.accept = '.json'

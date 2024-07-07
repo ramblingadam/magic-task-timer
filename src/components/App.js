@@ -10,8 +10,12 @@ import Footer from './Footer/Footer'
 import { useState, useEffect } from 'react'
 import {
   getFirstCategory,
+  importTaskHistory,
   isValidCategorySelected,
 } from '../lib/taskHistoryUtils'
+import Modal from './Modal/Modal'
+import { getSettings } from '../lib/utils'
+import { useModal } from '../hooks/useModal'
 
 const App = () => {
   const defaultSettings = {
@@ -20,9 +24,7 @@ const App = () => {
     stickyheatmaptooltip: 'off',
     helpviewed: false,
   }
-  const settings = localStorage.getItem('settings')
-    ? JSON.parse(localStorage.getItem('settings'))
-    : defaultSettings
+  const settings = getSettings()
 
   // ! STATE
   // TODO Dialog Box Pieces of State/description/buttons values
@@ -124,12 +126,31 @@ const App = () => {
   //   }
   // }
 
+  const [modalData, setModalData] = useState({
+    title: 'Modal title',
+    message: () => (
+      <>
+        <p>This will overwrite your current task history.</p>
+        <p className='warning'>THIS CANNOT BE UNDONE.</p>
+        <p>Are you sure you want to continue?</p>
+      </>
+    ),
+    onAccept: () => importTaskHistory(),
+  })
+
+  const { isOpen, openModal, closeModal } = useModal()
+
   // ! COMPONENT
   return (
     <div className={`app-wrapper theme-${theme}`}>
       {/* <DialogBox
           toggleDialogBox={toggleDialogBox}
         /> */}
+      <Modal
+        isOpen={isOpen}
+        modalData={modalData}
+        close={closeModal}
+      />
 
       <Header
         renderAll={renderAll}
@@ -152,6 +173,8 @@ const App = () => {
             changeGlobalCategory={changeGlobalCategory}
             settingsOpen={settingsOpen}
             renderAll={renderAll}
+            openModal={openModal}
+            setModalData={setModalData}
           />
         )}
 
