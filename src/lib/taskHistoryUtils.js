@@ -93,7 +93,7 @@ export const exportTaskHistory = () => {
 
 export const getFirstCategory = () => {
   const tasks = JSON.parse(localStorage.getItem('tasks'))
-
+  if (!tasks || tasks.length === 0) return 'All'
   const categories = []
   for (const task of tasks) {
     if (task.category && !categories.includes(task.category)) {

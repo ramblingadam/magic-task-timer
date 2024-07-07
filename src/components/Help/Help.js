@@ -25,36 +25,48 @@ import { useState } from 'react'
 // import slide17 from './slides/slide-17.png'
 
 //Remote Links(to save netlify bandwidth)
-const slide01 = 'https://raw.githubusercontent.com/ramblingadam/magic-task-timer/main/src/components/Help/slides/slide-01.gif'
-const slide02 = 'https://raw.githubusercontent.com/ramblingadam/magic-task-timer/main/src/components/Help/slides/slide-02.gif'
-const slide03 = 'https://raw.githubusercontent.com/ramblingadam/magic-task-timer/main/src/components/Help/slides/slide-03.gif'
-const slide04 = 'https://raw.githubusercontent.com/ramblingadam/magic-task-timer/main/src/components/Help/slides/slide-04.gif'
-const slide05 = 'https://raw.githubusercontent.com/ramblingadam/magic-task-timer/main/src/components/Help/slides/slide-05.gif'
-const slide06 = 'https://raw.githubusercontent.com/ramblingadam/magic-task-timer/main/src/components/Help/slides/slide-06.gif'
-const slide07 = 'https://raw.githubusercontent.com/ramblingadam/magic-task-timer/main/src/components/Help/slides/slide-07.gif'
-const slide08 = 'https://raw.githubusercontent.com/ramblingadam/magic-task-timer/main/src/components/Help/slides/slide-08.gif'
-const slide09 = 'https://raw.githubusercontent.com/ramblingadam/magic-task-timer/main/src/components/Help/slides/slide-09.gif'
-const slide10 = 'https://raw.githubusercontent.com/ramblingadam/magic-task-timer/main/src/components/Help/slides/slide-10.gif'
-const slide11 = 'https://raw.githubusercontent.com/ramblingadam/magic-task-timer/main/src/components/Help/slides/slide-11.gif'
-const slide12 = 'https://raw.githubusercontent.com/ramblingadam/magic-task-timer/main/src/components/Help/slides/slide-12.gif'
-const slide13 = 'https://raw.githubusercontent.com/ramblingadam/magic-task-timer/main/src/components/Help/slides/slide-13.gif'
-const slide14 = 'https://raw.githubusercontent.com/ramblingadam/magic-task-timer/main/src/components/Help/slides/slide-14.gif'
-const slide15 = 'https://raw.githubusercontent.com/ramblingadam/magic-task-timer/main/src/components/Help/slides/slide-15.gif'
-const slide16 = 'https://raw.githubusercontent.com/ramblingadam/magic-task-timer/main/src/components/Help/slides/slide-16.gif'
-const slide17 = 'https://raw.githubusercontent.com/ramblingadam/magic-task-timer/main/src/components/Help/slides/slide-17.png'
-
-
-
+const slide01 =
+  'https://raw.githubusercontent.com/ramblingadam/magic-task-timer/main/src/components/Help/slides/slide-01.gif'
+const slide02 =
+  'https://raw.githubusercontent.com/ramblingadam/magic-task-timer/main/src/components/Help/slides/slide-02.gif'
+const slide03 =
+  'https://raw.githubusercontent.com/ramblingadam/magic-task-timer/main/src/components/Help/slides/slide-03.gif'
+const slide04 =
+  'https://raw.githubusercontent.com/ramblingadam/magic-task-timer/main/src/components/Help/slides/slide-04.gif'
+const slide05 =
+  'https://raw.githubusercontent.com/ramblingadam/magic-task-timer/main/src/components/Help/slides/slide-05.gif'
+const slide06 =
+  'https://raw.githubusercontent.com/ramblingadam/magic-task-timer/main/src/components/Help/slides/slide-06.gif'
+const slide07 =
+  'https://raw.githubusercontent.com/ramblingadam/magic-task-timer/main/src/components/Help/slides/slide-07.gif'
+const slide08 =
+  'https://raw.githubusercontent.com/ramblingadam/magic-task-timer/main/src/components/Help/slides/slide-08.gif'
+const slide09 =
+  'https://raw.githubusercontent.com/ramblingadam/magic-task-timer/main/src/components/Help/slides/slide-09.gif'
+const slide10 =
+  'https://raw.githubusercontent.com/ramblingadam/magic-task-timer/main/src/components/Help/slides/slide-10.gif'
+const slide11 =
+  'https://raw.githubusercontent.com/ramblingadam/magic-task-timer/main/src/components/Help/slides/slide-11.gif'
+const slide12 =
+  'https://raw.githubusercontent.com/ramblingadam/magic-task-timer/main/src/components/Help/slides/slide-12.gif'
+const slide13 =
+  'https://raw.githubusercontent.com/ramblingadam/magic-task-timer/main/src/components/Help/slides/slide-13.gif'
+const slide14 =
+  'https://raw.githubusercontent.com/ramblingadam/magic-task-timer/main/src/components/Help/slides/slide-14.gif'
+const slide15 =
+  'https://raw.githubusercontent.com/ramblingadam/magic-task-timer/main/src/components/Help/slides/slide-15.gif'
+const slide16 =
+  'https://raw.githubusercontent.com/ramblingadam/magic-task-timer/main/src/components/Help/slides/slide-16.gif'
+const slide17 =
+  'https://raw.githubusercontent.com/ramblingadam/magic-task-timer/main/src/components/Help/slides/slide-17.png'
 
 const Help = (props) => {
-
   const [currentSlide, setCurrentSlide] = useState(0)
-
 
   const slides = [
     {
       header: 'Welcome to Magic Task Timer!',
-      desc: 'Take control of how you spend your time by becoming aware of how you spend it.\nTrack the time you spend on projects, tasks, freelancing, getting fit, needlework, chores, socializing, breakdancing, dragon slaying- whatever you want.\nPlease take a moment to review the many incredible features of Magic Task Timer- you won\'t regret it, I guarantee it.*\n*lack of regret not guaranteed.',
+      desc: "Take control of how you spend your time by becoming aware of how you spend it.\nTrack the time you spend on projects, tasks, freelancing, getting fit, needlework, chores, socializing, breakdancing, dragon slaying- whatever you want.\nPlease take a moment to review the many incredible features of Magic Task Timer- you won't regret it, I guarantee it.*\n*lack of regret not guaranteed.",
       image: slide01,
       video: '',
     },
@@ -66,7 +78,7 @@ const Help = (props) => {
     },
     {
       header: 'Play/Pause Task Timer',
-      desc: 'Click a task\'s play button to start the timer for that task. You may have any number of task timers running simultaneously.\nClick it again to stop the timer, which will save the elapsed time to your task for today.\nIf you close or suspend the browser tab while a timer is running, the currently running interval will NOT be saved. Please remember to stop all running timers before closing or suspending the browser tab to ensure you do not lose any time.',
+      desc: "Click a task's play button to start the timer for that task. You may have any number of task timers running simultaneously.\nClick it again to stop the timer, which will save the elapsed time to your task for today.\nIf you close or suspend the browser tab while a timer is running, the currently running interval will NOT be saved. Please remember to stop all running timers before closing or suspending the browser tab to ensure you do not lose any time.",
       image: slide04,
       video: '',
     },
@@ -78,7 +90,7 @@ const Help = (props) => {
     },
     {
       header: 'Toggle Timer Timeframe',
-      desc: 'Click the task timer display to toggle between \'All Time\' and \'Today\'.',
+      desc: "Click the task timer display to toggle between 'All Time' and 'Today'.",
       image: slide05,
       video: '',
     },
@@ -90,7 +102,7 @@ const Help = (props) => {
     },
     {
       header: 'Uh oh...',
-      desc: 'Forgot you had the timer running, or didn\'t have access to the app while performing a task?\nNo problem!\n You can manually adjust the time spent on a task for any particular day.\nLucky you.',
+      desc: "Forgot you had the timer running, or didn't have access to the app while performing a task?\nNo problem!\n You can manually adjust the time spent on a task for any particular day.\nLucky you.",
       image: slide07,
       video: '',
     },
@@ -114,7 +126,7 @@ const Help = (props) => {
     },
     {
       header: 'Categories',
-      desc: 'The folder icon allows you to assign a task to a category. Each task may have one category.\nA tab will appear along the top of your tasks list for each category. Click on a tab to show the tasks in that category.\nTo remove a task\'s category, click the folder icon, erase all text in the Change Category prompt, and press OK.',
+      desc: "The folder icon allows you to assign a task to a category. Each task may have one category.\nA tab will appear along the top of your tasks list for each category. Click on a tab to show the tasks in that category.\nTo remove a task's category, click the folder icon, erase all text in the Change Category prompt, and press OK.",
       image: slide11,
       video: '',
     },
@@ -126,13 +138,13 @@ const Help = (props) => {
     },
     {
       header: 'Delete Task',
-      desc: 'Click the trash icon to permanently delete a task and all time logged for it.\nTo delete ALL of your data forever and ever, clear your browser cache.\nSometimes, it\'s just not meant to be.\nC\'est la vie.\n',
+      desc: "Click the trash icon to permanently delete a task and all time logged for it.\nTo delete ALL of your data forever and ever, clear your browser cache.\nSometimes, it's just not meant to be.\nC'est la vie.\n",
       image: slide16,
       video: '',
     },
     {
       header: 'Dividers',
-      desc: 'You can also add horizontal dividers into your task lists by creating a task with the name \'divider\'.\nDividers can be sorted and deleted just like tasks.\nFor that extra exquisite extra li\'l bit of organization to keep your many projects nice and tidy.\nGive it a try!',
+      desc: "You can also add horizontal dividers into your task lists by creating a task with the name 'divider'.\nDividers can be sorted and deleted just like tasks.\nFor that extra exquisite extra li'l bit of organization to keep your many projects nice and tidy.\nGive it a try!",
       image: slide12,
       video: '',
     },
@@ -157,15 +169,15 @@ const Help = (props) => {
   ]
 
   const navigateSlides = (slide) => {
-    if(slide === 'next') {
+    if (slide === 'next') {
       // If we are at last slide, ignore input.
-      if(currentSlide === slides.indexOf(slides[slides.length - 1])) {
+      if (currentSlide === slides.indexOf(slides[slides.length - 1])) {
         return
       }
       setCurrentSlide(currentSlide + 1)
-    } else if(slide === 'prev') {
+    } else if (slide === 'prev') {
       // If we are at first slide, ignore input.
-      if(currentSlide === 0) {
+      if (currentSlide === 0) {
         return
       }
       setCurrentSlide(currentSlide - 1)
@@ -177,71 +189,93 @@ const Help = (props) => {
   // ! COMPONENT
   return (
     <div className='help-window-wrapper'>
-        <div className='slide'>
+      <div className='slide'>
+        <h1 className='slide-header'>{slides[currentSlide].header}</h1>
 
-          <h1 className='slide-header'>
-            {slides[currentSlide].header}
-          </h1>
-
-          <div className='slide-content'>
-            
-            <div className='slide-img-wrapper'>
-              <img className='slide-img' src={slides[currentSlide].image} alt="" onClick={() => navigateSlides('next')}/>
-              {/* <video src={slides[currentSlide].video} autoPlay loop></video> */}
-            </div>
-
-            <div className='slide-desc' onClick={() => navigateSlides('next')}>
-              {slides[currentSlide].desc.split('\n').map(sentence => (
-                <p className='slide-desc-sentence'>
-                  {sentence}
-                </p>
-              ))}
-            </div>
-
+        <div className='slide-content'>
+          <div className='slide-img-wrapper'>
+            <img
+              className='slide-img'
+              src={slides[currentSlide].image}
+              alt=''
+              onClick={() => navigateSlides('next')}
+            />
+            {/* <video src={slides[currentSlide].video} autoPlay loop></video> */}
           </div>
 
-          <div className='slide-nav-wrapper'>
+          <div
+            className='slide-desc'
+            onClick={() => navigateSlides('next')}
+          >
+            {slides[currentSlide].desc.split('\n').map((sentence, i) => (
+              <p
+                key={i}
+                className='slide-desc-sentence'
+              >
+                {sentence}
+              </p>
+            ))}
+          </div>
+        </div>
+
+        <div className='slide-nav-wrapper'>
           <ul className='slide-nav'>
             {slides.map((slide, i) => (
-              <li className={`slide-nav-item dot ${currentSlide === i ? 'current-dot' : ''}`} onClick={() => navigateSlides(i)} title={slide.header}>&#9679;</li>
+              <li
+                className={`slide-nav-item dot ${
+                  currentSlide === i ? 'current-dot' : ''
+                }`}
+                onClick={() => navigateSlides(i)}
+                title={slide.header}
+                key={i}
+              >
+                &#9679;
+              </li>
             ))}
           </ul>
 
-          <ul className='slide-nav nav-btns'>            
+          <ul className='slide-nav nav-btns'>
             <li
               className={` btn-help btn-prev btn-nav center ${
-                  currentSlide === 0 ? 'disabled' : ''
-                }`}
+                currentSlide === 0 ? 'disabled' : ''
+              }`}
               onClick={() => navigateSlides('prev')}
-              >
-                Prev
+            >
+              Prev
             </li>
             <li
               className='btn-help btn-skip btn-nav center'
-              onClick={props.toggleHelpOpen}>
+              onClick={props.toggleHelpOpen}
+            >
               Skip
             </li>
             <li
               className={`btn-help center btn-next btn-nav  ${
-                currentSlide === slides.indexOf(slides[slides.length - 1]) ? 'next-done': ''
+                currentSlide === slides.indexOf(slides[slides.length - 1])
+                  ? 'next-done'
+                  : ''
               }`}
-              onClick={
-                () => {
-                if(currentSlide === slides.indexOf(slides[slides.length - 1])) props.toggleHelpOpen()
+              onClick={() => {
+                if (currentSlide === slides.indexOf(slides[slides.length - 1]))
+                  props.toggleHelpOpen()
                 else navigateSlides('next')
               }}
             >
-              {currentSlide === slides.indexOf(slides[slides.length - 1]) ? 'Start!': 'Next'}
+              {currentSlide === slides.indexOf(slides[slides.length - 1])
+                ? 'Start!'
+                : 'Next'}
             </li>
           </ul>
-          </div>
-          
         </div>
+      </div>
 
       <div className='img-preloader'>
-        {slides.map(slide => (
-          <div>
-            <img src={slide.image} alt="" />
+        {slides.map((slide, i) => (
+          <div key={i}>
+            <img
+              src={slide.image}
+              alt=''
+            />
           </div>
         ))}
       </div>
