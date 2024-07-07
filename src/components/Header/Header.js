@@ -29,7 +29,7 @@ const Header = ({
   renderAll,
   changeTheme,
   toggleSettingsMenu,
-  globalCurrentCategory,
+  currentCategory,
   toggleHelpOpen,
 }) => {
   //// Pieces of State ////
@@ -98,10 +98,9 @@ const Header = ({
       : []
 
     const newTaskCategory =
-      globalCurrentCategory === 'All' ||
-      globalCurrentCategory === 'Uncategorized'
+      currentCategory === 'All' || currentCategory === 'Uncategorized'
         ? ''
-        : globalCurrentCategory
+        : currentCategory
 
     tasks.forEach((task) => {
       task.sortPosition += 1
