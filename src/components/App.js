@@ -133,7 +133,6 @@ const App = () => {
     <div className={`app-wrapper theme-${theme}`}>
       {isOpen && (
         <Modal
-          isOpen={isOpen}
           modalData={modalData}
           close={closeModal}
         />

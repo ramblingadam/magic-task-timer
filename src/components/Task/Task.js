@@ -255,7 +255,7 @@ const Task = (props) => {
             <p className='warning'>Be careful! This cannot be undone.</p>
           </>
         ),
-        action: deleteTask,
+        onAccept: () => deleteTask,
         yesText: 'Delete Task',
         isDestructiveAction: true,
       })

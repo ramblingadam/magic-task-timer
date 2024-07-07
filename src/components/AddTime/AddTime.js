@@ -118,7 +118,9 @@ const AddTime = (props) => {
             <p class='warning'>Be careful! This cannot be undone.</p>
           </>
         ),
-        action: () => updateTime('set'),
+        onAccept: () => {
+          updateTime('set')
+        },
         yesText: 'Overwrite',
         isDestructiveAction: true,
       })
@@ -143,7 +145,7 @@ const AddTime = (props) => {
           <p class='warning'>Be careful! This cannot be undone.</p>
         </>
       ),
-      action: () => updateTime('delete'),
+      onAccept: () => updateTime('delete'),
       yesText: 'Delete Time',
       isDestructiveAction: true,
     })

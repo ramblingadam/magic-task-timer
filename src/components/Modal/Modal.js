@@ -25,7 +25,6 @@ const Modal = ({ close, modalData }) => {
       clearTimeout(enableTimeout)
     }
   }, [])
-
   return (
     <div
       className={`modal-wrapper`}
@@ -60,7 +59,14 @@ const Modal = ({ close, modalData }) => {
             className={`modal-btn ${
               isDestructiveAction ? 'modal-btn-cancel' : 'modal-btn-confirm'
             } ${isDisabled ? 'disabled' : ''}`}
-            onClick={isDisabled ? () => {} : onAccept}
+            onClick={
+              isDisabled
+                ? () => {}
+                : () => {
+                    onAccept()
+                    close()
+                  }
+            }
             tabIndex={1}
           >
             {isDisabled ? 'Wait...' : yesText || 'Confirm'}
