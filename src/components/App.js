@@ -41,8 +41,12 @@ const App = () => {
   }
 
   //// Function and state to track current category so that we can adjust behavior in the header based on the current category- namely, when a category is selected and a new task is created, automatically place that task into the current category.
-  const [currentCategory, setCurrentCategory] = useState(getFirstCategory())
+  const [currentCategory, setCurrentCategory] = useState(
+    getSettings()?.currentcategory || getFirstCategory()
+  )
   const changeGlobalCategory = (category) => {
+    console.log('blahblah')
+    const settings = getSettings()
     settings.currentcategory = category
     localStorage.setItem('settings', JSON.stringify(settings))
     setCurrentCategory(category)
@@ -58,6 +62,7 @@ const App = () => {
       setSettingsOpen(false)
     } else setSettingsOpen(true)
   }
+
   useEffect(() => {
     renderAll()
   }, [currentCategory])

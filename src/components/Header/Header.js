@@ -79,7 +79,6 @@ const Header = ({
 
     // Input validation
     if (!taskInput) {
-      alert('Task name cannot be blank.')
       return
     }
 
