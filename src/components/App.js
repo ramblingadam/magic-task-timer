@@ -63,7 +63,7 @@ const App = () => {
   }, [currentCategory])
 
   //// THEMING
-  const [theme, setTheme] = useState(settings?.theme || 'mako')
+  const [theme, setTheme] = useState(settings?.theme || 'lifestream')
   const changeTheme = (theme) => {
     setTheme(theme)
   }
