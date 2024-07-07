@@ -8,8 +8,14 @@ import Task from '../Task/Task'
 import './Tasks.css'
 import { getCategories, getSettings, getTasks } from '../../lib/utils'
 
-const Tasks = (props) => {
-  const { currentCategory, setCurrentCategory } = props
+const Tasks = ({
+  currentCategory,
+  setCurrentCategory,
+  renderAll,
+  convertDateFormat,
+  openModal,
+  setModalData,
+}) => {
   const tasks = getTasks()
 
   const settings = getSettings()
@@ -38,7 +44,7 @@ const Tasks = (props) => {
       setCurrentCategory(categories[1])
     }
 
-    props.renderAll()
+    renderAll()
   }
 
   return (
@@ -75,11 +81,13 @@ const Tasks = (props) => {
                 task={task}
                 tasks={tasks}
                 settings={settings}
-                renderAll={props.renderAll}
+                renderAll={renderAll}
                 currentCategory={currentCategory}
                 checkCurrentCategoryEmpty={checkCurrentCategoryEmpty}
-                convertDateFormat={props.convertDateFormat}
+                convertDateFormat={convertDateFormat}
                 updateCurrentCategory={handleCategoryClick}
+                setModalData={setModalData}
+                openModal={openModal}
               />
             ))
         ) : (

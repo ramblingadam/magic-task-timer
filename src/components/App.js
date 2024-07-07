@@ -116,26 +116,14 @@ const App = () => {
     return result
   }
 
-  //// TODO Shows confirmaiton dialogue, and sets DialogBox/confirmation window message.
-  // const toggleDialogBox = (message) => {
-  //   if(!dialogBoxVisible) {
-  //     setDialogMessage(message)
-  //     setDialogBoxVisible(true)
-  //   } else {
-  //     setDialogBoxVisible(false)
-  //   }
-  // }
-
   const [modalData, setModalData] = useState({
     title: 'Modal title',
     message: () => (
       <>
-        <p>This will overwrite your current task history.</p>
-        <p className='warning'>THIS CANNOT BE UNDONE.</p>
-        <p>Are you sure you want to continue?</p>
+        <p>Modal message</p>
       </>
     ),
-    onAccept: () => importTaskHistory(),
+    onAccept: () => {},
   })
 
   const { isOpen, openModal, closeModal } = useModal()
@@ -143,14 +131,13 @@ const App = () => {
   // ! COMPONENT
   return (
     <div className={`app-wrapper theme-${theme}`}>
-      {/* <DialogBox
-          toggleDialogBox={toggleDialogBox}
-        /> */}
-      <Modal
-        isOpen={isOpen}
-        modalData={modalData}
-        close={closeModal}
-      />
+      {isOpen && (
+        <Modal
+          isOpen={isOpen}
+          modalData={modalData}
+          close={closeModal}
+        />
+      )}
 
       <Header
         renderAll={renderAll}
@@ -184,6 +171,9 @@ const App = () => {
           setCurrentCategory={changeGlobalCategory}
           settings={settings}
           convertDateFormat={convertDateFormat}
+          modalData={modalData}
+          setModalData={setModalData}
+          openModal={openModal}
         />
       </div>
 
